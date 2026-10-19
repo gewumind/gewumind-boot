@@ -23,18 +23,18 @@ Three commands from clone to a fully working backend.
 
 ### 🎬 Video tutorials
 
-One overview plus four ways to run it. Chinese narration with subtitles — also playable on the
+One overview plus four ways to run it. English narration with subtitles — also playable on the
 [website](https://gewumind.github.io/#videos).
 
-[![Overview: run a backend out of the box](docs/videos/00-overview-16x9.png)](docs/videos/00-overview.mp4)
+[![Overview: run a backend out of the box](docs/videos/en/00-overview-16x9.png)](docs/videos/en/00-overview.mp4)
 
 | Episode | Video | Length | Watch |
 |---|---|---|---|
-| EP 01 | Overview: run a backend out of the box | 01:12 | [▶ Play](docs/videos/00-overview.mp4) |
-| EP 02 | Way 1 · Download the release and run | 00:41 | [▶ Play](docs/videos/01-release.mp4) |
-| EP 03 | Way 2 · Run from source | 00:34 | [▶ Play](docs/videos/02-source.mp4) |
-| EP 04 | Way 3 · Embed into an existing app | 00:25 | [▶ Play](docs/videos/03-embed.mp4) |
-| EP 05 | Way 4 · Let AI build it | 00:43 | [▶ Play](docs/videos/04-ai.mp4) |
+| EP 01 | Overview: run a backend out of the box | 00:59 | [▶ Play](docs/videos/en/00-overview.mp4) |
+| EP 02 | Way 1 · Download the release and run | 00:33 | [▶ Play](docs/videos/en/01-release.mp4) |
+| EP 03 | Way 2 · Run from source | 00:27 | [▶ Play](docs/videos/en/02-source.mp4) |
+| EP 04 | Way 3 · Embed into an existing app | 00:21 | [▶ Play](docs/videos/en/03-embed.mp4) |
+| EP 05 | Way 4 · Let AI build it | 00:40 | [▶ Play](docs/videos/en/04-ai.mp4) |
 
 ---
 
@@ -287,7 +287,7 @@ workflow, WebSocket, SSE, TCP, password policy, etc. See the User Guide for the 
 
 ## License
 
-- The kernel is open source under the [Apache License 2.0](LICENSE).
+- The kernel is open source under the [Apache License 2.0](LICENSE) (a [Chinese reference translation](LICENSE.zh-CN.md) is provided; the English text is authoritative).
 - Some enterprise capabilities (SSO, workflow, module management, Redis / shared sessions,
   MQTT, Kafka, SSE, TCP, WS) require a commercial offline license. Without one you get a
   30-day free trial.

@@ -35,7 +35,7 @@
 | EP 02 | 用法一 · 下载发行包直接用 | 00:41 | [▶ 播放](docs/videos/01-release.mp4) |
 | EP 03 | 用法二 · 源码直接跑 | 00:34 | [▶ 播放](docs/videos/02-source.mp4) |
 | EP 04 | 用法三 · 嵌进已有工程 | 00:25 | [▶ 播放](docs/videos/03-embed.mp4) |
-| EP 05 | 用法四 · 交给 AI | 00:43 | [▶ 播放](docs/videos/04-ai.mp4) |
+| EP 05 | 用法四 · 交给 AI | 00:47 | [▶ 播放](docs/videos/04-ai.mp4) |
 
 ---
 
@@ -381,6 +381,6 @@ curl -X POST http://localhost:9089/system/ai-keys/save \
 
 ## 许可
 
-- 内核基于 [Apache License 2.0](LICENSE) 开源。
+- 内核基于 [Apache License 2.0](LICENSE) 开源（[中文参考译文](LICENSE.zh-CN.md)，以英文原文为准）。
 - 部分企业能力（SSO、工作流、模块管理、Redis/共享会话、MQTT、Kafka、SSE、TCP、WS）
   需商业版离线 License 解锁，未授权可免费试用 30 天。
