@@ -23,18 +23,18 @@ Three commands from clone to a fully working backend.
 
 ### 🎬 Video tutorials
 
-One overview plus four ways to run it. English narration with subtitles — also playable on the
+One overview, AI coding in practice, and three deployment paths. English narration with subtitles — also playable on the
 [website](https://gewumind.github.io/#videos).
 
-[![Overview: run a backend out of the box](https://raw.githubusercontent.com/gewumind/gewumind-boot/main/docs/videos/en/00-overview-16x9.png)](https://gewumind.github.io/#videos)
+[![Overview: don't you want a coding master?](https://gewumind.github.io/assets/video/en/00-overview-16x9.png)](https://gewumind.github.io/#videos)
 
 | Episode | Video | Length | Watch |
 |---|---|---|---|
-| EP 01 | Overview: run a backend out of the box | 00:59 | [▶ Play](https://gewumind.github.io/#videos) |
-| EP 02 | Way 1 · Download the release and run | 00:33 | [▶ Play](https://gewumind.github.io/#videos) |
-| EP 03 | Way 2 · Run from source | 00:27 | [▶ Play](https://gewumind.github.io/#videos) |
-| EP 04 | Way 3 · Embed into an existing app | 00:21 | [▶ Play](https://gewumind.github.io/#videos) |
-| EP 05 | Way 4 · Let AI build it | 00:40 | [▶ Play](https://gewumind.github.io/#videos) |
+| EP 01 | Overview: don't you want a coding master? | 01:25 | [▶ Play](https://gewumind.github.io/#videos) |
+| EP 02 | AI coding in practice: build a device module | 00:38 | [▶ Play](https://gewumind.github.io/#videos) |
+| EP 03 | Deploy 1 · Download the release and run | 00:33 | [▶ Play](https://gewumind.github.io/#videos) |
+| EP 04 | Deploy 2 · Run from source | 00:29 | [▶ Play](https://gewumind.github.io/#videos) |
+| EP 05 | Deploy 3 · Embed into an existing app | 00:21 | [▶ Play](https://gewumind.github.io/#videos) |
 
 ---
 

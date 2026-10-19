@@ -25,17 +25,17 @@
 
 ### 🎬 视频教程
 
-一条总览 + 四种用法，中文旁白 + 字幕。也可在[官网](https://gewumind.github.io/#videos)直接播放。
+一条总览 + AI coding + 三种部署，中文旁白 + 字幕。也可在[官网](https://gewumind.github.io/#videos)直接播放。
 
-[![总览：把一个后台开箱跑起来](https://raw.githubusercontent.com/gewumind/gewumind-boot/main/docs/videos/00-overview-16x9.png)](https://gewumind.github.io/#videos)
+[![总览：你不想拥有一个编程大师吗？](https://gewumind.github.io/assets/video/00-overview-16x9.png)](https://gewumind.github.io/#videos)
 
 | 集 | 视频 | 时长 | 播放 |
 |---|---|---|---|
-| EP 01 | 总览：把一个后台开箱跑起来 | 01:12 | [▶ 播放](https://gewumind.github.io/#videos) |
-| EP 02 | 用法一 · 下载发行包直接用 | 00:41 | [▶ 播放](https://gewumind.github.io/#videos) |
-| EP 03 | 用法二 · 源码直接跑 | 00:34 | [▶ 播放](https://gewumind.github.io/#videos) |
-| EP 04 | 用法三 · 嵌进已有工程 | 00:25 | [▶ 播放](https://gewumind.github.io/#videos) |
-| EP 05 | 用法四 · 交给 AI | 00:47 | [▶ 播放](https://gewumind.github.io/#videos) |
+| EP 01 | 总览：你不想拥有一个编程大师吗？ | 01:39 | [▶ 播放](https://gewumind.github.io/#videos) |
+| EP 02 | AI coding 实战：让 Agent 写设备管理模块 | 00:46 | [▶ 播放](https://gewumind.github.io/#videos) |
+| EP 03 | 部署一 · 下载发行包直接用 | 00:41 | [▶ 播放](https://gewumind.github.io/#videos) |
+| EP 04 | 部署二 · 源码直接跑 | 00:34 | [▶ 播放](https://gewumind.github.io/#videos) |
+| EP 05 | 部署三 · 嵌进已有工程 | 00:25 | [▶ 播放](https://gewumind.github.io/#videos) |
 
 ---
 
