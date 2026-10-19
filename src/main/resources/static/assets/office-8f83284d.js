@@ -1,0 +1,1 @@
+const e=''+new URL('office-1ce4b64e.svg',import.meta.url)['href'];export{e as default};

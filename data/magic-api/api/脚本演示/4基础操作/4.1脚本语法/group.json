@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "9a9356c555f74514b08c4fb667e97040",
+  "name" : "4.1脚本语法",
+  "type" : "api",
+  "parentId" : "1d16f0f2327142e1a1ca0a1e773b1f70",
+  "path" : "/script",
+  "createTime" : 1679918031674,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

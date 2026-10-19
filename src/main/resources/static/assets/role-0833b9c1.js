@@ -1,0 +1,1 @@
+const e=''+new URL('role-bb358b1f.svg',import.meta.url)['href'];export{e as default};

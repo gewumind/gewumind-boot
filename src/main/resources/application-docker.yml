@@ -1,0 +1,59 @@
+# =============================================================================
+# profile: docker —— 容器环境 / containerised deployments
+#
+# 用于 docker compose 之类的编排场景：数据源指向 compose 网络里的 db 服务，
+# 关闭自动签发（生产取向），凭据走环境变量。
+# For orchestrated setups such as docker compose: the datasource points at the
+# `db` service on the compose network, auto-issue is off (production posture) and
+# credentials come from the environment.
+#
+# 启动 / Run:
+#   java -jar target/gewumind-boot-app.jar --spring.profiles.active=docker
+# =============================================================================
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # compose 里通常用服务名；单机跑也可用 127.0.0.1
+    # Use the service name under compose; 127.0.0.1 also works standalone
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://db:3306/gewumind-boot?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF8&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai}
+    username: ${SPRING_DATASOURCE_USERNAME:gewumind}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 100
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-ms: 300000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat
+      use-global-data-source-stat: true
+      stat-view-servlet:
+        enabled: false
+        login-username: ${DRUID_USER:admin}
+        login-password: ${DRUID_PASSWORD:}
+        reset-enable: false
+        url-pattern: /druid/*
+        allow: ""
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+
+app:
+  dev-api-key:
+    enabled: false
+  ai-key:
+    self-service: false
+
+logging:
+  level:
+    root: info
+    com.gewumind.app: debug
+    com.gewumind.boot: info

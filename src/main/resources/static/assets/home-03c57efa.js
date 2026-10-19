@@ -1,0 +1,1 @@
+const e=''+new URL('home-90600cba.svg',import.meta.url)['href'];export{e as default};

@@ -1,0 +1,36 @@
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+=========================================================================
+GewuMind Boot 双许可证
+=========================================================================
+
+本项目采用 **双许可证 (Dual License)** 模式：
+
+1. **社区版 (Community Edition)**：本目录下的源代码（不含 `src/main/java/com/gewumind/boot/kernel/`
+   和 `com/gewumind/boot/extension/WorkflowModule.java` 之外的所有代码）遵循
+   Apache License 2.0。社区用户可自由使用、修改、分发。
+
+2. **商业版 (Commercial Edition)**：上述 **核心业务模块**（`kernel/*` 和
+   `extension/WorkflowModule*`）采用 **Business Source License 1.1 (BSL 1.1)**
+   约束：
+   - 允许在生产环境运行 gewuMind Boot **（每个企业一份授权）**
+   - 禁止将核心业务模块代码转售、嵌入闭源 SaaS 产品
+
+注意：
+- 本项目内"GEWUMIND"商标、GewuMind Boot 标志为 gewuMind contributors 所有。
+- 修改或分发代码请保留 NOTICE 文件中的归属声明。
+- 详细条款见 COMMERCIAL_LICENSE 和 NOTICE。

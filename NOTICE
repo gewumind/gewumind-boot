@@ -1,0 +1,40 @@
+GewuMind Boot
+Copyright 2026 gewuMind contributors
+
+This product includes software developed at
+gewuMind contributors (https://github.com/gewumind/gewumind-boot).
+
+=========================================================================
+Trademarks
+=========================================================================
+
+"GewuMind", "gewuMind Boot", "GewuMindr" and the "G" logo are
+trademarks of gewuMind contributors.
+
+Trademark Policy:
+- The trademarks may be used to refer to unmodified versions of the
+  official gewuMind Boot release distributed at:
+  https://github.com/gewumind/gewumind-boot
+
+- Modified versions of the Work (including but not limited to:
+  forks, customized builds, embedded uses in other products) MUST NOT
+  use the trademarks "GewuMind", "GewuMind Boot", "GewuMindr" or the
+  "G" logo to identify themselves or their distributions.
+
+- Forks or derived works should choose a different name and logo to
+  distinguish themselves from the official gewuMind Boot project.
+
+=========================================================================
+Third-party Components
+=========================================================================
+
+This product includes components developed by third parties:
+
+- Spring Boot (https://spring.io/projects/spring-boot) - Apache 2.0
+- magic-api (https://gitee.com/ssssssss-team/magic-api) - Apache 2.0
+- Sa-Token (https://sa-token.cc) - Apache 2.0
+- Vue.js (https://vuejs.org) - MIT
+- Naive UI (https://www.naiveui.com) - MIT
+- Vite (https://vitejs.dev) - MIT
+- magic-editor (https://gitee.com/ssssssss-team/magic-api) - Apache 2.0
+- JavaScript Obfuscator (https://obfuscator.io) - BSD 2-Clause

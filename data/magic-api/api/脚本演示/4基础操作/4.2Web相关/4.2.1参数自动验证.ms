@@ -1,0 +1,61 @@
+{
+  "properties" : { },
+  "id" : "89640999511b49a8b8f77fba690f4412",
+  "script" : null,
+  "groupId" : "113808ccfe104ae49e4d8d5f008b1bad",
+  "name" : "4.2.1参数自动验证",
+  "createTime" : null,
+  "updateTime" : 1679918571648,
+  "lock" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "path" : "/validate",
+  "method" : "GET",
+  "parameters" : [ {
+    "name" : "id",
+    "value" : "",
+    "description" : "",
+    "required" : true,
+    "dataType" : "String",
+    "type" : null,
+    "defaultValue" : null,
+    "validateType" : null,
+    "error" : "id必填",
+    "expression" : null,
+    "children" : null
+  }, {
+    "name" : "age",
+    "value" : "",
+    "description" : "",
+    "required" : false,
+    "dataType" : "String",
+    "type" : null,
+    "defaultValue" : null,
+    "validateType" : "pattern",
+    "error" : "age必须为数字",
+    "expression" : "^\\d+$",
+    "children" : null
+  }, {
+    "name" : "phone",
+    "value" : "",
+    "description" : "",
+    "required" : true,
+    "dataType" : "String",
+    "type" : null,
+    "defaultValue" : null,
+    "validateType" : "expression",
+    "error" : "手机号必填且必须是11位",
+    "expression" : "phone.length() == 11",
+    "children" : null
+  } ],
+  "options" : [ ],
+  "requestBody" : "",
+  "headers" : [ ],
+  "paths" : [ ],
+  "responseBody" : "{\n    \"code\": 0,\n    \"message\": \"id必填\",\n    \"data\": null,\n    \"timestamp\": 1615984896144,\n    \"executeTime\": 0\n}",
+  "description" : null,
+  "requestBodyDefinition" : null,
+  "responseBodyDefinition" : null
+}
+================================
+return '参数验证通过' 

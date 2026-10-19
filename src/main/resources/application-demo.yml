@@ -1,0 +1,58 @@
+# =============================================================================
+# profile: demo —— 演示 / 试用环境 / demos and trials
+#
+# 给外部人试用看效果用：保留 AI Key 自动签发与自助签发，
+# 但数据源与 dev 一样指向本机，且把 SQL 日志打开方便观察。
+# Intended for letting people try the product: keeps AI key auto-issue and
+# self-service issuance, but points at a local database like dev and turns on
+# SQL logging for observability.
+#
+# 启动 / Run:
+#   java -jar target/gewumind-boot-app.jar --spring.profiles.active=demo
+# =============================================================================
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/gewumind-boot?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF8&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    # 未注入密码时连不上库是预期行为 / failing to connect without it is expected
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 50
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-ms: 300000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat
+      use-global-data-source-stat: true
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: 123456
+        reset-enable: false
+        url-pattern: /druid/*
+        allow: ""
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+
+app:
+  dev-api-key:
+    enabled: true
+    name: demo-local
+  ai-key:
+    self-service: true
+
+logging:
+  level:
+    root: info
+    com.gewumind.boot: debug

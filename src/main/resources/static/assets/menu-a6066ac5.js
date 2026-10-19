@@ -1,0 +1,1 @@
+const e=''+new URL('menu-fa31e860.svg',import.meta.url)['href'];export{e as default};

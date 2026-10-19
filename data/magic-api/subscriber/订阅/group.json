@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "subscriber-group-001",
+  "name" : "订阅管理",
+  "type" : "subscriber",
+  "parentId" : "0",
+  "path" : "/subscriber",
+  "createTime" : null,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

@@ -1,0 +1,1 @@
+const t='data:text/less;base64,';export{t as default};

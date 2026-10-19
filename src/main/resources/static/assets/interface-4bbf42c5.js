@@ -1,0 +1,1 @@
+const e=''+new URL('interface-d07ed4f9.svg',import.meta.url)['href'];export{e as default};

@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "b84bbe97a3d54de69e5a305d75048c4f",
+  "name" : "1.4其它",
+  "type" : "api",
+  "parentId" : "b45438e55cf34a47b467aa1cfef31526",
+  "path" : "/other",
+  "createTime" : 1679877817392,
+  "updateTime" : 1679879348176,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

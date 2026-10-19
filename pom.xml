@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.0</version>
+		<relativePath/>
+	</parent>
+
+	<groupId>com.gewumind</groupId>
+	<artifactId>gewumind-boot-app</artifactId>
+	<version>1.0.0</version>
+	<name>GewuMind Boot App</name>
+	<description>GewuMind Boot · AI 驱动的低代码后端容器（本工程是承载内核的应用壳）</description>
+
+	<properties>
+		<java.version>17</java.version>
+		<!-- 与 libs/ 里那份内核 jar 保持一致；升级内核时跑 scripts/install-gewumind-dep.sh -->
+		<gewumind-boot.version>0.3.0</gewumind-boot.version>
+		<!--
+			以下版本必须与 gewumind-boot 0.3.0 的 pom 保持一致。
+			原因：本工程 parent 是 spring-boot-starter-parent，它的 dependencyManagement
+			会覆盖「传递依赖里声明的版本」——包括 gewumind-boot 自己声明的那些。
+			不锁版本的话，本工程会解析出 mysql 8.1.0 / jackson 2.15.3 / spring 6.1.1，
+			和内核实际编译用的 9.3.0 / 2.21.1 / 6.2.19 对不上。
+		-->
+		<hutool-all.version>5.8.40</hutool-all.version>
+		<poi.version>5.4.0</poi.version>
+		<mysql.version>9.3.0</mysql.version>
+		<mysql.connector.version>9.3.0</mysql.connector.version>
+		<spring-framework.version>6.2.19</spring-framework.version>
+		<jackson-bom.version>2.21.1</jackson-bom.version>
+		<logback.version>1.4.14</logback.version>
+		<tomcat.version>10.1.19</tomcat.version>
+		<json-smart.version>2.5.2</json-smart.version>
+		<json-path.version>2.9.0</json-path.version>
+		<xmlunit2.version>2.10.0</xmlunit2.version>
+		<commons-lang3.version>3.18.0</commons-lang3.version>
+		<assertj.version>3.27.7</assertj.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<!--
+			GewuMind Boot 内核（magic-api 低代码容器 + sa-token + SSO + 前端 SPA 承载）
+			由 scripts/install-gewumind-dep.sh 装入 libs/；
+			它的 pom 里带着全部传递依赖（magic-api / druid / poi / hutool / kafka ...）。
+		-->
+		<dependency>
+			<groupId>com.gewumind</groupId>
+			<artifactId>gewumind-boot</artifactId>
+			<version>${gewumind-boot.version}</version>
+		</dependency>
+
+		<!-- 业务侧用到的能力，gewumind-boot 已带，这里显式声明以表明直接依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>${hutool-all.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<!--
+			内核依赖放在本工程 libs/ 下，不依赖 ~/.m2 里装过什么。
+			libs/ 是一个标准 Maven 仓库布局：
+			  libs/com/gewumind/gewumind-boot/0.3.0/gewumind-boot-0.3.0.jar
+			  libs/com/gewumind/gewumind-boot/0.3.0/gewumind-boot-0.3.0.pom
+			传递依赖（magic-api / sa-token / druid / poi ...）由那个 pom 解析。
+			产物由 scripts/install-gewumind-dep.sh 生成。
+		-->
+		<repository>
+			<id>gewumind-libs</id>
+			<name>本工程内置依赖</name>
+			<url>file://${project.basedir}/libs</url>
+			<releases><enabled>true</enabled><updatePolicy>never</updatePolicy></releases>
+			<snapshots><enabled>false</enabled></snapshots>
+		</repository>
+
+		<!-- gewumind-boot 的 pom 里用到 spring-ai milestone，这里同步声明保证可解析 -->
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots><enabled>false</enabled></snapshots>
+		</repository>
+		<repository>
+			<id>spring-releases</id>
+			<name>Spring Releases</name>
+			<url>https://repo.spring.io/release</url>
+			<snapshots><enabled>false</enabled></snapshots>
+		</repository>
+	</repositories>
+
+	<build>
+		<finalName>gewumind-boot-app</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.gewumind.app.GewuMindBootApp</mainClass>
+					<excludes>
+						<exclude>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-devtools</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "fc061efbc39948d59aafc3905591c935",
+  "name" : "user",
+  "type" : "component",
+  "parentId" : "29d82244-d928-11ee-9675-c2b02ed3977b",
+  "path" : "/user",
+  "createTime" : 1709791381000,
+  "updateTime" : 1785828888583,
+  "createBy" : "1",
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

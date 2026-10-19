@@ -1,0 +1,1 @@
+const t=''+new URL('dict-56c0922d.svg',import.meta.url)['href'];export{t as default};

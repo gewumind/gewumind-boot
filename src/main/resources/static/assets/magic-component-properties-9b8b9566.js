@@ -1,0 +1,1 @@
+const o={'table':{'selectedRowColor':'#D9DDE2','nowrap':!0x0,'dropMenus':[],'titleTooltip':{'iconProps':{'icon':'QuestionCircleFilled','color':'#4b6fa7'}},'image':{'width':0x1e,'height':0x1e}}};export{o as c};

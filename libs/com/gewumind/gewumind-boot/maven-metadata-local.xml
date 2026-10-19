@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.gewumind</groupId>
+  <artifactId>gewumind-boot</artifactId>
+  <versioning>
+    <versions>
+      <version>0.3.0</version>
+    </versions>
+  </versioning>
+</metadata>

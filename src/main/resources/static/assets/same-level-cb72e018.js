@@ -1,0 +1,1 @@
+const e=''+new URL('same-level-becf34f3.svg',import.meta.url)['href'];export{e as default};

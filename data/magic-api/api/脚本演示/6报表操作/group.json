@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "rpt-op-group-001",
+  "name" : "6报表操作",
+  "type" : "api",
+  "parentId" : "8d60ba6788ef4a75b93f3c77683c7f89",
+  "path" : "/report-op",
+  "createTime" : null,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

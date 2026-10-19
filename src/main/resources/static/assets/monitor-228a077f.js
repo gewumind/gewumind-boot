@@ -1,0 +1,1 @@
+const o=''+new URL('monitor-e8cd2903.svg',import.meta.url)['href'];export{o as default};

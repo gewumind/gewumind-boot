@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "pwd_policy_api_group",
+  "name" : "密码策略",
+  "type" : "api",
+  "parentId" : "acff5ad7aae64de2acb03e1d16a58ce2",
+  "path" : "/password",
+  "createTime" : null,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

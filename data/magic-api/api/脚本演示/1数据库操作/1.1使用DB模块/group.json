@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "8350c5f638d9400fa9c44f46412bba31",
+  "name" : "1.1使用DB模块",
+  "type" : "api",
+  "parentId" : "b45438e55cf34a47b467aa1cfef31526",
+  "path" : "/module",
+  "createTime" : null,
+  "updateTime" : 1679879293392,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

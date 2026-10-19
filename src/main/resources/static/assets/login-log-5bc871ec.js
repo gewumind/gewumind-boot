@@ -1,0 +1,1 @@
+const e=''+new URL('login-log-9e76d10e.svg',import.meta.url)['href'];export{e as default};

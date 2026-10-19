@@ -1,0 +1,1 @@
+function r(_0x374ad9){throw new Error('Could\x20not\x20dynamically\x20require\x20\x22'+_0x374ad9+'\x22.\x20Please\x20configure\x20the\x20dynamicRequireTargets\x20or/and\x20ignoreDynamicRequires\x20option\x20of\x20@rollup/plugin-commonjs\x20appropriately\x20for\x20this\x20require\x20call\x20to\x20work.');}export{r as c};

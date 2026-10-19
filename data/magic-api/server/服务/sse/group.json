@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "server-sse-group",
+  "name" : "SSE",
+  "type" : "server",
+  "parentId" : "server-group-001",
+  "path" : "/sse",
+  "createTime" : null,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

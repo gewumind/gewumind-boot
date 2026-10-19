@@ -1,0 +1,10 @@
+{
+  "properties" : { },
+  "id" : "638dc441a12a4cae81c94b00fe7f9d89",
+  "name" : "3.3Redis演示",
+  "type" : "api",
+  "parentId" : "d822ca3576384065b85973a3f220397b",
+  "path" : "/redis-demo",
+  "paths" : [ ],
+  "options" : [ ]
+}

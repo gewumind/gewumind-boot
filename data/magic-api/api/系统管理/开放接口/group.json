@@ -1,0 +1,10 @@
+{
+  "properties" : { },
+  "id" : "open-api-group-001",
+  "name" : "开放接口",
+  "type" : "api",
+  "parentId" : "acff5ad7aae64de2acb03e1d16a58ce2",
+  "path" : "/open",
+  "paths" : [ ],
+  "options" : [ ]
+}

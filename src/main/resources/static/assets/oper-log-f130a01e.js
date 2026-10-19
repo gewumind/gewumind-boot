@@ -1,0 +1,1 @@
+const e=''+new URL('oper-log-0cf7364d.svg',import.meta.url)['href'];export{e as default};

@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "watermark_api_group",
+  "name" : "水印",
+  "type" : "api",
+  "parentId" : "acff5ad7aae64de2acb03e1d16a58ce2",
+  "path" : "/watermark",
+  "createTime" : null,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

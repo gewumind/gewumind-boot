@@ -1,0 +1,185 @@
+# =============================================================================
+# GewuMind Boot · 公共配置（所有 profile 共用）
+# GewuMind Boot · Common configuration (shared by all profiles)
+#
+# 环境划分 / Profiles:
+#   dev      本地开发，默认 / local development, default
+#   demo     演示、试用 / demos and trials
+#   online   生产环境 / production
+#   docker   容器环境 / containerised deployments
+#
+# 切换 / Switch:
+#   java -jar target/gewumind-boot-app.jar --spring.profiles.active=online
+#   或 / or:  SPRING_PROFILES_ACTIVE=online
+#
+# 覆盖优先级（后者覆盖前者）/ Precedence (later wins):
+#   命令行参数 > 环境变量 > profile 专属文件 > 本文件
+#   CLI args  > env vars   > profile file      > this file
+#
+# 所以密码等敏感值一律走环境变量，不要写进任何 yml。
+# Secrets must always come from environment variables, never from a yml file.
+# =============================================================================
+
+server:
+  port: 9089
+  compression:
+    enabled: true
+    min-response-size: 128
+  # ==========================================================================
+  # HTTPS（TLS）—— 在需要的 profile 里开启 / enable it in the profile you need
+  #
+  #   生成自签证书（内网够用，浏览器会提示不受信任）：
+  #   Generate a self-signed certificate (fine for an intranet; browsers will warn):
+  #     bash scripts/gen-ssl-cert.sh ./certs 3650 localhost app.example.com
+  #
+  #   正式环境请用受信任证书（采购或内网 CA 签发）：
+  #   Use a trusted certificate in production (purchased, or issued by an internal CA):
+  #     key-store: file:./certs/server.p12
+  #
+  # 关于 WSS —— 存在两套，别混淆：
+  # About WSS — there are two mechanisms, do not confuse them:
+  #   ① 主 connector（本文件这段 server.ssl）
+  #      Main connector (this server.ssl block):
+  #      WS handler 注册在 /ws/**，与 HTTP API 共用主 connector。
+  #      开启 HTTPS 后，wss:// 走主端口自动可用，无需额外配置。
+  #      The WS handler is registered at /ws/** and shares the main connector;
+  #      once HTTPS is on, wss:// works on the main port with no extra configuration.
+  #   ② 独立 WSS connector（sys_configure 的 ws.config，端口 wssPort 默认 9443）
+  #      用于让 WS 与主服务端口/证书隔离，一般场景用 ① 就够。
+  #      Separate WSS connector (ws.config in sys_configure, wssPort defaults to 9443),
+  #      used to isolate WS from the main port/certificate. Usually ① is enough.
+  #
+  # 为什么配置在这里而不是内核 jar 里的那份：
+  # Why this file wins over the kernel's copy:
+  #   内核是作为 jar 依赖引入的，fat jar 的 classpath 里 BOOT-INF/classes/
+  #   排在 BOOT-INF/lib/*.jar 之前，所以本工程的配置会覆盖内核那份。
+  #   The kernel is consumed as a jar; BOOT-INF/classes/ precedes BOOT-INF/lib/*.jar
+  #   on the classpath, so this project's configuration overrides the kernel's.
+  #   运行时配置归使用方 / runtime configuration belongs to the consumer.
+  # ==========================================================================
+  # ssl:
+  #   enabled: true
+  #   key-store: file:./certs/server.p12      # 也支持 classpath: / also works: classpath:keystore.p12
+  #   key-store-password: changeit
+  #   key-store-type: PKCS12
+  #   key-alias: tomcat
+  # http2:
+  #   enabled: true                          # 需要 h2 支持时开启 / requires h2 support
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: gewumind-boot-app
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.ai.model.openai.autoconfigure.OpenAiChatAutoConfiguration
+      - org.springframework.ai.model.openai.autoconfigure.OpenAiEmbeddingAutoConfiguration
+      - org.springframework.ai.model.openai.autoconfigure.OpenAiImageAutoConfiguration
+      - org.springframework.ai.model.openai.autoconfigure.OpenAiAudioSpeechAutoConfiguration
+      - org.springframework.ai.model.openai.autoconfigure.OpenAiAudioTranscriptionAutoConfiguration
+      - org.springframework.ai.model.openai.autoconfigure.OpenAiModerationAutoConfiguration
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+# ---------------------------------------------------------------------------
+# magic-api 低代码容器 / low-code container
+# 脚本工作区在 ./data/magic-api（相对启动目录），随工程一起管理
+# The script workspace lives at ./data/magic-api (relative to the working
+# directory) and is versioned together with the project.
+# ---------------------------------------------------------------------------
+magic-api:
+  web: /magic/web
+  prefix: "/"
+  show-sql: true
+  auto-import-module: db
+  sql-column-case: camel
+  resource:
+    type: file
+    location: file:./data/magic-api
+  backup:
+    enable: true
+    max-history: -1
+    table-name: magic_backup_record_v2
+  page:
+    page: current
+    size: size
+  cache:
+    enable: true
+    ttl: 3600000
+  response-code:
+    success: 200
+    invalid: 400
+    exception: 500
+  crud:
+    logic-delete-column: is_del
+    logic-delete-value: 1
+
+# ---------------------------------------------------------------------------
+# Sa-Token 会话 / sessions
+# ---------------------------------------------------------------------------
+sa-token:
+  token-name: token
+  timeout: 2592000
+  active-timeout: -1
+  is-concurrent: true
+  is-share: false
+  token-style: uuid
+  is-log: false
+
+# ---------------------------------------------------------------------------
+# 运行期目录（相对启动目录）/ runtime directories (relative to the working directory)
+# ---------------------------------------------------------------------------
+upload:
+  dir: ./upload/
+
+report:
+  dir: ./reports/
+
+# ---------------------------------------------------------------------------
+# 本工程自有参数 / settings owned by this project
+# ---------------------------------------------------------------------------
+gewumind:
+  # 前端所有业务请求都带这个前缀，入口统一剥掉（见 ApiPrefixConfiguration）
+  # Every business request carries this prefix; it is stripped once at the
+  # entry point (see ApiPrefixConfiguration).
+  api-prefix: /api
+
+# ---------------------------------------------------------------------------
+# 各插件启动时是否自动建表 —— 系统表已由 db/init 初始化，保持 false
+# Whether plugins create their own tables at startup — the schema is already
+# created by db/init, so keep this false.
+# ---------------------------------------------------------------------------
+app:
+  init-tables: false
+  # 内核校验（签名 / 网关白名单）仅商业模式生效，开源模式全部放行
+  # Kernel checks (signature / gateway allowlist) only apply to commercial
+  # editions; in open-source mode everything passes.
+  license-mode: opensource
+  # 时钟回拨检测：当前时间早于上次运行时间 → 日志告警（只告警不阻断）
+  # Clock-rollback detection: if now() is earlier than the last seen time, log
+  # a warning (warning only, never blocks).
+  license-clock-anomaly: true
+  # 开发模式下自动签发一个 AI Key（secret 打印一次到启动日志）。
+  # Auto-issue one AI key in dev mode (the secret is printed to the startup log once).
+  # prod / production / online 三个 profile 下强制不签发，此开关不生效。
+  # Never issued under prod / production / online — this switch has no effect there.
+  dev-api-key:
+    enabled: true
+    name: dev-local
+
+logging:
+  level:
+    root: info
+    com.gewumind.app: debug
+    com.gewumind.boot: info

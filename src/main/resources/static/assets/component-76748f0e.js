@@ -1,0 +1,1 @@
+const e=''+new URL('component-2bfacf52.svg',import.meta.url)['href'];export{e as default};

@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "85133717c4da4297b8d100b82d897def",
+  "name" : "role",
+  "type" : "component",
+  "parentId" : "29d82244-d928-11ee-9675-c2b02ed3977b",
+  "path" : "/role",
+  "createTime" : 1785809836000,
+  "updateTime" : 1785828882533,
+  "createBy" : "1",
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

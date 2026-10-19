@@ -1,0 +1,1 @@
+const r=''+new URL('error-439a76f1.svg',import.meta.url)['href'];export{r as default};

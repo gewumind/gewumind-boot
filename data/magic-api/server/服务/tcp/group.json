@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "server-tcp-group",
+  "name" : "TCP",
+  "type" : "server",
+  "parentId" : "server-group-001",
+  "path" : "/tcp",
+  "createTime" : null,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

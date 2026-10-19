@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "8505cc65c46145bdb3e20a0ff5d14699",
+  "name" : "1.3使用mybatis语法",
+  "type" : "api",
+  "parentId" : "b45438e55cf34a47b467aa1cfef31526",
+  "path" : "/mybatis",
+  "createTime" : 1679879340569,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

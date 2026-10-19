@@ -1,0 +1,1 @@
+const e=''+new URL('configure-c6cb35f5.svg',import.meta.url)['href'];export{e as default};

@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "113808ccfe104ae49e4d8d5f008b1bad",
+  "name" : "4.2Web相关",
+  "type" : "api",
+  "parentId" : "1d16f0f2327142e1a1ca0a1e773b1f70",
+  "path" : "/web",
+  "createTime" : 1679918048944,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

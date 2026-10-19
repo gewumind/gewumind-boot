@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "demo-sse-group-001",
+  "name" : "3.4SSE演示",
+  "type" : "api",
+  "parentId" : "d822ca3576384065b85973a3f220397b",
+  "path" : "/sse",
+  "createTime" : null,
+  "updateTime" : 1784787393516,
+  "createBy" : null,
+  "updateBy" : "admin",
+  "paths" : [ ],
+  "options" : [ ]
+}

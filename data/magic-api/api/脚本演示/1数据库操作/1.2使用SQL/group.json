@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "ad31382a59c14517aa736c91dbdde8b0",
+  "name" : "1.2使用SQL",
+  "type" : "api",
+  "parentId" : "b45438e55cf34a47b467aa1cfef31526",
+  "path" : "/sql",
+  "createTime" : 1679877762187,
+  "updateTime" : 1679878899360,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

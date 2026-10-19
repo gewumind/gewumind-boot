@@ -1,0 +1,70 @@
+### Maven ###
+target/
+*.jar.tmp
+
+### 运行期产物 ###
+logs/
+upload/
+reports/
+# 启动脚本写的 pid 文件
+*.pid
+# AI 发布（bundle_apply）自动生成的 DB 备份，运行期产物，不入库
+data/ai-backups/
+
+### 本地配置与密钥 ###
+.env
+.env.*
+!.env.example
+certs/
+*.p12
+*.jks
+*.keystore
+*.pem
+*.key
+
+### 前端产物（已入库）###
+###   src/main/resources/static/ 直接提交，保证 clone 下来就能打开后台。
+###   要从最新前端源码重新构建时，跑：
+###     FRONTEND_DIR=/path/to/frontend bash scripts/sync-frontend.sh --build
+###   提交前请确认里面没有本机路径/调试地址。
+
+### 发行包产物 ###
+###   build-dist.sh 生成，随版本发布，不入库
+dist/
+*.tar.gz
+*.zip
+
+### 文档临时产物 ###
+docs/screenshots/tmp-*
+docs/screenshots/*-tmp.png
+
+### IDE ###
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+.factorypath
+*.iml.meta
+
+### OS ###
+.DS_Store
+Thumbs.db
+desktop.ini
+
+### 编辑器临时文件 ###
+*~
+*.swp
+*.swo
+*.bak
+*.orig
+*.rej
+.#*
+\#*\#
+
+### 测试与覆盖率 ###
+coverage/
+*.lcov

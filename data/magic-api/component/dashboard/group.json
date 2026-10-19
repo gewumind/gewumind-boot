@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "dashboard-root-group",
+  "name" : "dashboard",
+  "type" : "component",
+  "parentId" : "0",
+  "path" : "/dashboard",
+  "createTime" : null,
+  "updateTime" : 1785828779076,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

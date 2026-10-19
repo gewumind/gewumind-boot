@@ -1,0 +1,66 @@
+# =============================================================================
+# profile: dev（默认）—— 本地开发 / local development (default)
+#
+# 特点：数据源指向本机 MySQL，自动签发 AI Key（secret 打印在启动日志里），
+#      允许后台自助签发 Key。
+# Datasource points at a local MySQL; one AI key is auto-issued at startup
+# (its secret is printed to the log) and self-service issuance is allowed.
+#
+# 密码不写在这里，用环境变量注入：
+# No password here — inject it through the environment:
+#   export SPRING_DATASOURCE_PASSWORD='your-password'
+#
+# 建库与导入基线不走脚本：先 CREATE DATABASE（utf8mb4），
+# 再把 db/init/01-baseline.sql 导入该库（图形化客户端或 mysql < file）。
+# Creating and importing the database is manual: CREATE DATABASE first (utf8mb4),
+# then import db/init/01-baseline.sql with any GUI client or `mysql < file`.
+# =============================================================================
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/gewumind-boot?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF8&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    # 仓库里不写死密码；未注入时连不上库是预期行为
+    # No password in the repo; failing to connect without it is expected
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 50
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-ms: 300000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat
+      use-global-data-source-stat: true
+      stat-view-servlet:
+        enabled: true
+        login-username: admin
+        login-password: 123456
+        reset-enable: false
+        url-pattern: /druid/*
+        allow: ""
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+
+app:
+  # 开发便利：自动签发 + 允许自助签发
+  # Developer convenience: auto-issue + self-service allowed
+  dev-api-key:
+    enabled: true
+    name: dev-local
+  ai-key:
+    self-service: true
+
+logging:
+  level:
+    root: info
+    com.gewumind.boot: debug

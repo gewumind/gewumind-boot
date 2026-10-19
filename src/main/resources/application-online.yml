@@ -1,0 +1,103 @@
+# =============================================================================
+# profile: online —— 生产环境 / production
+#
+# 与 dev 的关键差异（**安全相关，不要随意放开**）：
+#   1. 不自动签发 AI Key（内核对 prod/production/online 强制生效）
+#   2. 禁止自助签发 AI Key，返回 403 —— Key 必须线下发放
+#   3. 关闭 Druid 控制台（默认不暴露），开启 HTTPS 证书配置示例
+#   4. 日志只留 info，避免打印 SQL 与敏感数据
+#
+# How it differs from dev (**security relevant — do not loosen casually**):
+#   1. No AI key is auto-issued (the kernel enforces this for
+#      prod / production / online).
+#   2. Self-service key issuance is disabled and returns 403 — keys must be
+#      handed out offline. Set self-service to true below only if you really
+#      need it.
+#   3. The Druid console is closed (not exposed) and an HTTPS certificate
+#      sample is provided.
+#   4. Logging is quieter so SQL and sensitive data are not printed.
+#
+# 启动 / Run:
+#   java -jar target/gewumind-boot-app.jar --spring.profiles.active=online
+#   或 / or:  SPRING_PROFILES_ACTIVE=online
+#
+# 凭据一律环境变量注入 / credentials always come from the environment:
+#   SPRING_DATASOURCE_URL / SPRING_DATASOURCE_USERNAME / SPRING_DATASOURCE_PASSWORD
+#
+# 注意：这三个变量在本 profile 下**没有默认值**。故意如此 —— 生产环境缺配置就该
+# 启动失败，而不是静默连上某个不该连的库。缺任一项时的报错是：
+# Note: these three variables have **no defaults** here, on purpose — a
+# misconfigured production instance must fail to start rather than quietly
+# connect to a database you did not mean to. The symptom is:
+#   Failed to configure a DataSource: 'url' attribute is not specified
+# 看到它就是环境变量没给全。Seeing it means the variables are incomplete.
+# =============================================================================
+
+server:
+  # 生产务必走 HTTPS。证书先用 scripts/gen-ssl-cert.sh 生成自签的，
+  # 正式环境换成受信任证书（采购或内网 CA 签发）。
+  # Always use HTTPS in production: generate a self-signed certificate with
+  # scripts/gen-ssl-cert.sh first, then switch to a trusted certificate
+  # (purchased, or issued by an internal CA).
+  # ssl:
+  #   enabled: true
+  #   key-store: file:./certs/server.p12
+  #   key-store-password: ${SERVER_SSL_KEYSTORE_PASSWORD:}
+  #   key-store-type: PKCS12
+  #   key-alias: tomcat
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 生产库地址与账号一律由环境变量提供
+    # The production host and account always come from the environment
+    url: ${SPRING_DATASOURCE_URL:}
+    username: ${SPRING_DATASOURCE_USERNAME:}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+    druid:
+      initial-size: 10
+      min-idle: 10
+      max-active: 200
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-ms: 300000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat
+      use-global-data-source-stat: true
+      # 生产默认关闭 Druid 控制台；排障时临时改 true，用完记得关
+      # Closed by default in production; flip to true to troubleshoot, then close it again
+      stat-view-servlet:
+        enabled: false
+        login-username: ${DRUID_USER:admin}
+        login-password: ${DRUID_PASSWORD:}
+        reset-enable: false
+        url-pattern: /druid/*
+        # 白名单来源 IP，通配表示不限制
+        allow: ""
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+
+app:
+  # 生产：不做任何自动签发 / production: never auto-issue
+  dev-api-key:
+    enabled: false
+  ai-key:
+    # Key 线下发放；确实需要后台自助签发时才改 true
+    # Keys are handed out offline; change to true only if you truly need
+    # self-service issuance in the admin UI.
+    self-service: false
+
+logging:
+  level:
+    root: warn
+    com.gewumind.app: info
+    com.gewumind.boot: info
+  file:
+    name: ${LOG_FILE:./logs/gewumind-boot-app.log}

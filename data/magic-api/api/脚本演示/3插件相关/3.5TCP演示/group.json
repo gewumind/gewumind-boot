@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "demo-tcp-group-001",
+  "name" : "3.5TCP演示",
+  "type" : "api",
+  "parentId" : "d822ca3576384065b85973a3f220397b",
+  "path" : "/tcp",
+  "createTime" : null,
+  "updateTime" : 1784787393516,
+  "createBy" : null,
+  "updateBy" : "admin",
+  "paths" : [ ],
+  "options" : [ ]
+}

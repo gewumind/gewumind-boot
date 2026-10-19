@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "2b0ce800b6c543efa284ae695e14e4eb",
+  "name" : "5.2自定义结果",
+  "type" : "api",
+  "parentId" : "2c964886ce6046648661da4e55ace84f",
+  "path" : "/response",
+  "createTime" : null,
+  "updateTime" : 1679918233377,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

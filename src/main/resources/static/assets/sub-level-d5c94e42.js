@@ -1,0 +1,1 @@
+const e=''+new URL('sub-level-38d9af62.svg',import.meta.url)['href'];export{e as default};

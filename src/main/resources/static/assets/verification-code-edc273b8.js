@@ -1,0 +1,1 @@
+const e=''+new URL('verification-code-6dcf938a.svg',import.meta.url)['href'];export{e as default};

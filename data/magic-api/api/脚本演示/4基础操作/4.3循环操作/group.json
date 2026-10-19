@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "0859f600cd3848c993220c10ec7ccdf5",
+  "name" : "4.3循环操作",
+  "type" : "api",
+  "parentId" : "1d16f0f2327142e1a1ca0a1e773b1f70",
+  "path" : "/each",
+  "createTime" : 1679918073089,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

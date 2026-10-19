@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "52da530b4f6a4562862a4933837cbb13",
+  "name" : "4.4lambda",
+  "type" : "api",
+  "parentId" : "1d16f0f2327142e1a1ca0a1e773b1f70",
+  "path" : "/lambda",
+  "createTime" : 1679918088297,
+  "updateTime" : null,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

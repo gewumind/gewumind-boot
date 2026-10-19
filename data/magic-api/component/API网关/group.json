@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "29d82244-d928-11ee-9675-c2b02332sd",
+  "name" : "API网关",
+  "type" : "component",
+  "parentId" : "0",
+  "path" : "/openapi",
+  "createTime" : 1785808983000,
+  "updateTime" : 1785828602531,
+  "createBy" : "1",
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

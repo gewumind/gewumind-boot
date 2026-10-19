@@ -1,0 +1,1 @@
+const a=''+new URL('database-20f83a75.svg',import.meta.url)['href'];export{a as default};
