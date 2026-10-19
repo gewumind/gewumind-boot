@@ -31,7 +31,7 @@
 
 | 集 | 视频 | 时长 | 播放 |
 |---|---|---|---|
-| EP 01 | 总览：你不想拥有一个编程大师吗？ | 01:39 | [▶ 播放](https://gewumind.github.io/#videos) |
+| EP 01 | 总览：你不想拥有一个编程大师吗？ | 01:47 | [▶ 播放](https://gewumind.github.io/#videos) |
 | EP 02 | AI coding 实战：让 Agent 写设备管理模块 | 00:46 | [▶ 播放](https://gewumind.github.io/#videos) |
 | EP 03 | 部署一 · 下载发行包直接用 | 00:41 | [▶ 播放](https://gewumind.github.io/#videos) |
 | EP 04 | 部署二 · 源码直接跑 | 00:34 | [▶ 播放](https://gewumind.github.io/#videos) |

@@ -30,7 +30,7 @@ One overview, AI coding in practice, and three deployment paths. English narrati
 
 | Episode | Video | Length | Watch |
 |---|---|---|---|
-| EP 01 | Overview: don't you want a coding master? | 01:25 | [▶ Play](https://gewumind.github.io/#videos) |
+| EP 01 | Overview: don't you want a coding master? | 01:26 | [▶ Play](https://gewumind.github.io/#videos) |
 | EP 02 | AI coding in practice: build a device module | 00:38 | [▶ Play](https://gewumind.github.io/#videos) |
 | EP 03 | Deploy 1 · Download the release and run | 00:33 | [▶ Play](https://gewumind.github.io/#videos) |
 | EP 04 | Deploy 2 · Run from source | 00:29 | [▶ Play](https://gewumind.github.io/#videos) |
