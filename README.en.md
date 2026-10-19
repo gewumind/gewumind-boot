@@ -26,15 +26,15 @@ Three commands from clone to a fully working backend.
 One overview plus four ways to run it. English narration with subtitles — also playable on the
 [website](https://gewumind.github.io/#videos).
 
-[![Overview: run a backend out of the box](docs/videos/en/00-overview-16x9.png)](docs/videos/en/00-overview.mp4)
+[![Overview: run a backend out of the box](https://raw.githubusercontent.com/gewumind/gewumind-boot/main/docs/videos/en/00-overview-16x9.png)](https://gewumind.github.io/#videos)
 
 | Episode | Video | Length | Watch |
 |---|---|---|---|
-| EP 01 | Overview: run a backend out of the box | 00:59 | [▶ Play](docs/videos/en/00-overview.mp4) |
-| EP 02 | Way 1 · Download the release and run | 00:33 | [▶ Play](docs/videos/en/01-release.mp4) |
-| EP 03 | Way 2 · Run from source | 00:27 | [▶ Play](docs/videos/en/02-source.mp4) |
-| EP 04 | Way 3 · Embed into an existing app | 00:21 | [▶ Play](docs/videos/en/03-embed.mp4) |
-| EP 05 | Way 4 · Let AI build it | 00:40 | [▶ Play](docs/videos/en/04-ai.mp4) |
+| EP 01 | Overview: run a backend out of the box | 00:59 | [▶ Play](https://gewumind.github.io/#videos) |
+| EP 02 | Way 1 · Download the release and run | 00:33 | [▶ Play](https://gewumind.github.io/#videos) |
+| EP 03 | Way 2 · Run from source | 00:27 | [▶ Play](https://gewumind.github.io/#videos) |
+| EP 04 | Way 3 · Embed into an existing app | 00:21 | [▶ Play](https://gewumind.github.io/#videos) |
+| EP 05 | Way 4 · Let AI build it | 00:40 | [▶ Play](https://gewumind.github.io/#videos) |
 
 ---
 

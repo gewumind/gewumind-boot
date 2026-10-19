@@ -74,6 +74,8 @@ cp -r data/magic-api "${STAGE}/data/"
 cp -r db/. "${STAGE}/db/"
 cp LICENSE COMMERCIAL_LICENSE NOTICE README.md README.en.md "${STAGE}/" 2>/dev/null || true
 cp -r docs/. "${STAGE}/docs/"
+# 发行包保持精简：学习资料（视频/截图）不入包，Markdown 文档保留
+rm -rf "${STAGE}/docs/videos" "${STAGE}/docs/screenshots"
 
 cat > "${STAGE}/start.sh" <<'EOF'
 #!/usr/bin/env bash

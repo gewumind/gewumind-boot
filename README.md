@@ -27,15 +27,15 @@
 
 一条总览 + 四种用法，中文旁白 + 字幕。也可在[官网](https://gewumind.github.io/#videos)直接播放。
 
-[![总览：把一个后台开箱跑起来](docs/videos/00-overview-16x9.png)](docs/videos/00-overview.mp4)
+[![总览：把一个后台开箱跑起来](https://raw.githubusercontent.com/gewumind/gewumind-boot/main/docs/videos/00-overview-16x9.png)](https://gewumind.github.io/#videos)
 
 | 集 | 视频 | 时长 | 播放 |
 |---|---|---|---|
-| EP 01 | 总览：把一个后台开箱跑起来 | 01:12 | [▶ 播放](docs/videos/00-overview.mp4) |
-| EP 02 | 用法一 · 下载发行包直接用 | 00:41 | [▶ 播放](docs/videos/01-release.mp4) |
-| EP 03 | 用法二 · 源码直接跑 | 00:34 | [▶ 播放](docs/videos/02-source.mp4) |
-| EP 04 | 用法三 · 嵌进已有工程 | 00:25 | [▶ 播放](docs/videos/03-embed.mp4) |
-| EP 05 | 用法四 · 交给 AI | 00:47 | [▶ 播放](docs/videos/04-ai.mp4) |
+| EP 01 | 总览：把一个后台开箱跑起来 | 01:12 | [▶ 播放](https://gewumind.github.io/#videos) |
+| EP 02 | 用法一 · 下载发行包直接用 | 00:41 | [▶ 播放](https://gewumind.github.io/#videos) |
+| EP 03 | 用法二 · 源码直接跑 | 00:34 | [▶ 播放](https://gewumind.github.io/#videos) |
+| EP 04 | 用法三 · 嵌进已有工程 | 00:25 | [▶ 播放](https://gewumind.github.io/#videos) |
+| EP 05 | 用法四 · 交给 AI | 00:47 | [▶ 播放](https://gewumind.github.io/#videos) |
 
 ---
 
