@@ -1,0 +1,75 @@
+name: build
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+# 只做只读校验，不发布任何东西
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: 构建校验
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: 检出
+        uses: actions/checkout@v4
+
+      - name: 安装 JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      # 构建不依赖 MySQL：内核 jar 在 libs/ 里，数据库是运行期才需要
+      - name: 构建
+        run: mvn -B clean package -DskipTests
+
+      - name: 产物自检
+        run: |
+          set -euo pipefail
+          JAR=target/gewumind-boot-app.jar
+          test -f "$JAR" || { echo "::error::没产出 $JAR"; exit 1; }
+          echo "jar 体积: $(du -h "$JAR" | cut -f1)"
+
+          # 前端必须打进包里 —— 否则 clone 出来打开后台是 404
+          unzip -l "$JAR" | grep -q "BOOT-INF/classes/static/index.html" \
+            || { echo "::error::前端产物没打进 jar，clone 后后台会 404"; exit 1; }
+          echo "前端产物已入包 ✓"
+
+          # 内核 jar 必须原样带进去（不是被剔空的）
+          unzip -l "$JAR" | grep -q "BOOT-INF/lib/gewumind-boot-0.3.1.jar" \
+            || { echo "::error::内核 jar 不在包内"; exit 1; }
+          echo "内核 jar 已入包 ✓"
+
+      - name: 验证内核签名
+        run: |
+          scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.1/gewumind-boot-0.3.1.jar
+
+      - name: 密钥与本机信息扫描
+        run: |
+          set -uo pipefail
+          fail=0
+          # 排除二进制与构建产物
+          # 全树扫描，不排除任何目录：前端产物也必须干净。
+          # 顺带排掉工作流文件自身，避免规则匹配到规则文本。
+          scan() { git grep -nIE "$1" -- . \
+            ':!.github/workflows' 2>/dev/null || true; }
+
+          out="$(scan '(sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|LTAI[0-9A-Za-z]{16,}|BEGIN [A-Z ]*PRIVATE KEY)')"
+          if [ -n "$out" ]; then echo "::error::仓库里疑似有密钥"; echo "$out"; fail=1; fi
+
+          out="$(scan '192\.168\.[0-9]+\.[0-9]+')"
+          if [ -n "$out" ]; then echo "::error::仓库里出现内网 IP"; echo "$out"; fail=1; fi
+
+          out="$(scan '/data/pro''jects')"
+          if [ -n "$out" ]; then echo "::error::仓库里出现本机绝对路径"; echo "$out"; fail=1; fi
+
+          exit $fail
