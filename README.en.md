@@ -293,4 +293,4 @@ workflow, WebSocket, SSE, TCP, password policy, etc. See the User Guide for the 
 - The kernel is open source under the [Apache License 2.0](LICENSE) (a [Chinese reference translation](LICENSE.zh-CN.md) is provided; the English text is authoritative).
 - Some enterprise capabilities (SSO, workflow, module management, Redis / shared sessions,
   MQTT, Kafka, SSE, TCP, WS) require a commercial offline license. Without one you get a
-  30-day free trial.
+  30-day free trial. See [COMMERCIAL_TERMS.md](COMMERCIAL_TERMS.md) for how the entitlement works.

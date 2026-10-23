@@ -96,7 +96,7 @@ xcopy "data\magic-api" "%STAGE%\data\magic-api\" /E /I /Y >nul
 xcopy "db" "%STAGE%\db\" /E /I /Y >nul
 xcopy "docs" "%STAGE%\docs\" /E /I /Y >nul
 
-for %%f in (LICENSE COMMERCIAL_LICENSE NOTICE README.md README.en.md) do (
+for %%f in (LICENSE COMMERCIAL_TERMS.md NOTICE README.md README.en.md) do (
     if exist "%%f" copy /y "%%f" "%STAGE%\" >nul
 )
 

@@ -386,4 +386,4 @@ curl -X POST http://localhost:9089/system/ai-keys/save \
 
 - 内核基于 [Apache License 2.0](LICENSE) 开源（[中文参考译文](LICENSE.zh-CN.md)，以英文原文为准）。
 - 部分企业能力（SSO、工作流、模块管理、Redis/共享会话、MQTT、Kafka、SSE、TCP、WS）
-  需商业版离线 License 解锁，未授权可免费试用 30 天。
+  需商业版离线 License 解锁，未授权可免费试用 30 天。授权方式见 [COMMERCIAL_TERMS.md](COMMERCIAL_TERMS.md)。
