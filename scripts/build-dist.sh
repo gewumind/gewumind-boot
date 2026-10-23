@@ -97,7 +97,8 @@ cp "${JAR}" "${STAGE}/libs/gewumind-boot-app.jar"
 cp -r scripts/. "${STAGE}/bin/"
 
 # 打包脚本自身对发行包用户无意义（需要 Maven 与源码树），剔除
-rm -f "${STAGE}/bin/build-dist.sh" "${STAGE}/bin/build-dist.bat"
+rm -f "${STAGE}/bin/build-dist.sh" "${STAGE}/bin/build-dist.bat" \
+      "${STAGE}/bin/release.sh" "${STAGE}/bin/install-gewumind-dep.sh"
 
 cp src/main/resources/application.yml "${STAGE}/config/"
 for p in dev online docker demo; do
