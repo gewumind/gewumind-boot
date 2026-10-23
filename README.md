@@ -9,7 +9,7 @@
 
 - 官网：https://gewumind.github.io
 - 主仓库：https://github.com/gewumind/gewumind-boot ｜ Gitee：https://gitee.com/gewumind/gewumind-boot
-- AI 开发技能：https://github.com/gewumind/gewumind-skill ｜ Gitee：https://gitee.com/gewumind/gewumind-skill（版本与 boot 同步，当前 1.0.2）
+- AI 开发技能：https://github.com/gewumind/gewumind-skill ｜ Gitee：https://gitee.com/gewumind/gewumind-skill（版本与 boot 同步，当前 1.0.3）
 
 > GitHub 与 Gitee 内容同步。
 
