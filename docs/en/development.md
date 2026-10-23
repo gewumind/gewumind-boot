@@ -39,7 +39,7 @@ gewumind-boot (this repo, git)      ← this is what you clone
 │   └── static/           frontend **build output**, not source
 ├── data/magic-api/       low-code workspace: APIs / components / tasks / workflows (.ms)
 ├── db/init/              baseline schema + seed data
-└── libs/                 kernel jar: gewumind-boot-0.3.0.jar
+└── libs/                 kernel jar: gewumind-boot-0.3.1.jar
 
 Kernel (com.gewumind.boot.*)
 ├── What: magic-api low-code container + sa-token auth + SSO + SPA hosting + permissions

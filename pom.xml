@@ -90,8 +90,8 @@
 		<!--
 			内核依赖放在本工程 libs/ 下，不依赖 ~/.m2 里装过什么。
 			libs/ 是一个标准 Maven 仓库布局：
-			  libs/com/gewumind/gewumind-boot/0.3.0/gewumind-boot-0.3.0.jar
-			  libs/com/gewumind/gewumind-boot/0.3.0/gewumind-boot-0.3.0.pom
+			  libs/com/gewumind/gewumind-boot/0.3.1/gewumind-boot-0.3.1.jar
+			  libs/com/gewumind/gewumind-boot/0.3.1/gewumind-boot-0.3.1.pom
 			传递依赖（magic-api / sa-token / druid / poi ...）由那个 pom 解析。
 			产物由 scripts/install-gewumind-dep.sh 生成。
 		-->
