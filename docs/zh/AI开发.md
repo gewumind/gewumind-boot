@@ -49,6 +49,8 @@ secret 只返回一次，数据库仅保存 `sha256`。**生产 profile 下禁�
 git clone https://github.com/gewumind/gewumind-skill.git
 ```
 
+> Gitee 用户可改用 `git clone https://gitee.com/gewumind/gewumind-skill.git`（与 GitHub 同步）。
+
 ### Claude Code
 
 ```bash

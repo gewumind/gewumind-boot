@@ -51,6 +51,8 @@ is disabled and keys are handed out offline.
 git clone https://github.com/gewumind/gewumind-skill.git
 ```
 
+> On Gitee use `git clone https://gitee.com/gewumind/gewumind-skill.git` (kept in sync with GitHub).
+
 ### Claude Code
 
 ```bash

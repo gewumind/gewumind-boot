@@ -8,7 +8,10 @@
 ![工作台](docs/screenshots/01-工作台.png)
 
 - 官网：https://gewumind.github.io
-- AI 开发技能：https://github.com/gewumind/gewumind-skill
+- 主仓库：https://github.com/gewumind/gewumind-boot ｜ Gitee：https://gitee.com/gewumind/gewumind-boot
+- AI 开发技能：https://github.com/gewumind/gewumind-skill ｜ Gitee：https://gitee.com/gewumind/gewumind-skill
+
+> 两个平台内容同步，推送方式见 [`scripts/push-all.sh`](scripts/push-all.sh)。
 
 ### 📖 文档
 
