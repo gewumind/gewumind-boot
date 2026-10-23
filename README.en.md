@@ -106,12 +106,15 @@ Stop with `bash scripts/stop.sh`. Change the port with `SERVER_PORT=9090 bash sc
 
 ## Verify the kernel signature
 
-Every released kernel binary (`libs/`) ships with a detached Ed25519 signature; the public key is `gewumind-release.pub`:
+Every released kernel binary (`libs/`) ships with a detached Ed25519 signature:
 
 ```bash
-scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.1/gewumind-boot-0.3.1.jar
-# Signature Verified Successfully
+scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.2/gewumind-boot-0.3.2.jar
 ```
+
+- v1.1.0+: `gewumind-release-2026.pub`
+- v1.0.3: `gewumind-release.pub`
+- If no key is passed, the script tries both.
 
 The kernel source is not included in the release.
 

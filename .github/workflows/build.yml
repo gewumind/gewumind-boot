@@ -58,13 +58,13 @@ jobs:
           echo "前端产物已入包 ✓"
 
           # 内核 jar 必须原样带进去（不是被剔空的）
-          unzip -l "$JAR" | grep -q "BOOT-INF/lib/gewumind-boot-0.3.1.jar" \
+          unzip -l "$JAR" | grep -q "BOOT-INF/lib/gewumind-boot-0.3.2.jar" \
             || { echo "::error::内核 jar 不在包内"; exit 1; }
           echo "内核 jar 已入包 ✓"
 
       - name: 验证内核签名
         run: |
-          scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.1/gewumind-boot-0.3.1.jar
+          scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.1/gewumind-boot-0.3.2.jar
 
       - name: 密钥与本机信息扫描
         run: |

@@ -19,9 +19,9 @@
 	<properties>
 		<java.version>17</java.version>
 		<!-- 与 libs/ 里那份内核 jar 保持一致；升级内核时跑 scripts/install-gewumind-dep.sh -->
-		<gewumind-boot.version>0.3.1</gewumind-boot.version>
+		<gewumind-boot.version>0.3.2</gewumind-boot.version>
 		<!--
-			以下版本必须与 gewumind-boot 0.3.1 的 pom 保持一致。
+			以下版本必须与 gewumind-boot 0.3.2 的 pom 保持一致。
 			原因：本工程 parent 是 spring-boot-starter-parent，它的 dependencyManagement
 			会覆盖「传递依赖里声明的版本」——包括 gewumind-boot 自己声明的那些。
 			不锁版本的话，本工程会解析出 mysql 8.1.0 / jackson 2.15.3 / spring 6.1.1，

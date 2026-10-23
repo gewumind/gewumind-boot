@@ -105,12 +105,15 @@ bash scripts/start.sh
 
 ## 验证内核签名
 
-每次发布的内核二进制（`libs/`）都带 Ed25519 分离签名，公钥 `gewumind-release.pub`：
+每次发布的内核二进制（`libs/`）都带 Ed25519 分离签名：
 
 ```bash
-scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.1/gewumind-boot-0.3.1.jar
-# Signature Verified Successfully
+scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.2/gewumind-boot-0.3.2.jar
 ```
+
+- v1.1.0+：`gewumind-release-2026.pub`
+- v1.0.3：`gewumind-release.pub`
+- 不传公钥时脚本会自动尝试两把。
 
 内核源码不随发布包提供。
 

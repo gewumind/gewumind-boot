@@ -18,7 +18,7 @@ cd "${PROJECT_DIR}"
 
 # 发行包名跟着「应用」走，不是跟着内核走：
 #   pom 的 <artifactId>gewumind-boot-app</artifactId> + <version>1.0.0</version>  →  gewumind-boot-app-1.0.0
-#   <gewumind-boot.version> 是内核 jar 的版本（0.3.1），只是依赖，不该用来命名发行包。
+#   <gewumind-boot.version> 是内核 jar 的版本（0.3.2），只是依赖，不该用来命名发行包。
 APP_ARTIFACT="$(sed -n 's|.*<artifactId>\(gewumind-boot-app\)</artifactId>.*|\1|p' pom.xml | head -1)"
 APP_VERSION="$(awk '/<artifactId>gewumind-boot-app<\/artifactId>/{found=1} found && /<version>/{gsub(/.*<version>|<\/version>.*/,""); print; exit}' pom.xml)"
 [ -n "${APP_ARTIFACT}" ] && [ -n "${APP_VERSION}" ] || { echo "无法从 pom.xml 解析 gewumind-boot-app 的版本号"; exit 1; }
