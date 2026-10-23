@@ -29,6 +29,8 @@ Three commands from clone to a fully working backend.
 One overview, AI coding in practice, and three deployment paths. English narration with subtitles — also playable on the
 [website](https://gewumind.github.io/#videos).
 
+> Also on [YouTube](https://youtu.be/hrjdcz6br34) ｜ [Bilibili](https://www.bilibili.com/video/BV11AJd67EMF) (Chinese).
+
 [![Overview: don't you want a coding master?](https://gewumind.github.io/assets/video/en/00-overview-16x9.png)](https://gewumind.github.io/#videos)
 
 | Episode | Video | Length | Watch |

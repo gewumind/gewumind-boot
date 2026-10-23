@@ -30,6 +30,8 @@
 
 一条总览 + AI coding + 三种部署，中文旁白 + 字幕。也可在[官网](https://gewumind.github.io/#videos)直接播放。
 
+> 也发布在 [B 站](https://www.bilibili.com/video/BV11AJd67EMF) ｜ [YouTube](https://youtu.be/hrjdcz6br34)（英文版）。
+
 [![总览：你不想拥有一个编程大师吗？](https://gewumind.github.io/assets/video/00-overview-16x9.png)](https://gewumind.github.io/#videos)
 
 | 集 | 视频 | 时长 | 播放 |
