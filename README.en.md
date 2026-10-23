@@ -104,6 +104,17 @@ Stop with `bash scripts/stop.sh`. Change the port with `SERVER_PORT=9090 bash sc
 
 ---
 
+## Verify the kernel signature
+
+Every released kernel binary (`libs/`) ships with a detached Ed25519 signature; the public key is `gewumind-release.pub`:
+
+```bash
+scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.1/gewumind-boot-0.3.1.jar
+# Signature Verified Successfully
+```
+
+The kernel source is not included in the release.
+
 ## About the frontend bundle
 
 `src/main/resources/static/` (about 28 MB) is **committed to this repository**, so a fresh clone

@@ -103,6 +103,17 @@ bash scripts/start.sh
 
 ---
 
+## 验证内核签名
+
+每次发布的内核二进制（`libs/`）都带 Ed25519 分离签名，公钥 `gewumind-release.pub`：
+
+```bash
+scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.1/gewumind-boot-0.3.1.jar
+# Signature Verified Successfully
+```
+
+内核源码不随发布包提供。
+
 ## 📸 系统截图
 
 以下均为 v0.3.0 的真实运行界面。
