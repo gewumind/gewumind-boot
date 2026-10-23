@@ -68,3 +68,6 @@ desktop.ini
 ### 测试与覆盖率 ###
 coverage/
 *.lcov
+
+# 本地任务计划（不发布）
+.tasks/
