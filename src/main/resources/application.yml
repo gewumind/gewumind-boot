@@ -183,3 +183,12 @@ logging:
     root: info
     com.gewumind.app: debug
     com.gewumind.boot: info
+  # 文件日志按大小轮转并保留 7 天。
+  # 只对配置了 logging.file.name 的 profile（online / docker）生效；dev 走控制台，不受影响。
+  # Rotate file logs by size and keep 7 days. Only effective for profiles that set
+  # logging.file.name (online / docker); dev logs to console and is unaffected.
+  logback:
+    rollingpolicy:
+      max-file-size: 20MB
+      max-history: 7
+      total-size-cap: 1GB

@@ -35,17 +35,51 @@ echo "==> 应用版本 ${APP_VERSION}（内核 ${KERNEL_VERSION}）"
 # target/gewumind-boot-app.jar 里读 class。若在服务运行期间原地覆盖这个文件，
 # 运行中的实例会随机抛 NoClassDefFoundError / ClassNotFoundException 并返回 404。
 # 所以这里先检查，主实例还活着就拒绝打包。
+running_hint() {
+  echo "ERROR: 检测到实例正在运行${1:+（$1）}。" >&2
+  echo "       原地覆盖 fat jar 会让运行中的实例类加载失败（404 / NoClassDefFoundError）。" >&2
+  echo "       请先执行 bash scripts/stop.sh 再打包 / stop the instance before packaging." >&2
+  exit 1
+}
+
 for pidfile in target/gewumind-boot-app.pid libs/gewumind-boot-app.pid bin/gewumind-boot-app.pid; do
   if [ -f "${PROJECT_DIR}/${pidfile}" ]; then
     pid="$(cat "${PROJECT_DIR}/${pidfile}")"
     if kill -0 "${pid}" 2>/dev/null; then
-      echo "ERROR: 检测到实例正在运行 (pid=${pid}, ${pidfile})。" >&2
-      echo "       原地覆盖 fat jar 会让运行中的实例类加载失败（404 / NoClassDefFoundError）。" >&2
-      echo "       请先执行 bash scripts/stop.sh 再打包。" >&2
-      exit 1
+      running_hint "pid=${pid}, ${pidfile}"
     fi
   fi
 done
+
+# pid 文件兜底：有人直接 `java -jar`、或项目自建了别的 pid 文件名时，上面三个路径都查不到。
+# 判定优先级：
+#   ① 命令行含本项目绝对路径 → 命中（精确，绝对路径启动）
+#   ② 工作目录 == 本项目根目录 → 命中（精确，相对路径启动，最常见）
+#   ①② 都绑定 PROJECT_DIR，同机其他部署不会误伤；
+#   ③ 仅在读不到 cwd 时才用：按相对路径保守判定，可能连另一部署一起拦（见下方说明）。
+if command -v pgrep >/dev/null 2>&1; then
+  while read -r rp; do
+    [ -n "${rp}" ] || continue
+    rcmd="$(tr '\0' ' ' < "/proc/${rp}/cmdline" 2>/dev/null || true)"
+    rcwd="$(readlink "/proc/${rp}/cwd" 2>/dev/null || true)"
+    # ① 命令行里出现本项目绝对路径：绝对路径启动，判定精确
+    case "${rcmd}" in
+      *"${PROJECT_DIR}/"*) running_hint "pid=${rp}（命令行命中：本项目 jar）" ;;
+    esac
+    if [ -n "${rcwd}" ]; then
+      # ② 能读到 cwd：精确比较工作目录
+      [ "${rcwd}" = "${PROJECT_DIR}" ] && running_hint "pid=${rp}（工作目录命中：本项目）"
+    else
+      # ③ 读不到 cwd（hidepid / 容器 / 权限受限）：退化为保守匹配相对路径。
+      #    同机若有多个部署，可能一并拦住 —— 宁可多拦让人先确认，
+      #    也不要在实例运行中覆盖 fat jar（代价是线上 404）。
+      case "${rcmd}" in
+        *target/gewumind-boot-app.jar*)
+          running_hint "pid=${rp}（无法读取 cwd，按相对路径保守判定；若是本机另一部署，可先停它再打包）" ;;
+      esac
+    fi
+  done <<< "$(pgrep -f -- 'gewumind-boot-app.jar' || true)"
+fi
 
 if [ "${1:-}" != "--skip-build" ]; then
   echo "==> 构建 jar"

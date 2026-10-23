@@ -88,6 +88,11 @@ mysql -uroot -p gewumind-boot < db/init/01-baseline.sql
 
 > Don't do both. If you import manually, a "table already exists" notice at startup is normal.
 
+> ⚠️ `01-baseline.sql` contains **platform tables only** (system tables, menus, dictionaries,
+> offices). It does **not** include business tables (`t_*`). A business project should ship its
+> own `db/init/02-<business>.sql` and import `01` → `02` in order; otherwise business APIs will
+> all fail on a fresh environment.
+
 ### 2.5 Start
 
 ```bash
@@ -402,6 +407,10 @@ bash start.sh --profile online              # 5. start
 
 New baseline scripts ship in `db/` (e.g. `02-xxx.sql`); apply them manually. Baseline scripts
 are **idempotent** (`CREATE TABLE IF NOT EXISTS` / `INSERT ... ON DUPLICATE`), so re-running is safe.
+
+> **Keep business and platform baselines separate**: `01-baseline.sql` is a platform asset and is
+> replaced wholesale on upgrade. Business schema/seed data belongs in `db/init/02-<business>.sql`,
+> versioned by the project — this way upgrading the kernel never overwrites business data.
 
 ---
 

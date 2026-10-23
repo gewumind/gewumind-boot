@@ -6,7 +6,10 @@
 --           （菜单 / 角色 / 字典 / 配置 / 图标 / 动态组件 / 开放接口 / 组织机构）
 --   不含  : 任何日志、消息、AI 会话、文件等运行期数据；
 --           API Key 等敏感配置（ai.config 的 api-key 为空，需自行填写）；
---           授权试用状态（license.trial.startedAt 不预置，各环境首次启动时自行开始）
+--           授权试用状态（license.trial.startedAt 不预置，各环境首次启动时自行开始）；
+--           **业务表（t_*）与业务数据** —— 本文件只含平台表
+--           （Business tables `t_*` and business data are NOT included; a business
+--            project should ship its own db/init/02-xxx.sql and import 01 → 02 in order.）
 --
 --   用法 / Usage:
 --     先建库 / create the database first:
