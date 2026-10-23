@@ -10,7 +10,7 @@ Three commands from clone to a fully working backend.
 
 - Website: https://gewumind.github.io
 - Main repo: https://github.com/gewumind/gewumind-boot ｜ Gitee: https://gitee.com/gewumind/gewumind-boot
-- AI development skill: https://github.com/gewumind/gewumind-skill ｜ Gitee: https://gitee.com/gewumind/gewumind-skill
+- AI development skill: https://github.com/gewumind/gewumind-skill ｜ Gitee: https://gitee.com/gewumind/gewumind-skill (version synced with boot — currently 1.0.2)
 
 > Content is kept in sync across GitHub and Gitee.
 - **Docs index**: [docs/README.md](docs/README.md) (中文) · **[docs/en/README.md](docs/en/README.md)** (English)
