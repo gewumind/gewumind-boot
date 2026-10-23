@@ -12,7 +12,7 @@
 
 	<groupId>com.gewumind</groupId>
 	<artifactId>gewumind-boot-app</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<name>GewuMind Boot App</name>
 	<description>GewuMind Boot · AI 驱动的低代码后端容器（本工程是承载内核的应用壳）</description>
 
