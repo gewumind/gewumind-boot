@@ -73,7 +73,7 @@ Navicat / DBeaver / phpMyAdmin 的「运行 SQL 文件」都行，或者命令�
 mysql -h127.0.0.1 -uroot -p gewumind-boot < db/init/01-baseline.sql
 ```
 
-导入后应有 **43 张表**，以及平台自带的菜单、角色、字典、配置与页面组件数据。
+导入后应有 **45 张表**，以及平台自带的菜单、角色、字典、配置与页面组件数据。
 
 ### 2. 注入数据库密码
 
@@ -310,7 +310,7 @@ gewumind-boot/
 **目前只支持 MySQL 8。** 发行包里仅内置 `mysql-connector-j` 一个 JDBC 驱动，
 `db/init/01-baseline.sql` 也是 MySQL 语法（`ENGINE=InnoDB`、`utf8mb4_general_ci`、反引号）。
 
-基线文件：[`db/init/01-baseline.sql`](db/init/01-baseline.sql)，43 张表 +
+基线文件：[`db/init/01-baseline.sql`](db/init/01-baseline.sql)，45 张表 +
 平台自带的菜单/角色/字典/配置/页面组件。建库语句见[快速开始](#快速开始)；
 重置就是 `DROP DATABASE` 后重新导入。
 

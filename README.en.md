@@ -73,7 +73,7 @@ client's "run SQL file" works (Navicat / DBeaver / phpMyAdmin), or from a shell:
 mysql -h127.0.0.1 -uroot -p gewumind-boot < db/init/01-baseline.sql
 ```
 
-You should end up with **43 tables** plus bundled menus, roles, dictionaries, config and
+You should end up with **45 tables** plus bundled menus, roles, dictionaries, config and
 page components.
 
 ### 2. Inject the database credentials
@@ -208,7 +208,7 @@ gewumind-boot/
 
 
 
-The baseline lives in [`db/init/01-baseline.sql`](db/init/01-baseline.sql) — 43 tables plus
+The baseline lives in [`db/init/01-baseline.sql`](db/init/01-baseline.sql) — 45 tables plus
 bundled menus, roles, dictionaries, config and page components. The `CREATE DATABASE`
 statement is in [Quick start](#quick-start); resetting means `DROP DATABASE` and importing
 again.
