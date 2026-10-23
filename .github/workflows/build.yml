@@ -28,6 +28,19 @@ jobs:
           java-version: '17'
           cache: maven
 
+      - name: 版本一致性（skill VERSION == boot pom）
+        run: |
+          set -euo pipefail
+          BOOT="$(awk '/<artifactId>gewumind-boot-app<\/artifactId>/{found=1} found && /<version>/{gsub(/.*<version>|<\/version>.*/,""); print; exit}' pom.xml)"
+          SKILL="$(curl -fsSL https://raw.githubusercontent.com/gewumind/gewumind-skill/main/VERSION | tr -d '[:space:]')"
+          echo "boot=$BOOT skill=$SKILL"
+          if [ "$BOOT" != "$SKILL" ]; then
+            echo "::warning::boot $BOOT != skill $SKILL（两仓库需同版本发布）"
+            case "${GITHUB_REF:-}" in
+              refs/tags/*) echo "::error::tag 发布时版本必须一致"; exit 1 ;;
+            esac
+          fi
+
       # 构建不依赖 MySQL：内核 jar 在 libs/ 里，数据库是运行期才需要
       - name: 构建
         run: mvn -B clean package -DskipTests

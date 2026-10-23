@@ -178,6 +178,8 @@ save and refresh the browser; no restart needed.
 
 ---
 
+> **Production build note**: leave `VITE_APP_BASE_API` empty (same origin). Never hard-code a LAN/dev address in `.env.production` — the app requests system config on first paint and will stay blank if that address is unreachable.
+
 ## Local development
 
 ```bash
