@@ -11,7 +11,7 @@
 - 主仓库：https://github.com/gewumind/gewumind-boot ｜ Gitee：https://gitee.com/gewumind/gewumind-boot
 - AI 开发技能：https://github.com/gewumind/gewumind-skill ｜ Gitee：https://gitee.com/gewumind/gewumind-skill
 
-> 两个平台内容同步，推送方式见 [`scripts/push-all.sh`](scripts/push-all.sh)。
+> GitHub 与 Gitee 内容同步。
 
 ### 📖 文档
 
