@@ -165,8 +165,8 @@ connection-timeout: 30000
 ## 3.5 Internationalization
 
 **Database (deployment-level, pick one)**
-- Chinese: `01-baseline.sql` + `02-seed-zh.sql` (no-op)
-- English: `01-baseline.sql` + `02-seed-en.sql`
+- Chinese: `01-baseline.sql` + `02-seed-zh.sql` + `03-demo-zh.sql`
+- English: `01-baseline.sql` + `02-seed-en.sql` + `03-demo-en.sql`
 - Existing Chinese DB: `upgrade-en.sql`
 
 **Frontend**
