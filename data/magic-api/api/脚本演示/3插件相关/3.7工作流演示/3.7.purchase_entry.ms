@@ -94,6 +94,7 @@ if (action == 'approve') {
     }
     var instId = taskInfo.instance_id
     var nodeId = taskInfo.node_id
+    // 业务表更新：backend 内部用 LinkedHashMap 顺序写 SQL，避免 magic-script HashMap 错位
     var bizFields = {}
     bizFields.comment = '' + comment
     bizFields.final_status = 'APPROVED'
@@ -105,56 +106,6 @@ if (action == 'approve') {
     }
     try { workflow.updateBizFields(instId, bizFields) } catch (e) { print("[warn] updateBizFields 失败: " + e.getMessage()) }
     workflow.approve(taskId, op, '' + comment, form)
-    var inst = workflow.getInstance(instId)
-    var vars2 = inst.variables
-    if (vars2 == null) { vars2 = {} }
-    var nextNode = workflow.findNextNode(processId, nodeId, vars2, instId, '' + inst.initiator, 50)
-    if (nextNode == 'end' || nextNode == null) {
-        workflow.moveToNext(instId, 'end', '结束', null)
-        return { success: true, taskId: taskId, status: 'APPROVED', nextNode: 'end', autoSkipped: true }
-    }
-    var nextNodeName = workflow.getNodeLabel(processId, nextNode)
-    var users = workflow.resolveRole(workflow.getNodeRole(processId, nextNode), inst.initiator)
-    var assignee = users.size() > 0 ? users.get(0) : null
-    var nextTask = workflow.moveToNext(instId, nextNode, nextNodeName, assignee)
-    return { success: true, taskId: taskId, status: 'APPROVED', nextNode: nextNode, nextNodeLabel: nextNodeName, assignee: assignee, nextTask: nextTask }
-}
-    var taskInfo = workflow.getTask(taskId)
-    if (taskInfo == null) {
-        return { success: false, message: '任务不存在' }
-    }
-    var instId = taskInfo.instance_id
-    var nodeId = taskInfo.node_id
-    var tblName = "biz_" + processId.replace(/_v\d+$/, '')
-    var exists = db.select("SELECT COUNT(*) AS cnt FROM information_schema.tables WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = '" + tblName + "'")
-    var tblExists = exists != null && exists.size() > 0 && exists.get(0).cnt > 0
-    var params = { instId: instId, comment: '' + comment, finalStatus: 'APPROVED' }
-    var sets = []
-    if (tblExists) {
-        sets.add("comment = #{comment}")
-        sets.add("final_status = #{finalStatus}")
-        if (form && form.size() > 0) {
-            var cols = db.select("SELECT COLUMN_NAME AS c FROM information_schema.columns WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = '" + tblName + "'")
-            var hasCol = {}
-            for (rc in cols) { hasCol[rc.c] = true }
-            for (fk, fv in form) {
-                if (fk == 'comment' || fk == 'final_status') { continue }
-                if (hasCol[fk]) {
-                    sets.add(fk + " = #{v" + sets.size() + "}")
-                    params["v" + sets.size()] = fv
-                }
-            }
-        }
-    }
-    if (tblExists && sets.size() > 0) {
-        var sql = "UPDATE " + tblName + " SET " + sets.join(", ") + " WHERE wf_instance_id = #{instId}"
-        try {
-            db.update(sql, params)
-        } catch (e) {
-            print("[warn] 业务表 " + tblName + " 更新失败: " + e.getMessage())
-        }
-    }
-    workflow.approve(taskId, op, '' + comment)
     var inst = workflow.getInstance(instId)
     var vars2 = inst.variables
     if (vars2 == null) { vars2 = {} }
@@ -226,6 +177,7 @@ if (action == 'reject' || action == 'deny') {
     }
     var instId2 = taskInfo2.instance_id
 
+    // 业务表驳回：backend LinkedHashMap 顺序绑定参数
     var bizFields2 = {}
     bizFields2.comment = '' + reason2
     bizFields2.final_status = 'REJECTED'
@@ -240,24 +192,24 @@ if (action == 'reject' || action == 'deny') {
 
     var nodeId2 = taskInfo2.node_id
     if (nodeId2 != null && nodeId2 != 'apply') {
-        var prevNodeP = workflow.findPreviousNode(processId, nodeId2)
+        var prevNodeL = workflow.findPreviousNode(processId, nodeId2)
         workflow.reject(taskId2, op2, '' + reason2, form2)
-        if (prevNodeP == null || prevNodeP == 'apply') {
-            var deniedP = workflow.deny(taskId2, op2, '' + reason2, processId)
-            return deniedP
+        if (prevNodeL == null || prevNodeL == 'apply') {
+            var deniedL = workflow.deny(taskId2, op2, '' + reason2, processId)
+            return deniedL
         }
-        var prevRoleP = workflow.getNodeRole(processId, prevNodeP)
-        var prevAssigneeP = null
-        if (prevRoleP != null && prevRoleP != '') {
-            var instNowP = workflow.getInstance(instId2)
-            var prevUsersP = workflow.resolveRole(prevRoleP, instNowP != null ? '' + instNowP.initiator : '')
-            if (prevUsersP != null && prevUsersP.size() > 0) {
-                prevAssigneeP = prevUsersP.get(0)
+        var prevRoleL = workflow.getNodeRole(processId, prevNodeL)
+        var prevAssigneeL = null
+        if (prevRoleL != null && prevRoleL != '') {
+            var instNowL = workflow.getInstance(instId2)
+            var prevUsersL = workflow.resolveRole(prevRoleL, instNowL != null ? '' + instNowL.initiator : '')
+            if (prevUsersL != null && prevUsersL.size() > 0) {
+                prevAssigneeL = prevUsersL.get(0)
             }
         }
-        var rtP = workflow.resubmitNodeTask(instId2, prevNodeP, prevAssigneeP, null, '' + reason2)
-        if (rtP.success == false) { return rtP }
-        return { success: true, taskId: taskId2, status: 'RUNNING', rejectedTo: prevNodeP, nextNode: prevNodeP, nextNodeLabel: rtP.nextNodeLabel, assignee: rtP.assignee, nextTask: rtP.nextTask }
+        var rtL = workflow.resubmitNodeTask(instId2, prevNodeL, prevAssigneeL, null, '' + reason2)
+        if (rtL.success == false) { return rtL }
+        return { success: true, taskId: taskId2, status: 'RUNNING', rejectedTo: prevNodeL, nextNode: prevNodeL, nextNodeLabel: rtL.nextNodeLabel, assignee: rtL.assignee, nextTask: rtL.nextTask }
     }
 
     var denied = workflow.deny(taskId2, op2, '' + reason2, processId)
@@ -295,11 +247,30 @@ if (action == 'resubmit') {
     if (inst4.status != 'REJECTED' && inst4.status != 'WITHDRAWN') {
         return { success: false, message: '只驳回状态可修改重提: ' + inst4.status }
     }
-    var formData = body.formData
+var formData = body.formData
     if (formData == null) { formData = {} }
     var rs = workflow.resubmit(body.instanceId, body.userId || inst4.initiator, formData)
     return rs
 }
+if (action == 'cleanupWorkflow') {
+    db.update("DELETE FROM sys_wf_history")
+    db.update("DELETE FROM sys_wf_task")
+    db.update("DELETE FROM sys_wf_instance")
+    return { success: true, message: '已清空工作流测试数据' }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 return { success: false, message: 'unsupported action: ' + action }
+

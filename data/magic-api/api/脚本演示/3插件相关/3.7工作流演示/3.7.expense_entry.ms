@@ -1,6 +1,16 @@
 {"properties": {}, "id": "wp-expense-001", "script": null, "groupId": "wf-op-group-001", "name": "expense 流程入口", "createTime": null, "updateTime": null, "lock": "0", "createBy": null, "updateBy": null, "path": "expense", "method": "POST", "parameters": [], "options": [], "requestBody": "", "headers": [], "paths": [], "responseBody": null, "description": "工作流入口（由前端 entryApi 调用）", "requestBodyDefinition": null, "responseBodyDefinition": null}
 ================================
-n') {
+var action = body.action
+var processId = body.processId
+
+if (action == 'start') {
+    if (!processId) {
+        return { success: false, message: '缺少 processId' }
+    }
+    var uid = body.userId || 'employee'
+    var data = {}
+    for (k, v in body) {
+        if (k == 'action' || k == 'processId' || k == 'userId' || k == 'bizType' || k == 'bizTitle' || k == 'items' || k == 'taskId' || k == 'formData' || k == 'comment' || k == 'children') {
             continue
         }
         data[k] = v
