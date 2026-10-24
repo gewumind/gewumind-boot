@@ -2,6 +2,8 @@
 
 > **Language / 语言**：[English](./README.md) | [中文](../README.md)
 
+> Screenshots show the Chinese UI; append `?lang=en` to the app URL for the English UI.
+
 Full documentation for GewuMind Boot. Pick your entry point by role:
 
 | I want to… | Read |

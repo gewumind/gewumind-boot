@@ -8,6 +8,9 @@ Three commands from clone to a fully working backend.
 
 ![Dashboard](docs/screenshots/01-工作台.png)
 
+> Screenshots show the Chinese UI; append `?lang=en` to the app URL for the English UI.
+
+
 - Website: https://gewumind.github.io
 - Main repo: https://github.com/gewumind/gewumind-boot ｜ Gitee: https://gitee.com/gewumind/gewumind-boot
 - AI development skill: https://github.com/gewumind/gewumind-skill ｜ Gitee: https://gitee.com/gewumind/gewumind-skill (version synced with boot — currently 1.1.0)

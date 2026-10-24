@@ -2,6 +2,8 @@
 
 > **Language / 语言**：[English](user-guide.md) | [中文](../zh/使用手册.md)
 
+> Screenshots show the Chinese UI; append `?lang=en` to the app URL for the English UI.
+
 For **users and implementers**: what every menu does, what every system setting means,
 and what breaks if you change it.
 
