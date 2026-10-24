@@ -307,12 +307,12 @@ ENTRYPOINT ["sh","-c","exec java $JAVA_OPTS -Dserver.port=$SERVER_PORT -jar app.
 ```
 
 ```bash
-docker build -t gewumind-boot:1.0.0 .
+docker build -t gewumind-boot:1.1.0 .
 docker run -d --name gewumind -p 9089:9089 \
   -e SPRING_DATASOURCE_PASSWORD='real-password' \
   -v gewumind-data:/app/data \
   -v gewumind-upload:/app/upload \
-  gewumind-boot:1.0.0
+  gewumind-boot:1.1.0
 ```
 
 > ⚠️ **You must mount a persistent volume for `data/`.** It holds every API and component
@@ -406,7 +406,7 @@ bash stop.sh                                # 1. stop first — see the warning
 cp -r data data-backup-$(date +%F)           # 2. back up the low-code workspace
 mysqldump -uroot -p gewumind-boot > db-backup-$(date +%F).sql   # 3. back up the DB
 
-tar -xzf gewumind-boot-app-0.4.0.tar.gz     # 4. unpack the new version
+tar -xzf gewumind-boot-app-1.1.0.tar.gz     # 4. unpack the new version
 #    carry over config/application.yml, especially the datasource and password
 
 bash start.sh --profile online              # 5. start

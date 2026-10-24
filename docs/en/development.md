@@ -39,7 +39,7 @@ gewumind-boot (this repo, git)      ← this is what you clone
 │   └── static/           frontend **build output**, not source
 ├── data/magic-api/       low-code workspace: APIs / components / tasks / workflows (.ms)
 ├── db/init/              baseline schema + seed data
-└── libs/                 kernel jar: gewumind-boot-0.3.1.jar
+└── libs/                 kernel jar: gewumind-boot-0.3.2.jar
 
 Kernel (com.gewumind.boot.*)
 ├── What: magic-api low-code container + sa-token auth + SSO + SPA hosting + permissions
@@ -206,7 +206,7 @@ See [AI Development](ai-development.md).
 
 ```
 gewumind-boot/
-├── pom.xml                     app pom (artifactId: gewumind-boot-app, version: 1.0.0)
+├── pom.xml                     app pom (artifactId: gewumind-boot-app, version: 1.1.0)
 ├── libs/com/gewumind/          kernel jar + checksums
 ├── src/main/java/com/gewumind/app/
 │   ├── GewuMindBootApp.java            bootstrap
