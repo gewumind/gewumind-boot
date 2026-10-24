@@ -132,7 +132,7 @@ REPLACE INTO `t_demo_inventory` (`id`,`sku`,`product`,`warehouse`,`quantity`,`re
 ('inv000000000000000000000000000001','SKU-001','Smart Gateway','Shanghai WH',120,20,1800.00,NOW()),
 ('inv000000000000000000000000000002','SKU-002','Temperature Sensor','Shenzhen WH',300,50,260.00,NOW()),
 ('inv000000000000000000000000000003','SKU-003','Industrial Controller','Beijing WH',45,10,3200.00,NOW()),
-('inv000000000000000000000000000004','SKU-004','Barcode Scanner','Shanghai WH',80,15,450.00,NOW()),
+('inv000000000000000000000000000004','SKU-004','Barcode Scanner','Shanghai WH',10,15,450.00,NOW()),
 ('inv000000000000000000000000000005','SKU-005','Edge Gateway','Chengdu WH',60,10,2400.00,NOW()),
 ('inv000000000000000000000000000006','SKU-006','Industrial Camera','Shenzhen WH',25,5,6800.00,NOW());
 

@@ -104,9 +104,13 @@ def main():
     parser.add_argument("--src", default="data/magic-api")
     parser.add_argument("--out", default="data/magic-api-en")
     parser.add_argument("--map", default="data/i18n/magic-api-names.json")
+    parser.add_argument("--overlay", default="data/demo-en/magic-api")
     args = parser.parse_args()
     names = json.load(open(args.map, encoding="utf-8"))
     process(args.src, args.out, names)
+    if args.overlay and os.path.isdir(args.overlay):
+        shutil.copytree(args.overlay, args.out, dirs_exist_ok=True)
+        print("overlay applied:", args.overlay)
 
 
 if __name__ == "__main__":

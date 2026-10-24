@@ -1,14 +1,10 @@
 {
-  "properties" : { },
-  "id" : "2bbd83b3f4e44ea491cbab16080fb69a",
-  "name" : "报表示例",
-  "type" : "component",
-  "parentId" : "0",
-  "path" : "/report-demo",
-  "createTime" : 1785808470000,
-  "updateTime" : 1785828051794,
-  "createBy" : "1",
-  "updateBy" : null,
-  "paths" : [ ],
-  "options" : [ ]
+  "properties": {},
+  "id": "b4c8de7726ab193941a38d833de67359",
+  "name": "报表示例",
+  "type": "component",
+  "parentId": "0",
+  "path": "/report-demo",
+  "paths": [],
+  "options": []
 }

@@ -149,7 +149,7 @@
     "供应商列表": "Suppliers",
     "供应商详情": "Supplier Detail",
     "资产负债表": "Balance Sheet",
-    "预算执行": "Budget Execution",
+    "预算执行": "Budget vs Actual",
     "部门销售": "Department Sales",
     "跨区域产品销售": "Cross-region Sales",
     "员工工资": "Payroll",
@@ -305,6 +305,8 @@
     "通用": "Common",
     "通知推送示例": "Notification Push Example",
     "配置": "Configuration",
-    "重置密钥": "Reset Secret"
+    "重置密钥": "Reset Secret",
+    "月度销售": "Monthly Sales",
+    "库存": "Inventory"
   }
 }
