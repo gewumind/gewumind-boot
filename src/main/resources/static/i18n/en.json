@@ -192,7 +192,17 @@
     "错误": "Error",
     "降序排序": "Sort descending",
     "预览图片": "Preview image",
-    "预览视频": "Preview video"
+    "预览视频": "Preview video",
+    "内置图标": "Built-in icons",
+    "前往配置中心": "Go to Configuration",
+    "快速检索图标名称...": "Search icon names...",
+    "暂无图标": "No icons",
+    "欢迎使用": "Welcome",
+    "自定义": "Custom",
+    "该功能": "This feature",
+    "该功能需要商业授权": "This feature requires a commercial license",
+    "请前往「配置中心」上传有效的授权文件，或联系供应商获取授权。": "Upload a valid license in Configuration or contact the vendor.",
+    "选择左侧菜单开始使用": "Select a menu on the left to start"
   },
   "patterns": [
     {
@@ -230,6 +240,18 @@
     {
       "regex": "^支持上传(.+)文件$",
       "replace": "Supported files: $1"
+    },
+    {
+      "regex": "^(.+)属于商业版能力，当前授权未包含或已过期。$",
+      "replace": "$1 is a commercial feature not included or expired in the current license."
+    },
+    {
+      "regex": "^(.+) · 欢迎使用$",
+      "replace": "$1 · Welcome"
+    },
+    {
+      "regex": "^页面不存在：(.+)$",
+      "replace": "Page not found: $1"
     }
   ]
 }
