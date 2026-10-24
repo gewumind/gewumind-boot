@@ -1,14 +1,10 @@
 {
-  "properties" : { },
-  "id" : "16583e6eef854d24b6dc99162979017c",
-  "name" : "工作流示例",
-  "type" : "component",
-  "parentId" : "0",
-  "path" : "/workflow-demo",
-  "createTime" : 1785808746000,
-  "updateTime" : 1785828113034,
-  "createBy" : "1",
-  "updateBy" : null,
-  "paths" : [ ],
-  "options" : [ ]
+  "properties": {},
+  "id": "d87adbec32887a780001fcf82e9e7d0f",
+  "name": "工作流示例",
+  "type": "component",
+  "parentId": "0",
+  "path": "/workflow-demo",
+  "paths": [],
+  "options": []
 }

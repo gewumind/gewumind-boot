@@ -54,7 +54,8 @@
     "4.1脚本语法": "Script Syntax",
     "4.2Web相关": "Web",
     "4.3循环操作": "Loops",
-    "4.4lambda": "Lambda"
+    "4.4lambda": "Lambda",
+    "流程示例": "Workflow Definitions"
   },
   "names": {
     "列表": "List",
@@ -307,6 +308,9 @@
     "配置": "Configuration",
     "重置密钥": "Reset Secret",
     "月度销售": "Monthly Sales",
-    "库存": "Inventory"
+    "库存": "Inventory",
+    "报销审批": "Expense Approval",
+    "请假申请": "Leave Request",
+    "采购订单": "Purchase Order"
   }
 }
