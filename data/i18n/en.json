@@ -182,7 +182,7 @@
     "请输入原密码": "Enter the current password",
     "请输入当前密码": "Enter the current password",
     "请输入新密码": "Enter the new password",
-    "请选择时间": "Select a time",
+    "请选择时间": "Please select a time",
     "轻松启动您的创意": "Start your ideas easily",
     "输入关键字进行过滤": "Type a keyword to filter",
     "输入问题，回车发送": "Type a question and press Enter",
@@ -235,10 +235,10 @@
     "处理": "Process",
     "备注": "Remarks",
     "填写内容": "Form Content",
-    "附件预览": "Attachment Preview",
+    "附件预览": "Attachment preview",
     "本节点填写项": "Node Form Fields",
     "申请已发起": "Request submitted",
-    "发起失败": "Failed to start",
+    "发起失败": "Submission failed",
     "驳回修改": "Revise after rejection",
     "抄送确认": "CC Confirmation",
     "审批任务": "Approval Task",
@@ -295,7 +295,104 @@
     "审批意见": "Approval Comment",
     "流程图": "Flow Chart",
     "审批人": "Approver",
-    "时间": "Time"
+    "时间": "Time",
+    "演示身份：": "Demo role:",
+    "新建申请": "New Request",
+    "发起申请": "Submit Request",
+    "我的申请": "My Requests",
+    "查看我发起的所有实例": "View all requests I started",
+    "待批复": "Pending Approval",
+    "处理分配给我的审批任务": "Handle approval tasks assigned to me",
+    "流程说明": "Process Description",
+    "分支条件：": "Branch conditions:",
+    "暂无流程节点": "No process nodes",
+    "此节点后有条件分支 →": "Conditional branch after this node →",
+    "其它情况": "Otherwise",
+    "出边条件列表": "Outgoing conditions",
+    "审批历史": "Approval History",
+    "暂无审批历史": "No approval history",
+    "暂无表单数据": "No form data",
+    "暂无附件": "No attachments",
+    "最后一次操作": "Last action",
+    "未开始": "Not started",
+    "已发起": "Started",
+    "已审批": "Approved",
+    "已确认": "Confirmed",
+    "已驳回": "Rejected",
+    "已重新提交": "Resubmitted",
+    "已重新填写": "Refilled",
+    "已同意": "Agreed",
+    "已拒绝": "Denied",
+    "已撤回": "Withdrawn",
+    "已结束": "Completed",
+    "待处理": "Pending",
+    "待审批": "Pending approval",
+    "待确认": "Pending confirmation",
+    "系统": "System",
+    "未命名": "Untitled",
+    "无角色": "No role",
+    "未知错误": "Unknown error",
+    "未找到流程定义": "Process definition not found",
+    "未找到该流程定义": "Process definition not found",
+    "该流程没有申请表单": "No application form for this process",
+    "该节点没有表单字段": "No form fields for this node",
+    "该类型暂不支持预览，请下载后查看": "Preview not supported for this type; please download",
+    "请下载后查看": "Please download to view",
+    "下载": "Download",
+    "预览": "Preview",
+    "附件": "Attachments",
+    "选择文件": "Choose file",
+    "确认": "Confirm",
+    "确认已读，可填写备注（选填）": "Confirm as read; remark optional",
+    "此节点为抄送，确认后视为已读。": "This node is a CC; confirming marks it as read.",
+    "此任务因审批人驳回而重派给申请人。请确认或修改以下信息后重新提交：": "This task was returned to the applicant after rejection. Review or edit and resubmit:",
+    "修改并重新提交": "Edit and resubmit",
+    "继续发起": "Continue",
+    "发起时间": "Submitted at",
+    "申请人": "Applicant",
+    "申请单": "Request",
+    "标题": "Title",
+    "金额": "Amount",
+    "元": "CNY",
+    "本节点填写": "Filled at this node",
+    "当前节点角色": "Current node role",
+    "流程填写内容（按节点分组）": "Form content (grouped by node)",
+    "报表": "Report",
+    "导出 Excel": "Export Excel",
+    "导出多 Sheet": "Export multiple sheets",
+    "已导出 Excel": "Exported Excel",
+    "查询": "Search",
+    "模糊搜索": "Search",
+    "没有数据": "No data",
+    "合  计": "Grand total",
+    "小计": "Subtotal",
+    "制表人": "Prepared by",
+    "制表日期": "Date",
+    "说明": "Remark",
+    "（未填写）": "(Not filled)",
+    "（驳回人未填写原因）": "(No reason provided)",
+    "或签": "Any one",
+    "或": "or",
+    "且": "and",
+    "大于": "greater than",
+    "大于等于": "greater than or equal to",
+    "小于": "less than",
+    "小于等于": "less than or equal to",
+    "等于": "equal to",
+    "不等于": "not equal to",
+    "条件分支": "Conditional branch",
+    "网关": "Gateway",
+    "开始": "Start",
+    "结束": "End",
+    "抄": "CC",
+    "已驳回，流程已打回申请人": "Rejected: returned to the applicant",
+    "起": "From",
+    "止": "To",
+    "查看我的申请": "View my requests",
+    "至": "to",
+    "请输入审批意见": "Please enter a comment",
+    "请选择日期": "Please select a date",
+    "请选择月份": "Please select a month"
   },
   "patterns": [
     {
@@ -345,6 +442,62 @@
     {
       "regex": "^页面不存在：(.+)$",
       "replace": "Page not found: $1"
+    },
+    {
+      "regex": "^发起一个(.+)$",
+      "replace": "Start a $1"
+    },
+    {
+      "regex": "^实例详情 · (.+)$",
+      "replace": "Instance detail · $1"
+    },
+    {
+      "regex": "^填写人：(.+)$",
+      "replace": "Filled by: $1"
+    },
+    {
+      "regex": "^实例 ID: (.+)$",
+      "replace": "Instance ID: $1"
+    },
+    {
+      "regex": "^已重新提交：流程进入「(.+)」$",
+      "replace": "Resubmitted: process moved to \"$1\""
+    },
+    {
+      "regex": "^已驳回，流程回到「(.+)」$",
+      "replace": "Rejected: process returned to \"$1\""
+    },
+    {
+      "regex": "^驳回原因（来自「(.+)」(.+)）$",
+      "replace": "Rejection reason (from \"$1\"$2)"
+    },
+    {
+      "regex": "^当前节点「(.+)」仅限 (.+) 编辑，您当前以「(.+)」身份查看，可只读浏览。$",
+      "replace": "Current node \"$1\" is editable only by $2. You are viewing as \"$3\" (read-only)."
+    },
+    {
+      "regex": "^最大(.+)$",
+      "replace": "Max $1"
+    },
+    {
+      "regex": "^最小(.+)$",
+      "replace": "Min $1"
+    },
+    {
+      "regex": "^如果 (.+)，进入「(.+)」$",
+      "replace": "If $1, go to \"$2\""
+    },
+    {
+      "regex": "^(.+?) (大于等于|小于等于|不等于|大于|小于|等于) (.+)$",
+      "replace": "$1 $2 $3"
+    },
+    {
+      "regex": "^(\\d[\\d,.]*) 元$",
+      "replace": "$1 CNY"
+    },
+    {
+      "regex": "^([^:：]{2,})[:：]\\s*(.*)$",
+      "replace": "$1: $2"
     }
   ]
 }
