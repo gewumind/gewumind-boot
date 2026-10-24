@@ -162,6 +162,22 @@ connection-timeout: 30000
 
 ---
 
+## 3.5 Internationalization
+
+**Database (deployment-level, pick one)**
+- Chinese: `01-baseline.sql` + `02-seed-zh.sql` (no-op)
+- English: `01-baseline.sql` + `02-seed-en.sql`
+- Existing Chinese DB: `upgrade-en.sql`
+
+**Frontend**
+- Open `?lang=en`, or run `localStorage.gw_lang='en'` and refresh
+- Language pack: `data/i18n/<lang>.json` (see `en.json`); copy and translate values
+- Kernel message override: `data/i18n/messages_<lang>.properties`
+- Pack endpoint: `POST /api/i18n/pack {"lang":"en"}` → reads `data/i18n/en.json`
+
+**Limits**
+- DOM-level translation; business data is not translated; use `patterns` for dynamic strings
+
 ## 4. Configuration
 
 ### 4.1 Profiles (environments)
