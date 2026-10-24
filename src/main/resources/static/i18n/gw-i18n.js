@@ -23,6 +23,7 @@
       lang = nav.indexOf('zh') === 0 ? 'zh' : nav.split('-')[0];
     }
     localStorage.setItem('gw_lang', lang);
+    localStorage.setItem('magic-locale', lang.indexOf('zh') === 0 ? 'zh-cn' : 'en');
   } catch (e) { /* localStorage 不可用 */ }
 
   lang = String(lang || 'zh').replace('_', '-');

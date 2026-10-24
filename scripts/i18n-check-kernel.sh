@@ -13,11 +13,18 @@ for f in "$JAVA" "$ZH" "$EN"; do
 done
 
 python3 - "$JAVA" "$ZH" "$EN" <<'PY'
+import os
 import re
 import sys
 
 java, zh_path, en_path = sys.argv[1:4]
-used = set(re.findall(r'msg\("([^"]+)"', open(java, encoding='utf-8').read()))
+used = set()
+for dp, _, names in os.walk(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(java)))))):
+    for name in names:
+        if not name.endswith('.java'):
+            continue
+        text = open(os.path.join(dp, name), encoding='utf-8').read()
+        used.update(re.findall(r'(?:msg|KernelMessages\.get)\("([^"]+)"', text))
 
 
 def keys(path):
