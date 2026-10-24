@@ -178,6 +178,17 @@ connection-timeout: 30000
 **Limits**
 - DOM-level translation; business data is not translated; use `patterns` for dynamic strings
 
+
+**English magic-api display names**
+
+```bash
+python3 scripts/i18n-magic-api.py      # generates data/magic-api-en
+```
+
+- Only display names are translated (`group.json.name`, `.ms` header `name`); IDs / paths / URLs / scripts are unchanged
+- English deployment: replace `data/magic-api` with `data/magic-api-en` (or point the magic-api resource location to it)
+- Component page labels are still translated at runtime by `data/i18n/<lang>.json`
+
 ## 4. Configuration
 
 ### 4.1 Profiles (environments)

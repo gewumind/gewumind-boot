@@ -106,6 +106,9 @@ for p in dev online docker demo; do
 done
 
 cp -r data/magic-api "${STAGE}/data/"
+if [ -f scripts/i18n-magic-api.py ] && [ -f data/i18n/magic-api-names.json ]; then
+  python3 scripts/i18n-magic-api.py --out "${STAGE}/data/magic-api-en" >/dev/null
+fi
 cp -r db/. "${STAGE}/db/"
 cp LICENSE COMMERCIAL_TERMS.md NOTICE README.md README.en.md "${STAGE}/" 2>/dev/null || true
 cp -r docs/. "${STAGE}/docs/"
