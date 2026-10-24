@@ -311,6 +311,7 @@
     "库存": "Inventory",
     "报销审批": "Expense Approval",
     "请假申请": "Leave Request",
-    "采购订单": "Purchase Order"
+    "采购订单": "Purchase Order",
+    "expense 流程入口": "expense Process Entry"
   }
 }

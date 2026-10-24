@@ -1,1 +1,0 @@
-import{_ as _0x12d7c3,o as _0x206877,c as _0x261aa4}from'./index-2b9a0ba2.js';const o={};function t(_0x2d6da0,_0x592875){return _0x206877(),_0x261aa4('div',null,'开发中');}const a=_0x12d7c3(o,[['render',t]]);export{a as default};

@@ -154,3 +154,23 @@ INSERT INTO `sys_menu` (`id`,`pid`,`icon`,`name`,`url`,`sort`,`is_show`,`is_del`
 ('demo-report-sales','demo-report','DataBarVertical24Regular','Monthly Sales','/report-demo/monthly-sales',1,1,0,'0',0),
 ('demo-report-inventory','demo-report','Box24Regular','Inventory','/report-demo/inventory',2,1,0,'0',0),
 ('demo-report-budget','demo-report','Wallet24Regular','Budget vs Actual','/report-demo/budget-vs-actual',3,1,0,'0',0);
+
+-- demo role names + cleanup old demo roles/users
+UPDATE `sys_role` SET `name`='Manager' WHERE `code`='dept_manager';
+UPDATE `sys_role` SET `name`='Finance' WHERE `code`='finance';
+UPDATE `sys_role` SET `name`='HR' WHERE `code`='hr';
+UPDATE `sys_role` SET `name`='Buyer' WHERE `code`='buyer';
+UPDATE `sys_role` SET `name`='CFO' WHERE `code`='cfo';
+DELETE FROM `sys_user_role` WHERE `role_id` IN (SELECT `id` FROM `sys_role` WHERE `code` IN ('director','ceo','sales_manager','legal','it_manager','observer','any_manager'));
+DELETE FROM `sys_role` WHERE `code` IN ('director','ceo','sales_manager','legal','it_manager','observer','any_manager');
+DELETE FROM `sys_user` WHERE `username` IN ('director','ceo','sales01','legal01','it01','observer01','hr01','finance01');
+
+-- dedupe user_role + drop orphan/test artifacts
+CREATE TEMPORARY TABLE `_gw_ur` AS SELECT DISTINCT `user_id`,`role_id` FROM `sys_user_role`;
+DELETE FROM `sys_user_role`;
+INSERT INTO `sys_user_role` (`user_id`,`role_id`) SELECT `user_id`,`role_id` FROM `_gw_ur`;
+DROP TEMPORARY TABLE `_gw_ur`;
+DELETE FROM `sys_user_role` WHERE `user_id` IN (SELECT `id` FROM `sys_user` WHERE `username` IN ('tester'));
+DELETE FROM `sys_user` WHERE `username` IN ('tester');
+DELETE FROM `sys_user_role` WHERE `role_id` IN (SELECT `id` FROM `sys_role` WHERE `code` IN ('test_role','test2') OR `code` IS NULL OR `code`='');
+DELETE FROM `sys_role` WHERE `code` IN ('test_role','test2') OR `code` IS NULL OR `code`='';

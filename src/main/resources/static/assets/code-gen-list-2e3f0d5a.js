@@ -1,0 +1,1 @@
+import{_ as _0x2c78c8,o as _0x4f9aab,c as _0xff8309}from'./index-29ddb805.js';const o={};function t(_0x34eb5e,_0x3267f9){return _0x4f9aab(),_0xff8309('div',null,'开发中');}const a=_0x2c78c8(o,[['render',t]]);export{a as default};
