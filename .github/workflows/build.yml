@@ -41,6 +41,26 @@ jobs:
             esac
           fi
 
+      - name: i18n 资源检查
+        run: |
+          python3 - <<'PY'
+          import json, re, sys
+          bad = []
+          for p in ['data/i18n/en.json', 'src/main/resources/static/i18n/en.json']:
+              data = json.load(open(p, encoding='utf-8'))
+              translations = data.get('translations', data)
+              for key, value in translations.items():
+                  if isinstance(value, str) and re.search(r'[\u4e00-\u9fff]', value):
+                      bad.append(f'{p}: {key} -> {value}')
+          for line in open('db/init/02-seed-en.sql', encoding='utf-8'):
+              m = re.search(r"SET \w+='([^']*)'", line)
+              if m and re.search(r'[\u4e00-\u9fff]', m.group(1)):
+                  bad.append('seed: ' + line.strip())
+          if bad:
+              print('\n'.join(bad)); sys.exit(1)
+          print('i18n resources OK')
+          PY
+
       # 构建不依赖 MySQL：内核 jar 在 libs/ 里，数据库是运行期才需要
       - name: 构建
         run: mvn -B clean package -DskipTests
