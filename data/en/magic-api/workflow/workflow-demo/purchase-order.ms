@@ -304,7 +304,7 @@ if (action == 'getDefinition') {
             "fields": [
                 {
                     "name": "vendor",
-                    "label": "供应商",
+                    "label": "Supplier",
                     "type": "input",
                     "required": true
                 },
@@ -316,7 +316,7 @@ if (action == 'getDefinition') {
                 },
                 {
                     "name": "quantity",
-                    "label": "数量",
+                    "label": "Quantity",
                     "type": "number",
                     "required": true
                 },

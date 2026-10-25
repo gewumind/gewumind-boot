@@ -27,7 +27,7 @@
 ================================
 <template>
   <MagicWorkflow
-      title="报销审批"
+      title="Expense Approval"
       subtitle="员工报销：申请 → 部门经理 → 财务"
       processId="expense_v1"
       entryApi="/data/plugins/workflow-api/expense"

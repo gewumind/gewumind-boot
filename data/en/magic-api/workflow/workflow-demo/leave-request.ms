@@ -313,7 +313,7 @@ if (action == 'getDefinition') {
     ],
     "forms": {
         "apply": {
-            "title": "请假申请",
+            "title": "Leave Request",
             "editable": [
                 "initiator"
             ],

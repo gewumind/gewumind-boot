@@ -27,7 +27,7 @@
 ================================
 <template>
   <MagicWorkflow
-      title="请假申请"
+      title="Leave Request"
       subtitle="员工请假：申请 → 部门经理 → HR"
       processId="leave_v1"
       entryApi="/data/plugins/workflow-api/leave"

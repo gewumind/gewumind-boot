@@ -27,7 +27,7 @@
 ================================
 <template>
   <MagicWorkflow
-      title="采购订单"
+      title="Purchase Order"
       subtitle="采购申请：申请 → 部门经理 → CFO"
       processId="purchase_v1"
       entryApi="/data/plugins/workflow-api/purchase"
