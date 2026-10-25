@@ -22,12 +22,12 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示使用 response.page() 返回分页格式的结果
 // 分页结果格式：{ "total": 总数, "list": 当前页数据列表 }
 // 适用于需要前端分页组件（如 el-pagination）的场景
 
-// 第 1 步：导入 response 工具模块
+// Step 1: import the response utility module
 // response 提供了 page()、json()、image()、download() 等返回结果的方法
 import response
 

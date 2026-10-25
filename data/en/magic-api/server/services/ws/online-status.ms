@@ -18,15 +18,15 @@
 // WebSocket Server 示例：在线状态追踪（带生命周期钩子）
 // 客户端连 /ws/presence 后自动维护在线列表，下线自动移除
 //
-// 生命周期变量（特殊约定名）：
-//   _onConnect(clientId, path) => {}  客户端连接时触发
-//   _onClose(clientId, path)   => {}  客户端断开时触发
+// Lifecycle variables (reserved names):
+//   _onConnect(clientId, path) => {}  triggered on client connect
+//   _onClose(clientId, path)   => {}  triggered on client disconnect
 //
-// 启用：
-//   1. 配置中心 ws.enabled = true
-//   2. 重启后端生效
+// Enable:
+//   1. Config center: ws.enabled = true
+//   2. Restart the backend to apply
 //
-// 测试：
+// Test:
 //   python3 scripts/send_ws_msg.py ws://localhost:9089/ws/presence "hello"   (开 2 个终端)
 //
 // 配套查询 API：api/数据演示/WebSocket演示/基础操作.ms

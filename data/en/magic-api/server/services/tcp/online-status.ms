@@ -18,15 +18,15 @@
 // TCP Server 示例：在线状态追踪（带生命周期钩子）
 // IoT 设备连 tcp://localhost:9002 上线时记录，下线时清理
 //
-// 生命周期变量（特殊约定名）：
-//   _onConnect(clientId, path) => {}  客户端连接时触发
-//   _onClose(clientId, path)   => {}  客户端断开时触发
+// Lifecycle variables (reserved names):
+//   _onConnect(clientId, path) => {}  triggered on client connect
+//   _onClose(clientId, path)   => {}  triggered on client disconnect
 //
-// 启用：
-//   1. 配置中心 tcp.enabled = true
-//   2. 重启后端生效
+// Enable:
+//   1. Config center: tcp.enabled = true
+//   2. Restart the backend to apply
 //
-// 测试：
+// Test:
 //   nc localhost 9002   (开 2 个终端，Ctrl+C 关闭一个看 onClose 触发)
 //
 // 配套查询 API：api/数据演示/TCP演示/基础操作.ms

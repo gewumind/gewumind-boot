@@ -201,7 +201,7 @@
  * - 该接口接收 POST 请求，参数 page=1, size=10（来自请求参数）
  */
 
-// 1. 指定要查询的表 magic_api_info
+// 1. Target table: magic_api_info
 // 2. 使用 .columns() 指定查询的列（可传多个参数）
 // 3. 使用 .page() 执行分页查询
 //    - 会自动从请求中获取 page 和 size 参数

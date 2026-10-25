@@ -22,7 +22,7 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示使用 SQL 风格 LINQ 进行表关联查询（JOIN）
 // 类似于 SQL 中的 LEFT JOIN，可以在内存中关联两个数据集
 // db.camel() 用于将数据库下划线字段名自动转为驼峰命名

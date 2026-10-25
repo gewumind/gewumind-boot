@@ -22,7 +22,7 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示使用 SQL 风格的 LINQ 进行数据分组统计
 // magic-script 支持 SQL 风格的 LINQ 语法：select / from / where / group by / having / order by
 // 这种写法更接近 SQL，易于理解

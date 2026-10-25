@@ -163,7 +163,7 @@ const rules = reactive({
     code: { required: true, message: '请输入模块编码', trigger: 'blur' }
 })
 
-// 关联网菜单：只显示 is_show=1 的菜单（不要按钮型）
+// Linked menu: only is_show=1 (no button type)
 const visibleMenuTree = ref([])
 function loadVisibleMenuTree() {
     $common.get('/system/menu/tree').then(res => {

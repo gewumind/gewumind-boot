@@ -26,7 +26,7 @@
 
 // save() 方法根据主键值判断：有值则 UPDATE，无值则 INSERT
 
-// 1. 指定要操作的表 magic_api_info
+// 1. Target table: magic_api_info
 // 2. 使用 .primary('id', () => uuid()) 设置主键列
 //    - 第一个参数 'id' 指定主键列名
 //    - 第二个参数是生成默认值的回调函数，新增时如果没传 id 会自动生成 UUID

@@ -22,7 +22,7 @@
 //   ✅ @post:/xxx api  - API POST import + 执行成功（magic-api 自动注入空 request/response）
 //   ⚠️ @get:/xxx api  - API import 可用，但若 API 内部依赖 sa-token 等 servlet 上下文会失败
 //
-// 启用：
+// Enable:
 //   1. 文件已经默认 enabled: true
 //   2. 在 magic-api 后台管理界面保存一次（或 touch 此文件触发 reload）
 //   3. 用 ws 客户端连 ws://localhost:9089/ws/crosstest 发任意消息

@@ -24,15 +24,15 @@
 //   tcpHelper.sendToClient(clientId, 'msg\n')
 // 详见 api/数据演示/TCP演示/基础操作.ms
 //
-// 启用：
-//   1. 配置中心：tcp.enabled = true
-//   2. 重启后端生效
+// Enable:
+//   1. Config center: tcp.enabled = true
+//   2. Restart the backend to apply
 //
-// 测试：
+// Test:
 //   echo "hello tcp" | nc localhost 9000
 //   或用 scripts/send_tcp_msg.py localhost 9000 "hello"
 
-// ===== 接收 =====
+// ===== Receive =====
 // _message: 客户端发来的字节（已转字符串）
 // _clientId: 连接的唯一标识
 // _channel: 端口字符串（这里是 "9000"）
@@ -40,5 +40,5 @@ println('[TCP Echo] 客户端连接: ' + _clientId + ' @ port ' + _channel)
 println('[TCP Echo] 收到数据: ' + _message)
 println('[TCP Echo] 当前 port ' + _channel + ' 连接数: ' + tcp.getConnectionCount(Integer.parseInt(_channel)))
 
-// 给当前连接回推（reply 给发起者）
+// Reply to the current connection
 tcpHelper.reply('Echo: ' + _message + '\n')

@@ -22,7 +22,7 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示使用 Java AWT 图形库在 magic-script 中生成图片验证码
 // 利用 import 导入 Java 标准库实现服务器端图片生成
 // 包含：随机字符、旋转、干扰线、噪点等防破解机制

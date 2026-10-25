@@ -22,11 +22,11 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示使用 SQL 风格 LINQ 对内存数据进行条件过滤（WHERE）
 // 类似于 SQL 的 WHERE 子句，可以对任意数组进行筛选
 
-// 第 1 步：准备内存测试数据
+// Step 1: prepare in-memory test data
 // 定义一个包含 sex（性别）和 name（姓名）的对象数组
 var list = [{
     sex : 0,        // 0 表示男

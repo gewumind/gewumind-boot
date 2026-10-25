@@ -52,11 +52,11 @@
 // SSE 推送通知 API
 // 向所有订阅 /sse/notifications 的客户端实时推送事件
 //
-// 前置条件：
+// Prerequisites:
 //   1. 配置中心 sse.enabled = true（已启用）
 //   2. 已有客户端连接 /sse/notifications（server/服务/sse/通知推送示例.ms 注册）
 //
-// 请求体（JSON）：
+// Request body (JSON):
 //   {
 //     "event": "message",           // 事件名，选填，默认 "message"
 //     "data":  "{\"msg\":\"...\"}"  // 推送数据（JSON 字符串），必填

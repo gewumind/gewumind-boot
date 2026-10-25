@@ -24,16 +24,16 @@
 //   ws.sendToClient(clientId, 'msg')
 // 详见 api/数据演示/WebSocket演示/基础操作.ms
 //
-// 启用：
-//   1. 配置中心：ws.enabled = true
-//   2. 重启后端生效
+// Enable:
+//   1. Config center: ws.enabled = true
+//   2. Restart the backend to apply
 //
-// 测试：python3 scripts/send_ws_msg.py ws://localhost:9089/ws/echo "hello"
+// Test:python3 scripts/send_ws_msg.py ws://localhost:9089/ws/echo "hello"
 
 // 接收：_message（客户端发的内容）、_path（连接路径）、_clientId（连接ID）
 println('[WS Echo] 收到消息: ' + _message)
 
-// 给当前连接回推（reply 给发起者）
+// Reply to the current connection
 wsHelper.reply('Echo: ' + _message)
 
 // 客户端连接时也会触发此 script（_message 可能为空）

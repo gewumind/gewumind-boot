@@ -22,7 +22,7 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示行转列（Pivot）操作 — 将行的值转为列名
 // 使用 group() + 递归 SQL 风格 LINQ 实现数据透视表
 // 场景：统计每个 API 分组中各请求方法（GET/POST/PUT/DELETE）的数量

@@ -52,23 +52,23 @@
 // TCP 基础操作演示
 // 依次调用 tcp 模块的全部公开方法，验证可用性。
 //
-// 前置条件：
-//   1. 配置中心 tcp.enabled = true
+// Prerequisites:
+//   1. Config center: tcp.enabled = true
 //   2. 已有客户端连接到目标端口（如 nc localhost 9000）
 
 targetPort = body.port ?: 9000
 payload = body.message ?: 'PING\n'
 
-// 1. 查连接数
+// 1. Get connection count
 count = tcp.getConnectionCount(targetPort)
 
-// 2. 列客户端 ID
+// 2. List client IDs
 clientIds = tcp.getClientIdsByPort(targetPort)
 
 // 3. 广播给同 port 所有客户端
 tcp.broadcastToPort(targetPort, payload)
 
-// 4. 给首个客户端单播（如果有）
+// 4. Unicast to the first client (if any)
 sentTo = null
 if (count > 0) {
     firstId = clientIds.get(0)

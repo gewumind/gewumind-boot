@@ -40,10 +40,10 @@
 ================================
 // MQTT 订阅示例
 // 收到 mqtt demo/topic 主题消息时自动执行整个脚本
-// 可在此文件中直接设断点调试
+// Set breakpoints in this file to debug
 
 print('[MQTT] 收到消息: ' + _message)
 print('[MQTT] 主题: ' + _topic)
 
-// 处理业务逻辑
+// Business logic
 print('[MQTT] 处理完成')

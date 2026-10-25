@@ -22,9 +22,9 @@
 //   sseHelper.broadcastToPath('/progress', 'progress', '{"percent":50}')
 // 详见 api/数据演示/SSE演示/推送通知.ms
 //
-// 启用：
-//   1. 配置中心：sse.enabled = true
-//   2. 重启后端生效
+// Enable:
+//   1. Config center: sse.enabled = true
+//   2. Restart the backend to apply
 //
 // 浏览器订阅示例：
 //   const es = new EventSource('/sse/progress')
@@ -34,7 +34,7 @@
 //     updateProgressBar(data.percent)
 //   })
 //
-// Python 测试：
+// Python test:
 //   python3 scripts/send_sse_msg.py http://localhost:9089/sse/progress --timeout 5
 
 // 初始化：客户端连上时立刻推 start 事件

@@ -29,5 +29,5 @@ var list = [{
     sex : 1,
     name : '小花'
 }]
-// 利用map函数对list进行过滤
+// Filter a list with the map function
 return list.filter((item)=>item.sex == 0);

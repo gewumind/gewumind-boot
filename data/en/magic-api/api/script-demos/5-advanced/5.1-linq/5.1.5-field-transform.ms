@@ -22,11 +22,11 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示在 SQL 风格 LINQ 中使用三目运算符进行字段值转换
 // 可以在 select 中使用 条件 ? 值1 : 值2 语法对字段做条件映射
 
-// 第 1 步：准备内存测试数据
+// Step 1: prepare in-memory test data
 // 包含 sex（性别 0/1）、name（姓名）、age（年龄）
 var list = [{
     sex : 0,

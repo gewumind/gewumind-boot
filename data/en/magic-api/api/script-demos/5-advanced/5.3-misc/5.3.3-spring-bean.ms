@@ -100,7 +100,7 @@
   }
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示如何在 magic-script 中调用 Spring 容器中的 Bean
 // 通过 import 导入 Spring Bean 的全限定类名，即可直接调用其方法
 // 这使得 magic-script 可以充分利用 Spring 框架的依赖注入能力

@@ -25,9 +25,9 @@
 //   wsHelper.sendToClient(clientId, '{"type":"private"}')
 // 详见 api/数据演示/WebSocket演示/基础操作.ms
 //
-// 启用：
-//   1. 配置中心：ws.enabled = true
-//   2. 重启后端生效
+// Enable:
+//   1. Config center: ws.enabled = true
+//   2. Restart the backend to apply
 //
 // 测试（开 3 个终端）：
 //   python3 send_ws_msg.py ws://localhost:9089/ws/chat/room1 "hello 1"

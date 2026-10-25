@@ -35,7 +35,7 @@ var list = [{
 var getAge = (age)=>{
     return age > 18 ? '成人' : '未成年'
 }
-// 利用map函数对list进行过滤
+// Filter a list with the map function
 return list.map((item)=>{
     age : getAge(item.age),
     sex : item.sex == 0 ? 'Male' : 'Female',

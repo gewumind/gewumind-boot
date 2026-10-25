@@ -116,7 +116,7 @@ if (action == 'approve') {
     }
     var instId = taskInfo.instance_id
     var nodeId = taskInfo.node_id
-    // 业务表更新：backend 内部用 LinkedHashMap 顺序写 SQL，避免 magic-script HashMap 错位
+    // Business table update: backend writes SQL in LinkedHashMap order to avoid magic-script HashMap mis-ordering
     var bizFields = {}
     bizFields.comment = '' + comment
     bizFields.final_status = 'APPROVED'
@@ -199,7 +199,7 @@ if (action == 'reject' || action == 'deny') {
     }
     var instId2 = taskInfo2.instance_id
 
-    // 业务表驳回：backend LinkedHashMap 顺序绑定参数
+    // Business table rejection: backend binds params in LinkedHashMap order
     var bizFields2 = {}
     bizFields2.comment = '' + reason2
     bizFields2.final_status = 'REJECTED'

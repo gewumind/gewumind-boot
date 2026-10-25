@@ -26,6 +26,6 @@
 
 // .count() 用于查询表中的记录总数，相当于 SELECT count(*) FROM table
 
-// 1. 指定要查询的表 magic_api_info
+// 1. Target table: magic_api_info
 // 2. 调用 .count() 执行计数查询，返回整型数值
 return db.table('magic_api_info').count()

@@ -24,7 +24,7 @@
 ================================
 /* 目的：演示使用 db.update() 执行修改 SQL 语句 */
 
-// db.update(sql) 用于执行 INSERT、UPDATE、DELETE 等修改操作
+// db.update(sql) executes INSERT/UPDATE/DELETE
 // 这里演示在脚本中定义变量，然后在 SQL 中通过 #{变量名} 引用
 
 // 1. 定义变量 id，值为 '1'

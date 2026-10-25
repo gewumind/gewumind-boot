@@ -24,9 +24,9 @@
 //   tcpHelper.broadcastToPort(9000, '{"alert":"高温"}\n')
 // 详见 api/数据演示/TCP演示/推送字节.ms
 //
-// 启用：
-//   1. 配置中心：tcp.enabled = true
-//   2. 重启后端生效
+// Enable:
+//   1. Config center: tcp.enabled = true
+//   2. Restart the backend to apply
 //
 // 设备端发送示例：
 //   {"deviceId":"sensor-001","type":"temperature","value":23.5}
@@ -36,7 +36,7 @@
 //   后注册者会覆盖前者；测试其中一个时建议把另一个 disabled）：
 //   python3 scripts/send_tcp_msg.py localhost 9000 '{"deviceId":"sensor-001","type":"temperature","value":23.5}'
 
-// ===== 接收 =====
+// ===== Receive =====
 import 'org.ssssssss.magicapi.utils.JsonUtils'
 println('[IoT] 设备数据: ' + _message)
 

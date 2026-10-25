@@ -22,12 +22,12 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示使用 response.download() 实现文件下载
 // 浏览器访问该接口时会触发文件下载，而不是直接显示内容
 // 适合导出文件（如 CSV、TXT、Excel）功能
 
-// 第 1 步：导入 response 工具模块
+// Step 1: import the response utility module
 // response 提供了 download() 方法，接受两个参数：
 //   参数1：文件内容（字符串或二进制数据）
 //   参数2：下载时的文件名（包含扩展名）

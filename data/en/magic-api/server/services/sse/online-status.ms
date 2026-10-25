@@ -18,13 +18,13 @@
 // SSE Server 示例：在线状态追踪（带生命周期钩子）
 // 浏览器 EventSource 订阅 /sse/presence 自动维护在线列表
 //
-// 生命周期变量（特殊约定名）：
-//   _onConnect(clientId, path) => {}  客户端连接时触发
-//   _onClose(clientId, path)   => {}  客户端断开时触发
+// Lifecycle variables (reserved names):
+//   _onConnect(clientId, path) => {}  triggered on client connect
+//   _onClose(clientId, path)   => {}  triggered on client disconnect
 //
-// 启用：
+// Enable:
 //   1. 配置中心 sse.enabled = true
-//   2. 重启后端生效
+//   2. Restart the backend to apply
 //
 // 浏览器订阅：
 //   const es = new EventSource('/sse/presence')

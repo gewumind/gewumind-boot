@@ -38,8 +38,8 @@
 ================================
 /* 目的：演示使用 db.update() 执行删除 SQL 语句 */
 
-// db.update(sql) 用于执行 INSERT、UPDATE、DELETE 等修改操作
-// 该接口接收 DELETE 请求，参数 id（来自查询参数）
+// db.update(sql) executes INSERT/UPDATE/DELETE
+// This API accepts DELETE; parameter id (query param)
 // 使用 #{id} 作为参数占位符（类似 MyBatis），可防止 SQL 注入
 
 // 1. db.update() 接收一个 SQL 字符串
