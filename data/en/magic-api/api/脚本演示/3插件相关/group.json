@@ -1,0 +1,14 @@
+{
+  "properties": {},
+  "id": "d822ca3576384065b85973a3f220397b",
+  "name": "Plugins",
+  "type": "api",
+  "parentId": "8d60ba6788ef4a75b93f3c77683c7f89",
+  "path": "/plugins",
+  "createTime": 1679917602933,
+  "updateTime": null,
+  "createBy": null,
+  "updateBy": null,
+  "paths": [],
+  "options": []
+}

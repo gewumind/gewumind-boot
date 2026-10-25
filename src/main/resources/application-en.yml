@@ -1,0 +1,12 @@
+# =============================================================================
+# locale: en —— 英文版 / English locale
+# 用法：--spring.profiles.active=dev,en
+# 数据：data/en/magic-api；数据库默认 gewumind-boot-en
+# =============================================================================
+app:
+  lang: en
+  demo:
+    lang: en
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/gewumind-boot-en?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF8&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai}

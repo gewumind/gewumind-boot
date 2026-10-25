@@ -1,0 +1,14 @@
+{
+  "properties": {},
+  "id": "server-ws-group",
+  "name": "WebSocket",
+  "type": "server",
+  "parentId": "server-group-001",
+  "path": "/ws",
+  "createTime": null,
+  "updateTime": null,
+  "createBy": null,
+  "updateBy": null,
+  "paths": [],
+  "options": []
+}

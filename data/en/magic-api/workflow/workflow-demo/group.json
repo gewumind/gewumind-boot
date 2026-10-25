@@ -1,0 +1,14 @@
+{
+  "properties": {},
+  "id": "wf-oa-group-001",
+  "name": "Workflow Definitions",
+  "type": "workflow",
+  "parentId": "0",
+  "path": "/workflow-def",
+  "createTime": null,
+  "updateTime": 1785829251040,
+  "createBy": null,
+  "updateBy": null,
+  "paths": [],
+  "options": []
+}

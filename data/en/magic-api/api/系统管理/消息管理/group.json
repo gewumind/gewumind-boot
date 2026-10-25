@@ -1,0 +1,14 @@
+{
+  "properties": {},
+  "id": "msg-mgmt-group-001",
+  "name": "Messages",
+  "type": "api",
+  "parentId": "acff5ad7aae64de2acb03e1d16a58ce2",
+  "path": "/message",
+  "createTime": null,
+  "updateTime": null,
+  "createBy": null,
+  "updateBy": null,
+  "paths": [],
+  "options": []
+}

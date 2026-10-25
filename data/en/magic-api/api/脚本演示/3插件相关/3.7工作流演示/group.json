@@ -1,0 +1,14 @@
+{
+  "properties": {},
+  "id": "wf-op-group-001",
+  "name": "Workflow Demo",
+  "type": "api",
+  "parentId": "d822ca3576384065b85973a3f220397b",
+  "path": "/workflow-api",
+  "createTime": null,
+  "updateTime": null,
+  "createBy": null,
+  "updateBy": null,
+  "paths": [],
+  "options": []
+}

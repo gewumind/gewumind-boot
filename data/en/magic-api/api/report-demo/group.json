@@ -1,0 +1,10 @@
+{
+  "properties": {},
+  "id": "rpt-demo-group-001",
+  "name": "Report Demos",
+  "type": "api",
+  "parentId": "0",
+  "path": "/report-demo",
+  "paths": [],
+  "options": []
+}

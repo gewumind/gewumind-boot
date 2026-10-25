@@ -1,0 +1,14 @@
+{
+  "properties": {},
+  "id": "server-group-001",
+  "name": "Service Management",
+  "type": "server",
+  "parentId": "0",
+  "path": "/server",
+  "createTime": null,
+  "updateTime": null,
+  "createBy": null,
+  "updateBy": null,
+  "paths": [],
+  "options": []
+}

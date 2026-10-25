@@ -1,0 +1,14 @@
+{
+  "properties": {},
+  "id": "func-cross-test-group-001",
+  "name": "Test",
+  "type": "function",
+  "parentId": "0",
+  "path": "test",
+  "createTime": null,
+  "updateTime": null,
+  "createBy": null,
+  "updateBy": null,
+  "paths": [],
+  "options": []
+}

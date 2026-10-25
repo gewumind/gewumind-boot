@@ -106,7 +106,7 @@ magic-api:
   sql-column-case: camel
   resource:
     type: file
-    location: file:./data/magic-api
+    location: file:./data/${app.lang:zh}/magic-api
   backup:
     enable: true
     max-history: -1
@@ -161,6 +161,10 @@ gewumind:
 # created by db/init, so keep this false.
 # ---------------------------------------------------------------------------
 app:
+  # 语言 / locale: zh | en（由 application-zh.yml / application-en.yml 覆盖）
+  lang: zh
+  demo:
+    lang: ${app.lang:zh}
   init-tables: false
   # 内核校验（签名 / 网关白名单）仅商业模式生效，开源模式全部放行
   # Kernel checks (signature / gateway allowlist) only apply to commercial

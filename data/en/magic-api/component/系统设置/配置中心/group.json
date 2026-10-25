@@ -1,0 +1,14 @@
+{
+  "properties": {},
+  "id": "7b04038d109b4946a844b66f19126597",
+  "name": "Configuration",
+  "type": "component",
+  "parentId": "29d82244-d928-11ee-9675-c2b02ed3977b",
+  "path": "/configure",
+  "createTime": 1785809673000,
+  "updateTime": 1785828965548,
+  "createBy": "1",
+  "updateBy": null,
+  "paths": [],
+  "options": []
+}

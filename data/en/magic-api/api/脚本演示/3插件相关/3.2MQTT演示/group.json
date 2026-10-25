@@ -1,0 +1,10 @@
+{
+  "properties": {},
+  "id": "0e1e3132d4e6477d94fb7ccdf590f731",
+  "name": "MQTT Demo",
+  "type": "api",
+  "parentId": "d822ca3576384065b85973a3f220397b",
+  "path": "/mqtt-demo",
+  "paths": [],
+  "options": []
+}
