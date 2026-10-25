@@ -31,11 +31,11 @@
 }
 ================================
 if (!id || id == '') {
-    exit 0, 'id 不能为空'
+    exit 0, 'id cannot be empty'
 }
 
 var row = db.selectOne("SELECT app_secret FROM sys_open_app WHERE id = #{id} AND is_del = 0")
 if (row == null) {
-    exit 0, '应用不存在'
+    exit 0, 'App not found'
 }
 return { appSecret: row.appSecret != null ? row.appSecret : row.app_secret }

@@ -57,11 +57,10 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "向 TCP 客户端主动推送字节",
+  "description": "Push bytes to TCP clients",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}
-================================
+}================================
 // TCP 主动推送示例
 // 向已连接 tcp://host:port 的客户端实时推送字节
 //

@@ -97,11 +97,10 @@
   "headers": [],
   "paths": [],
   "responseBody": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"total\": 4,\n        \"list\": []\n    }\n}",
-  "description": "分页检索历史消息（支持关键词、类型、已读过滤）",
+  "description": "Paginated message history (keyword, type, read filter)",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}
-================================
+}================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 var currentUserId = StpUtil.getLoginId()

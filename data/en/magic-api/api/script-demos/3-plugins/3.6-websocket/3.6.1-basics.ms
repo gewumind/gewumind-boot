@@ -44,11 +44,10 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "WebSocket 模块基础操作演示：连接统计、单播、广播",
+  "description": "WebSocket basics: connection stats, unicast, broadcast",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}
-================================
+}================================
 // WebSocket 基础操作演示
 // 依次调用 ws 模块的全部公开方法，验证可用性。
 //

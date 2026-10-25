@@ -31,7 +31,7 @@
 }
 ================================
 if (!id || id == '') {
-    exit 0, 'id 不能为空'
+    exit 0, 'id cannot be empty'
 }
 
 db.table('sys_open_app').logic().where().eq('id', id).delete();

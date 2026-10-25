@@ -45,11 +45,10 @@
   "headers": [],
   "paths": [],
   "responseBody": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": true\n}",
-  "description": "将指定消息标记为已读",
+  "description": "Mark the specified message as read",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}
-================================
+}================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 var currentUserId = StpUtil.getLoginId()

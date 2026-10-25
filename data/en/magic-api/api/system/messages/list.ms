@@ -71,11 +71,10 @@
   "headers": [],
   "paths": [],
   "responseBody": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"total\": 4,\n        \"list\": []\n    }\n}",
-  "description": "分页获取当前用户的消息列表",
+  "description": "Paginated message list for the current user",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}
-================================
+}================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 var currentUserId = StpUtil.getLoginId()

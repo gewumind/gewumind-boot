@@ -207,7 +207,7 @@ if(moduleEnabled){
     if(unassigned.getLength() > 0){
         tree.push({
             id: 'm_unassigned',
-            name: '未分组',
+            name: 'Ungrouped',
             pid: '0',
             children: unassigned
         })

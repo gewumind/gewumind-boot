@@ -31,11 +31,10 @@
   "headers": [],
   "paths": [],
   "responseBody": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": 3\n}",
-  "description": "获取当前用户的未读消息数量",
+  "description": "Unread message count for the current user",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}
-================================
+}================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 var currentUserId = StpUtil.getLoginId()

@@ -44,11 +44,10 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "通过 SSE 向所有订阅 /notifications 的客户端推送事件",
+  "description": "Push an event via SSE to clients subscribed to /notifications",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}
-================================
+}================================
 // SSE 推送通知 API
 // 向所有订阅 /sse/notifications 的客户端实时推送事件
 //

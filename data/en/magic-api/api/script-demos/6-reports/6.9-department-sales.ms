@@ -69,16 +69,16 @@ var dataMap = {
         {product: '抖音推荐算法',      sold: 3,   unitPrice: 80000, total: 240000, customer: 'AI团队'}
     ],
     'D301': [
-        {product: '美团外卖订单',      sold: 10000, unitPrice: 30, total: 300000, customer: 'C端用户'},
-        {product: '美团到店',          sold: 200,  unitPrice: 200, total: 40000, customer: 'C端用户'}
+        {product: '美团外卖订单',      sold: 10000, unitPrice: 30, total: 300000, customer: 'Consumer'},
+        {product: '美团到店',          sold: 200,  unitPrice: 200, total: 40000, customer: 'Consumer'}
     ],
     'D302': [
-        {product: '美团到店餐饮',      sold: 5000, unitPrice: 50,  total: 250000, customer: 'C端用户'},
-        {product: '美团到店丽人',      sold: 1000, unitPrice: 100, total: 100000, customer: 'C端用户'}
+        {product: '美团到店餐饮',      sold: 5000, unitPrice: 50,  total: 250000, customer: 'Consumer'},
+        {product: '美团到店丽人',      sold: 1000, unitPrice: 100, total: 100000, customer: 'Consumer'}
     ],
     'D303': [
-        {product: '美团优选生鲜',      sold: 8000, unitPrice: 30, total: 240000, customer: 'C端用户'},
-        {product: '美团优选日用',      sold: 3000, unitPrice: 50, total: 150000, customer: 'C端用户'}
+        {product: '美团优选生鲜',      sold: 8000, unitPrice: 30, total: 240000, customer: 'Consumer'},
+        {product: '美团优选日用',      sold: 3000, unitPrice: 50, total: 150000, customer: 'Consumer'}
     ]
 }
 

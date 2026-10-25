@@ -31,11 +31,10 @@
   "headers": [],
   "paths": [],
   "responseBody": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": 3\n}",
-  "description": "将当前用户所有未读消息标记为已读",
+  "description": "Mark all unread messages of the current user as read",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}
-================================
+}================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 var currentUserId = StpUtil.getLoginId()

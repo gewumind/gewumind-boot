@@ -57,11 +57,10 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "向 WebSocket 客户端主动推送消息",
+  "description": "Push a message to WebSocket clients",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}
-================================
+}================================
 // WebSocket 主动推送示例
 // 向已连接 ws://host:port/ws/{path} 的客户端实时推送消息
 //

@@ -111,7 +111,7 @@ for(mod in modules){
         })
     }
 }
-// Menus not assigned to any module fall back to "未分组"
+// Menus not assigned to any module fall back to "Ungrouped"
 var unassigned = []
 for(m in menuTree){
     if(!m.moduleId){
@@ -121,7 +121,7 @@ for(m in menuTree){
 if(unassigned.getLength() > 0){
     tree.push({
         id: 'm_unassigned',
-        name: '未分组',
+        name: 'Ungrouped',
         pid: '0',
         children: unassigned
     })

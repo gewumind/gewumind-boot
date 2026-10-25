@@ -33,7 +33,7 @@ var list = [{
     name : '小明'
 },{
     sex : 1,        // 1 表示女
-    name : '小花'
+    name : 'Xiaohua'
 }]
 
 // 第 2 步：使用 SQL 风格 LINQ 按条件过滤

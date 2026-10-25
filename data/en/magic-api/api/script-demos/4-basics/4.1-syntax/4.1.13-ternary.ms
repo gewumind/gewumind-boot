@@ -43,8 +43,8 @@ var grade = score >= 90 ? "优秀"
 // ===== 与 JS 一致的短路特性 =====
 // truthy/falsy 规则：null、空集合、空Map、0、空字符串、false 视为 false
 var a = null;
-var b = "默认值";
-var result = a || b;    // a 为 falsy，返回 b = "默认值"
+var b = "Default value";
+var result = a || b;    // a 为 falsy，返回 b = "Default value"
 // 相当于：a ? a : b
 
 var x = 123;
@@ -54,11 +54,11 @@ var r = x && y;         // x 为 truthy，返回 y = 456
 
 // ===== 实际应用：数据转换 =====
 var users = [
-    { name: "张三", gender: 1 },
+    { name: "Zhang San", gender: 1 },
     { name: "李四", gender: 0 }
 ];
 for (user in users) {
-    user.genderText = user.gender == 1 ? "男" : "女";
+    user.genderText = user.gender == 1 ? "Male" : "Female";
 }
 
 return {

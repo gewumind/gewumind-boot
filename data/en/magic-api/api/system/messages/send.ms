@@ -31,11 +31,10 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "向一个或多个用户发送消息",
+  "description": "Send a message to one or more users",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}
-================================
+}================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 if (!title || title == '') {

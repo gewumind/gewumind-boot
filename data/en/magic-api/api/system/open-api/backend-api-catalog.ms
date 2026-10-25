@@ -17,11 +17,10 @@
   "headers": [],
   "paths": [],
   "responseBody": "{\"code\":200,\"data\":{\"name\":\"api\",\"children\":[{\"name\":\"xxx\",\"type\":\"folder\",\"children\":[]},{\"name\":\"yyy\",\"type\":\"api\",\"path\":\"/xx\",\"method\":\"POST\"}]}}",
-  "description": "通过 magic-api 内置 /resource 端点读取所有 api 类型，返回目录树",
+  "description": "Read all api resources via the built-in /resource endpoint and return a catalog tree",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}
-================================
+}================================
 var result = catalog.buildApiTree(app_id)
 
 return result

@@ -83,7 +83,7 @@
             "children": [
               {
                 "name": "name",
-                "value": "李富贵",
+                "value": "Li Fugui",
                 "description": "",
                 "required": false,
                 "dataType": "String",
@@ -149,18 +149,18 @@
 // 第 1 步：定义一个 JSON 对象
 // 这是内存中的 JavaScript 对象表示
 var json = {
-    "name" : "李富贵"
+    "name" : "Li Fugui"
 }
 
 // 第 2 步：定义一个 JSON 字符串
 // 这是标准的 JSON 文本格式（注意字符串外层的引号）
-var jsonString = '{"name": "李富贵"}'
+var jsonString = '{"name": "Li Fugui"}'
 
 // 第 3 步：演示双向转换
 // jsonString::json  ：将 JSON 字符串  ->  JSON 对象（反序列化）
-//                     结果：{ name: "李富贵" }
+//                     结果：{ name: "Li Fugui" }
 // json::stringify   ：将 JSON 对象    ->  JSON 字符串（序列化）
-//                     结果：'{"name":"李富贵"}'
+//                     结果：'{"name":"Li Fugui"}'
 return {
     'jsonObject' : jsonString::json,    // 字符串 => 对象
     'jsonString' : json::stringify       // 对象   => 字符串

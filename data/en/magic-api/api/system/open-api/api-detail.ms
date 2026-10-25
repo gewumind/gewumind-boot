@@ -22,7 +22,7 @@
     {
       "name": "api_path",
       "value": null,
-      "description": "接口路径",
+      "description": "API path",
       "required": true,
       "dataType": "String"
     },

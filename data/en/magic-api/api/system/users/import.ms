@@ -69,7 +69,7 @@
             "expression": "",
             "children": [
               {
-                "name": "登录名称",
+                "name": "Login name",
                 "value": "test1",
                 "description": "",
                 "required": false,
@@ -82,7 +82,7 @@
                 "children": []
               },
               {
-                "name": "密码",
+                "name": "Password",
                 "value": "1",
                 "description": "",
                 "required": false,
@@ -95,7 +95,7 @@
                 "children": []
               },
               {
-                "name": "姓名/昵称",
+                "name": "Name / nickname",
                 "value": "test1",
                 "description": "",
                 "required": false,

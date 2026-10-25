@@ -17,11 +17,10 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "工作流入口（由前端 entryApi 调用）",
+  "description": "Workflow entry (called by the frontend entryApi)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}
-================================
+}================================
 var action = body.action
 var processId = body.processId
 
@@ -58,8 +57,8 @@ if (action == 'start') {
     workflow.approve(task.id, 'system', '员工提交申请')
     var nextNode = workflow.findNextNode(processId, 'apply', body, inst.id, '' + uid, 50)
     if (nextNode == 'end' || nextNode == null) {
-        workflow.moveToNext(inst.id, 'end', '结束', null)
-        return { success: true, instanceId: inst.id, nextNode: 'end', nextNodeLabel: '结束', autoSubmitted: true }
+        workflow.moveToNext(inst.id, 'end', 'End', null)
+        return { success: true, instanceId: inst.id, nextNode: 'end', nextNodeLabel: 'End', autoSubmitted: true }
     }
     var nextNodeName = workflow.getNodeLabel(processId, nextNode)
     var users = workflow.resolveRole(workflow.getNodeRole(processId, nextNode), uid)
@@ -108,11 +107,11 @@ if (action == 'approve') {
     var form = body.formData
     var comment = body.comment || body.reason || ''
     if (!taskId) {
-        return { success: false, message: '缺少 taskId' }
+        return { success: false, message: 'Missing taskId' }
     }
     var taskInfo = workflow.getTask(taskId)
     if (taskInfo == null) {
-        return { success: false, message: '任务不存在' }
+        return { success: false, message: 'Task not found' }
     }
     var instId = taskInfo.instance_id
     var nodeId = taskInfo.node_id
@@ -133,7 +132,7 @@ if (action == 'approve') {
     if (vars2 == null) { vars2 = {} }
     var nextNode = workflow.findNextNode(processId, nodeId, vars2, instId, '' + inst.initiator, 50)
     if (nextNode == 'end' || nextNode == null) {
-        workflow.moveToNext(instId, 'end', '结束', null)
+        workflow.moveToNext(instId, 'end', 'End', null)
         return { success: true, taskId: taskId, status: 'APPROVED', nextNode: 'end', autoSkipped: true }
     }
     var nextNodeName = workflow.getNodeLabel(processId, nextNode)
@@ -148,11 +147,11 @@ if (action == 'confirm') {
     var opC = body.userId || 'hr'
     var commentC = body.comment || ''
     if (!taskIdC) {
-        return { success: false, message: '缺少 taskId' }
+        return { success: false, message: 'Missing taskId' }
     }
     var taskInfoC = workflow.getTask(taskIdC)
     if (taskInfoC == null) {
-        return { success: false, message: '任务不存在' }
+        return { success: false, message: 'Task not found' }
     }
     var instIdC = taskInfoC.instance_id
     var nodeIdC = taskInfoC.node_id
@@ -165,7 +164,7 @@ if (action == 'confirm') {
     if (varsC == null) { varsC = {} }
     var nextNodeC = workflow.findNextNode(processId, nodeIdC, varsC, instIdC, '' + instC.initiator, 50)
     if (nextNodeC == 'end' || nextNodeC == null) {
-        workflow.moveToNext(instIdC, 'end', '结束', null)
+        workflow.moveToNext(instIdC, 'end', 'End', null)
         return { success: true, taskId: taskIdC, status: 'CONFIRMED', nextNode: 'end', autoSkipped: true }
     }
     var nextNodeNameC = workflow.getNodeLabel(processId, nextNodeC)
@@ -177,7 +176,7 @@ if (action == 'confirm') {
 
 if (action == 'detail') {
     if (!body.instanceId) {
-        return { success: false, message: '缺少 instanceId' }
+        return { success: false, message: 'Missing instanceId' }
     }
     var inst = workflow.getInstance(body.instanceId)
     if (inst == null) {
@@ -191,11 +190,11 @@ if (action == 'reject' || action == 'deny') {
     var op2 = body.userId || 'manager'
     var reason2 = body.reason || body.comment || ''
     if (!taskId2) {
-        return { success: false, message: '缺少 taskId' }
+        return { success: false, message: 'Missing taskId' }
     }
     var taskInfo2 = workflow.getTask(taskId2)
     if (taskInfo2 == null) {
-        return { success: false, message: '任务不存在' }
+        return { success: false, message: 'Task not found' }
     }
     var instId2 = taskInfo2.instance_id
 
@@ -240,7 +239,7 @@ if (action == 'reject' || action == 'deny') {
 
 if (action == 'terminate') {
     if (!body.instanceId) {
-        return { success: false, message: '缺少 instanceId' }
+        return { success: false, message: 'Missing instanceId' }
     }
     var inst3 = workflow.getInstance(body.instanceId)
     if (inst3 == null) {
@@ -260,7 +259,7 @@ if (action == 'terminate') {
 
 if (action == 'resubmit') {
     if (!body.instanceId) {
-        return { success: false, message: '缺少 instanceId' }
+        return { success: false, message: 'Missing instanceId' }
     }
     var inst4 = workflow.getInstance(body.instanceId)
     if (inst4 == null) {

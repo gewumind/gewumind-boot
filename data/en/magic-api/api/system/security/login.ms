@@ -139,7 +139,7 @@
       },
       {
         "name": "message",
-        "value": "用户名或密码错误",
+        "value": "Invalid username or password",
         "description": "",
         "required": false,
         "dataType": "String",
@@ -239,7 +239,7 @@ var user = db.table("sys_user").where().eq("username",body.username).eq("passwor
 
 var loginLog = {
     username: body.username,
-    type: '成功',
+    type: 'Success',
     ip: request.getClientIP(),
     browser: ua.getBrowser().toString(),
     os: ua.getOs().toString(),
@@ -248,9 +248,9 @@ var loginLog = {
 
 if(!user){
     loginLog.failPassword = body.password
-    loginLog.type = '失败'
+    loginLog.type = 'Failed'
     db.table("sys_login_log").primary("id").save(loginLog);
-    exit 0,'用户名或密码错误'
+    exit 0,'Invalid username or password'
 }
 
 if(user.isLogin == '1'){

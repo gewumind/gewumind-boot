@@ -36,7 +36,7 @@ for (index, item in list) {
 }
 
 // ===== 2. 遍历 Map =====
-var map = { name: "张三", age: 30, dept: "技术部" };
+var map = { name: "Zhang San", age: 30, dept: "技术部" };
 
 // for(key, value in map)：key 为字符串键，value 为对应值
 // 如果不需要 key，可简写为 for(value in map)

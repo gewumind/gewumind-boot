@@ -28,7 +28,7 @@ if (code == null || code == '') {
 }
 
 var data = [
-    {date: '2026-07-25', type: '入库', qty: 30,  unit_price: 12000, total: 360000, operator: '张三', remark: '采购到货'},
+    {date: '2026-07-25', type: '入库', qty: 30,  unit_price: 12000, total: 360000, operator: 'Zhang San', remark: '采购到货'},
     {date: '2026-07-26', type: '出库', qty: -5,  unit_price: 12000, total: -60000, operator: '李四', remark: '客户订单'},
     {date: '2026-07-28', type: '入库', qty: 10,  unit_price: 12000, total: 120000, operator: '王五', remark: '调拨入库'},
     {date: '2026-07-30', type: '出库', qty: -3,  unit_price: 12000, total: -36000, operator: '李四', remark: '客户订单'},

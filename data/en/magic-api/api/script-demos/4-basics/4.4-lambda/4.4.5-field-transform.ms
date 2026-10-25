@@ -28,16 +28,16 @@ var list = [{
     age : 19
 },{
     sex : 1,
-    name : '小花',
+    name : 'Xiaohua',
     age : 18
 }];
 
 var getAge = (age)=>{
-    return age > 18 ? '成人' : '未成年'
+    return age > 18 ? 'Adult' : 'Minor'
 }
 // 利用map函数对list进行过滤
 return list.map((item)=>{
     age : getAge(item.age),
-    sex : item.sex == 0 ? '男' : '女',
+    sex : item.sex == 0 ? 'Male' : 'Female',
     name : item.name
 });

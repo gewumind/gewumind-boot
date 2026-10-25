@@ -31,11 +31,10 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "返回水印显示的文本内容，可在此扩展显示更多信息",
+  "description": "Return the watermark text; extend here for more info",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}
-================================
+}================================
 import log
 
 var user = db.selectOne("SELECT id, name FROM sys_user WHERE id = #{userId}")

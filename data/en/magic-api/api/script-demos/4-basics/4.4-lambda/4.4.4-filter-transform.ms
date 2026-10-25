@@ -27,10 +27,10 @@ var list = [{
     name : '小明'
 },{
     sex : 1,
-    name : '小花'
+    name : 'Xiaohua'
 }]
 // 利用map函数对list进行过滤，然后进行转换
 return list.filter(item=>item.sex == 0).map((item)=>{
-    sex : item.sex == 0 ? '男' : '女',
+    sex : item.sex == 0 ? 'Male' : 'Female',
     name : item.name
 });
