@@ -52,7 +52,7 @@ jobs:
               for key, value in translations.items():
                   if isinstance(value, str) and re.search(r'[\u4e00-\u9fff]', value):
                       bad.append(f'{p}: {key} -> {value}')
-          for line in open('db/init/02-seed-en.sql', encoding='utf-8'):
+          for line in open('db/init/en/02-seed.sql', encoding='utf-8'):
               m = re.search(r"SET \w+='([^']*)'", line)
               if m and re.search(r'[\u4e00-\u9fff]', m.group(1)):
                   bad.append('seed: ' + line.strip())

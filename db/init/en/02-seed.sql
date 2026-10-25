@@ -1,5 +1,5 @@
--- 已有中文库切换英文：与 02-seed-en.sql 相同，可重复执行。
--- 用法：mysql ... < db/init/upgrade-en.sql
+-- GewuMind Boot · English seed (run after 01-baseline.sql; then en/03-demo.sql)
+-- 只更新内置菜单/字典的显示名；业务数据不翻译。
 
 -- 菜单
 UPDATE sys_menu SET name='Function Menu' WHERE name='功能菜单';

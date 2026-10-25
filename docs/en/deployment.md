@@ -165,9 +165,9 @@ connection-timeout: 30000
 ## 3.5 Internationalization
 
 **Database (deployment-level, pick one)**
-- Chinese: `01-baseline.sql` + `02-seed-zh.sql` + `03-demo-zh.sql`
-- English: `01-baseline.sql` + `02-seed-en.sql` + `03-demo-en.sql`
-- Existing Chinese DB: `upgrade-en.sql`
+- Chinese: `01-baseline.sql` + `db/init/zh/02-seed.sql` + `db/init/zh/03-demo.sql`
+- English: `01-baseline.sql` + `db/init/en/02-seed.sql` + `db/init/en/03-demo.sql`
+- Existing Chinese DB: `db/init/en/upgrade-from-zh.sql`
 
 **Frontend**
 - Open `?lang=en`, or run `localStorage.gw_lang='en'` and refresh
