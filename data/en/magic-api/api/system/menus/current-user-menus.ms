@@ -367,7 +367,7 @@
                       },
                       {
                         "name": "title",
-                        "value": "菜单管理",
+                        "value": "Menu管理",
                         "description": "",
                         "required": false,
                         "dataType": "String",
@@ -522,7 +522,7 @@
                         "children": [
                           {
                             "name": "title",
-                            "value": "菜单管理",
+                            "value": "Menu管理",
                             "description": "",
                             "required": false,
                             "dataType": "String",
@@ -603,7 +603,7 @@ import 'cn.dev33.satoken.stp.StpUtil';
 
 var userId = StpUtil.getLoginId()
 
-// 查出所有隐藏或者打开方式为“页签”和“iframe”的菜单（排除http地址和静态页面）
+// Find hidden menus or menus opened as tabs/iframe (excluding http URLs and static pages)
 var notLayoutMenus = db.select("""
     select * from (
         select
@@ -611,7 +611,7 @@ var notLayoutMenus = db.select("""
             sm.url as component_name,
             sm.name,
             sm.url as path,
-            -- 查询下级是否还有菜单（不包含按钮权限）
+            -- Check sub-menus (excluding button permissions)
             (
                 select count(1) from sys_menu where is_del = 0 and is_show = 1 and pid = sm.id and
                 (url is not null and url != '')
@@ -620,17 +620,17 @@ var notLayoutMenus = db.select("""
         from sys_menu sm
         where sm.is_del = 0 and (
             sm.url is not null and sm.url != ''
-            -- 排除不需要加载路由的菜单
+            -- Exclude menus that do not need routes
             and sm.url not like 'http%'
             and sm.url not like '%.htm'
             and sm.url not like '%.html'
         )
         and
         (
-            -- 查出来隐藏的需要加载的路由
+            -- Collect hidden routes that need loading
             sm.is_show = 0
             or
-            -- 新标签页和iframe
+            -- new tab and iframe
             sm.open_mode in ('1', '2')
         )
         ?{userId != '1',
@@ -643,7 +643,7 @@ var notLayoutMenus = db.select("""
     ) smm where sub_count = 0
 """)
 
-// 查出当前用户有权限的模块
+// Find modules the current user can access
 var modules = db.select("""
     select sm.id, sm.name, sm.code, sm.icon from sys_module sm
     where sm.is_del = 0 and sm.is_show = 1
@@ -673,7 +673,7 @@ var modules = db.select("""
     order by sm.sort
 """)
 
-// 查出所有显示的菜单
+// Find all visible menus
 var menus = db.select("""
     select
         sm.id,
@@ -738,9 +738,9 @@ nodes.each((key, node) => {
     }
 })
 
-// 标记每个一级菜单的所属模块
+// Mark the module of each top-level menu
 for(lm in layoutMenus){
-    // lm 可能是顶层菜单（直接关联模块）或 wrapper（包了一层，原节点是 children[0]）
+    // lm May be a top-level menu (direct module) or a wrapper (original node is children[0])
     var sourceMenu = lm.id ? lm : (lm.children && lm.children[0]) ? lm.children[0] : lm
     var menuRow = menus.filter(it => it.id == sourceMenu.id)[0]
     if(menuRow && menuRow.module_id){
