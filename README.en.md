@@ -6,9 +6,9 @@
 scripts, pages kept as component files, menus / roles / dictionaries / config all managed online.
 Three commands from clone to a fully working backend.
 
-![Dashboard](docs/screenshots/01-工作台.png)
+![Dashboard](docs/screenshots/en/dashboard.png)
 
-> Screenshots show the Chinese UI; append `?lang=en` to the app URL for the English UI.
+![Login](docs/screenshots/en/login.png)
 
 
 - Website: https://gewumind.github.io

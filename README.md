@@ -119,7 +119,7 @@ scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.2/gewumind-boot-
 
 ## 📸 系统截图
 
-以下均为 v0.3.0 的真实运行界面。
+以下均为 v1.1.0 的真实运行界面。
 
 ### 工作台
 
@@ -194,7 +194,7 @@ scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.2/gewumind-boot-
 | | |
 |---|---|
 | ![报表示例](docs/screenshots/19-报表示例.png) | ![流程演示](docs/screenshots/20-流程演示.png) |
-| **报表示例** —— 清单/交叉/中国式/多 Sheet 等 | **流程演示** —— 请假/合同/采购审批 |
+| **报表示例** —— 月度销售/库存/预算执行 | **流程演示** —— 报销/请假/采购审批 |
 
 ### 操作演示（GIF）
 
