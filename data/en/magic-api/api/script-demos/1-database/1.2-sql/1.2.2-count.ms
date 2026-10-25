@@ -22,11 +22,11 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示使用 db.selectInt() Query单行单列的整型结果 */
+/* 目的：演示使用 db.selectInt() 查询单行单列的整型结果 */
 
-// db.selectInt(sql) 用于Query单个数值，要求 SQL 结果返回一行一列
+// db.selectInt(sql) 用于查询单个数值，要求 SQL 结果返回一行一列
 
 // 1. db.selectInt() 接收一个 SQL 字符串
-// 2. SQL 必须是聚合Queryor只返回一行一列
+// 2. SQL 必须是聚合查询或只返回一行一列
 // 3. 返回 Integer 类型的结果，常用于 count、sum 等聚合统计
 return db.selectInt('select count(*) from magic_api_info')

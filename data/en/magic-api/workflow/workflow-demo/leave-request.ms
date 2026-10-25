@@ -270,24 +270,24 @@ var action = body.action
 if (action == 'getDefinition') {
     return {
     "processId": "leave_v1",
-    "description": "Employee leave: apply → manager → HR.",
-    "title": "{applicantName} leave {days} day(s) ({leave_type})",
+    "description": "员工请假：申请 → 部门经理 → HR。",
+    "title": "{applicantName} 请假 {days} 天（{leave_type}）",
     "nodes": [
         {
             "id": "apply",
-            "label": "Apply",
+            "label": "Employee request",
             "type": "start",
             "role": "${initiator}"
         },
         {
             "id": "mgr_approve",
-            "label": "Manager Approval",
+            "label": "部门经理审批",
             "type": "approve",
             "role": "dept_manager"
         },
         {
             "id": "hr_approve",
-            "label": "HR Approval",
+            "label": "HR 审批",
             "type": "approve",
             "role": "hr"
         },
@@ -313,80 +313,80 @@ if (action == 'getDefinition') {
     ],
     "forms": {
         "apply": {
-            "title": "Leave Request",
+            "title": "请假申请",
             "editable": [
                 "initiator"
             ],
             "fields": [
                 {
                     "name": "leave_type",
-                    "label": "Leave Type",
+                    "label": "请假类型",
                     "type": "select",
                     "required": true,
                     "options": [
                         {
-                            "value": "Annual",
-                            "label": "Annual"
+                            "value": "年假",
+                            "label": "年假"
                         },
                         {
-                            "value": "Sick",
-                            "label": "Sick"
+                            "value": "事假",
+                            "label": "事假"
                         },
                         {
-                            "value": "Personal",
-                            "label": "Personal"
+                            "value": "病假",
+                            "label": "病假"
                         }
                     ]
                 },
                 {
                     "name": "start_date",
-                    "label": "Start Date",
+                    "label": "开始日期",
                     "type": "date",
                     "required": true
                 },
                 {
                     "name": "end_date",
-                    "label": "End Date",
+                    "label": "结束日期",
                     "type": "date",
                     "required": true
                 },
                 {
                     "name": "days",
-                    "label": "Days",
+                    "label": "请假天数",
                     "type": "number",
                     "required": true
                 },
                 {
                     "name": "reason",
-                    "label": "Reason",
+                    "label": "请假事由",
                     "type": "textarea",
                     "required": true
                 }
             ]
         },
         "mgr_approve": {
-            "title": "Manager Approval",
+            "title": "部门经理审批",
             "editable": [
                 "dept_manager"
             ],
             "fields": [
                 {
                     "name": "mgr_comment",
-                    "label": "Approval Comment",
+                    "label": "审批意见",
                     "type": "textarea",
                     "required": true
                 }
             ]
         },
         "hr_approve": {
-            "title": "HR Approval",
+            "title": "HR 审批",
             "editable": [
                 "hr"
             ],
             "fields": [
                 {
                     "name": "hr_comment",
-                    "label": "Approval Comment",
+                    "label": "审批意见",
                     "type": "textarea",
                     "required": true
                 }

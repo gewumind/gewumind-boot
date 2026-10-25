@@ -34,7 +34,8 @@
   "description": "Return the watermark text; extend here for more info",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}================================
+}
+================================
 import log
 
 var user = db.selectOne("SELECT id, name FROM sys_user WHERE id = #{userId}")

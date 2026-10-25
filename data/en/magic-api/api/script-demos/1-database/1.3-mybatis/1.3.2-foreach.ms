@@ -100,13 +100,13 @@
   }
 }
 ================================
-/* 目的：演示 MyBatis 语法的 <foreach> Tag遍历集合构建 IN 条件 */
+/* 目的：演示 MyBatis 语法的 <foreach> 标签遍历集合构建 IN 条件 */
 
-// <foreach> Tag用于遍历集合（数组/List），常用于 IN Query
+// <foreach> 标签用于遍历集合（数组/List），常用于 IN 查询
 // 属性说明：
 //   collection="idList"  - 要遍历的集合变量名
 //   open="("             - 循环开始前拼接的字符串
-//   separator=","        - 每次迭代之间的min隔符
+//   separator=","        - 每次迭代之间的分隔符
 //   close=")"            - 循环结束后拼接的字符串
 //   item="item"          - 每次迭代的元素变量名
 

@@ -34,7 +34,8 @@
   "description": "Send a message to one or more users",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}================================
+}
+================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 if (!title || title == '') {

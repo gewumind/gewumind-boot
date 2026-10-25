@@ -258,24 +258,24 @@ var action = body.action
 if (action == 'getDefinition') {
     return {
     "processId": "expense_v1",
-    "description": "Employee expense: apply → manager → finance.",
-    "title": "{applicantName} expense {amount} CNY ({category})",
+    "description": "员工报销：申请 → 部门经理 → 财务。",
+    "title": "{applicantName} 报销 {amount} 元（{category}）",
     "nodes": [
         {
             "id": "apply",
-            "label": "Apply",
+            "label": "Employee request",
             "type": "start",
             "role": "${initiator}"
         },
         {
             "id": "mgr_approve",
-            "label": "Manager Approval",
+            "label": "部门经理审批",
             "type": "approve",
             "role": "dept_manager"
         },
         {
             "id": "fin_approve",
-            "label": "Finance Approval",
+            "label": "财务审批",
             "type": "approve",
             "role": "finance"
         },
@@ -301,74 +301,74 @@ if (action == 'getDefinition') {
     ],
     "forms": {
         "apply": {
-            "title": "Expense Request",
+            "title": "报销申请",
             "editable": [
                 "initiator"
             ],
             "fields": [
                 {
                     "name": "amount",
-                    "label": "Amount",
+                    "label": "报销金额",
                     "type": "number",
                     "required": true
                 },
                 {
                     "name": "category",
-                    "label": "Category",
+                    "label": "费用类型",
                     "type": "select",
                     "required": true,
                     "options": [
                         {
-                            "value": "Travel",
-                            "label": "Travel"
+                            "value": "差旅",
+                            "label": "差旅"
                         },
                         {
-                            "value": "Office",
-                            "label": "Office"
+                            "value": "办公",
+                            "label": "办公"
                         },
                         {
-                            "value": "Entertainment",
-                            "label": "Entertainment"
+                            "value": "招待",
+                            "label": "招待"
                         }
                     ]
                 },
                 {
                     "name": "expense_date",
-                    "label": "Expense Date",
+                    "label": "发生日期",
                     "type": "date",
                     "required": true
                 },
                 {
                     "name": "description",
-                    "label": "Description",
+                    "label": "费用说明",
                     "type": "textarea",
                     "required": true
                 }
             ]
         },
         "mgr_approve": {
-            "title": "Manager Approval",
+            "title": "部门经理审批",
             "editable": [
                 "dept_manager"
             ],
             "fields": [
                 {
                     "name": "mgr_comment",
-                    "label": "Approval Comment",
+                    "label": "审批意见",
                     "type": "textarea",
                     "required": true
                 }
             ]
         },
         "fin_approve": {
-            "title": "Finance Approval",
+            "title": "财务审批",
             "editable": [
                 "finance"
             ],
             "fields": [
                 {
                     "name": "fin_comment",
-                    "label": "Approval Comment",
+                    "label": "审批意见",
                     "type": "textarea",
                     "required": true
                 }

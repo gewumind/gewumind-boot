@@ -22,7 +22,7 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== Purpose =====
+// ===== 目的 =====
 // 演示如何在 magic-script 中调用其他已注册的 HTTP 接口
 // 使用 import 语法按 HTTP 方法 + 路径导入已定义的接口并调用
 // 格式：import '@{HTTP方法}:{接口路径}' as {别名}

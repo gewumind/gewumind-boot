@@ -26,7 +26,7 @@
 
 // update() 方法需要先通过 .primary() 指定主键，然后传入包含主键值和要修改字段的对象
 
-// 1. Target table: magic_api_info
+// 1. 指定要操作的表 magic_api_info
 // 2. 使用 .primary('id') 设置主键列名为 id
 // 3. 使用 .update({...}) 执行更新操作
 //    - 传入的对象中必须包含主键字段（id）用于定位要修改的记录

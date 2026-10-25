@@ -17,23 +17,23 @@
 ================================
 // TCP Server 示例：IoT 设备数据采集
 // 场景：传感器/扫码枪/PLC 设备通过 TCP 发送 JSON 数据
-// 协议：JSON 行min隔（每条数据以 \n 结束）
+// 协议：JSON 行分隔（每条数据以 \n 结束）
 //
 // 在其他 API 脚本中通过以下方式触发推送：
 //   tcpHelper.sendToClient(clientId, '{"cmd":"restart"}\n')
 //   tcpHelper.broadcastToPort(9000, '{"alert":"高温"}\n')
 // 详见 api/数据演示/TCP演示/推送字节.ms
 //
-// Enabled:
+// 启用：
 //   1. 配置中心：tcp.enabled = true
-//   2. Restart the backend to apply
+//   2. 重启后端生效
 //
 // 设备端发送示例：
 //   {"deviceId":"sensor-001","type":"temperature","value":23.5}
 //   {"deviceId":"sensor-001","type":"humidity","value":65}
 //
 // Python 测试（注意：9000 port 上 Echo 示例和 IoT 示例共用同一 listener，
-//   后注册者会覆盖前者；测试其中一个h建议把另一个 disabled）：
+//   后注册者会覆盖前者；测试其中一个时建议把另一个 disabled）：
 //   python3 scripts/send_tcp_msg.py localhost 9000 '{"deviceId":"sensor-001","type":"temperature","value":23.5}'
 
 // ===== 接收 =====

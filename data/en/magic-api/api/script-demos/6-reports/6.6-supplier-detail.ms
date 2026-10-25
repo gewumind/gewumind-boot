@@ -36,8 +36,8 @@ var dataMap = {
     ],
     'S002': [
         {date: '2026-07-10', orderNo: 'PO20260710001', product: 'iPhone 15 Pro',     qty: 10, unitPrice: 9000,  total: 90000,  status: 'Received'},
-        {date: '2026-07-18', orderNo: 'PO20260718002', product: 'Huawei Mate60 Pro',    qty: 8,  unitPrice: 7000,  total: 56000,  status: 'Shipped'},
-        {date: '2026-07-22', orderNo: 'PO20260722003', product: 'Xiaomi 14 Ultra',     qty: 10, unitPrice: 6500,  total: 65000,  status: 'Processing'},
+        {date: '2026-07-18', orderNo: 'PO20260718002', product: '华为 Mate60 Pro',    qty: 8,  unitPrice: 7000,  total: 56000,  status: 'Shipped'},
+        {date: '2026-07-22', orderNo: 'PO20260722003', product: '小米 14 Ultra',     qty: 10, unitPrice: 6500,  total: 65000,  status: 'Processing'},
         {date: '2026-07-28', orderNo: 'PO20260728004', product: 'iPad Pro 11',       qty: 6,  unitPrice: 6800,  total: 40800,  status: 'Received'}
     ],
     'S003': [

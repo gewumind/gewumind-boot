@@ -34,7 +34,8 @@
   "description": "Mark all unread messages of the current user as read",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}================================
+}
+================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 var currentUserId = StpUtil.getLoginId()

@@ -245,7 +245,8 @@
       }
     ]
   }
-}================================
+}
+================================
 // Redis 基础操作演示
 // 需先在配置中心设置 redis.enabled = true
 
@@ -262,7 +263,7 @@ redis.setex('demo:code', '123456', 60)
 
 
 // Hash 操作
-redis.hSet('demo:user:1', 'name', 'Zhang San')
+redis.hSet('demo:user:1', 'name', '张三')
 redis.hSet('demo:user:1', 'age', '25')
 var user = redis.hGetAll('demo:user:1')
 var age = redis.hGet('demo:user:1', 'age')
@@ -275,7 +276,7 @@ var tasks = redis.lRange('demo:queue', 0, -1)
 // 判断键是否存在
 var hasKey = redis.exists('demo:name')
 
-// 获取过期h间
+// 获取过期时间
 var ttl = redis.ttl('demo:code')
 
 // 删除

@@ -24,13 +24,13 @@
 ================================
 /* 目的：演示 SQL 中的三种参数处理方式：#{} 占位符、${} 拼接、?{} 动态条件 */
 
-// 具体执行的 SQL 请看打印的运行d志信息
+// 具体执行的 SQL 请看打印的运行日志信息
 
 // 1. 定义一个数组 ids = ['1', '2', '3']
 var ids = ['1', '2', '3']
 
 // ===== 方式一：#{ids} 自动展开集合参数 =====
-// 当参数是 List/Array h，#{} 会自动展开为多个占位符
+// 当参数是 List/Array 时，#{} 会自动展开为多个占位符
 // 生成 SQL：select * from magic_api_info where id in (?, ?, ?)
 db.select('select * from magic_api_info where id in (#{ids})')
 
@@ -40,8 +40,8 @@ db.select('select * from magic_api_info where id in (#{ids})')
 db.select("select * from magic_api_info where id = #{id} ")
 
 // ===== 方式三：?{} 动态条件判断 =====
-// ?{condition, expression} 当 condition 为 true h拼接 expression
-// 类似 MyBatis 的 <if> Tag
+// ?{condition, expression} 当 condition 为 true 时拼接 expression
+// 类似 MyBatis 的 <if> 标签
 // 此处：如果 name 有值（非空），则拼接 and api_name = #{name}
 // 等价于：select * from magic_api_info where id = '123' <if test="name != null and name != ''"> and api_name = #{name} </if>
 db.select("select * from magic_api_info where id = '123' ?{name, and api_name = #{name}}")

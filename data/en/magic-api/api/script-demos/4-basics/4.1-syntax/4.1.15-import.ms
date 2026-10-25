@@ -24,14 +24,14 @@
 ================================
 /* 目的：演示 import 导入内置模块的用法 */
 // magic-script 内置多个模块：db, log, http, request, response, env 等
-// 用法：import 模块名;  or  import 模块名 as 别名;
+// 用法：import 模块名;  或  import 模块名 as 别名;
 
 // ===== 1. 导入 log 模块 =====
 import log;
-// log 模块用于输出d志
+// log 模块用于输出日志
 // 导入后使用 log.info() / log.warn() / log.error()
-log.info("这是 info d志");
-log.warn("这是 warn d志");
+log.info("这是 info 日志");
+log.warn("这是 warn 日志");
 
 // ===== 2. 导入 http 模块（调用其他接口） =====
 import http;

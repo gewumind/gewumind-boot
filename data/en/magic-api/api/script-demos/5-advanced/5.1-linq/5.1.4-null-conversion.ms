@@ -22,9 +22,9 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== Purpose =====
+// ===== 目的 =====
 // 演示空值（null）转换处理
-// 当数据中存在 null、空字符串、0 等"空"值h，使用 || or ifnull 提供默认值
+// 当数据中存在 null、空字符串、0 等"空"值时，使用 || 或 ifnull 提供默认值
 // 区别：
 //   ||     ：将 null、空字符串 ''、0、空集合 []、空 Map {} 均视为空值
 //   ifnull ：仅将 null 视为空值，空字符串和 0 保持原值
@@ -38,11 +38,11 @@ var list = [
 ]
 
 // 第 2 步：使用 SQL 风格 LINQ 进行空值转换
-// t.name || 'Anonymous'：如果 name 为 null/空串/0，则显示 'Anonymous'
-// ifnull(t.age, 20)：仅当 age 为 null h显示 20（第二条记录的 age 是 undefined，ifnull 不生效）
+// t.name || '无名'：如果 name 为 null/空串/0，则显示 '无名'
+// ifnull(t.age, 20)：仅当 age 为 null 时显示 20（第二条记录的 age 是 undefined，ifnull 不生效）
 //                   注意：undefined 不是 null，所以 ifnull 不会替换
 return 
     select 
-        t.name || 'Anonymous' name,      // null + 'Anonymous' => 'Anonymous'
+        t.name || '无名' name,      // null + '无名' => '无名'
         ifnull(t.age, 20) age       // undefined ≠ null，所以第二条记录 age 仍为 undefined
     from list t

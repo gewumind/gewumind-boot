@@ -60,15 +60,16 @@
   "description": "Push bytes to TCP clients",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}================================
+}
+================================
 // TCP 主动推送示例
-// 向已连接 tcp://host:port 的客户端实h推送字节
+// 向已连接 tcp://host:port 的客户端实时推送字节
 //
-// Prerequisites:
-//   1. Config center: tcp.enabled = true
-//   2. 已有客户端连接（server/tcp-echo示例.ms or IoT采集示例.ms 注册）
+// 前置条件：
+//   1. 配置中心 tcp.enabled = true
+//   2. 已有客户端连接（server/tcp-echo示例.ms 或 IoT采集示例.ms 注册）
 //
-// Request body (JSON):
+// 请求体（JSON）：
 //   {
 //     "clientId": "",        // 指定客户端，留空=广播
 //     "port":      9000,     // 广播目标端口
@@ -92,5 +93,5 @@ return {
     success: true,
     target: body.clientId ?: 'broadcast:' + targetPort,
     onlineClients: clientCount,
-    message: '已推送给 ' + clientCount + '  online clients'
+    message: '已推送给 ' + clientCount + ' 个在线客户端'
 }

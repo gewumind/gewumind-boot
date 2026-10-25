@@ -22,10 +22,10 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== Purpose =====
+// ===== 目的 =====
 // 演示将扁平列表（list）转换为树形结构（tree）
 // 使用递归函数 + SQL 风格 LINQ 实现无限层级树构建
-// 典型应用场景：组织架构、min类目录、菜单树
+// 典型应用场景：组织架构、分类目录、菜单树
 
 // 第 1 步：定义递归构建树的函数
 // 参数：
@@ -40,10 +40,10 @@ var toTree = (list, parentId) => select
 from list t 
 where t.parent_id = parentId                    // 只取父节点为 parentId 的记录
 
-// 第 2 步：从数据库Querymin组数据（含父级 ID）
-// Query字段：id（当前节点ID）、group_name（节点名称）、parent_id（父节点ID）
+// 第 2 步：从数据库查询分组数据（含父级 ID）
+// 查询字段：id（当前节点ID）、group_name（节点名称）、parent_id（父节点ID）
 var flatData = db.select('select id, group_name, parent_id from magic_group')
 
-// 第 3 步：调用递归函数，从Root（parent_id = '0'）开始构建树
-// Root的 parent_id 为 '0'，toTree 会递归构建所有层级
+// 第 3 步：调用递归函数，从根节点（parent_id = '0'）开始构建树
+// 根节点的 parent_id 为 '0'，toTree 会递归构建所有层级
 return toTree(flatData, '0')

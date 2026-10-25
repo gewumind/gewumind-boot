@@ -39,4 +39,4 @@ return response.json({
 // return response.text('ok');
 
 // response.download(file)：文件下载（见 5.2.3）
-// response.page(total, list)：min页结果（见 5.2.1）
+// response.page(total, list)：分页结果（见 5.2.1）

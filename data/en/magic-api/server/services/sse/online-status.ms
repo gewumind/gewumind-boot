@@ -15,26 +15,26 @@
   "enabled": true
 }
 ================================
-// SSE Server 示例：在线状态追踪（带生命wk期钩子）
-// Browser EventSource 订阅 /sse/presence 自动维护在线列表
+// SSE Server 示例：在线状态追踪（带生命周期钩子）
+// 浏览器 EventSource 订阅 /sse/presence 自动维护在线列表
 //
-// Lifecycle variables (reserved names):
-//   _onConnect(clientId, path) => {}  客户端连接h触发
-//   _onClose(clientId, path)   => {}  客户端断开h触发
+// 生命周期变量（特殊约定名）：
+//   _onConnect(clientId, path) => {}  客户端连接时触发
+//   _onClose(clientId, path)   => {}  客户端断开时触发
 //
-// Enabled:
+// 启用：
 //   1. 配置中心 sse.enabled = true
-//   2. Restart the backend to apply
+//   2. 重启后端生效
 //
-// Browser订阅：
+// 浏览器订阅：
 //   const es = new EventSource('/sse/presence')
 //   es.addEventListener('welcome', e => console.log('welcome:', e.data))
 //   es.addEventListener('snapshot', e => console.log('online:', JSON.parse(e.data)))
 //   es.addEventListener('leave', e => console.log('leave:', e.data))
 //
-// 配套Query API：api/数据演示/SSE演示/推送通知.ms
+// 配套查询 API：api/数据演示/SSE演示/推送通知.ms
 
-// ---------- 生命wk期钩子 ----------
+// ---------- 生命周期钩子 ----------
 
 var _onConnect = (clientId, path) => {
     println('[Presence-SSE] 用户上线: ' + clientId + ' @ ' + path)
@@ -43,10 +43,10 @@ var _onConnect = (clientId, path) => {
 
 var _onClose = (clientId, path) => {
     println('[Presence-SSE] 用户下线: ' + clientId + ' @ ' + path)
-    // 实际场景：清理 session / 通知其他在线用户 / 更新最后在线h间
+    // 实际场景：清理 session / 通知其他在线用户 / 更新最后在线时间
 }
 
-// ---------- 业务逻辑：连接h下发当前状态快照 ----------
+// ---------- 业务逻辑：连接时下发当前状态快照 ----------
 
 println('[Presence-SSE] 客户端连接: ' + _clientId + ' @ ' + _path)
 

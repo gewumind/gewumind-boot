@@ -25,21 +25,21 @@
 /* 目的：演示使用 db.cache() 进行 SQL 结果缓存 */
 
 /*
- * db.cache(cacheName, ttl) 用于缓存Query结果，避免重复Query数据库
+ * db.cache(cacheName, ttl) 用于缓存查询结果，避免重复查询数据库
  * - cacheName：缓存名称，相同名称的缓存共享同一个缓存空间
  * - ttl：有效期（毫秒），可选，默认使用全局配置
  *
- * 当执行修改操作（update/insert/delete）h，同名缓存会自动Clear
+ * 当执行修改操作（update/insert/delete）时，同名缓存会自动清空
  */
 
-// Clear名为 user 的缓存（如果需要手动清除）
+// 清空名为 user 的缓存（如果需要手动清除）
 // db.deleteCache('user')
 
-// 当执行 update/insert 等修改语句h，会自动Clear名为 user 的缓存
+// 当执行 update/insert 等修改语句时，会自动清空名为 user 的缓存
 // db.cache('user').update('......')
 
 // 使用缓存名为 'user' 的缓存，有效期 2000 毫秒（2 秒）
-// 在 2 秒内多次执行相同Queryh，直接返回缓存结果
+// 在 2 秒内多次执行相同查询时，直接返回缓存结果
 return db.cache('user', 2000)
     .select('select 1')
 

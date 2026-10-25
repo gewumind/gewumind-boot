@@ -34,7 +34,8 @@
   "description": "MQTT basics (background callback mode)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}================================
+}
+================================
 if (!mqtt.isEnabled()) {
     return { success: false, message: 'MQTT 未启用，请在配置中心设置 mqtt.enabled = true' }
 }

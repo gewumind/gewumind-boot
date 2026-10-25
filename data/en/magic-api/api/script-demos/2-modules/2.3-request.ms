@@ -36,5 +36,5 @@ return request.getHeaders("Host");
 // request.getIp()             - 获取客户端 IP 地址
 // request.getMethod()         - 获取请求方法（GET/POST）
 // request.getUrl()            - 获取完整请求 URL
-// request.getParameter(name)  - 获取Query参数值
+// request.getParameter(name)  - 获取查询参数值
 // request.getBody()           - 获取请求体（POST 提交的内容）

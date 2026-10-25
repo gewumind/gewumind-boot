@@ -63,6 +63,6 @@
 ================================
 var codeCount = db.selectInt("select count(1) from sys_office where is_del = 0 and code = #{code} ?{id, and id != #{id}}")
 if(codeCount > 0){
-    exit 0,'Organization code已存在'
+    exit 0,'机构编码已存在'
 }
 return db.table("sys_office").primary("id").saveOrUpdate(data);

@@ -48,7 +48,8 @@
   "description": "Mark the specified message as read",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}================================
+}
+================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 var currentUserId = StpUtil.getLoginId()

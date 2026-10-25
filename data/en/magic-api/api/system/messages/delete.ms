@@ -48,7 +48,8 @@
   "description": "Soft-delete the specified message",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}================================
+}
+================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 var currentUserId = StpUtil.getLoginId()

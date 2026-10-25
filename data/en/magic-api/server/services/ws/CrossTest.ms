@@ -22,11 +22,11 @@
 //   ✅ @post:/xxx api  - API POST import + 执行成功（magic-api 自动注入空 request/response）
 //   ⚠️ @get:/xxx api  - API import 可用，但若 API 内部依赖 sa-token 等 servlet 上下文会失败
 //
-// Enabled:
+// 启用：
 //   1. 文件已经默认 enabled: true
-//   2. 在 magic-api 后台管理界面保存一次（or touch 此文件触发 reload）
+//   2. 在 magic-api 后台管理界面保存一次（或 touch 此文件触发 reload）
 //   3. 用 ws 客户端连 ws://localhost:9089/ws/crosstest 发任意消息
-//   4. 后端d志查看 5 项结果
+//   4. 后端日志查看 5 项结果
 
 println('[CrossTest] start')
 
@@ -44,7 +44,7 @@ try {
 }
 
 // ============ 2. db 在 function 内部访问 ============
-// function 可以访问 db 说明 function 在调用h拿到了完整 magic-api context
+// function 可以访问 db 说明 function 在调用时拿到了完整 magic-api context
 results.fn_db_ok = false
 try {
     import '@/test/crossFnDb' as fnDb

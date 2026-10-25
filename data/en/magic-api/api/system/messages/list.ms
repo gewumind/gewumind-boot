@@ -74,7 +74,8 @@
   "description": "Paginated message list for the current user",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}================================
+}
+================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 var currentUserId = StpUtil.getLoginId()

@@ -29,7 +29,7 @@
 
 // 1. db.insert() 第一个参数是 INSERT SQL 字符串
 // 2. #{userName}、#{password} 是参数占位符
-//    - 框架会从同名的变量or请求参数中自动取值
+//    - 框架会从同名的变量或请求参数中自动取值
 //    - #{} 使用 PreparedStatement 预编译，防止 SQL 注入
 // 3. 第二个参数 'id' 指定主键列，插入成功后返回自增主键值
 return db.insert("""insert into sys_user(user_name, password) values (#{userName}, #{password})""", 'id')

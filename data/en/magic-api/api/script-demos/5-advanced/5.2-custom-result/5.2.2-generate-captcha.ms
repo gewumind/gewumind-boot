@@ -22,7 +22,7 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== Purpose =====
+// ===== 目的 =====
 // 演示使用 Java AWT 图形库在 magic-script 中生成图片验证码
 // 利用 import 导入 Java 标准库实现服务器端图片生成
 // 包含：随机字符、旋转、干扰线、噪点等防破解机制
@@ -35,7 +35,7 @@ import 'java.io.ByteArrayOutputStream' as ByteArrayOutputStream  // 字节输出
 import 'java.util.Random' as Random                       // 随机数
 import 'javax.imageio.ImageIO' as ImageIO                 // 图片编码输出
 import response                                           // 返回图片响应
-import log                                                // d志输出
+import log                                                // 日志输出
 
 // ===== 第 2 步：创建空白图片 =====
 var width = 200                                            // 图片宽度
@@ -76,7 +76,7 @@ for (i in range(0, 4)) {                                   // 循环 4 次，生
     x = x + 48                                              // 移动到下一个字符位置
 }
 
-log.info('生成的验证码:{}', code)                           // 服务端d志记录验证码（调试用）
+log.info('生成的验证码:{}', code)                           // 服务端日志记录验证码（调试用）
 
 // ===== 第 5 步：绘制干扰线和噪点 =====
 for (i in range(0, 6)) {                                   // 绘制 6 条随机干扰线
@@ -100,4 +100,4 @@ ImageIO.write(image, "png", baos)                          // 将图片写入 PN
 baos.flush()
 baos.close()
 
-return response.image(baos.toByteArray(), 'image/png')     // 返回图片响应（Browser可直接显示）
+return response.image(baos.toByteArray(), 'image/png')     // 返回图片响应（浏览器可直接显示）

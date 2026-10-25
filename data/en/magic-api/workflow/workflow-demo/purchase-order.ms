@@ -254,24 +254,24 @@ var action = body.action
 if (action == 'getDefinition') {
     return {
     "processId": "purchase_v1",
-    "description": "Purchase request: apply → manager → CFO.",
-    "title": "{applicantName} purchase {item} × {quantity}",
+    "description": "采购申请：申请 → 部门经理 → CFO。",
+    "title": "{applicantName} 采购 {item} × {quantity}",
     "nodes": [
         {
             "id": "apply",
-            "label": "Apply",
+            "label": "采购申请",
             "type": "start",
             "role": "${initiator}"
         },
         {
             "id": "mgr_approve",
-            "label": "Manager Approval",
+            "label": "部门经理审批",
             "type": "approve",
             "role": "dept_manager"
         },
         {
             "id": "cfo_approve",
-            "label": "CFO Approval",
+            "label": "CFO 审批",
             "type": "approve",
             "role": "cfo"
         },
@@ -297,72 +297,72 @@ if (action == 'getDefinition') {
     ],
     "forms": {
         "apply": {
-            "title": "Purchase Request",
+            "title": "采购申请",
             "editable": [
                 "initiator"
             ],
             "fields": [
                 {
                     "name": "vendor",
-                    "label": "Vendor",
+                    "label": "供应商",
                     "type": "input",
                     "required": true
                 },
                 {
                     "name": "item",
-                    "label": "Item",
+                    "label": "采购物品",
                     "type": "input",
                     "required": true
                 },
                 {
                     "name": "quantity",
-                    "label": "Quantity",
+                    "label": "数量",
                     "type": "number",
                     "required": true
                 },
                 {
                     "name": "unit_price",
-                    "label": "Unit Price",
+                    "label": "单价",
                     "type": "number",
                     "required": true
                 },
                 {
                     "name": "total_amount",
-                    "label": "Total Amount",
+                    "label": "总金额",
                     "type": "number",
                     "required": true
                 },
                 {
                     "name": "order_date",
-                    "label": "Order Date",
+                    "label": "下单日期",
                     "type": "date",
                     "required": true
                 }
             ]
         },
         "mgr_approve": {
-            "title": "Manager Approval",
+            "title": "部门经理审批",
             "editable": [
                 "dept_manager"
             ],
             "fields": [
                 {
                     "name": "mgr_comment",
-                    "label": "Approval Comment",
+                    "label": "审批意见",
                     "type": "textarea",
                     "required": true
                 }
             ]
         },
         "cfo_approve": {
-            "title": "CFO Approval",
+            "title": "CFO 审批",
             "editable": [
                 "cfo"
             ],
             "fields": [
                 {
                     "name": "cfo_comment",
-                    "label": "Approval Comment",
+                    "label": "审批意见",
                     "type": "textarea",
                     "required": true
                 }

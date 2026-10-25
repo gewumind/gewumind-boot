@@ -64,7 +64,7 @@
 import org.ssssssss.magicapi.modules.db.cache.SqlCache;
 import '@get:/system/menu/cache/delete' as cacheDelete;
 
-// 移除已废弃的 component_id 字段（菜单不再关联具体动态组件，靠 url 与运行h注册的组件匹配）
+// 移除已废弃的 component_id 字段（菜单不再关联具体动态组件，靠 url 与运行时注册的组件匹配）
 data.remove('component_id')
 data.remove('componentId')
 
@@ -91,7 +91,7 @@ if(data.url){
 if(data.permission){
     var permissionCount = db.selectInt("select count(1) from sys_menu where is_del = 0 and permission = #{data.permission} ?{data.id, and id != #{data.id}}")
     if(permissionCount > 0){
-        exit 0,'Permission code已存在'
+        exit 0,'权限标识已存在'
     }
 }
 

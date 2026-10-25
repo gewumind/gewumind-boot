@@ -20,7 +20,8 @@
   "description": "Read all api resources via the built-in /resource endpoint and return a catalog tree",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}================================
+}
+================================
 var result = catalog.buildApiTree(app_id)
 
 return result

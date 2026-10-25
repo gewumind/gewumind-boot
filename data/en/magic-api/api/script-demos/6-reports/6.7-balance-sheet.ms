@@ -74,7 +74,7 @@ return [
     {item: '  实收资本(股本)',           line: '34', endBalance: 800000, endPct: 25.86, beginBalance: 800000, beginPct: 28.04},
     {item: '  资本公积',                 line: '35', endBalance: 120000, endPct: 3.88,  beginBalance: 120000, beginPct: 4.21},
     {item: '  盈余公积',                 line: '36', endBalance: 95000,  endPct: 3.07,  beginBalance: 85000,  beginPct: 2.98},
-    {item: '  未min配利润',               line: '37', endBalance: 235800, endPct: 7.62,  beginBalance: 163000, beginPct: 5.71},
+    {item: '  未分配利润',               line: '37', endBalance: 235800, endPct: 7.62,  beginBalance: 163000, beginPct: 5.71},
     {item: '所有者权益合计',             line: '', endBalance: 1250800, endPct: 40.43, beginBalance: 1168000, beginPct: 40.94, _rowType: 'subtotal'},
     {item: '', line: '', endBalance: null, endPct: null, beginBalance: null, beginPct: null, _rowType: 'spacer'},
     {item: '负债及所有者权益总计',       line: '', endBalance: 3092800, endPct: 100.00, beginBalance: 2852000, beginPct: 100.00, _rowType: 'grand'}

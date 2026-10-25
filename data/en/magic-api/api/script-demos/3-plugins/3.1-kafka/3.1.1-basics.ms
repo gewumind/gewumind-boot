@@ -34,7 +34,8 @@
   "description": "Kafka basics (background callback mode)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
-}================================
+}
+================================
 if (!kafka.isEnabled()) {
     return { success: false, message: 'Kafka 未启用，请在配置中心设置 kafka.enabled = true' }
 }

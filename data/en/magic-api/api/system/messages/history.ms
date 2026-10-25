@@ -100,7 +100,8 @@
   "description": "Paginated message history (keyword, type, read filter)",
   "requestBodyDefinition": {},
   "responseBodyDefinition": {}
-}================================
+}
+================================
 import 'cn.dev33.satoken.stp.StpUtil';
 
 var currentUserId = StpUtil.getLoginId()

@@ -22,7 +22,7 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== Purpose =====
+// ===== 目的 =====
 // 演示如何跨文件调用其他 magic-script 函数（模块化）
 // 使用 import 导入其他 .ms 文件中定义的函数并调用
 // 路径中的 @ 表示 magic-api 的根路径

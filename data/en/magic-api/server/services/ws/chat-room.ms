@@ -17,17 +17,17 @@
 ================================
 // WebSocket Server 示例：聊天室（接收端 + 同 room 回推）
 // 客户端连接 ws://<host>:9089/ws/chat/<room> 后收发消息。
-// 本脚本在收到聊天消息h，把它转发到同 room 的所有客户端（room = path）。
-// 这是典型的"接收 + 即h广播给订阅者"模式。
+// 本脚本在收到聊天消息时，把它转发到同 room 的所有客户端（room = path）。
+// 这是典型的"接收 + 即时广播给订阅者"模式。
 //
 // 系统消息推送（无 trigger）请走 API：
 //   wsHelper.broadcastToPath('/chat/room1', '{"msg":"系统消息"}')
 //   wsHelper.sendToClient(clientId, '{"type":"private"}')
 // 详见 api/数据演示/WebSocket演示/基础操作.ms
 //
-// Enabled:
-//   1. Config center: ws.enabled = true
-//   2. Restart the backend to apply
+// 启用：
+//   1. 配置中心：ws.enabled = true
+//   2. 重启后端生效
 //
 // 测试（开 3 个终端）：
 //   python3 send_ws_msg.py ws://localhost:9089/ws/chat/room1 "hello 1"

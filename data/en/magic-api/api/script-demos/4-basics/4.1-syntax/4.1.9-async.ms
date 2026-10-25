@@ -122,7 +122,7 @@
 
 var list = [];
 for(index in range(1,10)){
-    // 执行SQLh，为了线程安全，需要把index参数放入lambda参数中。
+    // 执行SQL时，为了线程安全，需要把index参数放入lambda参数中。
     list.add(async (index)=>db.selectInt('select #{index}'));
 }
 return list.map(f => f.get())

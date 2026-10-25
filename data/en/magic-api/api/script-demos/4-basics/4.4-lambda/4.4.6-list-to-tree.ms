@@ -30,5 +30,5 @@ var toTree = (list,parentId)=>{
         it.children = toTree(list,it.id)    // 过滤后循环这些节点递归添加children属性
     }) 
 }
-// Root为 0
+// 根节点为 0
 return toTree(db.select('select id,group_name,parent_id from magic_group'),'0')

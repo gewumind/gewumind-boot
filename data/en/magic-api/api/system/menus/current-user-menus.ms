@@ -603,7 +603,7 @@ import 'cn.dev33.satoken.stp.StpUtil';
 
 var userId = StpUtil.getLoginId()
 
-// 查出所有隐藏or者打开方式为“页签”和“iframe”的菜单（排除http地址和静态页面）
+// 查出所有隐藏或者打开方式为“页签”和“iframe”的菜单（排除http地址和静态页面）
 var notLayoutMenus = db.select("""
     select * from (
         select
@@ -611,7 +611,7 @@ var notLayoutMenus = db.select("""
             sm.url as component_name,
             sm.name,
             sm.url as path,
-            -- Query下级是否还有菜单（不包含按钮权限）
+            -- 查询下级是否还有菜单（不包含按钮权限）
             (
                 select count(1) from sys_menu where is_del = 0 and is_show = 1 and pid = sm.id and
                 (url is not null and url != '')
@@ -630,7 +630,7 @@ var notLayoutMenus = db.select("""
             -- 查出来隐藏的需要加载的路由
             sm.is_show = 0
             or
-            -- 新Tag页和iframe
+            -- 新标签页和iframe
             sm.open_mode in ('1', '2')
         )
         ?{userId != '1',
@@ -740,7 +740,7 @@ nodes.each((key, node) => {
 
 // 标记每个一级菜单的所属模块
 for(lm in layoutMenus){
-    // lm 可能是顶层菜单（直接关联模块）or wrapper（包了一层，原节点是 children[0]）
+    // lm 可能是顶层菜单（直接关联模块）或 wrapper（包了一层，原节点是 children[0]）
     var sourceMenu = lm.id ? lm : (lm.children && lm.children[0]) ? lm.children[0] : lm
     var menuRow = menus.filter(it => it.id == sourceMenu.id)[0]
     if(menuRow && menuRow.module_id){

@@ -41,6 +41,6 @@ assert name != "" : "名称不能为空";
 var email = "test@example.com";
 assert email != null && email.contains("@") : 400, "邮箱格式不正确";
 
-// assert 失败h自动 exit，后续代码不会执行
+// assert 失败时自动 exit，后续代码不会执行
 return "校验通过";
 
