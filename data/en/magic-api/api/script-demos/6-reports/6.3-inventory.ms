@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "Inventory清单（商品 + 仓库 + 数量）",
+  "description": "Inventory list (product + warehouse + quantity)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

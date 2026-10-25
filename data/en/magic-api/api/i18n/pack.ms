@@ -16,7 +16,7 @@
     {
       "name": "anonymous",
       "value": "true",
-      "description": "允许匿名访问",
+      "description": "Allow anonymous access",
       "required": false,
       "dataType": "String",
       "type": null,
@@ -29,7 +29,7 @@
     {
       "name": "require_login",
       "value": "false",
-      "description": "该接口需要登录才允许访问",
+      "description": "This API requires sign-in",
       "required": false,
       "dataType": "String",
       "type": null,

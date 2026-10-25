@@ -15,7 +15,7 @@
     {
       "name": "app_id",
       "value": null,
-      "description": "应用ID",
+      "description": "App ID",
       "required": true,
       "dataType": "String"
     },
@@ -29,7 +29,7 @@
     {
       "name": "api_method",
       "value": null,
-      "description": "请求方法",
+      "description": "HTTP method",
       "required": true,
       "dataType": "String"
     }

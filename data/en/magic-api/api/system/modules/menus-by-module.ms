@@ -15,7 +15,7 @@
     {
       "name": "moduleId",
       "value": "",
-      "description": "模块ID",
+      "description": "Module ID",
       "required": true,
       "dataType": "String",
       "type": null,

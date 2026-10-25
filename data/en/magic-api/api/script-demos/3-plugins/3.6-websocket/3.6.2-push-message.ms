@@ -15,7 +15,7 @@
     {
       "name": "clientId",
       "value": "",
-      "description": "目标 clientId（留空 = 广播到同 path）",
+      "description": "Target clientId (empty = broadcast to same path)",
       "required": false,
       "dataType": "String",
       "type": "requestBody",
@@ -28,7 +28,7 @@
     {
       "name": "path",
       "value": "/push",
-      "description": "客户端连接的 path（如 /chat、/push）",
+      "description": "Client connection path (e.g. /chat, /push)",
       "required": false,
       "dataType": "String",
       "type": "requestBody",
@@ -41,7 +41,7 @@
     {
       "name": "data",
       "value": "{\"type\":\"notice\",\"content\":\"hello\"}",
-      "description": "要推送的消息内容",
+      "description": "Message content to push",
       "required": true,
       "dataType": "String",
       "type": "requestBody",

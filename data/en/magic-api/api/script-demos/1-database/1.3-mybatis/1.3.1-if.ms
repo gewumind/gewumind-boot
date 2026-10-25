@@ -14,7 +14,7 @@
   "parameters": [
     {
       "name": "name",
-      "value": "测试",
+      "value": "Test",
       "description": null,
       "required": false,
       "dataType": "String",

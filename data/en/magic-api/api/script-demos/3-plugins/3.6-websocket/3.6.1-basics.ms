@@ -15,7 +15,7 @@
     {
       "name": "path",
       "value": "/push",
-      "description": "目标 path（如 /push、/chat、/echo）",
+      "description": "Target path (e.g. /push, /chat, /echo)",
       "required": false,
       "dataType": "String",
       "type": "requestBody",
@@ -28,7 +28,7 @@
     {
       "name": "message",
       "value": "{\"type\":\"test\",\"msg\":\"hello from basic ops\"}",
-      "description": "测试消息内容",
+      "description": "Test message content",
       "required": false,
       "dataType": "String",
       "type": "requestBody",

@@ -15,7 +15,7 @@
     {
       "name": "fileName",
       "value": null,
-      "description": "原始文件名（带后缀）",
+      "description": "Original file name (with extension)",
       "required": true,
       "dataType": "String",
       "type": null,
@@ -28,7 +28,7 @@
     {
       "name": "base64",
       "value": null,
-      "description": "不含 data: 前缀的纯 base64 字符串",
+      "description": "Plain base64 string without data: prefix",
       "required": true,
       "dataType": "String",
       "type": null,

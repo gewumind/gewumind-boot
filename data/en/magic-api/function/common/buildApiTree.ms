@@ -10,21 +10,21 @@
   "createBy": null,
   "updateBy": null,
   "path": "/buildApiTree",
-  "description": "递归构造 API 目录树节点，返回结构 { key, name, type, path, method, children }",
+  "description": "Recursively build API catalog tree nodes, returning { key, name, type, path, method, children }",
   "returnType": "Object",
   "mappingPath": "/common/buildApiTree",
   "parameters": [
     {
       "name": "node",
       "value": null,
-      "description": "JsonNode 节点",
+      "description": "JsonNode node",
       "required": true,
       "dataType": "Object"
     },
     {
       "name": "uidArr",
       "value": null,
-      "description": "uid 计数器数组 [N]",
+      "description": "uid counter array [N]",
       "required": true,
       "dataType": "Array"
     }

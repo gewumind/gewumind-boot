@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "Product销售趋势（按品类×month，列头动态扩展）",
+  "description": "Product sales trend (by category × month, dynamic columns)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

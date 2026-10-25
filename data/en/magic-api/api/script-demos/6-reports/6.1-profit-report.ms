@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "利润表（中国式复杂表头）",
+  "description": "Profit report (Chinese-style complex header)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

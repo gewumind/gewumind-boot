@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "区域×Product 销售额交叉报表 (含 12 个Product列)",
+  "description": "Region × product sales cross report (12 product columns)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

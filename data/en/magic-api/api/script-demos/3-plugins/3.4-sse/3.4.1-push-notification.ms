@@ -15,7 +15,7 @@
     {
       "name": "event",
       "value": "message",
-      "description": "事件名（前端 addEventListener 监听的名字）",
+      "description": "Event name (listened to by frontend addEventListener)",
       "required": false,
       "dataType": "String",
       "type": "requestBody",
@@ -28,7 +28,7 @@
     {
       "name": "data",
       "value": "{\"msg\":\"hello sse\"}",
-      "description": "推送的数据（JSON 字符串）",
+      "description": "Data to push (JSON string)",
       "required": true,
       "dataType": "String",
       "type": "requestBody",

@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": "[\n  {\"value\": \"D001\", \"label\": \"阿里云\"},\n  {\"value\": \"D002\", \"label\": \"淘宝\"},\n  {\"value\": \"D003\", \"label\": \"支付宝\"}\n]",
-  "description": "演示级联：根据 companyId 返回部门列表",
+  "description": "Cascade demo: departments by companyId",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

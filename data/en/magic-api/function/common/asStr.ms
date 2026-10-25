@@ -10,21 +10,21 @@
   "createBy": null,
   "updateBy": null,
   "path": "/asStr",
-  "description": "将 JsonNode 安全转换为字符串，null h返回默认值",
+  "description": "Safely convert a JsonNode to a string; return the default when null",
   "returnType": "String",
   "mappingPath": "/common/asStr",
   "parameters": [
     {
       "name": "node",
       "value": null,
-      "description": "JsonNode 节点",
+      "description": "JsonNode node",
       "required": true,
       "dataType": "Object"
     },
     {
       "name": "defaultValue",
       "value": "",
-      "description": "null h的默认值",
+      "description": "Default value when null",
       "required": false,
       "dataType": "String"
     }

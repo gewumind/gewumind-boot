@@ -15,7 +15,7 @@
     {
       "name": "clientId",
       "value": "",
-      "description": "目标 clientId（留空 = 广播到同 port）",
+      "description": "Target clientId (empty = broadcast to same port)",
       "required": false,
       "dataType": "String",
       "type": "requestBody",
@@ -28,7 +28,7 @@
     {
       "name": "port",
       "value": "9000",
-      "description": "广播目标端口（clientId 留空h使用）",
+      "description": "Broadcast target port (used when clientId is empty)",
       "required": false,
       "dataType": "Integer",
       "type": "requestBody",
@@ -41,7 +41,7 @@
     {
       "name": "data",
       "value": "PING\\n",
-      "description": "要推送的字节内容",
+      "description": "Bytes to push",
       "required": true,
       "dataType": "String",
       "type": "requestBody",

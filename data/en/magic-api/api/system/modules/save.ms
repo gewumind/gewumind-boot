@@ -16,7 +16,7 @@
     {
       "name": "permission",
       "value": "module:save",
-      "description": "允许拥有该权限的访问",
+      "description": "Allow access for holders of this permission",
       "required": false,
       "dataType": "String",
       "type": null,

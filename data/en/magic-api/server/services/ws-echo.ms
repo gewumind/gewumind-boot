@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "WebSocket Echo 服务示例",
+  "description": "WebSocket Echo service example",
   "protocol": "ws",
   "target": "/echo",
   "enabled": true

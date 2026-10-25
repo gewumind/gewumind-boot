@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "Inventory明细 (按 SKU 查进销存流水)",
+  "description": "Inventory detail (stock movements by SKU)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

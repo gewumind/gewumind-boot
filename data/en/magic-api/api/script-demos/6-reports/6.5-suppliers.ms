@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "供应商汇总（按供应商聚合销售额）",
+  "description": "Supplier summary (sales aggregated by supplier)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

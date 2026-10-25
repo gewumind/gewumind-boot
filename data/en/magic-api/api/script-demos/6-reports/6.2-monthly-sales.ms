@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "销售mo报（按区域 + Product 汇总销售额）",
+  "description": "Monthly sales report (sales by region + product)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

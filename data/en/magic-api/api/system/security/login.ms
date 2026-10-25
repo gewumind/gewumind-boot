@@ -56,7 +56,7 @@
     {
       "name": "require_login",
       "value": "false",
-      "description": "该接口需要登录才允许访问",
+      "description": "This API requires sign-in",
       "required": false,
       "dataType": "String",
       "type": null,

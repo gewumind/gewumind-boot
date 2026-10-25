@@ -15,7 +15,7 @@
     {
       "name": "page",
       "value": "1",
-      "description": "页码",
+      "description": "Page number",
       "required": false,
       "dataType": "Integer",
       "type": "param",
@@ -28,7 +28,7 @@
     {
       "name": "size",
       "value": "20",
-      "description": "每页条数",
+      "description": "Page size",
       "required": false,
       "dataType": "Integer",
       "type": "param",
@@ -41,7 +41,7 @@
     {
       "name": "keyword",
       "value": null,
-      "description": "标题/内容模糊Search",
+      "description": "Fuzzy search by title/content",
       "required": false,
       "dataType": "String",
       "type": "param",
@@ -54,7 +54,7 @@
     {
       "name": "type",
       "value": null,
-      "description": "消息类型 system/notice/todo",
+      "description": "Message type: system/notice/todo",
       "required": false,
       "dataType": "String",
       "type": "param",
@@ -67,7 +67,7 @@
     {
       "name": "readFlag",
       "value": null,
-      "description": "Read标记(0Unread 1Read 空查全部)",
+      "description": "Read flag (0 unread, 1 read, empty = all)",
       "required": false,
       "dataType": "Integer",
       "type": "param",
@@ -82,7 +82,7 @@
     {
       "name": "permission",
       "value": "message:view",
-      "description": "允许拥有该权限的访问",
+      "description": "Allow access for holders of this permission",
       "required": false,
       "dataType": "String",
       "type": null,

@@ -16,7 +16,7 @@
     {
       "name": "wrap_request_parameter",
       "value": "data",
-      "description": "包装请求参数到一个变量中",
+      "description": "Wrap request parameters into a variable",
       "required": false,
       "dataType": "String",
       "type": null,
@@ -29,7 +29,7 @@
     {
       "name": "permission",
       "value": "dict:items:save",
-      "description": "允许拥有该权限的访问",
+      "description": "Allow access for holders of this permission",
       "required": false,
       "dataType": "String",
       "type": null,

@@ -15,7 +15,7 @@
     {
       "name": "id",
       "value": null,
-      "description": "消息ID",
+      "description": "Message ID",
       "required": true,
       "dataType": "String",
       "type": null,
@@ -30,7 +30,7 @@
     {
       "name": "permission",
       "value": "message:view",
-      "description": "允许拥有该权限的访问",
+      "description": "Allow access for holders of this permission",
       "required": false,
       "dataType": "String",
       "type": null,

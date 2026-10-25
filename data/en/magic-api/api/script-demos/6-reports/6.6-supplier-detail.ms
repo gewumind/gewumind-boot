@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "供应商销售明细 (按 supplierId 查订单)",
+  "description": "Supplier sales detail (orders by supplierId)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

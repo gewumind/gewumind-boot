@@ -15,7 +15,7 @@
     {
       "name": "userId",
       "value": null,
-      "description": "用户ID",
+      "description": "User ID",
       "required": true,
       "dataType": "String",
       "type": "java.lang.String",

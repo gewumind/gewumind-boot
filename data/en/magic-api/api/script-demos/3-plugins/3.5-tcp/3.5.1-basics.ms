@@ -15,7 +15,7 @@
     {
       "name": "port",
       "value": "9000",
-      "description": "目标端口",
+      "description": "Target port",
       "required": false,
       "dataType": "Integer",
       "type": "requestBody",
@@ -28,7 +28,7 @@
     {
       "name": "message",
       "value": "PING\\n",
-      "description": "测试字节内容（记得带 \\n min隔）",
+      "description": "Test bytes (remember the \\n separators)",
       "required": false,
       "dataType": "String",
       "type": "requestBody",
@@ -44,7 +44,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "TCP 模块基础操作演示：连接统计、单播、广播",
+  "description": "TCP module basics: connection stats, unicast, broadcast",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

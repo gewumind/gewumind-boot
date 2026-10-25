@@ -21,7 +21,7 @@
       "type": null,
       "defaultValue": null,
       "validateType": null,
-      "error": "id必填",
+      "error": "id is required",
       "expression": null,
       "children": null
     },
@@ -34,7 +34,7 @@
       "type": null,
       "defaultValue": null,
       "validateType": "pattern",
-      "error": "age必须为数字",
+      "error": "age must be a number",
       "expression": "^\\d+$",
       "children": null
     },
@@ -47,7 +47,7 @@
       "type": null,
       "defaultValue": null,
       "validateType": "expression",
-      "error": "Phone号必填且必须是11位",
+      "error": "Phone is required and must be 11 digits",
       "expression": "phone.length() == 11",
       "children": null
     }

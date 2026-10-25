@@ -10,14 +10,14 @@
   "createBy": null,
   "updateBy": null,
   "path": "/crossTest",
-  "description": "被 server/subscriber import 测试用",
+  "description": "Used by server/subscriber import tests",
   "returnType": null,
   "mappingPath": null,
   "parameters": [
     {
       "name": "from",
       "value": null,
-      "description": "调用方标识",
+      "description": "Caller identifier",
       "required": false,
       "dataType": "String",
       "type": "String",

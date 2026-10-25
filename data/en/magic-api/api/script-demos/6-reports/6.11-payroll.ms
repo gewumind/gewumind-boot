@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "员工工资汇总表（部门跨行合并 + 应发/扣款/实发）",
+  "description": "Payroll summary (merged department rows + gross/deduction/net)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

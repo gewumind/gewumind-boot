@@ -10,7 +10,7 @@
   "createBy": null,
   "updateBy": null,
   "path": "/crossFnDb",
-  "description": "测试 function 内部能否访问 db（证明 function 调用h拿到完整 magic-api context）",
+  "description": "Test whether a function can access db (proving functions get the full magic-api context when called)",
   "returnType": null,
   "mappingPath": null,
   "parameters": [],

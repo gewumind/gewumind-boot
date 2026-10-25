@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "资产负债表（中国式复合表头：期末数/期初数 + 余额/占比）",
+  "description": "Balance sheet (Chinese-style header: ending/beginning + balance/ratio)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

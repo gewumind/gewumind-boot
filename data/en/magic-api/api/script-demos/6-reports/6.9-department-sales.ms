@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "部门销售明细 (按 companyId + deptId 查)",
+  "description": "Department sales detail (by companyId + deptId)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

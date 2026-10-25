@@ -15,7 +15,7 @@
     {
       "name": "app_id",
       "value": null,
-      "description": "应用ID",
+      "description": "App ID",
       "required": true,
       "dataType": "String"
     }

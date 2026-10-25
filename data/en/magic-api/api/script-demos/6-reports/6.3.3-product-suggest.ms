@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": "[\n  {\"value\": \"SKU001\", \"label\": \"ThinkPad X1 Carbon\"},\n  {\"value\": \"SKU010\", \"label\": \"ThinkPad T480\"}\n]",
-  "description": "演示自动完成：商品联想Search",
+  "description": "Autocomplete demo: product suggestions",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

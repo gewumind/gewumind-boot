@@ -33,7 +33,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "MQTT 订阅示例 - 自动在启动h注册",
+  "description": "MQTT subscription example - auto-registered at startup",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

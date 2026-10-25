@@ -16,7 +16,7 @@
     {
       "name": "default_data_source",
       "value": "",
-      "description": "配置默认数据源的key",
+      "description": "Key of the default data source",
       "required": false,
       "dataType": "String",
       "type": null,

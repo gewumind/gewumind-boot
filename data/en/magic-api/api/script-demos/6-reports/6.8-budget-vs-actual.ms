@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "项目预算执行表（执行率条件格式：红/黄/绿预警）",
+  "description": "Project budget vs actual (execution-rate conditional formatting: red/yellow/green)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

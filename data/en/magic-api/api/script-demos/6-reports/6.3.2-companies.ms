@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": "[\n  {\"value\": \"C001\", \"label\": \"阿里巴巴集团\"},\n  {\"value\": \"C002\", \"label\": \"腾讯科技\"},\n  {\"value\": \"C003\", \"label\": \"字节跳动\"},\n  {\"value\": \"C004\", \"label\": \"美团\"}\n]",
-  "description": "演示级联：公司列表",
+  "description": "Cascade demo: company list",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }

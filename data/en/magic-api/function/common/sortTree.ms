@@ -10,14 +10,14 @@
   "createBy": null,
   "updateBy": null,
   "path": "/sortTree",
-  "description": "原地排序树节点（按 name 升序），递归处理子节点",
+  "description": "Sort tree nodes in place (by name ascending), recursively",
   "returnType": "Object",
   "mappingPath": "/common/sortTree",
   "parameters": [
     {
       "name": "node",
       "value": null,
-      "description": "目录树节点",
+      "description": "Catalog tree node",
       "required": true,
       "dataType": "Object"
     }
