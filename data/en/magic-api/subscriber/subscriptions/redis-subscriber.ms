@@ -16,11 +16,11 @@
 }
 ================================
 // Redis 订阅示例
-// 收到 redis demo:news 频道消息时自动执行整个脚本
-// 可在此文件中直接设断点调试
+// 收到 redis demo:news 频道消息h自动执行整个脚本
+// Set breakpoints in this file to debug
 
 println('[Redis] 收到消息: ' + _message)
 print('[Redis] 频道: ' + _channel)
 
-// 处理业务逻辑
+// Business logic
 print('[Redis122] 处理完成')

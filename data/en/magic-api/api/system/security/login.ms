@@ -70,7 +70,7 @@
   "requestBody": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\"\r\n}",
   "headers": [],
   "paths": [],
-  "responseBody": "{\n    \"code\": 0,\n    \"message\": \"用户名或密码错误\",\n    \"data\": null,\n    \"timestamp\": 1656424276533,\n    \"executeTime\": 11\n}",
+  "responseBody": "{\n    \"code\": 0,\n    \"message\": \"用户名or密码错误\",\n    \"data\": null,\n    \"timestamp\": 1656424276533,\n    \"executeTime\": 11\n}",
   "description": null,
   "requestBodyDefinition": {
     "name": "root",

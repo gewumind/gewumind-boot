@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": "[\n  {\"value\": \"SKU001\", \"label\": \"ThinkPad X1 Carbon\"},\n  {\"value\": \"SKU010\", \"label\": \"ThinkPad T480\"}\n]",
-  "description": "演示自动完成：商品联想搜索",
+  "description": "演示自动完成：商品联想Search",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }
@@ -32,8 +32,8 @@ var all = [
     {value: 'SKU002', label: 'MacBook Pro 14'},
     {value: 'SKU003', label: 'Dell XPS 15'},
     {value: 'SKU004', label: 'iPhone 15 Pro'},
-    {value: 'SKU005', label: '华为 Mate60 Pro'},
-    {value: 'SKU006', label: '小米 14 Ultra'},
+    {value: 'SKU005', label: 'Huawei Mate60 Pro'},
+    {value: 'SKU006', label: 'Xiaomi 14 Ultra'},
     {value: 'SKU007', label: 'iPad Pro 11'},
     {value: 'SKU008', label: 'Surface Pro 9'},
     {value: 'SKU009', label: '华为 MateBook X Pro'},

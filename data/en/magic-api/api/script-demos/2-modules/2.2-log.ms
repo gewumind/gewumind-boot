@@ -36,26 +36,26 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的：演示 magic-api 的 log 模块（日志记录） =====
-// log 模块用于在 API 执行过程中输出日志，方便调试和排查问题
-// 提示：请切换到 magic-api 控制台的"运行日志"标签页查看日志输出
+// ===== 目的：演示 magic-api 的 log 模块（d志记录） =====
+// log 模块用于在 API 执行过程中输出d志，方便调试和排查问题
+// Notice：请切换到 magic-api 控制台的"运行d志"Tag页查看d志输出
 
 import log;
 
-// log.info()：输出 INFO 级别日志，支持 {} 占位符传参
-// 第一个参数是日志模板，第二个起是填充值
-log.info('info日志:{}', message);
+// log.info()：输出 INFO 级别d志，支持 {} 占位符传参
+// 第一个参数是d志模板，第二个起是填充值
+log.info('infod志:{}', message);
 
-// log.warn()：输出 WARN 级别日志（警告，不影响执行）
-log.warn('warn日志');
+// log.warn()：输出 WARN 级别d志（警告，不影响执行）
+log.warn('warnd志');
 
-// log.error()：输出 ERROR 级别日志（通常用于异常记录）
+// log.error()：输出 ERROR 级别d志（通常用于异常记录）
 // 可以传入异常对象 e，框架会自动打印堆栈跟踪
 try {
-    // 故意制造一个除零异常来演示 error 日志
+    // 故意制造一个除零异常来演示 error d志
     return 1 / 0;
 } catch (e) {
-    log.error('error日志', e);
+    log.error('errord志', e);
 }
 
 return 'ok';

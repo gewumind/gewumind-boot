@@ -22,7 +22,7 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示使用 SQL 风格 LINQ 对内存数据进行条件过滤（WHERE）
 // 类似于 SQL 的 WHERE 子句，可以对任意数组进行筛选
 
@@ -37,7 +37,7 @@ var list = [{
 }]
 
 // 第 2 步：使用 SQL 风格 LINQ 按条件过滤
-// select *：选择全部字段
+// select *：Select全部字段
 // from list t：数据源为 list 数组，别名 t
 // where t.sex = 0：只保留 sex 为 0（男性）的记录
 // 最终返回： [{sex:0, name:'小明'}]

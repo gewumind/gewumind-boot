@@ -23,13 +23,13 @@
 }
 ================================
 return [
-    {project: 'ERP系统升级改造',    dept: '信息部',   leader: '张伟',   budget: 2000000, executed: 1850000, rate: 0.925, remaining: 150000,  status: 'Running'},
+    {project: 'ERP系统升级改造',    dept: 'IT Dept',   leader: '张伟',   budget: 2000000, executed: 1850000, rate: 0.925, remaining: 150000,  status: 'Running'},
     {project: '智能仓储物流建设',    dept: '物流部',   leader: '李明',   budget: 1500000, executed: 420000,  rate: 0.280, remaining: 1080000, status: 'Running'},
-    {project: '数据中心扩容',       dept: '信息部',   leader: '王强',   budget: 3000000, executed: 2850000, rate: 0.950, remaining: 150000,  status: '收尾中'},
+    {project: '数据中心扩容',       dept: 'IT Dept',   leader: '王强',   budget: 3000000, executed: 2850000, rate: 0.950, remaining: 150000,  status: '收尾中'},
     {project: 'CRM客户管理系统',    dept: 'Sales',   leader: '赵敏',   budget: 800000,  executed: 780000,  rate: 0.975, remaining: 20000,   status: 'Accepted'},
     {project: '智能制造MES系统',    dept: 'Production',   leader: '陈工',   budget: 2500000, executed: 1100000, rate: 0.440, remaining: 1400000, status: 'Running'},
     {project: '企业数据中台',       dept: '数据部',   leader: '刘芳',   budget: 1800000, executed: 1620000, rate: 0.900, remaining: 180000,  status: 'Running'},
-    {project: '网络安全加固',       dept: '信息部',   leader: '周涛',   budget: 600000,  executed: 580000,  rate: 0.967, remaining: 20000,   status: 'Accepted'},
+    {project: '网络安全加固',       dept: 'IT Dept',   leader: 'wk涛',   budget: 600000,  executed: 580000,  rate: 0.967, remaining: 20000,   status: 'Accepted'},
     {project: 'AI智能客服平台',     dept: '客服部',   leader: '林雪',   budget: 1200000, executed: 450000,  rate: 0.375, remaining: 750000,  status: 'Running'},
     {project: '移动办公APP开发',    dept: 'R&D',   leader: '张鹏',   budget: 900000,  executed: 650000,  rate: 0.722, remaining: 250000,  status: 'Running'},
     {project: '新能源充电桩项目',   dept: '新业务部', leader: '黄伟',   budget: 5000000, executed: 3200000, rate: 0.640, remaining: 1800000, status: 'Running'},

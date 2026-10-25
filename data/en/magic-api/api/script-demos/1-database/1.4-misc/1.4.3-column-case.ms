@@ -22,7 +22,7 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示查询结果列名命名方式的转换 */
+/* 目的：演示Query结果列名命名方式的转换 */
 
 /*
  * 支持的列名转换模式：
@@ -35,7 +35,7 @@
  * 可通过配置全局列名转换规则：
  */
 
-// 1. db.camel() 设置本次查询的结果列名转换为驼峰命名
+// 1. db.camel() 设置本次Query的结果列名转换为驼峰命名
 // 2. 数据库列 api_name 会被映射为 apiName（驼峰格式）
-// 3. 然后执行查询，返回结果中的 key 自动变为驼峰命名
+// 3. 然后执行Query，返回结果中的 key 自动变为驼峰命名
 return db.camel().select('select api_name from magic_api_info')

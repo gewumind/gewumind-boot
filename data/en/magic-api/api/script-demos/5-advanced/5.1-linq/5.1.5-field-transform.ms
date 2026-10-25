@@ -22,7 +22,7 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示在 SQL 风格 LINQ 中使用三目运算符进行字段值转换
 // 可以在 select 中使用 条件 ? 值1 : 值2 语法对字段做条件映射
 
@@ -39,7 +39,7 @@ var list = [{
 }]
 
 // 第 2 步：使用 SQL 风格 LINQ 进行字段值转换
-// t.age > 18 ? 'Adult' : 'Minor'：将 age 数字映射为"Adult"/"Minor"标签
+// t.age > 18 ? 'Adult' : 'Minor'：将 age 数字映射为"Adult"/"Minor"Tag
 // t.sex == 0 ? 'Male' : 'Female'      ：将 sex 数字映射为中文性别
 // t.name                          ：原样输出
 return 

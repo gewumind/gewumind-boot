@@ -49,19 +49,19 @@
   "responseBodyDefinition": null
 }================================
 // SSE 推送通知 API
-// 向所有订阅 /sse/notifications 的客户端实时推送事件
+// 向所有订阅 /sse/notifications 的客户端实h推送事件
 //
-// 前置条件：
+// Prerequisites:
 //   1. 配置中心 sse.enabled = true（已启用）
 //   2. 已有客户端连接 /sse/notifications（server/服务/sse/通知推送示例.ms 注册）
 //
-// 请求体（JSON）：
+// Request body (JSON):
 //   {
 //     "event": "message",           // 事件名，选填，默认 "message"
 //     "data":  "{\"msg\":\"...\"}"  // 推送数据（JSON 字符串），必填
 //   }
 //
-// 浏览器监听示例：
+// Browser监听示例：
 //   const es = new EventSource('/sse/notifications')
 //   es.addEventListener('message', e => console.log(JSON.parse(e.data)))
 //   es.addEventListener('alert',    e => { /* 弹窗告警 */ })
@@ -86,6 +86,6 @@ return {
     event: eventName,
     data: payload,
     onlineClients: clientCount,
-    message: '事件已广播给 ' + clientCount + ' 个在线客户端',
+    message: '事件已广播给 ' + clientCount + '  online clients',
     usage: 'curl -X POST http://localhost:9089/sse/send -H "Content-Type: application/json" -d \'{"event":"alert","data":"{\\"msg\\":\\"test\\"}"}\''
 }

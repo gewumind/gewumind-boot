@@ -10,7 +10,7 @@
   "createBy": null,
   "updateBy": null,
   "path": "/asStr",
-  "description": "将 JsonNode 安全转换为字符串，null 时返回默认值",
+  "description": "将 JsonNode 安全转换为字符串，null h返回默认值",
   "returnType": "String",
   "mappingPath": "/common/asStr",
   "parameters": [
@@ -24,7 +24,7 @@
     {
       "name": "defaultValue",
       "value": "",
-      "description": "null 时的默认值",
+      "description": "null h的默认值",
       "required": false,
       "dataType": "String"
     }

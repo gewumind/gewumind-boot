@@ -27,7 +27,7 @@
 
 import http;
 
-// 1. http.connect(url) 建立 HTTP 连接，目标地址可以是内网或外网
+// 1. http.connect(url) 建立 HTTP 连接，目标地址可以是内网or外网
 // 2. .get() 发送 GET 请求（也支持 .post() .put() .delete() 等）
 // 3. .getBody() 获取响应体，自动解析 JSON 为 Map/List
 //    也可用 .getString() 获取原始字符串，.getHeaders() 获取响应头

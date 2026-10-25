@@ -22,17 +22,17 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示 MyBatis 语法的 <if>/<elseif>/<else> 多条件分支判断 */
+/* 目的：演示 MyBatis 语法的 <if>/<elseif>/<else> 多条件min支判断 */
 
-// 支持的标签：<if>、<elseif>、<else>、<where>、<foreach>、<trim>、<set>
-// <elseif> 类似 Java 中的 else if，当前面的 <if> 不满足时继续判断
-// <else> 在所有条件都不满足时执行
+// 支持的Tag：<if>、<elseif>、<else>、<where>、<foreach>、<trim>、<set>
+// <elseif> 类似 Java 中的 else if，当前面的 <if> 不满足h继续判断
+// <else> 在所有条件都不满足h执行
 
 // 1. 定义变量 val = 1
 // 2. 根据 val 的值动态拼接不同的 WHERE 条件
-//    - 如果 val == 2，查询 api_name 不为空的数据
-//    - 否则如果 val == 1，查询 api_name = '测试' 的数据
-//    - 否则查询 api_name 为空的数据
+//    - 如果 val == 2，Query api_name 不为空的数据
+//    - 否则如果 val == 1，Query api_name = '测试' 的数据
+//    - 否则Query api_name 为空的数据
 const val = 1
 
 return db.select("""

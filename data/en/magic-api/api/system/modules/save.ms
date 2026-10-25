@@ -50,7 +50,7 @@
 ================================
 var codeCount = db.selectInt("select count(1) from sys_module where is_del = 0 and code = #{code} ?{id, and id != #{id}}")
 if(codeCount > 0){
-    exit 0, '模块编码已存在'
+    exit 0, 'Module code已存在'
 }
 
 var result = db.table("sys_module").primary("id").saveOrUpdate({

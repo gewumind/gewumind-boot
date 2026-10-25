@@ -26,7 +26,7 @@ var processId = body.processId
 
 if (action == 'start') {
     if (!processId) {
-        return { success: false, message: '缺少 processId' }
+        return { success: false, message: 'Missing processId' }
     }
     var uid = body.userId || 'employee'
     var data = {}
@@ -53,8 +53,8 @@ if (action == 'start') {
             children: children
         }
     })
-    var task = workflow.createTask(inst.id, 'apply', '员工申请', uid)
-    workflow.approve(task.id, 'system', '员工提交申请')
+    var task = workflow.createTask(inst.id, 'apply', 'Employee request', uid)
+    workflow.approve(task.id, 'system', 'Employee submitted the request')
     var nextNode = workflow.findNextNode(processId, 'apply', body, inst.id, '' + uid, 50)
     if (nextNode == 'end' || nextNode == null) {
         workflow.moveToNext(inst.id, 'end', 'End', null)
@@ -115,7 +115,7 @@ if (action == 'approve') {
     }
     var instId = taskInfo.instance_id
     var nodeId = taskInfo.node_id
-    // 业务表更新：backend 内部用 LinkedHashMap 顺序写 SQL，避免 magic-script HashMap 错位
+    // Business table update: backend writes SQL in LinkedHashMap order to avoid magic-script HashMap mis-ordering
     var bizFields = {}
     bizFields.comment = '' + comment
     bizFields.final_status = 'APPROVED'
@@ -125,7 +125,7 @@ if (action == 'approve') {
             bizFields[fk] = fv
         }
     }
-    try { workflow.updateBizFields(instId, bizFields) } catch (e) { print("[warn] updateBizFields 失败: " + e.getMessage()) }
+    try { workflow.updateBizFields(instId, bizFields) } catch (e) { print("[warn] updateBizFields failed:  " + e.getMessage()) }
     workflow.approve(taskId, op, '' + comment, form)
     var inst = workflow.getInstance(instId)
     var vars2 = inst.variables
@@ -180,7 +180,7 @@ if (action == 'detail') {
     }
     var inst = workflow.getInstance(body.instanceId)
     if (inst == null) {
-        return { success: false, message: '实例不存在: ' + body.instanceId }
+        return { success: false, message: 'Instance not found: ' + body.instanceId }
     }
     var history = workflow.queryHistory(body.instanceId)
     return { success: true, instance: inst, history: history }
@@ -198,7 +198,7 @@ if (action == 'reject' || action == 'deny') {
     }
     var instId2 = taskInfo2.instance_id
 
-    // 业务表驳回：backend LinkedHashMap 顺序绑定参数
+    // Business table rejection: backend binds params in LinkedHashMap order
     var bizFields2 = {}
     bizFields2.comment = '' + reason2
     bizFields2.final_status = 'REJECTED'
@@ -209,7 +209,7 @@ if (action == 'reject' || action == 'deny') {
             bizFields2[fkk] = fvv
         }
     }
-    try { workflow.updateBizFields(instId2, bizFields2) } catch (e) { print("[warn] updateBizFields 失败: " + e.getMessage()) }
+    try { workflow.updateBizFields(instId2, bizFields2) } catch (e) { print("[warn] updateBizFields failed:  " + e.getMessage()) }
 
     var nodeId2 = taskInfo2.node_id
     if (nodeId2 != null && nodeId2 != 'apply') {
@@ -243,12 +243,12 @@ if (action == 'terminate') {
     }
     var inst3 = workflow.getInstance(body.instanceId)
     if (inst3 == null) {
-        return { success: false, message: '实例不存在: ' + body.instanceId }
+        return { success: false, message: 'Instance not found: ' + body.instanceId }
     }
     if (inst3.status == 'COMPLETED' || inst3.status == 'CANCELLED') {
-        return { success: false, message: '该实例已结束，无法撤回' }
+        return { success: false, message: 'Instance already finished; cannot withdraw' }
     }
-    var reason3 = body.reason || '用户撤回'
+    var reason3 = body.reason || 'User withdrew'
     var wd = workflow.withdraw(body.instanceId, body.userId || inst3.initiator)
     if (wd.success == false) {
         return wd
@@ -263,10 +263,10 @@ if (action == 'resubmit') {
     }
     var inst4 = workflow.getInstance(body.instanceId)
     if (inst4 == null) {
-        return { success: false, message: '实例不存在' }
+        return { success: false, message: 'Instance not found' }
     }
     if (inst4.status != 'REJECTED' && inst4.status != 'WITHDRAWN') {
-        return { success: false, message: '只驳回状态可修改重提: ' + inst4.status }
+        return { success: false, message: 'Only rejected instances can be edited and resubmitted:  ' + inst4.status }
     }
 var formData = body.formData
     if (formData == null) { formData = {} }
@@ -277,7 +277,7 @@ if (action == 'cleanupWorkflow') {
     db.update("DELETE FROM sys_wf_history")
     db.update("DELETE FROM sys_wf_task")
     db.update("DELETE FROM sys_wf_instance")
-    return { success: true, message: '已清空工作流测试数据' }
+    return { success: true, message: 'Workflow test data cleared' }
 }
 
 

@@ -52,7 +52,7 @@ var str = "Hello 123 World 456";
 var result = str.replace(/\\d+/g, "***");
 // result = "Hello *** World ***"
 
-// ===== 5. 字符串分割 =====
+// ===== 5. 字符串min割 =====
 var csv = "a,b,c,d";
 var parts = csv.split(/,/);
 // parts = ["a", "b", "c", "d"]

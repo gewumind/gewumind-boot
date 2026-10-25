@@ -29,14 +29,14 @@
 /* ===== 方式一：自动事务 ===== */
 // 通过 db.transaction(callback) 开启自动事务
 // callback 中执行的所有 SQL 操作在同一个事务中
-// callback 正常返回时自动提交，抛出异常时自动回滚
+// callback 正常返回h自动提交，抛出异常h自动回滚
 var val = db.transaction(() => {
     return db.update("""delete from magic_api_info where id = '999' """)
 })
 return val
 
 /* ===== 方式二：手动事务 ===== */
-// 手动事务允许更精细地控制提交和回滚时机
+// 手动事务允许更精细地控制提交和回滚h机
 var tx = db.transaction()      // 开启事务
 try {
     var value = db.update('...')

@@ -22,12 +22,12 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的 =====
+// ===== Purpose =====
 // 演示使用 response.json() 返回自定义格式的 JSON 响应
-// 适合临时覆盖全局 JSON 格式的场合（如特定接口需要不同的响应结构）
-// 注意：这种方式仅适合临时输出格式，如需全局统一 JSON 结果请参考文档配置
+// 适合临h覆盖全局 JSON 格式的场合（如特定接口需要不同的响应结构）
+// 注意：这种方式仅适合临h输出格式，如需全局统一 JSON 结果请参考文档配置
 
-// 第 1 步：导入 response 工具模块
+// Step 1: import the response utility module
 // response 提供了 json() 方法，可以自定义返回的 JSON 结构
 import response
 

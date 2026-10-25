@@ -275,7 +275,7 @@ var tasks = redis.lRange('demo:queue', 0, -1)
 // 判断键是否存在
 var hasKey = redis.exists('demo:name')
 
-// 获取过期时间
+// 获取过期h间
 var ttl = redis.ttl('demo:code')
 
 // 删除

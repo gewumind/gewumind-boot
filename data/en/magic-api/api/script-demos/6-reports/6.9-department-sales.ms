@@ -46,7 +46,7 @@ var dataMap = {
     ],
     'D101': [
         {product: '微信小程序开发',    sold: 100, unitPrice: 5000,  total: 500000, customer: '微信生态'},
-        {product: '企业微信',           sold: 50,  unitPrice: 8000,  total: 400000, customer: '企业客户'}
+        {product: '企业微信',           sold: 50,  unitPrice: 8000,  total: 400000, customer: 'Enterprise customer'}
     ],
     'D102': [
         {product: '王者荣耀皮肤',       sold: 1000, unitPrice: 50,   total: 50000, customer: 'C端玩家'},
@@ -54,11 +54,11 @@ var dataMap = {
     ],
     'D103': [
         {product: '腾讯云服务器',      sold: 100, unitPrice: 1000, total: 100000, customer: '中小企业'},
-        {product: '企业微信会议',      sold: 200, unitPrice: 200,  total: 40000, customer: '企业客户'}
+        {product: '企业微信会议',      sold: 200, unitPrice: 200,  total: 40000, customer: 'Enterprise customer'}
     ],
     'D201': [
         {product: '抖音广告投放',      sold: 50,  unitPrice: 10000, total: 500000, customer: '广告主'},
-        {product: '飞书企业版',         sold: 30,  unitPrice: 8000,  total: 240000, customer: '企业客户'}
+        {product: '飞书企业版',         sold: 30,  unitPrice: 8000,  total: 240000, customer: 'Enterprise customer'}
     ],
     'D202': [
         {product: '飞书多维表格',      sold: 20,  unitPrice: 12000, total: 240000, customer: '团队'},
@@ -78,7 +78,7 @@ var dataMap = {
     ],
     'D303': [
         {product: '美团优选生鲜',      sold: 8000, unitPrice: 30, total: 240000, customer: 'Consumer'},
-        {product: '美团优选日用',      sold: 3000, unitPrice: 50, total: 150000, customer: 'Consumer'}
+        {product: '美团优选d用',      sold: 3000, unitPrice: 50, total: 150000, customer: 'Consumer'}
     ]
 }
 

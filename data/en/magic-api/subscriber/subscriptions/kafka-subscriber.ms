@@ -16,12 +16,12 @@
 }
 ================================
 // Kafka 订阅示例
-// 收到 kafka demo-topic 主题消息时自动执行整个脚本
-// 可在此文件中直接设断点调试
+// 收到 kafka demo-topic 主题消息h自动执行整个脚本
+// Set breakpoints in this file to debug
 
 print('[Kafka] 收到消息: ' + _message)
 print('[Kafka] 主题: ' + _topic)
 print('[Kafka] Key: ' + _key)
 
-// 处理业务逻辑
+// Business logic
 print('[Kafka1111] 处理完成')

@@ -62,13 +62,13 @@
   "responseBodyDefinition": null
 }================================
 // WebSocket 主动推送示例
-// 向已连接 ws://host:port/ws/{path} 的客户端实时推送消息
+// 向已连接 ws://host:port/ws/{path} 的客户端实h推送消息
 //
-// 前置条件：
-//   1. 配置中心 ws.enabled = true
-//   2. 已有客户端连接 ws://...（server/ws-push示例.ms 或 聊天室示例.ms 注册）
+// Prerequisites:
+//   1. Config center: ws.enabled = true
+//   2. 已有客户端连接 ws://...（server/ws-push示例.ms or 聊天室示例.ms 注册）
 //
-// 请求体（JSON）：
+// Request body (JSON):
 //   {
 //     "clientId": "",           // 指定客户端，留空=广播
 //     "path":     "/push",      // 广播目标 path
@@ -92,5 +92,5 @@ return {
     success: true,
     target: body.clientId ?: 'broadcast:' + targetPath,
     onlineClients: clientCount,
-    message: '已推送给 ' + clientCount + ' 个在线客户端'
+    message: '已推送给 ' + clientCount + '  online clients'
 }

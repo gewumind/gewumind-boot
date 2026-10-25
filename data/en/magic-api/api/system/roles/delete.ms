@@ -52,7 +52,7 @@ import '@get:/system/role/cache/delete' as cacheDelete
 
 var userCount = db.selectInt("select count(1) from sys_user_role where role_id = #{id}")
 if(userCount > 0){
-    exit 500, '角色已分配,不允许删除'
+    exit 500, '角色已min配,不允许删除'
 }
 
 db.table("sys_role_menu").where().eq("role_id",id).delete()

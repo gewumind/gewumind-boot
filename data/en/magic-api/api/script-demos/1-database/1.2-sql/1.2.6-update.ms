@@ -29,7 +29,7 @@
 
 // 1. 定义变量 id，值为 '1'
 // 2. 在 SQL 中使用 #{id} 引用变量（框架自动将变量值注入到占位符）
-//    - 运行时生成 SQL：update magic_api_info set api_name = '666' where id = ?
+//    - 运行h生成 SQL：update magic_api_info set api_name = '666' where id = ?
 //    - id 的值 '1' 会被安全注入
 // 3. db.update() 返回受影响的行数
 const id = '1'

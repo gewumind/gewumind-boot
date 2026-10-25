@@ -136,7 +136,7 @@ if(userCount > 0){
 }
 // var root = db.selectValue("select pid from sys_office where is_del = 0 and id = #{id}")
 // if(root == '0'){
-//     exit 500, '不能删除根节点'
+//     exit 500, '不能删除Root'
 // }
 // db.table('sys_user_office').where().eq("office_id",id).delete();
 return db.table("sys_office").logic().where().eq("id",id).delete();

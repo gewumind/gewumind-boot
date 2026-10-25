@@ -41,7 +41,7 @@
     {
       "name": "keyword",
       "value": null,
-      "description": "标题/内容模糊搜索",
+      "description": "标题/内容模糊Search",
       "required": false,
       "dataType": "String",
       "type": "param",
@@ -67,7 +67,7 @@
     {
       "name": "readFlag",
       "value": null,
-      "description": "已读标记(0未读 1已读 空查全部)",
+      "description": "Read标记(0Unread 1Read 空查全部)",
       "required": false,
       "dataType": "Integer",
       "type": "param",

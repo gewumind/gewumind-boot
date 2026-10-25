@@ -28,7 +28,7 @@
     {
       "name": "message",
       "value": "PING\\n",
-      "description": "测试字节内容（记得带 \\n 分隔）",
+      "description": "测试字节内容（记得带 \\n min隔）",
       "required": false,
       "dataType": "String",
       "type": "requestBody",
@@ -52,8 +52,8 @@
 // TCP 基础操作演示
 // 依次调用 tcp 模块的全部公开方法，验证可用性。
 //
-// 前置条件：
-//   1. 配置中心 tcp.enabled = true
+// Prerequisites:
+//   1. Config center: tcp.enabled = true
 //   2. 已有客户端连接到目标端口（如 nc localhost 9000）
 
 targetPort = body.port ?: 9000
@@ -62,7 +62,7 @@ payload = body.message ?: 'PING\n'
 // 1. 查连接数
 count = tcp.getConnectionCount(targetPort)
 
-// 2. 列客户端 ID
+// 2. 列Client ID
 clientIds = tcp.getClientIdsByPort(targetPort)
 
 // 3. 广播给同 port 所有客户端

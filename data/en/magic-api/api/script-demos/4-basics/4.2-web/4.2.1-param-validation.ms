@@ -47,7 +47,7 @@
       "type": null,
       "defaultValue": null,
       "validateType": "expression",
-      "error": "手机号必填且必须是11位",
+      "error": "Phone号必填且必须是11位",
       "expression": "phone.length() == 11",
       "children": null
     }

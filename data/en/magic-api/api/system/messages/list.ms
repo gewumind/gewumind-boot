@@ -41,7 +41,7 @@
     {
       "name": "readFlag",
       "value": null,
-      "description": "已读标记(0未读 1已读 空查全部)",
+      "description": "Read标记(0Unread 1Read 空查全部)",
       "required": false,
       "dataType": "Integer",
       "type": "param",

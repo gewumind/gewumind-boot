@@ -15,18 +15,18 @@
   "enabled": true
 }
 ================================
-// SSE Server 示例：连接时初始化推送（"握手时下发当前状态"模式）
-// 客户端连 /sse/progress 时，本脚本立刻推送一组进度状态作为初始数据。
+// SSE Server 示例：连接h初始化推送（"握手h下发当前状态"模式）
+// 客户端连 /sse/progress h，本脚本立刻推送一组进度状态作为初始数据。
 // 持续进度推送请走 API：
 //   sseHelper.emitToClient(clientId, 'progress', '{"percent":50}')
 //   sseHelper.broadcastToPath('/progress', 'progress', '{"percent":50}')
 // 详见 api/数据演示/SSE演示/推送通知.ms
 //
-// 启用：
+// Enabled:
 //   1. 配置中心：sse.enabled = true
-//   2. 重启后端生效
+//   2. Restart the backend to apply
 //
-// 浏览器订阅示例：
+// Browser订阅示例：
 //   const es = new EventSource('/sse/progress')
 //   es.addEventListener('start', e => console.log('start:', e.data))
 //   es.addEventListener('progress', e => {
@@ -34,12 +34,12 @@
 //     updateProgressBar(data.percent)
 //   })
 //
-// Python 测试：
+// Python test: 
 //   python3 scripts/send_sse_msg.py http://localhost:9089/sse/progress --timeout 5
 
-// 初始化：客户端连上时立刻推 start 事件
+// 初始化：客户端连上h立刻推 start 事件
 println('[Progress] 客户端订阅: ' + _clientId + ' @ ' + _path)
-println('[Progress] 当前 path 连接数: ' + sse.getConnectionCount(_path))
+println('[Progress] 当前 path Connections:  ' + sse.getConnectionCount(_path))
 
 sseHelper.emit(_clientId, 'start', '{"clientId":"' + _clientId + '","startTime":' + current_timestamp() + '}')
 println('[Progress] 已推送 start 事件')

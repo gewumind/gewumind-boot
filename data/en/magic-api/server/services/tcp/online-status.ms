@@ -15,23 +15,23 @@
   "enabled": true
 }
 ================================
-// TCP Server 示例：在线状态追踪（带生命周期钩子）
-// IoT 设备连 tcp://localhost:9002 上线时记录，下线时清理
+// TCP Server 示例：在线状态追踪（带生命wk期钩子）
+// IoT 设备连 tcp://localhost:9002 上线h记录，下线h清理
 //
-// 生命周期变量（特殊约定名）：
-//   _onConnect(clientId, path) => {}  客户端连接时触发
-//   _onClose(clientId, path)   => {}  客户端断开时触发
+// Lifecycle variables (reserved names):
+//   _onConnect(clientId, path) => {}  客户端连接h触发
+//   _onClose(clientId, path)   => {}  客户端断开h触发
 //
-// 启用：
-//   1. 配置中心 tcp.enabled = true
-//   2. 重启后端生效
+// Enabled:
+//   1. Config center: tcp.enabled = true
+//   2. Restart the backend to apply
 //
-// 测试：
-//   nc localhost 9002   (开 2 个终端，Ctrl+C 关闭一个看 onClose 触发)
+// Test: 
+//   nc localhost 9002   (开 2 个终端，Ctrl+C Close一个看 onClose 触发)
 //
-// 配套查询 API：api/数据演示/TCP演示/基础操作.ms
+// 配套Query API：api/数据演示/TCP演示/基础操作.ms
 
-// ---------- 生命周期钩子 ----------
+// ---------- 生命wk期钩子 ----------
 
 var _onConnect = (clientId, path) => {
     println('[Presence-TCP] 设备上线: ' + clientId + ' @ ' + path)
@@ -40,13 +40,13 @@ var _onConnect = (clientId, path) => {
 
 var _onClose = (clientId, path) => {
     println('[Presence-TCP] 设备下线: ' + clientId + ' @ ' + path)
-    // 实际场景：清理 db / 标记最后在线时间 / 告警长时间离线
+    // 实际场景：清理 db / 标记最后在线h间 / 告警长h间离线
 }
 
-// ---------- 业务逻辑：连接时回执设备信息 ----------
+// ---------- 业务逻辑：连接h回执设备信息 ----------
 
 println('[Presence-TCP] 设备连接: clientId=' + _clientId + ' @ port=' + _channel)
-println('[Presence-TCP] 当前 port ' + _channel + ' 连接数: ' + tcp.getConnectionCount(Integer.parseInt(_channel)))
+println('[Presence-TCP] 当前 port ' + _channel + ' Connections:  ' + tcp.getConnectionCount(Integer.parseInt(_channel)))
 
 // 给设备回执一条欢迎消息（带 \n 换行让客户端按行解析）
 tcpHelper.reply('{"type":"welcome","clientId":"' + _clientId + '","serverTime":' + current_timestamp() + '}\n')

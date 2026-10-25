@@ -17,7 +17,7 @@
   "headers": [],
   "paths": [],
   "responseBody": null,
-  "description": "库存明细 (按 SKU 查进销存流水)",
+  "description": "Inventory明细 (按 SKU 查进销存流水)",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }
@@ -29,10 +29,10 @@ if (code == null || code == '') {
 
 var data = [
     {date: '2026-07-25', type: '入库', qty: 30,  unit_price: 12000, total: 360000, operator: 'Zhang San', remark: '采购到货'},
-    {date: '2026-07-26', type: '出库', qty: -5,  unit_price: 12000, total: -60000, operator: '李四', remark: '客户订单'},
+    {date: '2026-07-26', type: 'Outbound', qty: -5,  unit_price: 12000, total: -60000, operator: 'Li Si', remark: '客户订单'},
     {date: '2026-07-28', type: '入库', qty: 10,  unit_price: 12000, total: 120000, operator: '王五', remark: '调拨入库'},
-    {date: '2026-07-30', type: '出库', qty: -3,  unit_price: 12000, total: -36000, operator: '李四', remark: '客户订单'},
-    {date: '2026-08-02', type: '出库', qty: -2,  unit_price: 12000, total: -24000, operator: '赵六', remark: '样品领取'}
+    {date: '2026-07-30', type: 'Outbound', qty: -3,  unit_price: 12000, total: -36000, operator: 'Li Si', remark: '客户订单'},
+    {date: '2026-08-02', type: 'Outbound', qty: -2,  unit_price: 12000, total: -24000, operator: '赵六', remark: '样品领取'}
 ]
 
 return data.map(item => {

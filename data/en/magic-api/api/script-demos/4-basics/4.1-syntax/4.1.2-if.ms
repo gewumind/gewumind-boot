@@ -118,7 +118,7 @@ if(a == 1){
 3、while(a) 
 4、a ? 1 : 0 
 
-当a的值是以下情况时为false
+当a的值是以下情况h为false
 null
 空集合
 空Map
