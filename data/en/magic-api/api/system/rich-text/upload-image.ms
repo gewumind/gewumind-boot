@@ -16,7 +16,7 @@
   "requestBody": "{}",
   "headers": [],
   "paths": [],
-  "responseBody": "{\n    \"code\": 500,\n    \"message\": \"系统内部出现错误\",\n    \"data\": null,\n    \"timestamp\": 1635926293609,\n    \"executeTime\": 33\n}",
+  "responseBody": "{\n    \"code\": 500,\n    \"message\": \"Internal server error\",\n    \"data\": null,\n    \"timestamp\": 1635926293609,\n    \"executeTime\": 33\n}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": {

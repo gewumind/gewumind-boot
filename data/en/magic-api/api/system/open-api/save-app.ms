@@ -16,7 +16,7 @@
   "requestBody": "{\n  \"id\": \"\",\n  \"app_name\": \"\",\n  \"app_key\": \"\",\n  \"app_secret\": \"\",\n  \"status\": 1,\n  \"rate_limit\": 60,\n  \"rate_duration\": 60\n}",
   "headers": [],
   "paths": [],
-  "responseBody": "{\"code\":200,\"msg\":\"保存成功\"}",
+  "responseBody": "{\"code\":200,\"msg\":\"Saved successfully\"}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": null

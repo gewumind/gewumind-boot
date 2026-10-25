@@ -30,7 +30,7 @@
   "requestBody": "{\n\n}",
   "headers": [],
   "paths": [],
-  "responseBody": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"total\": 1,\n        \"list\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"管理员\"\n            }\n        ]\n    },\n    \"timestamp\": 1634309991187,\n    \"executeTime\": 5\n}",
+  "responseBody": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"total\": 1,\n        \"list\": [\n            {\n                \"id\": \"1\",\n                \"name\": \"Administrator\"\n            }\n        ]\n    },\n    \"timestamp\": 1634309991187,\n    \"executeTime\": 5\n}",
   "description": null,
   "requestBodyDefinition": {
     "name": "",

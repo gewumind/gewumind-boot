@@ -43,7 +43,7 @@
   "requestBody": "",
   "headers": [],
   "paths": [],
-  "responseBody": "{\n    \"code\": -1,\n    \"message\": \"系统内部出现错误\",\n    \"data\": null,\n    \"timestamp\": 1679878438039,\n    \"executeTime\": 43\n}",
+  "responseBody": "{\n    \"code\": -1,\n    \"message\": \"Internal server error\",\n    \"data\": null,\n    \"timestamp\": 1679878438039,\n    \"executeTime\": 43\n}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": null

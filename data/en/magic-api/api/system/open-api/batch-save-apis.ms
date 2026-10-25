@@ -16,7 +16,7 @@
   "requestBody": "{ \"app_id\": \"\", \"items\": [{ \"id\": \"\", \"api_path\": \"\", \"api_method\": \"GET\" }] }",
   "headers": [],
   "paths": [],
-  "responseBody": "{\"code\":200,\"msg\":\"保存成功\",\"data\":{\"added\":0,\"updated\":0,\"skipped\":0}}",
+  "responseBody": "{\"code\":200,\"msg\":\"Saved successfully\",\"data\":{\"added\":0,\"updated\":0,\"skipped\":0}}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": null

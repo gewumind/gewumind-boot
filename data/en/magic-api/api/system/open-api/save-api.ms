@@ -16,7 +16,7 @@
   "requestBody": "{\n  \"id\": \"\",\n  \"app_id\": \"\",\n  \"api_path\": \"\",\n  \"api_method\": \"GET\"\n}",
   "headers": [],
   "paths": [],
-  "responseBody": "{\"code\":200,\"msg\":\"保存成功\"}",
+  "responseBody": "{\"code\":200,\"msg\":\"Saved successfully\"}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": null

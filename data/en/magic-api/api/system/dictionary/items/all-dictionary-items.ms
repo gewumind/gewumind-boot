@@ -16,7 +16,7 @@
   "requestBody": "{\r\n\t\r\n}",
   "headers": [],
   "paths": [],
-  "responseBody": "{\n    \"code\": 402,\n    \"message\": \"凭证已过期\",\n    \"data\": null,\n    \"timestamp\": 1647790314936,\n    \"executeTime\": null\n}",
+  "responseBody": "{\n    \"code\": 402,\n    \"message\": \"Credentials expired\",\n    \"data\": null,\n    \"timestamp\": 1647790314936,\n    \"executeTime\": null\n}",
   "description": null,
   "requestBodyDefinition": {
     "name": "",

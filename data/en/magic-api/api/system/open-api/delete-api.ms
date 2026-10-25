@@ -24,7 +24,7 @@
   "requestBody": "",
   "headers": [],
   "paths": [],
-  "responseBody": "{\"code\":200,\"msg\":\"删除成功\"}",
+  "responseBody": "{\"code\":200,\"msg\":\"Deleted successfully\"}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": null

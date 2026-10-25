@@ -16,7 +16,7 @@
   "requestBody": "",
   "headers": [],
   "paths": [],
-  "responseBody": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": [{\n        \"label\": \"测试1\",\n        \"value\": \"测试1\"\n    }, {\n        \"label\": \"组织Organization type\",\n        \"value\": \"office_type\"\n    }, {\n        \"label\": \"字典类型\",\n        \"value\": \"dict_type\"\n    }, {\n        \"label\": \"是否登录\",\n        \"value\": \"is_login\"\n    }],\n    \"timestamp\": 1647790533379,\n    \"executeTime\": 13\n}",
+  "responseBody": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": [{\n        \"label\": \"测试1\",\n        \"value\": \"测试1\"\n    }, {\n        \"label\": \"组织Organization type\",\n        \"value\": \"office_type\"\n    }, {\n        \"label\": \"Dictionary type\",\n        \"value\": \"dict_type\"\n    }, {\n        \"label\": \"是否登录\",\n        \"value\": \"is_login\"\n    }],\n    \"timestamp\": 1647790533379,\n    \"executeTime\": 13\n}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": {
