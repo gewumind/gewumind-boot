@@ -209,8 +209,8 @@
                 <!-- 基础版 / 试用未到期：给升级指引 + 机器码 -->
                 <div v-if="license.edition === 'basic'" class="license-upgrade">
                     <div class="license-free-list">
-                        <div class="license-section-title">基础版已包含</div>
-                        <div>用户 / 角色 / 菜单 / 字典、组织机构、magic-api 低代码容器、动态组件、基础 CRUD 组件</div>
+                        <div class="license-section-title">Basic includes</div>
+                        <div>Users / roles / menus / dictionaries, organization, magic-api low-code container, dynamic components, basic CRUD components</div>
                     </div>
 
                     <div class="license-locked-list">
@@ -227,7 +227,7 @@
                     </div>
 
                     <div class="license-machine">
-                        <div class="license-section-title">本机机器码 —— 复制后发给供应商申请授权</div>
+                        <div class="license-section-title">Machine code — copy and send to the vendor for licensing</div>
                         <div class="license-machine-row">
                             <code class="license-fingerprint">{{ license.fingerprintDisplay }}</code>
                             <n-button size="tiny" type="primary" ghost @click="copyFingerprint">Copy</n-button>
@@ -252,9 +252,9 @@
                         <div><span>License ID</span><b>{{ license.licenseId }}</b></div>
                         <div><span>Customer</span><b>{{ license.customer }}</b></div>
                         <div><span>System version</span><b>v{{ license.productVersion }}</b></div>
-                        <div><span>授权签发版本</span><b>v{{ license.licenseVersion }}</b></div>
-                        <div><span>生效日期</span><b>{{ license.notBefore }}</b></div>
-                        <div><span>到期日期</span><b>{{ license.notAfter }}</b></div>
+                        <div><span>Issued version</span><b>v{{ license.licenseVersion }}</b></div>
+                        <div><span>Valid from</span><b>{{ license.notBefore }}</b></div>
+                        <div><span>Valid until</span><b>{{ license.notAfter }}</b></div>
                         <div><span>Licenses</span><b>{{ license.unlockedCount }} / {{ license.totalCount }} 项</b></div>
                         <div><span>Machine code</span><code>{{ license.fingerprintDisplay }}</code></div>
                     </div>
@@ -325,7 +325,7 @@
 
 <!-- ==================== 皮肤主题选择弹窗 ==================== -->
         <mb-modal ref="themeDialogRef" title="选择皮肤主题" width="560px" @confirm="confirmThemePicker($event)">
-            <h3 style="margin-bottom: 16px; font-size: 14px; color: #666; font-weight: 400;">点击选择预设主题，或使用下方自定义颜色</h3>
+            <h3 style="margin-bottom: 16px; font-size: 14px; color: #666; font-weight: 400;">Pick a preset theme, or use a custom color below</h3>
             <div class="theme-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
                 <div
                     v-for="t in themePresets" :key="t.id"
@@ -1036,7 +1036,7 @@ const JSON_CONFIG_FIELDS = {
         { key: 'client-id', label: 'Client ID', type: 'text', default: 'magic-boot' },
         { key: 'username', label: 'Username', type: 'text', default: '' },
         { key: 'password', label: 'Password', type: 'password', default: '' },
-        { key: 'timeout', label: '连接超时(秒)', type: 'number', default: 30 },
+        { key: 'timeout', label: 'Connect timeout (s)', type: 'number', default: 30 },
         { key: 'keepalive', label: 'Heartbeat (s)', type: 'number', default: 60 }
     ],
     'kafka.config': [
@@ -1044,7 +1044,7 @@ const JSON_CONFIG_FIELDS = {
         { key: 'producer.acks', label: 'Producer 确认机制', type: 'text', default: 'all' },
         { key: 'producer.retries', label: 'Producer 重试次数', type: 'number', default: 3 },
         { key: 'consumer.group-id', label: 'Consumer group ID', type: 'text', default: 'magic-boot' },
-        { key: 'consumer.auto-offset-reset', label: '偏移重置策略', type: 'text', default: 'latest' }
+        { key: 'consumer.auto-offset-reset', label: 'Offset reset policy', type: 'text', default: 'latest' }
     ],
     'ai.config': [
         { key: 'endpoint', label: 'Endpoint', type: 'text', default: 'https://api.deepseek.com' },
@@ -1056,11 +1056,11 @@ const JSON_CONFIG_FIELDS = {
 'ws.config': [
         { key: 'wsPath', label: 'WS 路径前缀', type: 'text', default: '/ws',
           hint: 'WS 本身走主应用端口（与 HTTP API 共用 Tomcat connector）' },
-        { key: 'wssEnabled', label: '启用独立 WSS connector', type: 'text', default: 'false',
+        { key: 'wssEnabled', label: 'Enable a separate WSS connector', type: 'text', default: 'false',
           hint: 'true 时额外起一个 HTTPS connector 专供 wss:// 使用。注意：主服务开启 server.ssl 后 WS 已自动走 wss://，通常无需再开这个' },
         { key: 'wssPort', label: 'WSS connector 端口', type: 'number', default: 9443 },
         { key: 'keystore', label: 'SSL 证书路径', type: 'text', default: 'classpath:keystore.p12',
-          hint: '支持 classpath: 与 file: 两种前缀' },
+          hint: 'Supports classpath: and file: prefixes' },
         { key: 'keystorePassword', label: 'SSL 证书密码', type: 'password', default: 'changeit' },
         { key: 'keystoreType', label: 'SSL 证书类型', type: 'text', default: 'PKCS12' },
         { key: 'keyAlias', label: 'SSL 密钥别名', type: 'text', default: 'tomcat' }
@@ -1073,11 +1073,11 @@ const JSON_CONFIG_FIELDS = {
         { key: 'role', label: 'Role', type: 'text', default: 'client',
           hint: 'server=仅服务端 / client=仅客户端 / both=两者' },
         { key: 'server-url', label: 'Server URL', type: 'text', default: '',
-          hint: '如 https://sso.example.com' },
+          hint: 'e.g. https://sso.example.com' },
         { key: 'client-id', label: 'Client ID', type: 'text', default: '' },
         { key: 'client-secret', label: 'Client secret', type: 'password', default: '' },
         { key: 'redirect-uri', label: 'Callback URL', type: 'text', default: '' },
-        { key: 'username-mapping', label: '用户名映射策略', type: 'text', default: 'auto',
+        { key: 'username-mapping', label: 'Username mapping policy', type: 'text', default: 'auto',
           hint: 'auto=自动建影子账号 / deny=仅允许已绑定用户' },
         { key: 'default-role', label: 'Default role ID', type: 'text', default: '' }
     ]
@@ -1136,8 +1136,8 @@ const SELECT_OPTIONS = {
         { label: 'Large', value: 'large' }
     ],
     'password.strength': [
-        { label: '弱（无限制）', value: '1' },
-        { label: '强（8位+大小写+数字+特殊符至少三类）', value: '2' }
+        { label: 'Weak (no limit)', value: '1' },
+        { label: 'Strong (8+ chars, at least 3 of upper/lower/digit/symbol)', value: '2' }
     ]
 }
 
@@ -1212,7 +1212,7 @@ async function customUpload({ file, onFinish, onError }, item) {
             onError()
         }
     } catch (e) {
-        $message.error('读取/上传失败：' + (e.message || '请把图片放到 wzh 用户目录下再选'))
+        $message.error('Read/upload failed: ' + (e.message || 'Put the image under the wzh user directory first'))
         onError()
     }
 }
@@ -1255,7 +1255,7 @@ function pickFromServer(item) {
         }, serverFilesCache.value.length === 0
             ? [h('div', { style: 'grid-column: 1/-1; text-align:center; color:#999; padding:30px; line-height:1.8;' }, [
                 h('div', { style: 'font-size:14px; margin-bottom:8px;' }, 'No images available'),
-                h('div', { style: 'font-size:12px; color:#bbb;' }, '请将图片复制到服务器目录：'),
+                h('div', { style: 'font-size:12px; color:#bbb;' }, 'Copy the image to the server directory: '),
                 h('div', { style: 'font-size:12px; color:#18a058; margin-top:4px; font-family:monospace;' },
                     './upload/userfiles/'),
                 h('div', { style: 'font-size:12px; color:#999; margin-top:8px;' },
@@ -1290,7 +1290,7 @@ function pickFromServer(item) {
 function showBase64Help(item) {
     const base64Value = ref('')
     $dialog.create({
-        title: '通过 base64 字符串上传',
+        title: 'Upload via base64 string',
         width: 640,
         content: () => h('div', { style: 'padding: 4px;' }, [
             h('div', { style: 'font-size:12px; color:#666; line-height:1.7; margin-bottom:8px;' }, [
@@ -1317,7 +1317,7 @@ function showBase64Help(item) {
         negativeText: 'Cancel',
         onPositiveClick: () => {
             if (!base64Value.value) {
-                $message.warning('请粘贴 base64 字符串')
+                $message.warning('Paste a base64 string')
                 return false
             }
             const pure = base64Value.value.includes(',')
@@ -1394,7 +1394,7 @@ async function confirmJsonEditor(event) {
         } catch (e) {
             event?.hideLoading?.()
             jsonTestResult.value = { success: false, message: 'Test request failed' }
-            $message.error('测试失败，未保存')
+            $message.error('Test failed; not saved')
             return
         }
         event?.hideLoading?.()
@@ -1765,7 +1765,7 @@ function handleRestart() {
             if (retries > maxRetries) {
                 restartState.phase = 'timeout'
                 restartState.title = 'Restart timed out'
-                restartState.desc = '服务未能在预期时间内恢复，请手动刷新'
+                restartState.desc = 'Service did not recover in time; please refresh manually'
                 if (btn) btn.disabled = false
                 return
             }
@@ -1873,7 +1873,7 @@ async function loadLicense() {
 async function copyFingerprint() {
     try {
         await navigator.clipboard.writeText(license.value.fingerprintDisplay)
-        $message.success('机器码已复制：' + license.value.fingerprintDisplay)
+        $message.success('Machine code copied: ' + license.value.fingerprintDisplay)
     } catch (e) {
         $message.error('Copy failed; please select and copy manually')
     }
@@ -1901,7 +1901,7 @@ async function submitLicense() {
             licenseApplyRef.value = false
             licenseFileName.value = ''
             licenseFileContent.value = ''
-            $message.info('高级能力已解锁，涉及服务如已启用需重启系统后生效')
+            $message.info('Advanced features unlocked; restart the system for enabled services to take effect')
         } else {
             $message.error((res && res.message) || 'License validation failed')
         }
