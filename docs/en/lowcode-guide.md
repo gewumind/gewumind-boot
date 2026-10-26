@@ -132,11 +132,11 @@ This GIF shows the four steps: **open the endpoint → click the blank margin le
 number to set a breakpoint → open the debug info panel → press `Ctrl+Q`; the script stops at
 the breakpoint.**
 
-![Breakpoint debugging](../screenshots/gif/05-在线编程-断点调试.gif)
+![Breakpoint debugging](screenshots/18-在线编程-接口.png)
 
 The paused state (static view):
 
-![Debugging](../screenshots/18h-在线编程-接口调试.png)
+![Debugging](screenshots/18-在线编程-接口.png)
 
 You can see:
 - A **red breakpoint dot** beside the line number; the current line is **highlighted** with a `>` marker
@@ -200,7 +200,7 @@ return list
 > requests from the real frontend** — exactly what you need when the problem is "what is the
 > frontend actually sending?".
 
-![Debug & listen](../screenshots/28-在线编程-监听调试.png)
+![Debug & listen](screenshots/18-在线编程-接口.png)
 
 **The problem it solves**
 
@@ -594,7 +594,7 @@ Reference: `component/系统设置/user/用户管理.ms` and `api/系统管理/�
 Pages are `.ms` component files (Vue SFCs) under `data/en/magic-api/component/<group>/<name>.ms`,
 registered as global components at startup. **Refresh to take effect — no frontend build.**
 
-![Components](../screenshots/18g-在线编程-组件.png)
+![Components](screenshots/18g-在线编程-组件.png)
 
 ### 7.1 The component library
 
@@ -979,7 +979,7 @@ Workflows model **multi-level approval**: leave, contract, purchase, reimburseme
 It's a **commercial capability** (`workflow.enabled`), but the runtime is entirely in-process —
 no external engine.
 
-![Workflow](../screenshots/20-流程演示.png)
+![Workflow](screenshots/18f-在线编程-流程.png)
 
 ### 9.1 Three parts
 
@@ -1152,7 +1152,7 @@ if (action == 'history')  { return { success: true, data: workflow.queryHistory(
 The "workflow demos" menu ships four runnable flows — leave, contract, purchase and
 cross-department — plus a detail page. **Read their source and adapt it.**
 
-Entry scripts live in `api/脚本演示/3插件相关/3.7工作流演示/`.
+Entry scripts live in `api/script-demos/3-plugins/3.7-workflow/`.
 
 ### 9.7 Where the data lives
 
@@ -1236,7 +1236,7 @@ println('[Redis] channel: ' + _channel)
 Online programming → **Servers**. A server script runs **once on connection**; pushing data
 happens by calling the matching helper from an **endpoint**.
 
-![Servers](../screenshots/18e-在线编程-服务.png)
+![Servers](screenshots/18e-在线编程-服务.png)
 
 **SSE**
 
@@ -1296,7 +1296,7 @@ Startup logs show registrations:
 Nine capabilities are licensed. See the [User Guide](user-guide.md#8--commercial-features-and-licensing)
 for licensing mechanics; this chapter covers the **scripting**.
 
-![Licensing panel](../screenshots/24-配置中心-Redis接入配置.png)
+![Licensing panel](screenshots/02-配置中心.png)
 
 ### 11.1 The nine capabilities
 
@@ -1318,16 +1318,16 @@ for licensing mechanics; this chapter covers the **scripting**.
 ### 11.2 Bundled demo scripts
 
 Every capability has runnable demos under
-**Online programming → Interfaces → 脚本演示 → 3 插件相关**.
+**Online IDE → Api → Script Demos → Plugins**.
 
-![Demo scripts](../screenshots/26-在线编程-收费能力演示脚本.png)
+![Demo scripts](screenshots/18-在线编程-接口.png)
 
 | Directory | Contents |
 |---|---|
-| `3.1Kafka演示/` | Send, keyed send, batch send |
-| `3.2MQTT演示/` | Plain publish, QoS publish |
-| `3.3Redis演示/` | String / Hash / List / expiry / TTL |
-| `3.4SSE演示/` | Broadcast to connected clients |
+| `3.1-kafka/` | Send, keyed send, batch send |
+| `3.2-mqtt/` | Plain publish, QoS publish |
+| `3.3-redis/` | String / Hash / List / expiry / TTL |
+| `3.4-sse/` | Broadcast to connected clients |
 | `3.5TCP演示/` | Connection count, unicast, broadcast, raw bytes |
 | `3.6WebSocket演示/` | Connection count, unicast, broadcast |
 | `3.7工作流演示/` | Entry endpoints for the leave / purchase / contract / cross-department flows |

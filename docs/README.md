@@ -41,7 +41,8 @@ docs/
 │   ├── development.md
 │   ├── ai-development.md
 │   └── architecture.md
-└── screenshots/       截图与 GIF（中日英共用，不区分语言）
+├── zh/screenshots/    中文截图与 GIF
+└── en/screenshots/    英文截图
 ```
 
 ## 建议阅读顺序
@@ -53,7 +54,7 @@ docs/
 
 ## 截图与演示
 
-`screenshots/` 下是全部真实界面截图（`screenshots/`）与操作演示动图（`screenshots/gif/`），
+`zh/screenshots/` 下是中文界面截图与动图（`zh/screenshots/gif/`），`en/screenshots/` 是英文界面截图，
 在 [使用手册](./zh/使用手册.md) 与 [低代码开发教程](./zh/低代码开发教程.md) 中按需引用，
 项目主页 [README](../README.md) 里有一页速览。
 

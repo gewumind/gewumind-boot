@@ -6,9 +6,9 @@
 scripts, pages kept as component files, menus / roles / dictionaries / config all managed online.
 Three commands from clone to a fully working backend.
 
-![Dashboard](docs/screenshots/en/dashboard.png)
+![Dashboard](docs/en/screenshots/01-工作台.png)
 
-![Login](docs/screenshots/en/login.png)
+![Login](docs/en/screenshots/00-登录页.png)
 
 
 - Website: https://gewumind.github.io

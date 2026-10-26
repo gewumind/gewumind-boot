@@ -35,7 +35,7 @@ docs/
 ├── en/                English docs
 │   ├── deployment.md · user-guide.md · lowcode-guide.md
 │   └── development.md · ai-development.md · architecture.md
-└── screenshots/       Screenshots & GIFs (shared by all languages)
+└── screenshots/       English UI screenshots
 ```
 
 ## Suggested reading order

@@ -5,7 +5,7 @@
 **GewuMind Boot** 是一个 **AI 驱动的低代码后端容器** —— 接口用脚本写，页面用组件文件维护，
 菜单 / 角色 / 字典 / 配置全部在线管理。`clone` 下来三步就能跑起一整套可用后端。
 
-![工作台](docs/screenshots/01-工作台.png)
+![工作台](docs/zh/screenshots/01-工作台.png)
 
 - 官网：https://gewumind.github.io
 - 主仓库：https://github.com/gewumind/gewumind-boot ｜ Gitee：https://gitee.com/gewumind/gewumind-boot
@@ -125,38 +125,38 @@ scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.3/gewumind-boot-
 
 | | |
 |---|---|
-| ![工作台](docs/screenshots/01-工作台.png) | ![登录页](docs/screenshots/00-登录页.png) |
+| ![工作台](docs/zh/screenshots/01-工作台.png) | ![登录页](docs/zh/screenshots/00-登录页.png) |
 | **工作台首页** —— 统计卡片、销售趋势、操作动态 | **登录页** —— Logo / 主题可配置 |
 
 ### 系统设置
 
 | | | |
 |---|---|---|
-| ![配置中心](docs/screenshots/02-配置中心.png) | ![用户管理](docs/screenshots/03-用户管理.png) | ![角色管理](docs/screenshots/04-角色管理.png) |
+| ![配置中心](docs/zh/screenshots/02-配置中心.png) | ![用户管理](docs/zh/screenshots/03-用户管理.png) | ![角色管理](docs/zh/screenshots/04-角色管理.png) |
 | **配置中心** —— 运行期参数 + 授权面板 | **用户管理** —— 组织/角色/登录状态 | **角色管理** —— 菜单+按钮+接口三重授权 |
-| ![菜单管理](docs/screenshots/05-菜单管理.png) | ![图标管理](docs/screenshots/06-图标管理.png) | ![组织机构](docs/screenshots/07-组织机构.png) |
+| ![菜单管理](docs/zh/screenshots/05-菜单管理.png) | ![图标管理](docs/zh/screenshots/06-图标管理.png) | ![组织机构](docs/zh/screenshots/07-组织机构.png) |
 | **菜单管理** —— 路由与权限码的骨架 | **图标管理** —— iconfont / 上传图标库 | **组织机构** —— 公司部门树 |
-| ![数据字典](docs/screenshots/08-数据字典.png) | ![模块管理](docs/screenshots/09-模块管理.png) | ![消息管理](docs/screenshots/10-消息管理.png) |
+| ![数据字典](docs/zh/screenshots/08-数据字典.png) | ![模块管理](docs/zh/screenshots/09-模块管理.png) | ![消息管理](docs/zh/screenshots/10-消息管理.png) |
 | **数据字典** —— 枚举值统一维护 | **模块管理** —— 商业授权能力 | **消息管理** —— 公告 / 待办 / 系统消息 |
 
 <details>
 <summary><b>配置中心 · 主题选择</b>（13 套预设皮肤 + 自定义取色）</summary>
 
-![主题选择](docs/screenshots/02b-配置中心-主题选择.png)
+![主题选择](docs/zh/screenshots/02b-配置中心-主题选择.png)
 
 </details>
 
 <details>
 <summary><b>用户管理 · 新增用户</b></summary>
 
-![新增用户](docs/screenshots/03b-用户管理-新增用户.png)
+![新增用户](docs/zh/screenshots/03b-用户管理-新增用户.png)
 
 </details>
 
 <details>
 <summary><b>消息管理 · 发送消息</b></summary>
 
-![发送消息](docs/screenshots/10b-消息管理-发送消息.png)
+![发送消息](docs/zh/screenshots/10b-消息管理-发送消息.png)
 
 </details>
 
@@ -164,16 +164,16 @@ scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.3/gewumind-boot-
 
 | | | |
 |---|---|---|
-| ![在线用户](docs/screenshots/11-在线用户.png) | ![登录日志](docs/screenshots/12-登录日志.png) | ![操作日志](docs/screenshots/13-操作日志.png) |
+| ![在线用户](docs/zh/screenshots/11-在线用户.png) | ![登录日志](docs/zh/screenshots/12-登录日志.png) | ![操作日志](docs/zh/screenshots/13-操作日志.png) |
 | **在线用户** —— 会话管理、一键踢人 | **登录日志** —— 谁进来了 | **操作日志** —— 谁改了什么 |
-| ![数据库监控](docs/screenshots/14-数据库监控.png) | | |
+| ![数据库监控](docs/zh/screenshots/14-数据库监控.png) | | |
 | **数据库监控** —— Druid 连接池与慢 SQL | | |
 
 ### 开放接口（API 网关）
 
 | | | |
 |---|---|---|
-| ![应用管理](docs/screenshots/15-开放接口-应用管理.png) | ![接口授权](docs/screenshots/16-开放接口-接口授权.png) | ![访问记录](docs/screenshots/17-开放接口-访问记录.png) |
+| ![应用管理](docs/zh/screenshots/15-开放接口-应用管理.png) | ![接口授权](docs/zh/screenshots/16-开放接口-接口授权.png) | ![访问记录](docs/zh/screenshots/17-开放接口-访问记录.png) |
 | **应用管理** —— appKey / appSecret | **接口授权** —— 按应用授权 + 限流 | **访问记录** —— 第三方调用流水 |
 
 ### 低代码 · 在线编程
@@ -182,27 +182,27 @@ scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.3/gewumind-boot-
 
 | | | |
 |---|---|---|
-| ![接口](docs/screenshots/18-在线编程-接口.png) | ![函数](docs/screenshots/18b-在线编程-函数.png) | ![定时任务](docs/screenshots/18c-在线编程-定时任务.png) |
+| ![接口](docs/zh/screenshots/18-在线编程-接口.png) | ![函数](docs/zh/screenshots/18b-在线编程-函数.png) | ![定时任务](docs/zh/screenshots/18c-在线编程-定时任务.png) |
 | **接口** —— HTTP 定义 + 脚本 | **函数** —— 可复用公共函数 | **定时任务** —— cron 调度 |
-| ![订阅](docs/screenshots/18d-在线编程-订阅.png) | ![服务](docs/screenshots/18e-在线编程-服务.png) | ![流程](docs/screenshots/18f-在线编程-流程.png) |
+| ![订阅](docs/zh/screenshots/18d-在线编程-订阅.png) | ![服务](docs/zh/screenshots/18e-在线编程-服务.png) | ![流程](docs/zh/screenshots/18f-在线编程-流程.png) |
 | **订阅** —— 消息订阅者 | **服务** —— SSE / TCP / WebSocket | **流程** —— 工作流定义 |
-| ![组件](docs/screenshots/18g-在线编程-组件.png) | ![调试](docs/screenshots/18h-在线编程-接口调试.png) | |
+| ![组件](docs/zh/screenshots/18g-在线编程-组件.png) | ![调试](docs/zh/screenshots/18h-在线编程-接口调试.png) | |
 | **组件** —— 前端动态组件（SFC） | **在线调试** —— 断点 + 变量树 | |
 
 ### 报表与流程
 
 | | |
 |---|---|
-| ![报表示例](docs/screenshots/19-报表示例.png) | ![流程演示](docs/screenshots/20-流程演示.png) |
+| ![报表示例](docs/zh/screenshots/19-报表示例.png) | ![流程演示](docs/zh/screenshots/20-流程演示.png) |
 | **报表示例** —— 月度销售/库存/预算执行 | **流程演示** —— 报销/请假/采购审批 |
 
 ### 操作演示（GIF）
 
 | | | | |
 |---|---|---|---|
-| ![登录](docs/screenshots/gif/01-登录.gif) | ![切换主题](docs/screenshots/gif/02-配置中心-切换主题.gif) | ![新增用户](docs/screenshots/gif/03-用户管理-新增用户.gif) | ![接口树](docs/screenshots/gif/04-在线编程-接口树.gif) |
+| ![登录](docs/zh/screenshots/gif/01-登录.gif) | ![切换主题](docs/zh/screenshots/gif/02-配置中心-切换主题.gif) | ![新增用户](docs/zh/screenshots/gif/03-用户管理-新增用户.gif) | ![接口树](docs/zh/screenshots/gif/04-在线编程-接口树.gif) |
 | 登录 | 切换皮肤主题 | 新增用户 | 浏览接口树 |
-| ![断点调试](docs/screenshots/gif/05-在线编程-断点调试.gif) | ![运行结果](docs/screenshots/gif/06-在线编程-运行结果.gif) | | |
+| ![断点调试](docs/zh/screenshots/gif/05-在线编程-断点调试.gif) | ![运行结果](docs/zh/screenshots/gif/06-在线编程-运行结果.gif) | | |
 | **断点调试** —— 设断点 → 运行 → 看变量 | **运行结果** —— 一键执行看输出 | | |
 
 > 各界面的详细操作说明见 [使用手册](docs/zh/使用手册.md)；
