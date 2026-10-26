@@ -62,8 +62,8 @@
   "responseBodyDefinition": null
 }
 ================================
-// WebSocket 主动推送示例
-// 向已连接 ws://host:port/ws/{path} 的客户端实时推送消息
+// WebSocket push example
+// Push messages to clients connected at ws://host:port/ws/{path}
 //
 // Prerequisites:
 //   1. Config center: ws.enabled = true
@@ -84,7 +84,7 @@ if (body.clientId != null && body.clientId.length() > 0) {
     println('[WS Push] 已发送到 client=' + body.clientId)
 } else {
     ws.broadcastToPath(targetPath, payload)
-    println('[WS Push] 已广播到 path=' + targetPath)
+    println('[WS Push] Broadcast to path=' + targetPath)
 }
 
 clientCount = ws.getConnectionCount(targetPath)
@@ -93,5 +93,5 @@ return {
     success: true,
     target: body.clientId ?: 'broadcast:' + targetPath,
     onlineClients: clientCount,
-    message: '已推送给 ' + clientCount + ' 个在线客户端'
+    message: 'Pushed to ' + clientCount + '  online clients'
 }

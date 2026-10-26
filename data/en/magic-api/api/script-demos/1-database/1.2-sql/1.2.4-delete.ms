@@ -36,7 +36,7 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示使用 db.update() 执行删除 SQL 语句 */
+/* Purpose: run a DELETE with db.update() */
 
 // db.update(sql) executes INSERT/UPDATE/DELETE
 // This API accepts DELETE; parameter id (query param)

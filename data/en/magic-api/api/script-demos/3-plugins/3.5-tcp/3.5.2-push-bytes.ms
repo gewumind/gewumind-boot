@@ -62,8 +62,8 @@
   "responseBodyDefinition": null
 }
 ================================
-// TCP 主动推送示例
-// 向已连接 tcp://host:port 的客户端实时推送字节
+// TCP push example
+// Push bytes to clients connected at tcp://host:port
 //
 // Prerequisites:
 //   1. Config center: tcp.enabled = true
@@ -93,5 +93,5 @@ return {
     success: true,
     target: body.clientId ?: 'broadcast:' + targetPort,
     onlineClients: clientCount,
-    message: '已推送给 ' + clientCount + ' 个在线客户端'
+    message: 'Pushed to ' + clientCount + '  online clients'
 }

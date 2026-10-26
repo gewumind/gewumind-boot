@@ -247,43 +247,43 @@
   }
 }
 ================================
-// Redis 基础操作演示
-// 需先在配置中心设置 redis.enabled = true
+// Redis basics demo
+// Set redis.enabled = true in the config center first
 
 if (!redis.isEnabled()) {
-    return { success: false, message: 'Redis 未启用，请在配置中心设置 redis.enabled = true' }
+    return { success: false, message: 'Redis is disabled; set redis.enabled = true in the config center' }
 }
 
-// 字符串操作
+// String operations
 redis.set('demo:name', 'Magic-Boot')
 var name = redis.get('demo:name')
 
-// 设置 60 秒过期
+// Set a 60-second TTL
 redis.setex('demo:code', '123456', 60)
 
 
-// Hash 操作
+// Hash operations
 redis.hSet('demo:user:1', 'name', '张三')
 redis.hSet('demo:user:1', 'age', '25')
 var user = redis.hGetAll('demo:user:1')
 var age = redis.hGet('demo:user:1', 'age')
 
-// List 操作
+// List operations
 redis.lPush('demo:queue', 'task1')
 redis.lPush('demo:queue', 'task2')
 var tasks = redis.lRange('demo:queue', 0, -1)
 
-// 判断键是否存在
+// Check if a key exists
 var hasKey = redis.exists('demo:name')
 
-// 获取过期时间
+// Get TTL
 var ttl = redis.ttl('demo:code')
 
-// 删除
+// Delete
 redis.del('demo:count')
 
-// 发布/订阅（演示）
-// 发布消息到频道（其他客户端订阅同一频道即可收到）
+// Pub/sub (demo)
+// Publish to a channel (other subscribers receive it)
 var publishCount = redis.publish('demo:channel', 'Hello from Redis!' + current_timestamp())
 
 return {
@@ -294,5 +294,5 @@ return {
     hasKey: hasKey,
     ttl: ttl,
     publishCount: publishCount,
-    message: 'Redis 基础操作完成！订阅相关代码请在 api/订阅/ 目录下的 .ms 文件中维护'
+    message: 'Redis basics done. Keep subscription code in .ms files under api/subscriptions/.'
 }

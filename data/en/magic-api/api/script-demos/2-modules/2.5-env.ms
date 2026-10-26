@@ -22,19 +22,19 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的：演示 magic-api 的 env 模块（读取 Spring 配置项） =====
-// env 模块用于在脚本中读取 Spring Boot 的 application.yml 配置
+// ===== Purpose: magic-api env module (read Spring config) =====
+// env reads Spring Boot application.yml values in scripts
 
 import env;
 
-// env.get(key)：获取 Spring 配置项的值（返回 String）
+// env.get(key): get a Spring config value (as String)
 // 例如以下配置 spring.datasource.url 在 application.yml 中定义
 return env.get('server.port');
 
-// 实际应用场景示例（可自行测试）：
+// Real-world examples (try them):
 // var dbUrl = env.get('spring.datasource.url');     // 数据库连接地址
 // var active = env.get('spring.profiles.active');   // 当前运行环境
 // var secret = env.get('jwt.secret');                // 自定义密钥
 // 
-// 注意：env.get() 返回的是 String，如需数值类型需手动转换
+// Note: env.get() returns a String; convert numeric values manually
 // var port = env.get('server.port')::int;

@@ -49,8 +49,8 @@
   "responseBodyDefinition": null
 }
 ================================
-// SSE 推送通知 API
-// 向所有订阅 /sse/notifications 的客户端实时推送事件
+// SSE push notification API
+// Push events to clients subscribed to /sse/notifications
 //
 // Prerequisites:
 //   1. 配置中心 sse.enabled = true（已启用）
@@ -62,15 +62,15 @@
 //     "data":  "{\"msg\":\"...\"}"  // 推送数据（JSON 字符串），必填
 //   }
 //
-// 浏览器监听示例：
+// Browser listener example:
 //   const es = new EventSource('/sse/notifications')
 //   es.addEventListener('message', e => console.log(JSON.parse(e.data)))
 //   es.addEventListener('alert',    e => { /* 弹窗告警 */ })
 //
-// 使用场景：
-//   - 新订单通知
-//   - 系统告警推送
-//   - 审核状态变更
+// Use cases:
+//   - new order notification
+//   - system alerts
+//   - approval status changes
 
 // 1. 通过 sse.broadcastToPath 广播给 /notifications path 下所有客户端
 eventName = body.event ?: 'message'
@@ -80,13 +80,13 @@ sse.broadcastToPath('/notifications', eventName, payload)
 
 clientCount = sse.getConnectionCount('/notifications')
 
-println('[SSE Push] 已广播: event=' + eventName + ' data=' + payload + ' online=' + clientCount)
+println('[SSE Push] Broadcast: event=' + eventName + ' data=' + payload + ' online=' + clientCount)
 
 return {
     success: true,
     event: eventName,
     data: payload,
     onlineClients: clientCount,
-    message: '事件已广播给 ' + clientCount + ' 个在线客户端',
+    message: 'Event broadcast to ' + clientCount + '  online clients',
     usage: 'curl -X POST http://localhost:9089/sse/send -H "Content-Type: application/json" -d \'{"event":"alert","data":"{\\"msg\\":\\"test\\"}"}\''
 }

@@ -22,15 +22,15 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的：演示 magic-api 的 http 模块 =====
-// http 模块用于在当前 API 中调用另一个 HTTP 接口（类似 RPC 调用）
+// ===== Purpose: magic-api http module =====
+// http calls another HTTP endpoint from the current API (RPC-like)
 
 import http;
 
-// 1. http.connect(url) 建立 HTTP 连接，目标地址可以是内网或外网
-// 2. .get() 发送 GET 请求（也支持 .post() .put() .delete() 等）
-// 3. .getBody() 获取响应体，自动解析 JSON 为 Map/List
-//    也可用 .getString() 获取原始字符串，.getHeaders() 获取响应头
+// 1. http.connect(url) opens a connection (internal or external)
+// 2. .get() sends GET (also .post(), .put(), .delete(), ...)
+// 3. .getBody() parses a JSON response body into Map/List
+//    .getString() returns raw text; .getHeaders() returns headers
 return http.connect('http://127.0.0.1:9999/db/module/list')
     .get()
     .getBody()

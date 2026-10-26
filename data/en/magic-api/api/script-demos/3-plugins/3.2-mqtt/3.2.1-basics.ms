@@ -37,11 +37,11 @@
 }
 ================================
 if (!mqtt.isEnabled()) {
-    return { success: false, message: 'MQTT 未启用，请在配置中心设置 mqtt.enabled = true' }
+    return { success: false, message: 'MQTT is disabled; set mqtt.enabled = true in the config center' }
 }
 
 mqtt.publish('demo/test', 'Hello Magic-Boot!' + current_timestamp())
-mqtt.publishQos('demo/important', '重要消息', 2)
+mqtt.publishQos('demo/important', 'Important message', 2)
 mqtt.publish('demo/device/status', JSON.stringify({
     type: 'heartbeat',
     timestamp: current_timestamp(),

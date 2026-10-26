@@ -22,19 +22,19 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的：演示 magic-api 的 request 模块（读取当前请求信息） =====
-// request 模块用于获取当前 HTTP 请求的元数据，如请求头、参数、IP 等
+// ===== Purpose: magic-api request module =====
+// request reads current HTTP request metadata (headers, params, IP, ...)
 
 import request;
 
-// request.getHeaders(name)：获取指定请求头的所有值（返回 String[]）
+// request.getHeaders(name): all values of a header (String[])
 // 例如获取 Host 头，返回 ["127.0.0.1:9999"]
 return request.getHeaders("Host");
 
-// 其他常用方法（可自行替换测试）：
-// request.getHeader(name)     - 获取单个请求头值
-// request.getIp()             - 获取客户端 IP 地址
-// request.getMethod()         - 获取请求方法（GET/POST）
-// request.getUrl()            - 获取完整请求 URL
-// request.getParameter(name)  - 获取查询参数值
-// request.getBody()           - 获取请求体（POST 提交的内容）
+// Other common methods:
+// request.getHeader(name)     - single header value
+// request.getIp()             - client IP
+// request.getMethod()         - HTTP method
+// request.getUrl()            - full request URL
+// request.getParameter(name)  - query parameter
+// request.getBody()           - request body (POST)

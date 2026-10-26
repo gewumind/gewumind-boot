@@ -49,8 +49,8 @@
   "responseBodyDefinition": null
 }
 ================================
-// WebSocket 基础操作演示
-// 依次调用 ws 模块的全部公开方法，验证可用性。
+// WebSocket basics demo
+// Calls all public ws module methods to verify availability.
 //
 // Prerequisites:
 //   1. Config center: ws.enabled = true
@@ -65,7 +65,7 @@ count = ws.getConnectionCount(targetPath)
 // 2. List client IDs
 clientIds = ws.getClientIdsByPath(targetPath)
 
-// 3. 广播给同 path 所有客户端（无论有没有人都会执行，无害）
+// 3. Broadcast to all clients on the path (safe even with none)
 ws.broadcastToPath(targetPath, payload)
 
 // 4. Unicast to the first client (if any)

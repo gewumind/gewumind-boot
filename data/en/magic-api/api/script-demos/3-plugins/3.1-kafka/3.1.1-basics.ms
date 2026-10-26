@@ -37,7 +37,7 @@
 }
 ================================
 if (!kafka.isEnabled()) {
-    return { success: false, message: 'Kafka 未启用，请在配置中心设置 kafka.enabled = true' }
+    return { success: false, message: 'Kafka is disabled; set kafka.enabled = true in the config center' }
 }
 
 kafka.send('demo-test', 'Hello Magic-Boot!' + current_timestamp())

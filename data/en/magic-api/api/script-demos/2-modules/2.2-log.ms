@@ -36,23 +36,23 @@
   "responseBodyDefinition": null
 }
 ================================
-// ===== 目的：演示 magic-api 的 log 模块（日志记录） =====
-// log 模块用于在 API 执行过程中输出日志，方便调试和排查问题
-// 提示：请切换到 magic-api 控制台的"运行日志"标签页查看日志输出
+// ===== Purpose: magic-api log module =====
+// log writes logs during API execution for debugging
+// Tip: open the "Runtime log" tab in the magic-api console
 
 import log;
 
-// log.info()：输出 INFO 级别日志，支持 {} 占位符传参
-// 第一个参数是日志模板，第二个起是填充值
+// log.info(): INFO level, supports {} placeholders
+// The first argument is the template; the rest fill placeholders
 log.info('info日志:{}', message);
 
-// log.warn()：输出 WARN 级别日志（警告，不影响执行）
+// log.warn(): WARN level (does not affect execution)
 log.warn('warn日志');
 
-// log.error()：输出 ERROR 级别日志（通常用于异常记录）
-// 可以传入异常对象 e，框架会自动打印堆栈跟踪
+// log.error(): ERROR level (usually for exceptions)
+// Pass exception e and the framework prints the stack trace
 try {
-    // 故意制造一个除零异常来演示 error 日志
+    // Deliberately divide by zero to demo error logging
     return 1 / 0;
 } catch (e) {
     log.error('error日志', e);
