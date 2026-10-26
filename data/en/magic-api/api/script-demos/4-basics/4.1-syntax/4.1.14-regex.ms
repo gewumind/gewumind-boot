@@ -22,15 +22,15 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示正则表达式 Pattern 类型的定义与使用 */
-// magic-script 支持 /pattern/flags 语法定义正则表达式
-// 支持的 flags: g(全局) i(忽略大小写) m(多行) u(Unicode) y(sticky)
+/* Purpose: demonstrate defining and using regex Pattern values */
+// magic-script supports /pattern/flags regex literals
+// supported flags: g (global), i (ignore case), m (multiline), u (Unicode), y (sticky)
 
-// ===== 1. 定义正则表达式 =====
+// ===== 1. define a regex =====
 var emailPattern = /^[\\w.-]+@[\\w.-]+\\.\\w+$/;
 var phonePattern = /^1[3-9]\\d{9}$/;
 
-// ===== 2. 匹配Test =====
+// ===== 2. match test =====
 var email = "test@example.com";
 var isEmail = emailPattern.test(email);
 // isEmail = true
@@ -39,20 +39,20 @@ var phone = "13800138000";
 var isPhone = phonePattern.test(phone);
 // isPhone = true
 
-// ===== 3. 提取匹配结果 =====
-var text = "联系方式: 13800138000, 邮箱: user@example.com";
+// ===== 3. extract matches =====
+var text = "Contact: 13800138000, email: user@example.com";
 var numberPattern = /1[3-9]\\d{9}/g;
 
-// exec() 返回匹配结果数组，g 标志可多次调用
+// exec() returns match arrays; with the g flag it can be called repeatedly
 var match = numberPattern.exec(text);
 // match = ["13800138000"]
 
-// ===== 4. 字符串替换 =====
+// ===== 4. string replacement =====
 var str = "Hello 123 World 456";
 var result = str.replace(/\\d+/g, "***");
 // result = "Hello *** World ***"
 
-// ===== 5. 字符串分割 =====
+// ===== 5. string split =====
 var csv = "a,b,c,d";
 var parts = csv.split(/,/);
 // parts = ["a", "b", "c", "d"]

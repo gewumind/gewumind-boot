@@ -29,56 +29,56 @@ if (companyId == null || companyId == '') {
     return []
 }
 
-// mock 不同部门对应不同数据
+// mock: different departments map to different data
 var dataMap = {
     'D001': [
-        {product: 'ThinkPad X1 Carbon', sold: 25,  unitPrice: 12000, total: 300000, customer: '阿里巴巴'},
+        {product: 'ThinkPad X1 Carbon', sold: 25,  unitPrice: 12000, total: 300000, customer: 'Alibaba'},
         {product: 'MacBook Pro 14',    sold: 18,  unitPrice: 15000, total: 270000, customer: 'ByteDance'},
         {product: 'Dell XPS 15',       sold: 12,  unitPrice: 14000, total: 168000, customer: 'Meituan'}
     ],
     'D002': [
-        {product: 'iPad Air',          sold: 30,  unitPrice: 4800,  total: 144000, customer: '淘宝商家'},
-        {product: 'iPhone 14',         sold: 20,  unitPrice: 5500,  total: 110000, customer: '天猫商家'}
+        {product: 'iPad Air',          sold: 30,  unitPrice: 4800,  total: 144000, customer: 'Taobao Merchant'},
+        {product: 'iPhone 14',         sold: 20,  unitPrice: 5500,  total: 110000, customer: 'Tmall Merchant'}
     ],
     'D003': [
-        {product: '华为 Mate50',       sold: 35,  unitPrice: 5000,  total: 175000, customer: '支付宝商家'},
-        {product: '小米 13',           sold: 40,  unitPrice: 4000,  total: 160000, customer: '口碑商家'}
+        {product: 'Huawei Mate50',       sold: 35,  unitPrice: 5000,  total: 175000, customer: 'Alipay Merchant'},
+        {product: 'Xiaomi 13',           sold: 40,  unitPrice: 4000,  total: 160000, customer: 'Koubei Merchant'}
     ],
     'D101': [
-        {product: '微信小程序开发',    sold: 100, unitPrice: 5000,  total: 500000, customer: '微信生态'},
-        {product: '企业微信',           sold: 50,  unitPrice: 8000,  total: 400000, customer: 'Enterprise customer'}
+        {product: 'WeChat Mini Program development',    sold: 100, unitPrice: 5000,  total: 500000, customer: 'WeChat Ecosystem'},
+        {product: 'WeCom',           sold: 50,  unitPrice: 8000,  total: 400000, customer: 'Enterprise customer'}
     ],
     'D102': [
-        {product: '王者荣耀皮肤',       sold: 1000, unitPrice: 50,   total: 50000, customer: 'Cplayer'},
-        {product: '英雄联盟点券',       sold: 800,  unitPrice: 100,  total: 80000, customer: 'Cplayer'}
+        {product: 'Honor of Kings skins',       sold: 1000, unitPrice: 50,   total: 50000, customer: 'Players'},
+        {product: 'League of Legends RP',       sold: 800,  unitPrice: 100,  total: 80000, customer: 'Players'}
     ],
     'D103': [
-        {product: '腾讯云服务器',      sold: 100, unitPrice: 1000, total: 100000, customer: '中小企业'},
-        {product: '企业微信会议',      sold: 200, unitPrice: 200,  total: 40000, customer: 'Enterprise customer'}
+        {product: 'Tencent Cloud servers',      sold: 100, unitPrice: 1000, total: 100000, customer: 'SME'},
+        {product: 'WeCom Meetings',      sold: 200, unitPrice: 200,  total: 40000, customer: 'Enterprise customer'}
     ],
     'D201': [
-        {product: '抖音广告投放',      sold: 50,  unitPrice: 10000, total: 500000, customer: '广告主'},
-        {product: '飞书企业版',         sold: 30,  unitPrice: 8000,  total: 240000, customer: 'Enterprise customer'}
+        {product: 'Douyin ad campaigns',      sold: 50,  unitPrice: 10000, total: 500000, customer: 'Advertiser'},
+        {product: 'Feishu Enterprise',         sold: 30,  unitPrice: 8000,  total: 240000, customer: 'Enterprise customer'}
     ],
     'D202': [
-        {product: '飞书多维表格',      sold: 20,  unitPrice: 12000, total: 240000, customer: 'Team'},
-        {product: '飞书文档',           sold: 50,  unitPrice: 2400,  total: 120000, customer: 'Team'}
+        {product: 'Feishu Bitable',      sold: 20,  unitPrice: 12000, total: 240000, customer: 'Team'},
+        {product: 'Feishu Docs',           sold: 50,  unitPrice: 2400,  total: 120000, customer: 'Team'}
     ],
     'D203': [
-        {product: '火山引擎 ML',       sold: 5,   unitPrice: 50000, total: 250000, customer: 'AITeam'},
-        {product: '抖音推荐算法',      sold: 3,   unitPrice: 80000, total: 240000, customer: 'AITeam'}
+        {product: 'Volcano Engine ML',       sold: 5,   unitPrice: 50000, total: 250000, customer: 'AI Team'},
+        {product: 'Douyin recommendation algorithm',      sold: 3,   unitPrice: 80000, total: 240000, customer: 'AI Team'}
     ],
     'D301': [
-        {product: 'Meituan外卖订单',      sold: 10000, unitPrice: 30, total: 300000, customer: 'Cconsumer user'},
-        {product: 'Meituan到店',          sold: 200,  unitPrice: 200, total: 40000, customer: 'Cconsumer user'}
+        {product: 'Meituan food delivery orders',      sold: 10000, unitPrice: 30, total: 300000, customer: 'Consumer'},
+        {product: 'Meituan in-store',          sold: 200,  unitPrice: 200, total: 40000, customer: 'Consumer'}
     ],
     'D302': [
-        {product: 'Meituan到店餐饮',      sold: 5000, unitPrice: 50,  total: 250000, customer: 'Cconsumer user'},
-        {product: 'Meituan到店丽人',      sold: 1000, unitPrice: 100, total: 100000, customer: 'Cconsumer user'}
+        {product: 'Meituan in-store dining',      sold: 5000, unitPrice: 50,  total: 250000, customer: 'Consumer'},
+        {product: 'Meituan in-store beauty',      sold: 1000, unitPrice: 100, total: 100000, customer: 'Consumer'}
     ],
     'D303': [
-        {product: 'Meituan优选生鲜',      sold: 8000, unitPrice: 30, total: 240000, customer: 'Cconsumer user'},
-        {product: 'Meituan优选日用',      sold: 3000, unitPrice: 50, total: 150000, customer: 'Cconsumer user'}
+        {product: 'Meituan Select fresh groceries',      sold: 8000, unitPrice: 30, total: 240000, customer: 'Consumer'},
+        {product: 'Meituan Select daily goods',      sold: 3000, unitPrice: 50, total: 150000, customer: 'Consumer'}
     ]
 }
 

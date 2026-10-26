@@ -100,26 +100,26 @@
   }
 }
 ================================
-/* 目的：演示 MyBatis 语法的 <foreach> Tag遍历集合构建 IN 条件 */
+/* Purpose: demonstrate building IN conditions by iterating a collection with MyBatis <foreach> */
 
-// <foreach> Tag用于遍历集合（数组/List），常用于 IN Query
-// 属性说明：
-//   collection="idList"  - 要遍历的集合变量名
-//   open="("             - 循环开始前拼接的字符串
-//   separator=","        - 每次迭代之间的分隔符
-//   close=")"            - 循环结束后拼接的字符串
-//   item="item"          - 每次迭代的元素变量名
+// <foreach> iterates a collection (array/List), commonly used for IN queries
+// Attributes:
+//   collection="idList"  - collection variable to iterate
+//   open="("             - string prepended before the loop
+//   separator=","        - separator between iterations
+//   close=")"            - string appended after the loop
+//   item="item"          - variable name for each element
 
-// 1. 定义一个包含多个 ID 的数组
+// 1. define an array with multiple IDs
 const idList = ['1', '2', '3']
 
 return db.select("""
     select id from magic_api_info
     where id in
     <!--
-        遍历 idList 数组，生成 (?, ?, ?) 格式的 IN 条件
-        等价于：where id in (?, ?, ?)
-        参数值依次为 '1', '2', '3'
+        iterate idList to build the (?, ?, ?) IN condition
+        equivalent to: where id in (?, ?, ?)
+        values are '1', '2', '3'
     -->
     <foreach collection="idList" open="(" separator="," close=")" item="item">
         #{item}

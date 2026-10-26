@@ -29,7 +29,7 @@ var list = [{
     sex : 1,
     name : 'Xiaohua'
 }]
-// Filter a list with the map function，然后进行转换
+// Filter a list with the map function，then transform
 return list.filter(item=>item.sex == 0).map((item)=>{
     sex : item.sex == 0 ? 'Male' : 'Female',
     name : item.name

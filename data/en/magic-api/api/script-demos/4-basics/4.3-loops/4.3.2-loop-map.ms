@@ -23,7 +23,7 @@
 }
 ================================
 /*
-    Test循环Map
+    test looping a Map
 */
 var map = {
     key1 : 1,

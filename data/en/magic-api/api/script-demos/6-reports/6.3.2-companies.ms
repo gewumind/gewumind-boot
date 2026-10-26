@@ -16,15 +16,15 @@
   "requestBody": "",
   "headers": [],
   "paths": [],
-  "responseBody": "[\n  {\"value\": \"C001\", \"label\": \"阿里巴巴集团\"},\n  {\"value\": \"C002\", \"label\": \"腾讯科技\"},\n  {\"value\": \"C003\", \"label\": \"ByteDance\"},\n  {\"value\": \"C004\", \"label\": \"Meituan\"}\n]",
+  "responseBody": "[\n  {\"value\": \"C001\", \"label\": \"Alibaba Group\"},\n  {\"value\": \"C002\", \"label\": \"Tencent\"},\n  {\"value\": \"C003\", \"label\": \"ByteDance\"},\n  {\"value\": \"C004\", \"label\": \"Meituan\"}\n]",
   "description": "Cascade demo: company list",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }
 ================================
 return [
-    {value: 'C001', label: '阿里巴巴集团'},
-    {value: 'C002', label: '腾讯科技'},
+    {value: 'C001', label: 'Alibaba Group'},
+    {value: 'C002', label: 'Tencent'},
     {value: 'C003', label: 'ByteDance'},
     {value: 'C004', label: 'Meituan'}
 ]

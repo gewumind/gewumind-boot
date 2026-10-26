@@ -19,7 +19,7 @@
 import 'cn.dev33.satoken.stp.StpUtil';
 
 var currentUserId = StpUtil.getLoginId()
-//查出当前用户有多少角色
+//Look up how many roles the current user has
 var roles = db.select("""
     select permission from sys_role where is_del = 0 and id in (select role_id from sys_user_role where user_id = #{currentUserId})
 """)

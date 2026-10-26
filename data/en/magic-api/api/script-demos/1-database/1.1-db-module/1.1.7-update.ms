@@ -22,16 +22,16 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示使用 db.table() 进行修改数据操作 */
+/* Purpose: demonstrate updates with db.table() */
 
-// update() Method需要先通过 .primary() 指定主键，然后传入包含主键值和要修改字段的对象
+// update() needs .primary() to set the key, then an object with the key value and fields to change
 
 // 1. Target table: magic_api_info
-// 2. 使用 .primary('id') 设置主键列名为 id
-// 3. 使用 .update({...}) 执行更新操作
-//    - 传入的对象中必须包含主键字段（id）用于定位要修改的记录
-//    - 其他字段为要更新的值（api_name 将被修改为 '666'）
-//    - 最终生成 SQL: UPDATE magic_api_info SET api_name = '666' WHERE id = '033239...'
+// 2. use .primary('id') to set the primary key column to id
+// 3. use .update({...}) to update
+//    - the object must contain the primary key field (id) to locate the record
+//    - other fields are the new values (api_name becomes '666')
+//    - generated SQL: UPDATE magic_api_info SET api_name = '666' WHERE id = '033239...'
 return db.table('magic_api_info').primary('id').update({
     id: '033239e63a2a42b987567a37a2efdd32',
     api_name: '666'

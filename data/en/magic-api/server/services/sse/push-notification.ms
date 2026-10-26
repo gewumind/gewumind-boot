@@ -15,10 +15,10 @@
   "enabled": true
 }
 ================================
-// SSE Server 示例：实时通知推送（接收端）
-// 客户端连 /sse/notifications 时执行本脚本：只做连接初始化（welcome 事件）。
+// SSE Server Example: real-time notification push (receiver)
+// Runs when a client connects to /sse/notifications: only initializes the connection (welcome event).
 // Use the API for active push: 
-//   sseHelper.broadcastToPath('/notifications', 'alert', '{"msg":"新订单"}')
+//   sseHelper.broadcastToPath('/notifications', 'alert', '{"msg":"new order"}')
 //   sseHelper.emitToClient(clientId, 'notice', '{"content":"..."}')
 // See api/script-demos/3-plugins/3.4-sse/3.4.1-push-notification.ms
 //
@@ -26,7 +26,7 @@
 //   1. Config center: sse.enabled = true
 //   2. Restart the backend to apply
 //
-// 浏览器Subscription example：
+// Browser subscription example:
 //   const es = new EventSource('/sse/notifications')
 //   es.addEventListener('welcome', e => console.log('welcome:', e.data))
 //   es.addEventListener('alert', e => alert(e.data))
@@ -37,6 +37,6 @@
 println('[SSE] Client connected:  ' + _clientId + ' @ ' + _path)
 println('[SSE] Current path ' + _path + ' Connections:  ' + sse.getConnectionCount(_path))
 
-// 初始化：给当前连接推 welcome 事件
-sseHelper.emit(_clientId, 'welcome', '{"clientId":"' + _clientId + '","msg":"欢迎连接 SSE 通知服务"}')
-println('[SSE] 已发送 welcome 事件')
+// Init: emit a welcome event to the current connection
+sseHelper.emit(_clientId, 'welcome', '{"clientId":"' + _clientId + '","msg":"Welcome to the SSE notification service"}')
+println('[SSE] welcome event sent')

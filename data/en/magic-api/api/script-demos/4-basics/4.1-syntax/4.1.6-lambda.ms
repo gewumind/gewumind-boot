@@ -103,17 +103,17 @@
 /*
     TestLambda
 */
-var lambda1 = e => e + 1; //单参数单行代码，省略括号,省略{}
-var lambda2 = (e) => e +1; //单参数单行代码，不省略括号，省略{} 作用同上
-var lambda4 = e => {e + 1};//单参数无返回值，不能省略{}
-var lambda5 = e => {return e + 1};//单参数有返回值，省略括号,不省略{}
-var lambda6 = (e) => {return e + 1};//单参数有返回值，不省略括号,不省略{}，作用同上
-var lambda7 = (a,b) => a + b; //多参数单行代码，省略{}
-var lambda7 = (a,b) => {return a + b}; //多参数单行代码，有返回值，作用同上
-var lambda8 = (a,b) =>{ //多参数多行代码， 无法省略括号和{}
+var lambda1 = e => e + 1; //single param, single line, parentheses and {} omitted
+var lambda2 = (e) => e +1; //single param, single line, parentheses kept, {} omitted; same effect
+var lambda4 = e => {e + 1};//single param, no return value; {} cannot be omitted
+var lambda5 = e => {return e + 1};//single param with return value; parentheses omitted, {} kept
+var lambda6 = (e) => {return e + 1};//single param with return value; parentheses and {} kept; same effect
+var lambda7 = (a,b) => a + b; //multiple params, single line, {} omitted
+var lambda7 = (a,b) => {return a + b}; //multiple params, single line with return value; same effect
+var lambda8 = (a,b) =>{ //multiple params, multiple lines; parentheses and {} are required
     a = a + 1;
     return a + b;
 }
-var v1 = lambda1(1);    //返回2
-var v2 = lambda2(v1);    //返回3
-return lambda8(v1,lambda7(v1,v2)); //返回8
+var v1 = lambda1(1);    //returns 2
+var v2 = lambda2(v1);    //returns 3
+return lambda8(v1,lambda7(v1,v2)); //returns 8

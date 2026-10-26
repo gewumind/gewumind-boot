@@ -22,14 +22,14 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示通过变量动态切换数据源进行Query */
+/* Purpose: demonstrate switching data sources dynamically via a variable */
 
-// magic-api 支持多数据源，通过 db[数据源Key] 或 db.数据源Key 的方式切换
-// 数据源需要在 application.yml 中配置，每个数据源有一个唯一的 key
+// magic-api supports multiple data sources, switched via db[dataSourceKey] or db.dataSourceKey
+// data sources are configured in application.yml, each with a unique key
 
-// 1. 定义变量 dbKey = 'slave'，指定要使用的数据源 key
-// 2. 使用 db[dbKey] 动态获取指定数据源的 db 实例
-// 3. 通过该实例执行Query，Query会在 slave 数据源上执行
-// 4. 其他操作（select/update/insert/delete/page 等）同理
+// 1. define dbKey = 'slave' to select the data source key
+// 2. use db[dbKey] to get the db instance for that data source
+// 3. queries through that instance run on the slave data source
+// 4. the same applies to other operations (select/update/insert/delete/page, etc.)
 const dbKey = 'slave'
 return db[dbKey].select('select 1')

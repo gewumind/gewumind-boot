@@ -23,7 +23,7 @@
 }
 ================================
 /*
-    Test循环List
+    test looping a List
 */
 var list = [1,2,3,4,5];
 var sum = 0;

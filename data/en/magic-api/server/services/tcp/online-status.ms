@@ -16,7 +16,7 @@
 }
 ================================
 // TCP Server Example: online status tracking (with lifecycle hooks)
-// IoT 设备连 tcp://localhost:9002 上线时记录，下线时清理
+// Records when an IoT device connects to tcp://localhost:9002 and cleans up on disconnect
 //
 // Lifecycle variables (reserved names):
 //   _onConnect(clientId, path) => {}  triggered on client connect
@@ -27,31 +27,31 @@
 //   2. Restart the backend to apply
 //
 // Test:
-//   nc localhost 9002   (开 2 个终端，Ctrl+C 关闭一个看 onClose 触发)
+//   nc localhost 9002   (open 2 terminals; Ctrl+C one to see onClose fire)
 //
-// 配套Query API：api/数据演示/TCP演示/基础操作.ms
+// Companion query API: api/script-demos/3-plugins/3.5-tcp/3.5.1-basics.ms
 
 // ---------- Lifecycle hooks ----------
 
 var _onConnect = (clientId, path) => {
-    println('[Presence-TCP] 设备上线: ' + clientId + ' @ ' + path)
-    // 实际场景：写 db / 发送启动命令 / 同步配置
+    println('[Presence-TCP] device online: ' + clientId + ' @ ' + path)
+    // Real use: write DB / send start command / sync config
 }
 
 var _onClose = (clientId, path) => {
-    println('[Presence-TCP] 设备下线: ' + clientId + ' @ ' + path)
-    // 实际场景：清理 db / 标记最后在线时间 / 告警长时间离线
+    println('[Presence-TCP] device offline: ' + clientId + ' @ ' + path)
+    // Real use: clean DB / mark last-seen / alert on long offline
 }
 
-// ---------- 业务逻辑：连接时回执设备信息 ----------
+// ---------- Business logic: reply with device info on connect ----------
 
-println('[Presence-TCP] 设备连接: clientId=' + _clientId + ' @ port=' + _channel)
+println('[Presence-TCP] device connected: clientId=' + _clientId + ' @ port=' + _channel)
 println('[Presence-TCP] Current port ' + _channel + ' Connections:  ' + tcp.getConnectionCount(Integer.parseInt(_channel)))
 
-// 给设备回执一条欢迎消息（带 \n 换行让客户端按行解析）
+// Send the device a welcome message (with \n a newline so the client can parse by line）
 tcpHelper.reply('{"type":"welcome","clientId":"' + _clientId + '","serverTime":' + current_timestamp() + '}\n')
 
-// 如果设备发来数据，按行处理
+// If the device sends data, process it line by line
 if (_message != null && _message.length() > 0) {
     println('[Presence-TCP] Data received:  ' + _message)
     tcpHelper.reply('{"type":"ack","received":"' + _message + '"}\n')

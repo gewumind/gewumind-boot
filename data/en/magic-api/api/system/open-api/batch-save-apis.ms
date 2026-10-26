@@ -28,7 +28,7 @@ if (appId == null || appId == '') {
 }
 var items = body.items
 if (items == null || items.size() == 0) {
-    exit 0, '没有需要保存的接口'
+    exit 0, 'No APIs to save'
 }
 
 var added = 0
@@ -42,7 +42,7 @@ for (item in items) {
         skipped = skipped + 1
         continue
     }
-    // 已存在的接口跳过，避免重复授权
+    // skip existing APIs to avoid duplicate authorization
     var exists = db.selectInt(
         'select count(1) from sys_open_app_api where app_id = #{appId} and api_path = #{apiPath} and api_method = #{apiMethod} and is_del = 0'
     )

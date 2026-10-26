@@ -28,7 +28,7 @@
 import request;
 
 // request.getHeaders(name): all values of a header (String[])
-// 例如获取 Host 头，返回 ["127.0.0.1:9999"]
+// for example, getting the Host header returns ["127.0.0.1:9999"]
 return request.getHeaders("Host");
 
 // Other common methods:

@@ -23,18 +23,18 @@
 }
 ================================
 // ===== Purpose =====
-// 演示使用 response.page() 返回分页格式的结果
-// 分页结果格式：{ "total": 总数, "list": 当前页数据列表 }
-// 适用于需要前端分页组件（如 el-pagination）的场景
+// Demonstrates returning a paginated result with response.page()
+// Page result format: { "total": total, "list": rows on the current page }
+// Suited to front-end pagination components such as el-pagination
 
 // Step 1: import the response utility module
-// response 提供了 page()、json()、image()、download() 等返回结果的Method
+// response provides result methods such as page(), json(), image() and download()
 import response
 
-// 第 2 步：准备分页数据（模拟数据，实际场景通常来自 db.select + 分页Query）
-var total = 5         // 模拟：数据总条数（实际应用中应使用 SELECT COUNT(*)）
-var list = [1, 2]     // 模拟：当前页的数据项列表
+// Step 2: prepare paged data (mock data; real code usually uses db.select + a paged query)
+var total = 5         // mock: total row count (use SELECT COUNT(*) in real code)
+var list = [1, 2]     // mock: rows on the current page
 
-// 第 3 步：调用 response.page() 返回标准分页格式
-// 返回结构：{ "total": 5, "list": [1, 2] }
+// Step 3: call response.page() to return the standard page format
+// Returned structure: { "total": 5, "list": [1, 2] }
 return response.page(total, list)

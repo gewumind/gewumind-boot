@@ -40,11 +40,11 @@
 
 // db.update(sql) executes INSERT/UPDATE/DELETE
 // This API accepts DELETE; parameter id (query param)
-// 使用 #{id} 作为参数占位符（类似 MyBatis），可防止 SQL 注入
+// use #{id} as a parameter placeholder (like MyBatis) to prevent SQL injection
 
 // 1. db.update() Takes a SQL string
-// 2. #{id} 是参数占位符，框架会自动从同名变量或请求参数中取值并注入
-//    - 运行时生成 SQL：delete from magic_api_info where id = ?
-//    - 参数值会被安全地注入（PreparedStatement 方式）
-// 3. 返回受影响的行数（Integer）
+// 2. #{id} is a parameter placeholder; the framework injects values from same-named variables or request parameters
+//    - generated SQL at runtime: delete from magic_api_info where id = ?
+//    - values are injected safely (via PreparedStatement)
+// 3. returns the affected row count (Integer)
 return db.update("""delete from magic_api_info where id = #{id} """)

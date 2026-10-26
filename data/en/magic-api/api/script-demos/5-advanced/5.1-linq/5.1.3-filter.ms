@@ -23,22 +23,22 @@
 }
 ================================
 // ===== Purpose =====
-// 演示使用 SQL 风格 LINQ 对内存数据进行条件过滤（WHERE）
-// 类似于 SQL 的 WHERE 子句，可以对任意数组进行筛选
+// Demonstrates filtering in-memory data with SQL-style LINQ (WHERE)
+// Like a SQL WHERE clause, it filters any array
 
 // Step 1: prepare in-memory test data
-// 定义一个包含 sex（性别）和 name（姓名）的对象数组
+// Define an object array with sex and name
 var list = [{
-    sex : 0,        // 0 表示男
+    sex : 0,        // 0 means male
     name : 'Xiaoming'
 },{
-    sex : 1,        // 1 表示女
+    sex : 1,        // 1 means female
     name : 'Xiaohua'
 }]
 
-// 第 2 步：使用 SQL 风格 LINQ 按条件过滤
-// select *：选择全部字段
-// from list t：数据源为 list 数组，别名 t
-// where t.sex = 0：只保留 sex 为 0（男性）的记录
-// 最终返回： [{sex:0, name:'Xiaoming'}]
+// Step 2: filter by condition with SQL-style LINQ
+// select *: all columns
+// from list t: data source is the list array, alias t
+// where t.sex = 0: keep only records with sex 0 (male)
+// Final result: [{sex:0, name:'Xiaoming'}]
 return select * from list t where t.sex = 0

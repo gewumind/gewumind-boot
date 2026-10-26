@@ -23,15 +23,15 @@
 }
 ================================
 /*
-    Test循环
+    test loop
 */
 var sum = 0;
-for(val in range(0,100)){   //包括0 包括100
+for(val in range(0,100)){   //inclusive of 0 and 100
     if(val > 90){
-        break;  //跳出循环
+        break;  //break out of the loop
     }
     if(val % 3 == 0){
-        continue;   //进入下一次循环
+        continue;   //continue to the next iteration
     }
     sum = sum + val;
 }

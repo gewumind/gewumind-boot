@@ -28,5 +28,5 @@ var map = {
     },
     c : 1
 }
-// ?. 不会报错，.会报错
+// ?. does not throw; . does throw
 return map.a.bbbb?.c + '-' + map.a?.b;

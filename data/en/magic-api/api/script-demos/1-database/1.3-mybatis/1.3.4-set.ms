@@ -22,16 +22,16 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示 MyBatis 语法的 <set> Tag实现动态更新 */
+/* Purpose: demonstrate dynamic updates with the MyBatis <set> tag */
 
-// <set> Tag用于 UPDATE 语句中，动态生成 SET 子句
-// 它会在行首插入 SET 关键字，并自动删除多余的逗号
-// 与 <if> 配合使用，只更新有值的字段
+// <set> generates the SET clause dynamically in UPDATE statements
+// it inserts SET at the start and removes trailing commas automatically
+// combine with <if> to update only fields with values
 
-// 1. 构建动态 SQL：根据参数是否有值来决定更新哪些字段
-// 2. <set> Tag包裹需要动态更新的字段列表
-// 3. 每个 <if> 判断对应的字段值是否为空，非空才拼接
-// 4. <set> 自动处理 SET 关键字和尾部的逗号
+// 1. build dynamic SQL: choose fields to update based on whether parameters have values
+// 2. <set> wraps the list of dynamically updated fields
+// 3. each <if> checks whether its field is empty and appends only when non-empty
+// 4. <set> handles the SET keyword and trailing commas automatically
 var sql = """
 update test_data
     <set>

@@ -23,26 +23,26 @@
 }
 ================================
 // ===== Purpose =====
-// 演示使用 SQL 风格 LINQ 进行表关联Query（JOIN）
-// 类似于 SQL 中的 LEFT JOIN，可以在内存中关联两个数据集
-// db.camel() 用于将数据库下划线字段名自动转为驼峰命名
+// Demonstrates table joins with SQL-style LINQ (JOIN)
+// Like SQL LEFT JOIN, it joins two data sets in memory
+// db.camel() converts database snake_case column names to camelCase
 
-// 第 1 步：Query API 信息（主表），使用 camel() 将字段转为驼峰
-// 例如：api_group_id -> apiGroupId
+// Step 1: query API info (main table) and use camel() to convert columns to camelCase
+// for example: api_group_id -> apiGroupId
 var apiList = db.camel().select('select api_name,api_group_id from magic_api_info')
 
-// 第 2 步：Query分组信息（关联表），同样使用 camel() 转换
-// 例如：group_name -> groupName
+// Step 2: query group info (joined table), also with camel()
+// for example: group_name -> groupName
 var groupList = db.camel().select('select id,group_name from magic_group')
 
-// 第 3 步：使用 SQL 风格 LINQ 进行 LEFT JOIN 关联Query
-// select：选择输出字段（t.* 表示全字段，g.groupName 是从分组表取的名称）
-// from：主数据源 apiList，别名 t
-// left join：左连接 groupList，别名 g
-// on：关联条件 t.apiGroupId = g.id
+// Step 3: run a LEFT JOIN query with SQL-style LINQ
+// select: output fields (t.* is all columns, g.groupName comes from the group table)
+// from: main data source apiList, alias t
+// left join: join groupList, alias g
+// on: join condition t.apiGroupId = g.id
 return 
     select 
-        t.*,                                       // API 全部字段（驼峰命名）
-        g.groupName                                // 关联Query到的分组名称
-    from apiList t                                 // 主表，别名 t
-    left join groupList g on t.apiGroupId = g.id   // 左连接分组表，按 ID 关联
+        t.*,                                       // all API columns (camelCase)
+        g.groupName                                // joined group name
+    from apiList t                                 // main table, alias t
+    left join groupList g on t.apiGroupId = g.id   // left join the group table by ID

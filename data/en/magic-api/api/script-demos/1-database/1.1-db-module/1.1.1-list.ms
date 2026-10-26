@@ -36,13 +36,13 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示使用 db.table() 进行链式单表Query */
+/* Purpose: demonstrate chained single-table queries with db.table() */
 
-// db.table('表名') 是单表操作的入口，返回一个 Table 对象，支持链式调用
+// db.table('tableName') is the entry for single-table operations; it returns a Table object supporting chaining
 
-// 1. 指定要Query的表为 magic_api_info
-// 2. 使用 .column() 限制只Query api_name 这一列（相当于 SELECT api_name）
-// 3. 使用 .select() 执行Query，返回 List<Map> type result
+// 1. query the magic_api_info table
+// 2. use .column() to query only the api_name column (equivalent to SELECT api_name)
+// 3. use .select() to run the query, returning List<Map>
 return db.table('magic_api_info')
-        .column('api_name')   // 只Query api_name 列，不传参则Query所有列
-        .select()             // 执行 SELECT Query，返回列表
+        .column('api_name')   // query only api_name; without arguments, all columns are queried
+        .select()             // run the SELECT query and return a list

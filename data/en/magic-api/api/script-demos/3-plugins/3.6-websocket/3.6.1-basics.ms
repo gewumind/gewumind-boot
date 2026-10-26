@@ -54,7 +54,7 @@
 //
 // Prerequisites:
 //   1. Config center: ws.enabled = true
-//   2. 已有客户端连接到目标 path（如 ws://localhost:9089/ws/push）
+//   2. a client is connected to the target path (e.g. ws://localhost:9089/ws/push)
 
 targetPath = body.path ?: '/push'
 payload = body.message ?: '{}'
@@ -83,5 +83,5 @@ return {
     broadcastSent: true,
     unicastTo: sentTo,
     sampleMessage: payload,
-    message: '已调用 ws.getConnectionCount / getClientIdsByPath / broadcastToPath / sendToClient Total 4 个Method'
+    message: 'called ws.getConnectionCount / getClientIdsByPath / broadcastToPath / sendToClient (4 methods total)'
 }

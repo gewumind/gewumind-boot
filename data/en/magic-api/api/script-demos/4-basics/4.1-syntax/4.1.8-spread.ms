@@ -28,7 +28,7 @@ var map = {
 }
 var list = [1,2,3,4,5]
 return {
-    ...map, //展开Map
+    ...map, //spread the Map
     c : 3,
-    d : [...list]   // 展开list
+    d : [...list]   // spread the list
 };;

@@ -413,7 +413,7 @@
   }
 }
 ================================
-var a = 123;    // 定义int型变量，定义变量只能使用var。var可以省略
+var a = 123;    // define an int variable; var is the only declaration keyword and can be omitted
 var b = 456;
 return {
     '+': a + b,
@@ -430,11 +430,11 @@ return {
     '<=': a <= b,
     '>=': a >= b,
     '==': a == b,
-    '===': a === b, // 与JS类似，需要类型一致，值一致才返回true
+    '===': a === b, // like JS, returns true only when type and value match
     '!=': a != b,
-    '!==': a !== b, // 与JS类似，需类型不一致或 值不一致 才返回true 与 === 相反
-    '&&': a && b,   // 与JS类似，如：true && true --> true ，123 && 456 --> 456 ， null && 123 --> 456
-    '||': a || b,    // 与JS类似，如：false && true --> true ，123 || 456 --> 123 ，null || 123 --> 123
+    '!==': a !== b, // like JS, returns true when type or value differs; opposite of ===
+    '&&': a && b,   // like JS, e.g. true && true --> true, 123 && 456 --> 456, null && 123 --> 456
+    '||': a || b,    // like JS, e.g. false && true --> true, 123 || 456 --> 123, null || 123 --> 123
     '>>':  8 >> 2,
     '>>>': 8 >>> 2,
     '<<' : 1 << 2,

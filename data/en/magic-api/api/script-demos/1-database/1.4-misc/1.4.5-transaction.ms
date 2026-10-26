@@ -22,27 +22,27 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示自动事务和手动事务的使用 */
+/* Purpose: demonstrate automatic and manual transactions */
 
-// magic-api 支持两种事务模式：自动事务（回调函数）和手动事务
+// magic-api supports two transaction modes: automatic (callback) and manual
 
-/* ===== 方式一：自动事务 ===== */
-// 通过 db.transaction(callback) 开启自动事务
-// callback 中执行的所有 SQL 操作在同一个事务中
-// callback 正常返回时自动提交，抛出异常时自动回滚
+/* ===== Approach 1: automatic transaction ===== */
+// start an automatic transaction with db.transaction(callback)
+// all SQL executed in the callback runs in one transaction
+// it commits when the callback returns normally and rolls back on exception
 var val = db.transaction(() => {
     return db.update("""delete from magic_api_info where id = '999' """)
 })
 return val
 
-/* ===== 方式二：手动事务 ===== */
-// 手动事务允许更精细地控制提交和回滚时机
-var tx = db.transaction()      // 开启事务
+/* ===== Approach 2: manual transaction ===== */
+// manual transactions give finer control over commit and rollback
+var tx = db.transaction()      // start transaction
 try {
     var value = db.update('...')
-    tx.commit()                // 提交事务
+    tx.commit()                // commit transaction
     return value
 } catch (e) {
-    tx.rollback()              // 回滚事务
+    tx.rollback()              // rollback transaction
 }
 return 'ok'

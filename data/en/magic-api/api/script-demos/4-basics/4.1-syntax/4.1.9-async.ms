@@ -114,15 +114,15 @@
   }
 }
 ================================
-// 使用async关键字，会启动一个线程去执行，返回Future，并不等待结果继续执行后续代码
+// async starts a thread, returns a Future, and continues without waiting
 //var user1 = async db.select("select * from sys_user where id = 1");
 //var user2 = async db.select("select * from sys_user where id = 2");
-//调用getMethod表示阻塞等待获取结果
+//calling get blocks until the result is available
 //return [user1.get(),user2.get()];
 
 var list = [];
 for(index in range(1,10)){
-    // 执行SQL时，为了线程安全，需要把index参数放入lambda参数中。
+    // when executing SQL, put the index into the lambda parameters for thread safety.
     list.add(async (index)=>db.selectInt('select #{index}'));
 }
 return list.map(f => f.get())

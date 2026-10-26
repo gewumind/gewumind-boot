@@ -258,8 +258,8 @@ var action = body.action
 if (action == 'getDefinition') {
     return {
     "processId": "expense_v1",
-    "description": "员工报销：申请 → 部门经理 → 财务。",
-    "title": "{applicantName} 报销 {amount} 元（{category}）",
+    "description": "Employee expense: Apply -> Department manager -> Finance.",
+    "title": "{applicantName} expense {amount} CNY ({category})",
     "nodes": [
         {
             "id": "apply",
@@ -269,13 +269,13 @@ if (action == 'getDefinition') {
         },
         {
             "id": "mgr_approve",
-            "label": "部门经理Approval",
+            "label": "Department manager approval",
             "type": "approve",
             "role": "dept_manager"
         },
         {
             "id": "fin_approve",
-            "label": "财务Approval",
+            "label": "Finance approval",
             "type": "approve",
             "role": "finance"
         },
@@ -301,20 +301,20 @@ if (action == 'getDefinition') {
     ],
     "forms": {
         "apply": {
-            "title": "报销申请",
+            "title": "Expense request",
             "editable": [
                 "initiator"
             ],
             "fields": [
                 {
                     "name": "amount",
-                    "label": "报销金额",
+                    "label": "Expense amount",
                     "type": "number",
                     "required": true
                 },
                 {
                     "name": "category",
-                    "label": "费用类型",
+                    "label": "Expense category",
                     "type": "select",
                     "required": true,
                     "options": [
@@ -334,41 +334,41 @@ if (action == 'getDefinition') {
                 },
                 {
                     "name": "expense_date",
-                    "label": "发生日期",
+                    "label": "Expense date",
                     "type": "date",
                     "required": true
                 },
                 {
                     "name": "description",
-                    "label": "费用说明",
+                    "label": "Expense description",
                     "type": "textarea",
                     "required": true
                 }
             ]
         },
         "mgr_approve": {
-            "title": "部门经理Approval",
+            "title": "Department manager approval",
             "editable": [
                 "dept_manager"
             ],
             "fields": [
                 {
                     "name": "mgr_comment",
-                    "label": "Approval意见",
+                    "label": "Approval comment",
                     "type": "textarea",
                     "required": true
                 }
             ]
         },
         "fin_approve": {
-            "title": "财务Approval",
+            "title": "Finance approval",
             "editable": [
                 "finance"
             ],
             "fields": [
                 {
                     "name": "fin_comment",
-                    "label": "Approval意见",
+                    "label": "Approval comment",
                     "type": "textarea",
                     "required": true
                 }

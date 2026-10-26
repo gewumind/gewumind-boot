@@ -31,7 +31,7 @@
   "requestBody": "",
   "headers": [],
   "paths": [],
-  "responseBody": "{\"code\":200,\"msg\":\"更新成功\"}",
+  "responseBody": "{\"code\":200,\"msg\":\"Updated successfully\"}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": null

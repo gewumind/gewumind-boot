@@ -23,20 +23,20 @@
 }
 ================================
 // ===== Purpose =====
-// 演示如何在 magic-script 中调用其他已注册的 HTTP 接口
-// 使用 import 语法按 HTTP Method + 路径导入已定义的接口并调用
-// Format: import '@{HTTPMethod}:{接口路径}' as {别名}
+// Demonstrates calling another registered HTTP API from magic-script
+// Use import to bring in a defined API by HTTP method + path and call it
+// Syntax: import '@{HTTPMethod}:{api path}' as {alias}
 
-// 第 1 步：导入其他接口
-// '@get:/base/module/assert' 表示调用 GET Method、路径为 /base/module/assert 的接口
-// 被调用的接口必须是 magic-api 中已定义并注册的接口
+// Step 1: import another API
+// '@get:/base/module/assert' calls the API with GET and path /base/module/assert
+// The called API must already be defined and registered in magic-api
 import '@get:/base/module/assert' as test
 
-// 第 2 步：准备调用参数
-// 这些变量可以作为参数传递给被调用的接口
+// Step 2: prepare the call arguments
+// These variables are passed as arguments to the called API
 var id = '1'
 var message = 'hello'
 
-// 第 3 步：调用导入的接口并返回结果
-// test() 执行 GET /base/module/assert 接口，返回该接口的执行结果
+// Step 3: call the imported API and return its result
+// test() executes GET /base/module/assert and returns that API's result
 return test()

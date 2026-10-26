@@ -16,11 +16,11 @@
 }
 ================================
 // Redis Subscription example
-// 收到 redis demo:news 频道消息时自动执行整个脚本
+// Runs the whole script when a message arrives on the redis demo:news channel
 // Set breakpoints in this file to debug
 
 println('[Redis] Message received:  ' + _message)
-print('[Redis] 频道: ' + _channel)
+print('[Redis] Channel: ' + _channel)
 
 // Business logic
 print('[Redis122] Done')

@@ -111,19 +111,19 @@ if(a == 1){
     return 0;
 }
 /*
-对于条件判断，特意支持了简写的方式
-如 可以直接写 
+Condition checks specifically support a shorthand form
+for example, you can write 
 1、if(a) 
 2、else if(a)
 3、while(a) 
 4、a ? 1 : 0 
 
-当a的值是以下情况时为false
+the value of a is false in these cases
 null
-空集合
-空Map
-数值 == 0
-空字符串（length == 0）
+empty collection
+empty Map
+number == 0
+empty string (length == 0)
 false
-其它情况一律视为true
+everything else is treated as true
 */

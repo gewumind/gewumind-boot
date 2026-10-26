@@ -22,30 +22,30 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示 magic-script 中数字类型字面量的写法 */
-// magic-script 支持通过后缀指定数字的精确类型
+/* Purpose: demonstrate numeric literals in magic-script */
+// magic-script uses suffixes to specify the exact numeric type
 
-// ===== 整数类型 =====
-var b = 123b;       // byte 类型（-128 ~ 127）
-var s = 123s;       // short 类型（-32768 ~ 32767）
-var i = 123;        // int 类型（默认）
-var l = 123l;       // long 类型（64 位整数）
+// ===== integer types =====
+var b = 123b;       // byte (-128 to 127)
+var s = 123s;       // short (-32768 to 32767)
+var i = 123;        // int (default)
+var l = 123l;       // long (64-bit integer)
 
-// ===== 浮点类型 =====
-var f = 123.456f;   // float 类型（32 位）
-var d = 123.456d;   // double 类型（64 位，默认）
+// ===== floating-point types =====
+var f = 123.456f;   // float (32-bit)
+var d = 123.456d;   // double (64-bit, default)
 
-// ===== 高精度类型 =====
-var m = 123.456m;   // BigDecimal 类型（精确小数，适合金额计算）
+// ===== high-precision type =====
+var m = 123.456m;   // BigDecimal (exact decimals, suitable for money)
 
-// ===== 类型转换对比 =====
+// ===== type conversion comparison =====
 var a = "123";
 var ai = a::int;            // String → int
 var am = a::bigdecimal;     // String → BigDecimal
 
-// ===== BigDecimal 的精度优势 =====
-var calc1 = 0.1d + 0.2d;    // double 运算：0.30000000000000004（有精度损失）
-var calc2 = 0.1m + 0.2m;    // BigDecimal 运算：0.3（精确）
+// ===== BigDecimal precision advantage =====
+var calc1 = 0.1d + 0.2d;    // double: 0.30000000000000004 (precision loss)
+var calc2 = 0.1m + 0.2m;    // BigDecimal: 0.3 (exact)
 
 return {
     byte: b,

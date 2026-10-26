@@ -22,14 +22,14 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示使用 db.insert() 执行新增 SQL 语句 */
+/* Purpose: demonstrate inserts with db.insert() */
 
-// db.insert(sql, idColumn) 用于执行 INSERT 语句
-// Second parameter 'id' 指定主键列名（可选），用于返回新增记录的自增主键值
+// db.insert(sql, idColumn) executes an INSERT statement
+// the second argument 'id' sets the key column (optional) and returns the generated key
 
-// 1. db.insert() 第一个参数是 INSERT SQL 字符串
-// 2. #{userName}、#{password} 是参数占位符
-//    - 框架会从同名的变量或请求参数中自动取值
-//    - #{} 使用 PreparedStatement 预编译，防止 SQL 注入
-// 3. Second parameter 'id' 指定主键列，插入成功后返回自增主键值
+// 1. the first argument is the INSERT SQL string
+// 2. #{userName} and #{password} are parameter placeholders
+//    - the framework takes values from same-named variables or request parameters
+//    - #{} uses PreparedStatement to prevent SQL injection
+// 3. the second argument 'id' sets the key column; on success the generated key is returned
 return db.insert("""insert into sys_user(user_name, password) values (#{userName}, #{password})""", 'id')

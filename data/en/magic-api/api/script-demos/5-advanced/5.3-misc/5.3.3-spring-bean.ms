@@ -101,17 +101,17 @@
 }
 ================================
 // ===== Purpose =====
-// 演示如何在 magic-script 中调用 Spring 容器中的 Bean
-// 通过 import 导入 Spring Bean 的全限定类名，即可直接调用其Method
-// 这使得 magic-script 可以充分利用 Spring 框架的依赖注入能力
+// Demonstrates calling a Spring container bean from magic-script
+// Import a Spring bean by its fully qualified class name to call its methods directly
+// This lets magic-script fully use Spring's dependency injection
 
-// 第 1 步：导入 Spring 中的 Environment Bean
+// Step 1: import the Environment bean from Spring
 // import 'org.springframework.core.env.Environment' as env
-// Format: import '{类的全限定名}' as {变量名}
-// magic-api 会自动从 Spring 容器中查找该类型的 Bean 并注入
+// Syntax: import '{fully qualified class name}' as {variable name}
+// magic-api looks up a bean of that type in the Spring container and injects it automatically
 import 'org.springframework.core.env.Environment' as env
 
-// 第 2 步：调用 Bean 的Method获取配置属性值
-// env.getProperty('magic-api.web') 读取 Spring 配置File中 magic-api.web 属性的值
-// 返回值示例："/magic/web"（magic-api 的 web 访问路径）
+// Step 2: call a bean method to read a configuration property
+// env.getProperty('magic-api.web') reads the magic-api.web property from Spring configuration
+// Example return value: "/magic/web" (the magic-api web access path)
 return env.getProperty('magic-api.web')

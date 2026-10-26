@@ -142,26 +142,26 @@
 }
 ================================
 // ===== Purpose =====
-// 演示 JSON 对象与 JSON 字符串之间的相互转换
-// ::json      ：将 JSON 字符串解析为 JSON 对象
-// ::stringify ：将 JSON 对象序列化为 JSON 字符串
+// Demonstrates conversion between JSON objects and JSON strings
+// ::json      : parse a JSON string into a JSON object
+// ::stringify : serialize a JSON object into a JSON string
 
-// 第 1 步：定义一个 JSON 对象
-// 这是内存中的 JavaScript 对象表示
+// Step 1: define a JSON object
+// This is the in-memory JavaScript object representation
 var json = {
     "name" : "Li Fugui"
 }
 
-// 第 2 步：定义一个 JSON 字符串
-// 这是标准的 JSON 文本格式（注意字符串外层的引号）
+// Step 2: define a JSON string
+// This is standard JSON text (note the surrounding quotes)
 var jsonString = '{"name": "Li Fugui"}'
 
-// 第 3 步：演示双向转换
-// jsonString::json  ：将 JSON 字符串  ->  JSON 对象（反序列化）
+// Step 3: demonstrate both directions
+// jsonString::json  : JSON string  ->  JSON object (deserialize)
 //                     Result: { name: "Li Fugui" }
-// json::stringify   ：将 JSON 对象    ->  JSON 字符串（序列化）
+// json::stringify   : JSON object    ->  JSON string (serialize)
 //                     Result: '{"name":"Li Fugui"}'
 return {
-    'jsonObject' : jsonString::json,    // 字符串 => 对象
-    'jsonString' : json::stringify       // 对象   => 字符串
+    'jsonObject' : jsonString::json,    // string => object
+    'jsonString' : json::stringify       // object   => string
 }

@@ -53,26 +53,26 @@
 // Push events to clients subscribed to /sse/notifications
 //
 // Prerequisites:
-//   1. 配置中心 sse.enabled = true（已启用）
-//   2. 已有客户端连接 /sse/notifications（server/服务/sse/通知推送示例.ms 注册）
+//   1. config center: sse.enabled = true (enabled)
+//   2. a client is connected to /sse/notifications (registered by the server SSE notification example)
 //
 // Request body (JSON):
 //   {
-//     "event": "message",           // 事件名，选填，默认 "message"
-//     "data":  "{\"msg\":\"...\"}"  // 推送数据（JSON 字符串），必填
+//     "event": "message",           // event name; optional, defaults to message
+//     "data":  "{\"msg\":\"...\"}"  // push payload (JSON string); required
 //   }
 //
 // Browser listener example:
 //   const es = new EventSource('/sse/notifications')
 //   es.addEventListener('message', e => console.log(JSON.parse(e.data)))
-//   es.addEventListener('alert',    e => { /* 弹窗告警 */ })
+//   es.addEventListener('alert',    e => { /* show an alert */ })
 //
 // Use cases:
 //   - new order notification
 //   - system alerts
 //   - approval status changes
 
-// 1. 通过 sse.broadcastToPath 广播给 /notifications path 下所有客户端
+// 1. broadcast to all clients under the /notifications path via sse.broadcastToPath
 eventName = body.event ?: 'message'
 payload = body.data ?: '{}'
 

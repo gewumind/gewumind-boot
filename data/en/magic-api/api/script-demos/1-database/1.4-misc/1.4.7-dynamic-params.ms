@@ -22,28 +22,28 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示 SQL 中的三种参数处理方式：#{} 占位符、${} 拼接、?{} 动态条件 */
+/* Purpose: demonstrate three SQL parameter styles: #{} placeholders, ${} interpolation, and ?{} dynamic conditions */
 
-// 具体执行的 SQL 请看打印的运行Log信息
+// see the printed runtime log for the actual SQL
 
-// 1. 定义一个数组 ids = ['1', '2', '3']
+// 1. define an array ids = ['1', '2', '3']
 var ids = ['1', '2', '3']
 
-// ===== 方式一：#{ids} 自动展开集合参数 =====
-// 当参数是 List/Array 时，#{} 会自动展开为多个占位符
-// 生成 SQL：select * from magic_api_info where id in (?, ?, ?)
+// ===== Approach 1: #{ids} expands collection parameters automatically =====
+// when the parameter is a List/Array, #{} expands to multiple placeholders
+// generated SQL: select * from magic_api_info where id in (?, ?, ?)
 db.select('select * from magic_api_info where id in (#{ids})')
 
-// ===== 方式二：#{} 占位符 vs ${} 拼接字符串 =====
-// #{id} 是预编译占位符（推荐），参数值通过 PreparedStatement 安全注入，可防止 SQL 注入
-// ${id} 是字符串拼接，直接将变量值拼接到 SQL 中（有 SQL 注入风险，谨慎使用）
+// ===== Approach 2: #{} placeholders vs ${} string interpolation =====
+// #{id} is a prepared placeholder (recommended); values are injected safely via PreparedStatement, preventing SQL injection
+// ${id} interpolates the value directly into SQL (SQL injection risk; use with care)
 db.select("select * from magic_api_info where id = #{id} ")
 
-// ===== 方式三：?{} 动态条件判断 =====
-// ?{condition, expression} 当 condition 为 true 时拼接 expression
-// 类似 MyBatis 的 <if> Tag
-// 此处：如果 name 有值（非空），则拼接 and api_name = #{name}
-// 等价于：select * from magic_api_info where id = '123' <if test="name != null and name != ''"> and api_name = #{name} </if>
+// ===== Approach 3: ?{} dynamic condition =====
+// ?{condition, expression} appends expression when condition is true
+// similar to the MyBatis <if> tag
+// here: if name has a value (non-empty), append and api_name = #{name}
+// equivalent to: select * from magic_api_info where id = '123' <if test="name != null and name != ''"> and api_name = #{name} </if>
 db.select("select * from magic_api_info where id = '123' ?{name, and api_name = #{name}}")
 
 return 'ok'

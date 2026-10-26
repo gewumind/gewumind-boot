@@ -39,7 +39,7 @@ var data = [
     {code: 'SKU005', name: 'Huawei Mate60 Pro',    warehouse: 'Beijing Warehouse', category: 'Phone', qty: 38, price: 6999,  status: 'on_sale', company: 'C002', dept: 'D101'},
     {code: 'SKU006', name: 'Xiaomi 14 Ultra',     warehouse: 'Guangzhou Warehouse', category: 'Phone', qty: 72, price: 6499,  status: 'on_sale', company: 'C003', dept: 'D201'},
     {code: 'SKU007', name: 'iPad Pro 11',       warehouse: 'Guangzhou Warehouse', category: 'Computer', qty: 33, price: 6799,  status: 'off_shelf', company: 'C003', dept: 'D201'},
-    {code: 'SKU008', name: 'Surface Pro 9',     warehouse: '深圳仓', category: 'Computer', qty: 9,  price: 9888,  status: 'on_sale', company: 'C004', dept: 'D301'}
+    {code: 'SKU008', name: 'Surface Pro 9',     warehouse: 'Shenzhen Warehouse', category: 'Computer', qty: 9,  price: 9888,  status: 'on_sale', company: 'C004', dept: 'D301'}
 ]
 
 data = data.map(item => {

@@ -15,39 +15,39 @@
   "enabled": true
 }
 ================================
-// TCP Server 示例：IoT 设备数据采集
-// 场景：传感器/扫码枪/PLC 设备通过 TCP 发送 JSON 数据
-// 协议：JSON 行分隔（每条数据以 \n 结束）
+// TCP Server Example: IoT device data collection
+// Scenario: sensors, scanners, and PLC devices send JSON data over TCP
+// Protocol: newline-delimited JSON (each message ends with \n)
 //
-// 在其他 API 脚本中通过以下方式触发推送：
+// Trigger pushes from other API scripts as follows:
 //   tcpHelper.sendToClient(clientId, '{"cmd":"restart"}\n')
-//   tcpHelper.broadcastToPort(9000, '{"alert":"高温"}\n')
-// 详见 api/数据演示/TCP演示/推送字节.ms
+//   tcpHelper.broadcastToPort(9000, '{"alert":"high temperature"}\n')
+// See api/script-demos/3-plugins/3.5-tcp/3.5.2-push-bytes.ms
 //
 // Enable:
 //   1. Config center: tcp.enabled = true
 //   2. Restart the backend to apply
 //
-// 设备端发送示例：
+// Device-side send example:
 //   {"deviceId":"sensor-001","type":"temperature","value":23.5}
 //   {"deviceId":"sensor-001","type":"humidity","value":65}
 //
-// Python Test（注意：9000 port 上 Echo 示例和 IoT 示例Total用同一 listener，
-//   后注册者会覆盖前者；Test其中一个时建议把另一个 disabled）：
+// Python test (note: the Echo and IoT examples share the same listener on port 9000,
+//   the later registration overrides the earlier one; disable one while testing the other):
 //   python3 scripts/send_tcp_msg.py localhost 9000 '{"deviceId":"sensor-001","type":"temperature","value":23.5}'
 
 // ===== Receive =====
 import 'org.ssssssss.magicapi.utils.JsonUtils'
-println('[IoT] 设备数据: ' + _message)
+println('[IoT] device data: ' + _message)
 
-// 1. 解析 JSON 协议
+// 1. Parse the JSON protocol
 data = null
 if (_message != null && _message.trim().startsWith('{')) {
     try {      
         data = JsonUtils.readValue(_message.trim(), Object)
-        println('[IoT] 解析成功: deviceId=' + (data.deviceId ?data.deviceId :'unknown'))
+        println('[IoT] parsed: deviceId=' + (data.deviceId ?data.deviceId :'unknown'))
     } catch (e) {
-        println('[IoT] JSON 解析Failed:  ' + e.getMessage())
+        println('[IoT] JSON parse failed:  ' + e.getMessage())
     }
 }
 
@@ -55,7 +55,7 @@ if (data == null) {
     return
 }
 
-// 2. 数据校验
+// 2. Validate data
 if (data.deviceId == null || data.type == null) {
     tcpHelper.reply('{"status":"error","message":"missing deviceId or type"}\n')
     return
@@ -66,22 +66,22 @@ if (data.value == null) {
     return
 }
 
-// 3. 告警判断 + 广播通知
+// 3. Alert evaluation + broadcast
 if (data.type == 'temperature' && data.value != null) {
     temp = Double.parseDouble('' + data.value)
     if (temp > 80) {
-        println('[IoT] 高温告警: ' + data.deviceId + ' = ' + temp)
-        // reply: 给当前连接回复告警
+        println('[IoT] high-temperature alert: ' + data.deviceId + ' = ' + temp)
+        // reply: reply the alert to the current connection
         tcpHelper.reply('{"status":"alert","type":"high_temperature","value":' + temp + '}\n')
-        // broadcast: 同一 port 下其它设备也广播一条系统通知
+        // broadcast: broadcast a system notice to other devices on the same port
         tcpHelper.broadcast('{"status":"alert","deviceId":"' + data.deviceId + '","value":' + temp + '}\n')
         return
     } else if (temp < 0) {
-        println('[IoT] 低温告警: ' + data.deviceId + ' = ' + temp)
+        println('[IoT] low-temperature alert: ' + data.deviceId + ' = ' + temp)
     }
 }
 
-// 4. 回复确认
+// 4. Send acknowledgement
 reply = '{"status":"ok","deviceId":"' + data.deviceId + '","received":"' + data.type + '"}\n'
 tcpHelper.reply(reply)
-println('[IoT] 已回复设备: ok')
+println('[IoT] replied to device: ok')

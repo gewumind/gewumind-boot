@@ -54,7 +54,7 @@
 //
 // Prerequisites:
 //   1. Config center: tcp.enabled = true
-//   2. 已有客户端连接到目标端口（如 nc localhost 9000）
+//   2. a client is connected to the target port (e.g. nc localhost 9000)
 
 targetPort = body.port ?: 9000
 payload = body.message ?: 'PING\n'
@@ -83,5 +83,5 @@ return {
     broadcastSent: true,
     unicastTo: sentTo,
     sampleMessage: payload,
-    message: '已调用 tcp.getConnectionCount / getClientIdsByPort / broadcastToPort / sendToClient Total 4 个Method'
+    message: 'called tcp.getConnectionCount / getClientIdsByPort / broadcastToPort / sendToClient (4 methods total)'
 }

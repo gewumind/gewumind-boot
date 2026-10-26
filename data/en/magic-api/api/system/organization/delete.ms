@@ -128,15 +128,15 @@
 ================================
 var pCount = db.selectInt("select count(1) from sys_office where is_del = 0 and pid = #{id}")
 if(pCount > 0){
-    exit 500,'存在下级机构,不允许删除'
+    exit 500,'It has child organizations and cannot be deleted'
 }
 var userCount = db.selectInt("select count(1) from sys_user where is_del = 0 and office_id = #{id}")
 if(userCount > 0){
-    exit 500, '机构存在用户,不允许删除'
+    exit 500, 'The organization has users and cannot be deleted'
 }
 // var root = db.selectValue("select pid from sys_office where is_del = 0 and id = #{id}")
 // if(root == '0'){
-//     exit 500, '不能删除根节点'
+//     exit 500, 'The root node cannot be deleted'
 // }
 // db.table('sys_user_office').where().eq("office_id",id).delete();
 return db.table("sys_office").logic().where().eq("id",id).delete();

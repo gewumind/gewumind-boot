@@ -23,81 +23,81 @@
 }
 ================================
 // ===== Purpose =====
-// 演示使用 Java AWT 图形库在 magic-script 中生成图片验证码
-// 利用 import 导入 Java 标准库实现服务器端图片生成
-// 包含：随机字符、旋转、干扰线、噪点等防破解机制
+// Demonstrates generating an image captcha in magic-script with the Java AWT library
+// Uses import to load the Java standard library and generate images server-side
+// Includes random characters, rotation, interference lines and noise as anti-cracking measures
 
-// ===== 第 1 步：导入 Java 图形/IO 相关类 =====
-import 'java.awt.image.BufferedImage' as BufferedImage    // 图片缓冲区
-import 'java.awt.Color' as Color                          // 颜色
-import 'java.awt.Font' as Font                            // 字体
-import 'java.io.ByteArrayOutputStream' as ByteArrayOutputStream  // 字节输出流
-import 'java.util.Random' as Random                       // 随机数
-import 'javax.imageio.ImageIO' as ImageIO                 // 图片编码输出
-import response                                           // 返回图片响应
-import log                                                // Log输出
+// ===== Step 1: import Java graphics/IO classes =====
+import 'java.awt.image.BufferedImage' as BufferedImage    // image buffer
+import 'java.awt.Color' as Color                          // color
+import 'java.awt.Font' as Font                            // font
+import 'java.io.ByteArrayOutputStream' as ByteArrayOutputStream  // byte output stream
+import 'java.util.Random' as Random                       // random number generator
+import 'javax.imageio.ImageIO' as ImageIO                 // image encoding output
+import response                                           // return an image response
+import log                                                // logger output
 
-// ===== 第 2 步：创建空白图片 =====
-var width = 200                                            // 图片宽度
-var height = 69                                            // 图片高度
-var image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB)  // 创建 RGB 图片
-var graphics = image.getGraphics()                         // 获取绘图上下文
+// ===== Step 2: create a blank image =====
+var width = 200                                            // image width
+var height = 69                                            // image height
+var image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB)  // create an RGB image
+var graphics = image.getGraphics()                         // get the drawing context
 
-// 设置白色背景并填充
+// set and fill a white background
 graphics.setColor(Color.WHITE)
 graphics.fillRect(0, 0, width, height)
 
-// 设置字体：Microsoft YaHei，粗体，40 号
+// set the font: Microsoft YaHei, bold, size 40
 graphics.setFont(new Font("Microsoft YaHei", Font.BOLD, 40))
 
-// ===== 第 3 步：准备验证码字符集及随机工具 =====
-// 去掉容易混淆的字符（如 0/O、1/l/I）
+// ===== Step 3: prepare the captcha character set and random tools =====
+// drop easily confused characters (such as 0/O, 1/l/I)
 var letter = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ'
 var random = new Random()
 
-// 定义生成随机颜色的函数
+// define a function that generates a random color
 var randomColor = () => new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256))
 
-// ===== 第 4 步：逐字符绘制验证码 =====
-var x = 10                                                 // 当前字符的 x 坐标起始值
-var code = ''                                              // 记录生成的验证码字符串（用于后续校验）
+// ===== Step 4: draw the captcha character by character =====
+var x = 10                                                 // starting x coordinate of the current character
+var code = ''                                              // record the generated captcha string (for later verification)
 
-for (i in range(0, 4)) {                                   // 循环 4 次，生成 4 位验证码
-    graphics.setColor(randomColor())                        // 每个字符使用随机颜色
+for (i in range(0, 4)) {                                   // loop 4 times to generate a 4-character captcha
+    graphics.setColor(randomColor())                        // use a random color for each character
 
-    var degree = random.nextInt() % 30                      // 随机旋转角度（-30° ~ 30°）
-    var ch = letter.charAt(random.nextInt(letter.length())) // 从字符集中随机取一个字符
-    code = code + ch                                        // 拼接到验证码字符串
+    var degree = random.nextInt() % 30                      // random rotation angle (-30° to 30°)
+    var ch = letter.charAt(random.nextInt(letter.length())) // pick a random character from the set
+    code = code + ch                                        // append to the captcha string
 
-    graphics.rotate(degree * Math.PI / 180, x, 45)          // 旋转坐标系（度转弧度）
-    graphics.drawString(String.valueOf(ch), x, 45)          // 在 (x, 45) 位置绘制字符
-    graphics.rotate(-degree * Math.PI / 180, x, 45)         // 恢复坐标系
+    graphics.rotate(degree * Math.PI / 180, x, 45)          // rotate the coordinate system (degrees to radians)
+    graphics.drawString(String.valueOf(ch), x, 45)          // draw the character at (x, 45)
+    graphics.rotate(-degree * Math.PI / 180, x, 45)         // restore the coordinate system
 
-    x = x + 48                                              // 移动到下一个字符位置
+    x = x + 48                                              // move to the next character position
 }
 
-log.info('Generated captcha: {}', code)                           // 服务端Log记录验证码（调试用）
+log.info('Generated captcha: {}', code)                           // log the captcha on the server (for debugging)
 
-// ===== 第 5 步：绘制干扰线和噪点 =====
-for (i in range(0, 6)) {                                   // 绘制 6 条随机干扰线
+// ===== Step 5: draw interference lines and noise =====
+for (i in range(0, 6)) {                                   // draw 6 random interference lines
     graphics.setColor(randomColor())
     graphics.drawLine(
-        random.nextInt(width), random.nextInt(height),      // 起点
-        random.nextInt(width), random.nextInt(height)       // 终点
+        random.nextInt(width), random.nextInt(height),      // start point
+        random.nextInt(width), random.nextInt(height)       // end point
     )
 }
 
-for (i in range(0, 30)) {                                  // 绘制 30 个随机噪点
+for (i in range(0, 30)) {                                  // draw 30 random noise dots
     graphics.setColor(randomColor())
-    graphics.fillRect(random.nextInt(width), random.nextInt(height), 2, 2)  // 2x2 像素
+    graphics.fillRect(random.nextInt(width), random.nextInt(height), 2, 2)  // 2x2 pixels
 }
 
-graphics.dispose()                                         // 释放绘图资源
+graphics.dispose()                                         // release drawing resources
 
-// ===== 第 6 步：将图片编码为 PNG 字节流并返回 =====
+// ===== Step 6: encode the image as a PNG byte stream and return it =====
 var baos = new ByteArrayOutputStream()
-ImageIO.write(image, "png", baos)                          // 将图片写入 PNG 格式
+ImageIO.write(image, "png", baos)                          // write the image in PNG format
 baos.flush()
 baos.close()
 
-return response.image(baos.toByteArray(), 'image/png')     // 返回图片响应（浏览器可直接显示）
+return response.image(baos.toByteArray(), 'image/png')     // return an image response (browsers display it directly)

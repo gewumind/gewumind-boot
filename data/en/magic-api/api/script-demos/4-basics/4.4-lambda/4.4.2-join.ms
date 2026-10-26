@@ -23,9 +23,9 @@
 }
 ================================
 return db.camel().select('select api_name,api_group_id from magic_api_info')
-    // 关联上分组
+    // join the group
     .join(db.camel().select('select id,group_name from magic_group'),(t1,t2) => t1.apiGroupId == t2.id)
-    // 关联后转换结果
+    // transform the joined result
     .map(it => {
         name : it.apiName,
         groupId: it.apiGroupId,

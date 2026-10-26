@@ -1,6 +1,11 @@
 -- GewuMind Boot · English seed (run after 01-baseline.sql; then en/03-demo.sql)
 -- 只更新内置菜单/字典的显示名；业务数据不翻译。
 
+
+-- 模块
+UPDATE sys_module SET name='System Management' WHERE code='system';
+UPDATE sys_module SET name='System Management 1' WHERE code='system11';
+
 -- 菜单
 UPDATE sys_menu SET name='Function Menu' WHERE name='功能菜单';
 UPDATE sys_menu SET name='System Settings' WHERE name='系统设置';

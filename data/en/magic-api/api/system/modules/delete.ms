@@ -50,6 +50,6 @@
 ================================
 var menuCount = db.selectInt("select count(1) from sys_menu where is_del = 0 and module_id = #{id}")
 if(menuCount > 0){
-    exit 500, '模块下存在菜单，不允许删除'
+    exit 500, 'The module has menus and cannot be deleted'
 }
 return db.table("sys_module").logic().where().eq("id",id).delete()

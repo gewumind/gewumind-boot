@@ -23,11 +23,11 @@
 }
 ================================
 // ===== Purpose =====
-// 演示在 SQL 风格 LINQ 中使用三目运算符进行字段值转换
-// 可以在 select 中使用 条件 ? 值1 : 值2 语法对字段做条件映射
+// Demonstrates field value mapping with the ternary operator in SQL-style LINQ
+// In select you can use condition ? value1 : value2 to map a field conditionally
 
 // Step 1: prepare in-memory test data
-// 包含 sex（性别 0/1）、name（姓名）、age（年龄）
+// Contains sex (0/1), name and age
 var list = [{
     sex : 0,
     name : 'Xiaoming',
@@ -38,13 +38,13 @@ var list = [{
     age : 18
 }]
 
-// 第 2 步：使用 SQL 风格 LINQ 进行字段值转换
-// t.age > 18 ? 'Adult' : 'Minor'：将 age 数字映射为"Adult"/"Minor"Tag
-// t.sex == 0 ? 'Male' : 'Female'      ：将 sex 数字映射为中文性别
-// t.name                          ：原样输出
+// Step 2: map field values with SQL-style LINQ
+// t.age > 18 ? 'Adult' : 'Minor': maps the age number to the "Adult"/"Minor" label
+// t.sex == 0 ? 'Male' : 'Female'      : maps the sex number to a readable gender
+// t.name                          : output as-is
 return 
     select 
         t.age > 18 ? 'Adult' : 'Minor' age,   // 19>18 => 'Adult', 18>18 => 'Minor'
         t.sex == 0 ? 'Male' : 'Female' sex,         // 0=='Male', 1=='Female'
-        t.name                                 // 原样保留
+        t.name                                 // keep as-is
     from list t

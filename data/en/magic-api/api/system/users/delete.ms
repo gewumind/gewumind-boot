@@ -51,7 +51,7 @@
 import org.ssssssss.magicapi.modules.db.cache.SqlCache
 
 if(Arrays.asList(id.split(',')).contains('1')){
-    exit 500, '不允许删除超级管理员'
+    exit 500, 'The super administrator cannot be deleted'
 }
 
 for(userId in id.split(',')){

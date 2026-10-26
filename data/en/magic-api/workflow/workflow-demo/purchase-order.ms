@@ -254,8 +254,8 @@ var action = body.action
 if (action == 'getDefinition') {
     return {
     "processId": "purchase_v1",
-    "description": "Purchase request：申请 → 部门经理 → CFO。",
-    "title": "{applicantName} 采购 {item} × {quantity}",
+    "description": "Purchase request: Apply -> Department manager -> CFO.",
+    "title": "{applicantName} purchases {item} x {quantity}",
     "nodes": [
         {
             "id": "apply",
@@ -265,7 +265,7 @@ if (action == 'getDefinition') {
         },
         {
             "id": "mgr_approve",
-            "label": "部门经理Approval",
+            "label": "Department manager approval",
             "type": "approve",
             "role": "dept_manager"
         },
@@ -310,7 +310,7 @@ if (action == 'getDefinition') {
                 },
                 {
                     "name": "item",
-                    "label": "采购物品",
+                    "label": "Item",
                     "type": "input",
                     "required": true
                 },
@@ -322,33 +322,33 @@ if (action == 'getDefinition') {
                 },
                 {
                     "name": "unit_price",
-                    "label": "单价",
+                    "label": "Unit price",
                     "type": "number",
                     "required": true
                 },
                 {
                     "name": "total_amount",
-                    "label": "总金额",
+                    "label": "Total amount",
                     "type": "number",
                     "required": true
                 },
                 {
                     "name": "order_date",
-                    "label": "下单日期",
+                    "label": "Order date",
                     "type": "date",
                     "required": true
                 }
             ]
         },
         "mgr_approve": {
-            "title": "部门经理Approval",
+            "title": "Department manager approval",
             "editable": [
                 "dept_manager"
             ],
             "fields": [
                 {
                     "name": "mgr_comment",
-                    "label": "Approval意见",
+                    "label": "Approval comment",
                     "type": "textarea",
                     "required": true
                 }
@@ -362,7 +362,7 @@ if (action == 'getDefinition') {
             "fields": [
                 {
                     "name": "cfo_comment",
-                    "label": "Approval意见",
+                    "label": "Approval comment",
                     "type": "textarea",
                     "required": true
                 }

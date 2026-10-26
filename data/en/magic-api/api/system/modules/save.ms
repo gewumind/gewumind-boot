@@ -50,7 +50,7 @@
 ================================
 var codeCount = db.selectInt("select count(1) from sys_module where is_del = 0 and code = #{code} ?{id, and id != #{id}}")
 if(codeCount > 0){
-    exit 0, '模块编码已存在'
+    exit 0, 'Module code already exists'
 }
 
 var result = db.table("sys_module").primary("id").saveOrUpdate({
@@ -61,7 +61,7 @@ var result = db.table("sys_module").primary("id").saveOrUpdate({
     sort: sort,
     isShow: isShow
 });
-// 保存关联菜单
+// save linked menus
 if(id){
     db.table("sys_module_menu").where().eq("module_id",id).delete()
     if(menuIds){

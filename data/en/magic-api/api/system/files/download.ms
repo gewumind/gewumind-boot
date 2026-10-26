@@ -52,7 +52,7 @@ for(url in urls){
 }
 if(!filename){
     if(urls.length > 1){
-        filename = '附件.zip'
+        filename = 'attachment.zip'
     }else{
         filename = urls[0].substring(urls[0].lastIndexOf('/') + 1)
     }

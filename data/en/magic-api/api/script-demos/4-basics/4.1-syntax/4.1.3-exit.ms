@@ -16,7 +16,7 @@
   "requestBody": "",
   "headers": [],
   "paths": [],
-  "responseBody": "{\n    \"code\": 400,\n    \"message\": \"参数填写有误\",\n    \"data\": null,\n    \"timestamp\": 1632190981833,\n    \"executeTime\": 3\n}",
+  "responseBody": "{\n    \"code\": 400,\n    \"message\": \"invalid parameters\",\n    \"data\": null,\n    \"timestamp\": 1632190981833,\n    \"executeTime\": 3\n}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": {
@@ -46,7 +46,7 @@
       },
       {
         "name": "message",
-        "value": "参数填写有误",
+        "value": "invalid parameters",
         "description": "",
         "required": false,
         "dataType": "String",
@@ -101,7 +101,7 @@
 }
 ================================
 if(true){
-    exit 400,'参数填写有误'
+    exit 400,'invalid parameters'
 }
-// 第一个参数为code，第二个为message，第三个为data，至少要填写一个参数。
+// the first argument is code, the second message, the third data; at least one is required.
 exit 200,'success','ok'

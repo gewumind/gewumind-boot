@@ -67,13 +67,13 @@
 //
 // Prerequisites:
 //   1. Config center: ws.enabled = true
-//   2. 已有客户端连接 ws://...（server/ws-push示例.ms 或 聊天室示例.ms 注册）
+//   2. a client is connected to ws://... (registered by server/ws-push-example.ms or chat-room-example.ms)
 //
 // Request body (JSON):
 //   {
 //     "clientId": "",           // Target client (empty = broadcast)
-//     "path":     "/push",      // 广播目标 path
-//     "data":     "{...}"       // 消息内容
+//     "path":     "/push",      // broadcast target path
+//     "data":     "{...}"       // message payload
 //   }
 
 targetPath = body.path ?: '/push'

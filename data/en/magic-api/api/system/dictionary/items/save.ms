@@ -51,6 +51,6 @@
 ================================
 var valueCount = db.selectInt("select count(1) from sys_dict_items where is_del = 0 and dict_id = #{data.dictId} and value = #{data.value} ?{id, and id != #{data.id}}")
 if(valueCount > 0){
-    exit 0,'值已存在'
+    exit 0,'Value already exists'
 }
 return db.table("sys_dict_items").primary("id").saveOrUpdate(data)

@@ -28,13 +28,13 @@
 import env;
 
 // env.get(key): get a Spring config value (as String)
-// 例如以下配置 spring.datasource.url 在 application.yml 中定义
+// for example, spring.datasource.url is defined in application.yml
 return env.get('server.port');
 
 // Real-world examples (try them):
-// var dbUrl = env.get('spring.datasource.url');     // 数据库连接地址
-// var active = env.get('spring.profiles.active');   // 当前运行环境
-// var secret = env.get('jwt.secret');                // 自定义密钥
+// var dbUrl = env.get('spring.datasource.url');     // database connection URL
+// var active = env.get('spring.profiles.active');   // active runtime profile
+// var secret = env.get('jwt.secret');                // custom secret
 // 
 // Note: env.get() returns a String; convert numeric values manually
 // var port = env.get('server.port')::int;

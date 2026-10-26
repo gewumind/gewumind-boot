@@ -16,7 +16,7 @@
 }
 ================================
 // WebSocket Server Example: Echo service (receiver)
-// 客户端连接 ws://<host>:9089/ws/echo 后发消息，服务端执行此脚本。
+// The client connects to ws://<host>:9089/ws/echo and sends messages; the server runs this script.
 // This script only: 1) initializes the connection; 2) receives messages and replies to the current connection.
 //
 // Use the API to broadcast or push to a specific clientId: 

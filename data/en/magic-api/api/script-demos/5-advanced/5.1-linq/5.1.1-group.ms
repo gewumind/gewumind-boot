@@ -23,23 +23,23 @@
 }
 ================================
 // ===== Purpose =====
-// 演示使用 SQL 风格的 LINQ 进行数据分组统计
-// magic-script 支持 SQL 风格的 LINQ 语法：select / from / where / group by / having / order by
-// 这种写法更接近 SQL，易于理解
+// Demonstrates SQL-style LINQ for grouping and aggregation
+// magic-script supports SQL-style LINQ: select / from / where / group by / having / order by
+// This syntax is close to SQL and easy to read
 
-// 第 1 步：从数据库Query API 分组 ID 列表作为数据源
-// db.select() 执行 SQL Query，返回对象数组
+// Step 1: query API group IDs from the database as the data source
+// db.select() runs a SQL query and returns an array of objects
 var list = db.select('select api_group_id from magic_api_info')
 
-// 第 2 步：使用 SQL 风格 LINQ 进行分组聚合Query
-// select：选择输出的字段
-// from：数据源（可以是变量、db.select() 结果等）
-// group by：按指定字段分组
-// order by：按聚合结果排序
+// Step 2: group and aggregate with SQL-style LINQ
+// select: fields to output
+// from: data source (a variable, a db.select() result and so on)
+// group by: group by the given field
+// order by: sort by the aggregate
 return 
     select 
-        t.api_group_id,                                 // API 分组 ID
-        count(t.api_group_id) count                     // 该分组下的记录数
-    from list t                                         // t 是数据源的别名
-    group by t.api_group_id                             // 按 api_group_id 分组
-    order by count(t.api_group_id) desc                 // 按记录数降序排列
+        t.api_group_id,                                 // API group ID
+        count(t.api_group_id) count                     // record count in this group
+    from list t                                         // t is the data source alias
+    group by t.api_group_id                             // group by api_group_id
+    order by count(t.api_group_id) desc                 // sort by record count descending

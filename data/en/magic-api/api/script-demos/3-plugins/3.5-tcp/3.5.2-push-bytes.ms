@@ -67,13 +67,13 @@
 //
 // Prerequisites:
 //   1. Config center: tcp.enabled = true
-//   2. 已有客户端连接（server/tcp-echo示例.ms 或 IoT采集示例.ms 注册）
+//   2. a client is connected (registered by server/tcp-echo-example.ms or the IoT collection example)
 //
 // Request body (JSON):
 //   {
 //     "clientId": "",        // Target client (empty = broadcast)
-//     "port":      9000,     // 广播目标端口
-//     "data":      "...\n"   // 字节内容
+//     "port":      9000,     // broadcast target port
+//     "data":      "...\n"   // byte payload
 //   }
 
 targetPort = body.port ?: 9000
@@ -84,7 +84,7 @@ if (body.clientId != null && body.clientId.length() > 0) {
     println('[TCP Push] Sent to client=' + body.clientId)
 } else {
     tcp.broadcastToPort(targetPort, payload)
-    println('[TCP Push] 已广播到 port=' + targetPort)
+    println('[TCP Push] broadcast to port=' + targetPort)
 }
 
 clientCount = tcp.getConnectionCount(targetPort)

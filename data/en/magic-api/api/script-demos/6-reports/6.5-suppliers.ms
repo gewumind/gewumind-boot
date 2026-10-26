@@ -26,8 +26,8 @@ var month = (body == null ? null : body.month)
 if (month == null) { month = '2026-07'; }
 
 return [
-    {supplierId: 'S001', supplierName: '上海科技股份有限公司', totalAmount: 386000, orderCount: 28, avgPrice: 13785},
-    {supplierId: 'S002', supplierName: '广州贸易有限公司',     totalAmount: 252000, orderCount: 19, avgPrice: 13263},
-    {supplierId: 'S003', supplierName: '北京数码集团',           totalAmount: 198000, orderCount: 15, avgPrice: 13200},
-    {supplierId: 'S004', supplierName: '深圳电子科技有限公司', totalAmount: 144000, orderCount: 12, avgPrice: 12000}
+    {supplierId: 'S001', supplierName: 'Shanghai Technology Co., Ltd.', totalAmount: 386000, orderCount: 28, avgPrice: 13785},
+    {supplierId: 'S002', supplierName: 'Guangzhou Trading Co., Ltd.',     totalAmount: 252000, orderCount: 19, avgPrice: 13263},
+    {supplierId: 'S003', supplierName: 'Beijing Digital Group',           totalAmount: 198000, orderCount: 15, avgPrice: 13200},
+    {supplierId: 'S004', supplierName: 'Shenzhen Electronics Technology Co., Ltd.', totalAmount: 144000, orderCount: 12, avgPrice: 12000}
 ]

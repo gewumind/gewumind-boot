@@ -22,53 +22,53 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示 import 导入内置模块的用法 */
-// magic-script 内置多个模块：db, log, http, request, response, env 等
-// 用法：import 模块名;  或  import 模块名 as 别名;
+/* Purpose: demonstrate importing built-in modules */
+// magic-script has built-in modules: db, log, http, request, response, env, etc.
+// usage: import moduleName; or import moduleName as alias;
 
-// ===== 1. 导入 log 模块 =====
+// ===== 1. import the log module =====
 import log;
-// log 模块用于输出Log
-// 导入后使用 log.info() / log.warn() / log.error()
-log.info("这是 info Log");
-log.warn("这是 warn Log");
+// the log module writes logs
+// after importing, use log.info() / log.warn() / log.error()
+log.info("this is an info log");
+log.warn("this is a warn log");
 
-// ===== 2. 导入 http 模块（调用其他接口） =====
+// ===== 2. import the http module (call other APIs) =====
 import http;
-// http 模块用于发起 HTTP 请求
-// http.connect(url).get().getBody() 发送 GET 请求
-// 也可用 .post(body).getString() 发送 POST 请求
+// the http module makes HTTP requests
+// http.connect(url).get().getBody() sends a GET request
+// or .post(body).getString() for a POST request
 
-// ===== 3. 导入 request 模块（读取当前请求信息） =====
+// ===== 3. import the request module (read the current request) =====
 import request;
-// request 模块用于获取当前 HTTP 请求的元数据
-var method = request.getMethod();    // 请求Method GET/POST
-var ip = request.getIp();            // 客户端 IP
+// the request module exposes metadata of the current HTTP request
+var method = request.getMethod();    // request method GET/POST
+var ip = request.getIp();            // client IP
 
-// ===== 4. 导入 response 模块（自定义响应） =====
+// ===== 4. import the response module (custom response) =====
 import response;
-// response 模块用于跳过框架包装，直接返回自定义内容
-// response.json({ key: "value" })  返回 JSON
-// response.text("ok")             返回纯文本
+// the response module skips framework wrapping and returns custom content directly
+// response.json({ key: "value" })  return JSON
+// response.text("ok")             return plain text
 
-// ===== 5. 导入 env 模块（读取配置） =====
+// ===== 5. import the env module (read config) =====
 import env;
-// env 模块用于读取 Spring 配置项
-var port = env.get("server.port");   // 读取 server.port 配置
+// the env module reads Spring config values
+var port = env.get("server.port");   // read the server.port config
 
-// ===== 6. 使用 as 重命名 =====
+// ===== 6. rename with as =====
 import log as logger;
-// 导入 log 模块并重命名为 logger
-logger.info("使用别名调用");
+// import the log module and rename it to logger
+logger.info("call via the alias");
 
-// ===== 7. 对比：导入 Java 类 =====
-// import 'java.util.Date' as Date;  // 导入 Java 类，注意用引号
-// var now = new Date();              // 创建 Java 对象
+// ===== 7. compare: importing Java classes =====
+// import 'java.util.Date' as Date;  // import a Java class; note the quotes
+// var now = new Date();              // create a Java object
 
 return {
     requestMethod: method,
     clientIp: ip,
     serverPort: port,
-    message: "各模块使用Method见注释"
+    message: "see the comments for how to use each module"
 };
 

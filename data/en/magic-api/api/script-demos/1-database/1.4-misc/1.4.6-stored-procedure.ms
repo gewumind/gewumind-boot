@@ -22,16 +22,16 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示调用数据库存储过程 */
+/* Purpose: demonstrate calling a database stored procedure */
 
-// 注意：magic-api 本身没有专门支持存储过程，目前仅能调用无出参的存储过程
-// 使用 db.update() 通过 CALL 语句来调用
-// 参数使用 #{paramName} 占位符注入
+// Note: magic-api has no dedicated stored-procedure support; currently only procedures without output parameters can be called
+// call it with db.update() and a CALL statement
+// parameters are injected with #{paramName} placeholders
 
-// 1. db.update() 执行 CALL 语句
-// 2. #{param1}, #{param2} 是输入参数占位符
-// 3. 框架自动从同名变量或请求参数中取值注入
-// 如果需要出参，应使用 db.call() Method（参考文档）
+// 1. db.update() executes the CALL statement
+// 2. #{param1}, #{param2} are input-parameter placeholders
+// 3. the framework injects values from same-named variables or request parameters
+// for output parameters use db.call() (see the docs)
 return db.update("""
     call produce_name(#{param1}, #{param2})
 """)

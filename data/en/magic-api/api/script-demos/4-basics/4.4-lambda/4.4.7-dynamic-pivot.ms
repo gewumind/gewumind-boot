@@ -23,24 +23,24 @@
 }
 ================================
 var result = db.select('select api_method,api_group_id from magic_api_info');
-// 期待结果如下
+// expected result:
 /*
   -     GET    POST 
-分组1    X       X
-分组2    X       X
-分组3    X       X
-分组4    X       X
-其中X为该分组对应请求Method的数量
+Group 1    X       X
+Group 2    X       X
+Group 3    X       X
+Group 4    X       X
+where X is the number of requests with that method in the group
 */
-return result.group(it => it.api_group_id,    // 根据api_group_id 分组
-    list => list.group(item => item.api_method, // 根据 请求Method 再次分组
+return result.group(it => it.api_group_id,    // group by api_group_id
+    list => list.group(item => item.api_method, // group again by request method
         apis => apis.size()
     )
-).asList((key,value)=>{ // 将分组后的Map<String,Map<String,Object>> 结果转为List<Map<String,Object>
-    ...value,   // 展开Map
+).asList((key,value)=>{ // convert the grouped Map<String,Map<String,Object>> into List<Map<String,Object>
+    ...value,   // spread the map
     group_id : key
 })
-//关联分组表,添加分组中文名，此步骤也可以放在SQL中关联。
+//join the group table to add the group name; this can also be done in SQL.
 .join(db.select('select id,group_name from magic_group'),(t1,t2) => t1.group_id == t2.id)  
-// 移除多余的ID列
+// remove the redundant ID column
 .each(it => it.remove('id')) 

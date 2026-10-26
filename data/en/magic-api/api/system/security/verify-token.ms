@@ -60,7 +60,7 @@
       },
       {
         "name": "message",
-        "value": "系统内部出现错误",
+        "value": "Internal system error",
         "description": "",
         "required": false,
         "dataType": "String",

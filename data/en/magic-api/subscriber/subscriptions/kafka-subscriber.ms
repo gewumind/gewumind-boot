@@ -16,7 +16,7 @@
 }
 ================================
 // Kafka Subscription example
-// 收到 kafka demo-topic 主题消息时自动执行整个脚本
+// Runs the whole script when a message arrives on the kafka demo-topic topic
 // Set breakpoints in this file to debug
 
 print('[Kafka] Message received:  ' + _message)

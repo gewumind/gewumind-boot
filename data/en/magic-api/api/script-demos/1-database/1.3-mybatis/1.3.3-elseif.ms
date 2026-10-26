@@ -22,17 +22,17 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示 MyBatis 语法的 <if>/<elseif>/<else> 多条件分支判断 */
+/* Purpose: demonstrate multi-branch conditions with MyBatis <if>/<elseif>/<else> */
 
-// 支持的Tag：<if>、<elseif>、<else>、<where>、<foreach>、<trim>、<set>
-// <elseif> 类似 Java 中的 else if，当前面的 <if> 不满足时继续判断
-// <else> 在所有条件都不满足时执行
+// Supported tags: <if>, <elseif>, <else>, <where>, <foreach>, <trim>, <set>
+// <elseif> is like else if in Java; evaluated when the preceding <if> is false
+// <else> runs when no condition matches
 
-// 1. 定义变量 val = 1
-// 2. 根据 val 的值动态拼接不同的 WHERE 条件
-//    - 如果 val == 2，Query api_name 不为空的数据
-//    - 否则如果 val == 1，Query api_name = 'Test' 的数据
-//    - 否则Query api_name 为空的数据
+// 1. define val = 1
+// 2. append different WHERE conditions based on val
+//    - if val == 2, query rows where api_name is not empty
+//    - else if val == 1, query rows where api_name = 'Test'
+//    - otherwise query rows where api_name is empty
 const val = 1
 
 return db.select("""

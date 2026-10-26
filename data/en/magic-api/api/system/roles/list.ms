@@ -147,7 +147,7 @@
                   },
                   {
                     "name": "name",
-                    "value": "管理员",
+                    "value": "Administrator",
                     "description": "",
                     "required": false,
                     "dataType": "String",

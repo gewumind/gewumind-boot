@@ -70,7 +70,7 @@
   "requestBody": "{\r\n    \"username\": \"admin\",\r\n    \"password\": \"8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92\"\r\n}",
   "headers": [],
   "paths": [],
-  "responseBody": "{\n    \"code\": 0,\n    \"message\": \"用户名or密码错误\",\n    \"data\": null,\n    \"timestamp\": 1656424276533,\n    \"executeTime\": 11\n}",
+  "responseBody": "{\n    \"code\": 0,\n    \"message\": \"Invalid username or password\",\n    \"data\": null,\n    \"timestamp\": 1656424276533,\n    \"executeTime\": 11\n}",
   "description": null,
   "requestBodyDefinition": {
     "name": "root",
@@ -229,9 +229,9 @@ if(configure('verification-code.enable') == 'true'){
     var cachedCode = loginUuid != null ? CodeCacheMap.get(loginUuid) : null
     log.info("[login-debug] cached=[" + cachedCode + "] input=[" + loginCode + "] match=" + (loginCode != null && loginCode == cachedCode))
     if(!loginCode){
-        exit 0, '请输入验证码'
+        exit 0, 'Please enter the captcha'
     }else if(loginCode.toUpperCase() != (CodeCacheMap.get(loginUuid) + '').toUpperCase()){
-        exit 0, '验证码错误'
+        exit 0, 'Incorrect captcha'
     }
 }
 
@@ -254,7 +254,7 @@ if(!user){
 }
 
 if(user.isLogin == '1'){
-    exit 0, '此账号禁止登录'
+    exit 0, 'This account is not allowed to log in'
 }
 
 StpUtil.login(user.id)

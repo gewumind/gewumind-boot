@@ -16,7 +16,7 @@
   "requestBody": "{\r\n\t\r\n}",
   "headers": [],
   "paths": [],
-  "responseBody": "{\n    \"code\": 1,\n    \"message\": \"success\",\n    \"data\": \"请按F12在控制台中查看\",\n    \"timestamp\": 1615817099072,\n    \"executeTime\": 4\n}",
+  "responseBody": "{\n    \"code\": 1,\n    \"message\": \"success\",\n    \"data\": \"press F12 and check the console\",\n    \"timestamp\": 1615817099072,\n    \"executeTime\": 4\n}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
@@ -24,4 +24,4 @@
 ================================
 import response;
 response.setHeader('key','value');
-return '请按F12在控制台中查看'
+return 'press F12 and check the console'

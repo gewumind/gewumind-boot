@@ -51,6 +51,6 @@
 ================================
 var typeCount = db.selectInt("select count(1) from sys_dict where is_del = 0 and type = #{data.type} ?{id, and id != #{data.id}}")
 if(typeCount > 0){
-    exit 0,'类型已存在'
+    exit 0,'Type already exists'
 }
 return db.table("sys_dict").primary("id").saveOrUpdate(data)

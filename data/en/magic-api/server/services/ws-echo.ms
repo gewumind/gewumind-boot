@@ -1,7 +1,7 @@
 {
   "properties": {},
   "id": "server-ws-echo-001",
-  "script": "// WebSocket Server 示例：Echo 服务\n// 客户端连接到 ws://<host>:9090/ws/echo 后\n// 发送什么消息就回复什么消息（自动加前缀）\n\nprintln('[WS] Message received:  path=' + _path + ' clientId=' + _clientId)\nprintln('[WS] 内容: ' + _message)\n\n// 主动回推消息\nvar reply = 'Echo: ' + _message\nws.reply(reply)\nprintln('[WS] 已回推: ' + reply)\n\n// 也可以广播给同 path 下其他客户端\n// ws.broadcast('有人发了: ' + _message)\n",
+  "script": "// WebSocket Server Example: Echo service\n// The client connects to ws://<host>:9090/ws/echo and\n// replies with whatever message it receives (with a prefix)\n\nprintln('[WS] Message received:  path=' + _path + ' clientId=' + _clientId)\nprintln('[WS] content: ' + _message)\n\n// Actively push a message back\nvar reply = 'Echo: ' + _message\nws.reply(reply)\nprintln('[WS] replied: ' + reply)\n\n// You can also broadcast to other clients on the same path\n// ws.broadcast('someone said: ' + _message)\n",
   "groupId": "server-group-001",
   "name": "WebSocket Echo",
   "createTime": null,
@@ -24,7 +24,7 @@
 }
 ================================
 // WebSocket Server Example: Echo service (receiver)
-// 客户端连接 ws://<host>:9089/ws/echo 后发消息，服务端执行此脚本。
+// The client connects to ws://<host>:9089/ws/echo and sends messages; the server runs this script.
 // This script only: 1) initializes the connection; 2) receives messages and replies to the current connection.
 //
 // Use the API to broadcast or push to a specific clientId: 

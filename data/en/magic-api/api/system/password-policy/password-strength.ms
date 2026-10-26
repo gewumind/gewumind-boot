@@ -45,7 +45,7 @@ if (strength != '2') {
 }
 
 if (password == null || password.length() < 8) {
-    return { valid: false, message: '密码长度至少8位' }
+    return { valid: false, message: 'Password must be at least 8 characters' }
 }
 
 var types = 0
@@ -54,7 +54,7 @@ if (password.matches(".*[a-z].*")) { types = types + 1 }
 if (password.matches(".*[0-9].*")) { types = types + 1 }
 if (password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?~].*")) { types = types + 1 }
 if (types < 3) {
-    return { valid: false, message: '需包含大写字母、小写字母、数字、特殊符号中的至少3类' }
+    return { valid: false, message: 'Must include at least 3 of: uppercase, lowercase, digits, special characters' }
 }
 
 return { valid: true, message: '' }

@@ -56,10 +56,10 @@ import com.gewumind.boot.model.Global;
 import request;
 
 if (fileName == null || base64 == null) {
-    return {state: "FAIL", msg: "fileName 和 base64 cannot be empty"};
+    return {state: "FAIL", msg: "fileName and base64 cannot be empty"};
 }
 
-// 去掉可能的 data:image/png;base64, 前缀
+// strip the optional data:image/png;base64, prefix
 var pure = base64;
 if (pure.startsWith('data:')) {
     var idx = pure.indexOf(',');
@@ -81,7 +81,7 @@ try {
     var bytes = java.util.Base64.getDecoder().decode(pure);
     FileUtil.writeBytes(java.nio.file.Paths.get(fullPath).toFile(), bytes);
 } catch (e) {
-    return {state: "FAIL", msg: "base64 解码Failed:  " + e.getMessage()};
+    return {state: "FAIL", msg: "base64 decode failed:  " + e.getMessage()};
 }
 
 return {

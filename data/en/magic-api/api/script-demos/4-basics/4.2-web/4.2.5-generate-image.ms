@@ -43,7 +43,7 @@ var random = new Random();
 var randomColor = ()=>new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
 var x = 10;
 var code = '';
-for (i in range(0, 3)){ //验证码
+for (i in range(0, 3)){ //captcha
     graphics.setColor(randomColor());
     var degree = random.nextInt() % 30;
     var ch = letter.charAt(random.nextInt(letter.length()));
@@ -54,12 +54,12 @@ for (i in range(0, 3)){ //验证码
     x = x + 48;
 }
 log.info('Generated captcha: {}',code)
-for (i in range(0, 6)) {    //干扰线
+for (i in range(0, 6)) {    //noise lines
     graphics.setColor(randomColor());
     graphics.drawLine(random.nextInt(width), random.nextInt(height),random.nextInt(width), random.nextInt(height));
 }
 
-for(i in range(0, 30)){  //噪点
+for(i in range(0, 30)){  //noise dots
     graphics.setColor(randomColor());
     graphics.fillRect(random.nextInt(width), random.nextInt(height), 2,2);
 

@@ -22,9 +22,9 @@
   "responseBodyDefinition": null
 }
 ================================
-// 分组后计算每组的数量
+// count each group after grouping
 return db.select('select api_group_id from magic_api_info')
-    // 根据api_group_id 分组，分组后，值为分组结果的大小
+    // group by api_group_id; the value is the group size
     .group(it => it.api_group_id,list => list.size())
-    // 根据value排序
+    // sort by value
     .sort((k1,k2,v1,v2) => v2 - v1)

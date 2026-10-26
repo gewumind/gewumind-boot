@@ -23,47 +23,47 @@
 }
 ================================
 // ===== Purpose =====
-// 演示行转列（Pivot）操作 — 将行的值转为列名
-// 使用 group() + 递归 SQL 风格 LINQ 实现数据透视表
-// 场景：统计每个 API 分组中各请求Method（GET/POST/PUT/DELETE）的数量
+// Demonstrates a pivot operation: turning row values into column names
+// Builds a pivot table with group() plus recursive SQL-style LINQ
+// Scenario: count each request method (GET/POST/PUT/DELETE) per API group
 
-// 第 1 步：Query原始数据 — API 的请求Method和所属分组
+// Step 1: query the raw data: each API's request method and group
 var result = db.select('select api_method, api_group_id from magic_api_info')
 
-// 第 2 步：Query分组名称对照表
-// 用于关联显示分组名称
+// Step 2: query the group-name lookup table
+// used to join in the group name
 var groups = db.select('select id, group_name from magic_group')
 
-// 第 3 步：定义行转列函数 pivot
-// 参数 list：同一分组下的 API 列表
-// group() 是 LINQ Method，按 api_method 分组
-// 第一个参数：分组 key（即 api_method 的值，如 "GET"）
-// Second parameter：分组后的聚合结果（values.size() 返回该Method的数量）
-// 最终返回 { GET: X, POST: Y, ... } 这样的键值对
+// Step 3: define the pivot function
+// Parameter list: APIs in the same group
+// group() is a LINQ method that groups by api_method
+// First argument: the group key (the api_method value, such as "GET")
+// Second argument: the aggregate for the group (values.size() returns the count for that method)
+// Finally returns key/value pairs such as { GET: X, POST: Y, ... }
 var pivot = (list) => list.group(
-    it => it.api_method,        // 按请求Method分组（GET/POST/PUT/DELETE）
-    (key, values) => values.size()  // 统计每种Method的数量
+    it => it.api_method,        // group by request method (GET/POST/PUT/DELETE)
+    (key, values) => values.size()  // count each method
 )
 
-// 第 4 步：使用 SQL 风格 LINQ 构建透视结果
-// select：分组名称 + 行转列统计结果
-// join：关联 API 数据与分组名称
-// group by：按分组 ID 聚合
-// having：只保留 API Method数 > 5 的分组（过滤掉数据较少的分组）
+// Step 4: build the pivot result with SQL-style LINQ
+// select: group name + pivoted counts
+// join: join API data with group names
+// group by: aggregate by group ID
+// having: keep only groups with more than 5 API methods (drop groups with little data)
 return
     select * from (
         select 
-            mg.group_name,                              // 分组名称（如"系统管理"）
-            pivot(ma)                                   // 行转列结果（如 {GET:10, POST:3, PUT:2}）
-        from result ma                                  // API 数据
-        join groups mg on mg.id = ma.api_group_id       // 关联分组名称
-        group by ma.api_group_id                        // 按分组聚合
-        having count(ma.api_method) > 5                 // 只保留Method数 > 5 的分组
-    ) t order by t.POST desc                            // 按 POST 请求数量降序排列
+            mg.group_name,                              // group name (for example "System Management")
+            pivot(ma)                                   // pivot result (for example {GET:10, POST:3, PUT:2})
+        from result ma                                  // API data
+        join groups mg on mg.id = ma.api_group_id       // join group names
+        group by ma.api_group_id                        // aggregate by group
+        having count(ma.api_method) > 5                 // keep only groups with more than 5 methods
+    ) t order by t.POST desc                            // sort by POST count descending
 
-// 期待输出格式：
+// Expected output format:
 //   group_name | GET | POST | PUT | DELETE
 //   ----------|-----|------|-----|-------
-//   分组1      |  X  |  Y   |  Z  |   W
-//   分组2      |  X  |  Y   |  Z  |   W
-//   其中 X/Y/Z/W 为对应请求Method的数量
+//   Group 1    |  X  |  Y   |  Z  |   W
+//   Group 2    |  X  |  Y   |  Z  |   W
+//   where X/Y/Z/W are the counts for the corresponding request method

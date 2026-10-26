@@ -15,13 +15,13 @@
   "enabled": true
 }
 ================================
-// WebSocket Server 示例：聊天室（接收端 + 同 room 回推）
-// 客户端连接 ws://<host>:9089/ws/chat/<room> 后收发消息。
-// 本脚本在收到聊天消息时，把它转发到同 room 的所有客户端（room = path）。
-// 这是典型的"接收 + 即时广播给订阅者"模式。
+// WebSocket Server Example: chat room (receiver + broadcast back to the same room)
+// Clients connect to ws://<host>:9089/ws/chat/<room> to send and receive messages.
+// When a chat message arrives, this script forwards it to all clients in the same room (room = path).
+// This is the typical receive-and-broadcast-to-subscribers pattern.
 //
-// 系统消息推送（无 trigger）请走 API：
-//   wsHelper.broadcastToPath('/chat/room1', '{"msg":"系统消息"}')
+// Use the API for system message pushes (no trigger):
+//   wsHelper.broadcastToPath('/chat/room1', '{"msg":"system message"}')
 //   wsHelper.sendToClient(clientId, '{"type":"private"}')
 // See api/script-demos/3-plugins/3.6-websocket/3.6.1-basics.ms
 //
@@ -29,24 +29,24 @@
 //   1. Config center: ws.enabled = true
 //   2. Restart the backend to apply
 //
-// Test（开 3 个终端）：
+// Test（open 3 terminals）：
 //   python3 send_ws_msg.py ws://localhost:9089/ws/chat/room1 "hello 1"
 //   python3 send_ws_msg.py ws://localhost:9089/ws/chat/room1 "hello 2"
 //   python3 send_ws_msg.py ws://localhost:9089/ws/chat/room2 "from room2"
 
-// 接收：_path 形如 /chat/room1，从 path 提取 room name
+// Receive: _path looks like /chat/room1; extract the room name from it
 println('[Chat] Message received:  room-path=' + _path + ' client=' + _clientId + ' msg=' + _message)
 
-// 1. 从 path 提取 room（去掉 /chat/ 前缀）
+// 1. Extract the room from path (strip the /chat/ prefix)
 room = _path
 if (room.startsWith('/chat/')) {
     room = room.substring(6)
 }
 println('[Chat] room=' + room)
 
-// 2. 构造消息：谁在哪个房间说了什么
+// 2. Build the message: who said what in which room
 chatMsg = '[' + _clientId + ' @ ' + room + '] ' + _message
 
-// 3. 转发给同 room 所有客户端（path 不同会自动隔离 room）
+// 3. Forward to all clients in the same room (different paths are isolated automatically)
 wsHelper.broadcast(chatMsg)
-println('[Chat] 已转发到 room=' + room)
+println('[Chat] forwarded to room=' + room)

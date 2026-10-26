@@ -24,7 +24,7 @@
   "requestBody": "",
   "headers": [],
   "paths": [],
-  "responseBody": "{\"code\":200,\"msg\":\"Reset成功\",\"data\":{\"app_secret\":\"\"}}",
+  "responseBody": "{\"code\":200,\"msg\":\"Reset successful\",\"data\":{\"app_secret\":\"\"}}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": null

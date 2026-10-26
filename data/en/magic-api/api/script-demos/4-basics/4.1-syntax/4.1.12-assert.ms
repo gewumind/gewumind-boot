@@ -22,25 +22,25 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示 assert 断言语句的用法 */
-// assert 是 exit 的简写形式，用于参数校验
-// 语法：assert 条件 : code, message[, data]
+/* Purpose: demonstrate the assert statement */
+// assert is shorthand for exit, used for parameter validation
+// syntax: assert condition : code, message[, data]
 
-// 模拟参数校验场景
+// simulate parameter validation
 var age = 15;
 var name = "";
 
-// assert 条件 : code, message
-// 等价于：if (!(条件)) { exit code, message }
-assert age >= 18 : 400, "年龄必须 >= 18";
+// assert condition : code, message
+// equivalent to: if (!(condition)) { exit code, message }
+assert age >= 18 : 400, "age must be >= 18";
 
-// assert 也可以只传 message（code 默认为 1）
-assert name != "" : "名称cannot be empty";
+// assert can also take only a message (code defaults to 1)
+assert name != "" : "name cannot be empty";
 
-// assert 支持多层条件，用 && / || 连接
+// assert supports compound conditions with && / ||
 var email = "test@example.com";
-assert email != null && email.contains("@") : 400, "邮箱格式不正确";
+assert email != null && email.contains("@") : 400, "invalid email format";
 
-// assert 失败时自动 exit，后续代码不会执行
-return "校验通过";
+// on failure assert exits automatically; later code does not run
+return "validation passed";
 

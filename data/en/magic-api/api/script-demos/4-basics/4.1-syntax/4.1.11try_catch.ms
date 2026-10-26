@@ -102,10 +102,10 @@
 ================================
 try{
     var c = 1 / 0
-}catch(e){  //不用写类型，只写变量即可
+}catch(e){  //no type needed; just the variable
     return e.getMessage();
 }finally{
     return 'finally'
 }
-// catch 和finally 都可以不写。
+// both catch and finally are optional.
 return 'ok'

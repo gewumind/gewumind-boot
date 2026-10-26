@@ -15,23 +15,23 @@
   "enabled": true
 }
 ================================
-// CrossTest: 验证 server script 跨上下文调用能力
-// 实测结论（基于本次运行）：
-//   ✅ db              - server script 内直接用 db 可用
-//   ✅ @/xxx function  - function import 可用；function 内部也能用 db
-//   ✅ @post:/xxx api  - API POST import + Executed successfully（magic-api 自动注入空 request/response）
-//   ⚠️ @get:/xxx api  - API import 可用，但若 API 内部依赖 sa-token 等 servlet 上下文会失败
+// CrossTest: verify cross-context calls from a server script
+// Measured results (from this run):
+//   ✅ db              - using db directly inside a server script works
+//   ✅ @/xxx function  - function import works; db also works inside the function
+//   ✅ @post:/xxx api  - API POST import works (magic-api injects empty request/response)
+//   ⚠️ @get:/xxx api  - API import works, but fails if the API depends on servlet context such as sa-token
 //
 // Enable:
-//   1. File已经默认 enabled: true
-//   2. 在 magic-api 后台管理界面保存一次（或 touch 此File触发 reload）
-//   3. 用 ws 客户端连 ws://localhost:9089/ws/crosstest 发任意消息
-//   4. 后端Log查看 5 项结果
+//   1. the file is enabled: true by default
+//   2. Save once in the magic-api admin UI (or touch this file to trigger reload)
+//   3. Connect with a ws client to ws://localhost:9089/ws/crosstest and send any message
+//   4. Check the 5 results in the backend log
 
 println('[CrossTest] start')
 
 results = {}
-// ============ 1. db 直访 ============
+// ============ 1. direct db access ============
 results.db_ok = false
 try {
     rows = db.table('sys_configure').select()
@@ -43,8 +43,8 @@ try {
     println('[CrossTest][db] fails: ' + results.db_err)
 }
 
-// ============ 2. db 在 function 内部访问 ============
-// function 可以访问 db 说明 function 在调用时拿到了完整 magic-api context
+// ============ 2. db access inside a function ============
+// The function can access db, which means it receives the full magic-api context when called
 results.fn_db_ok = false
 try {
     import '@/test/crossFnDb' as fnDb
@@ -57,7 +57,7 @@ try {
     println('[CrossTest][fn+db] fails: ' + results.fn_db_err)
 }
 
-// ============ 3. function import + 参数 ============
+// ============ 3. function import + arguments ============
 results.fn_ok = false
 try {
     import '@/test/crossTest' as crossTest
@@ -70,8 +70,8 @@ try {
     println('[CrossTest][fn] fails: ' + results.fn_err)
 }
 
-// ============ 4. API GET import（@get:/xxx）============
-// @get:/system/security/validateToken - 无参 GET
+// ============ 4. API GET import (@get:/xxx)============
+// @get:/system/security/validateToken - GET without params
 results.api_get_ok = false
 try {
     import '@get:/system/security/validateToken' as validateToken
@@ -84,8 +84,8 @@ try {
     println('[CrossTest][api-get] fails: ' + results.api_get_err)
 }
 
-// ============ 5. API POST import（@post:/xxx）============
-// @post:/system/configure/list - 无参 POST（只是验证 import 能找到）
+// ============ 5. API POST import (@post:/xxx)============
+// @post:/system/configure/list - POST without params (just verifying import resolves)
 results.api_post_ok = false
 try {
     import '@post:/system/configure/list' as cfgList

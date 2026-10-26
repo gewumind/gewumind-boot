@@ -141,21 +141,21 @@
   }
 }
 ================================
-/* 目的：演示 MyBatis 语法的 <if> 和 <where> Tag实现动态Query */
+/* Purpose: demonstrate dynamic queries with MyBatis <if> and <where> tags */
 
-// magic-api 1.6.0+ 支持 MyBatis 动态 SQL 语法
-// <where> Tag：自动去除子句中多余的 AND/OR，并在有条件时插入 WHERE 关键字
-// <if test="..."> Tag：当 test 条件为 true 时拼接Tag内的 SQL 片段
-// 该接口接收 POST 请求，参数 name（可选），当 name 不为空时按名称模糊Query
+// magic-api 1.6.0+ supports MyBatis dynamic SQL
+// <where> tag: removes redundant AND/OR and inserts WHERE when conditions exist
+// <if test="..."> tag: appends its SQL when test is true
+// this endpoint accepts POST with an optional name; when name is non-empty it does a fuzzy match by name
 
 return db.select("""
     select api_name from magic_api_info
     <where>
         <!--
-            test 属性：值为 JS 表达式
-            如果 name != null 且 name != ''（非空判断），则拼接 AND 条件
-            concat('%', #{name}, '%') 实现 LIKE 模糊匹配
-            当 name 为空时，<where> 自动不生成 WHERE 子句，返回全部数据
+            test attribute: a JS expression
+            if name != null and name != '' (non-empty check), append the AND condition
+            concat('%', #{name}, '%') performs a LIKE fuzzy match
+            when name is empty, <where> omits the WHERE clause and all data is returned
         -->
         <if test="name != null and name != ''">
          and api_name like concat('%',#{name},'%')

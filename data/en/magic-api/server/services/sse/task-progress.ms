@@ -15,9 +15,9 @@
   "enabled": true
 }
 ================================
-// SSE Server 示例：连接时初始化推送（"握手时下发当前状态"模式）
-// 客户端连 /sse/progress 时，本脚本立刻推送一组进度状态作为初始数据。
-// 持续进度推送请走 API：
+// SSE Server Example: initial push on connect (send current state during the handshake)
+// When a client connects to /sse/progress, this script immediately pushes progress states as initial data.
+// Use the API for ongoing progress pushes:
 //   sseHelper.emitToClient(clientId, 'progress', '{"percent":50}')
 //   sseHelper.broadcastToPath('/progress', 'progress', '{"percent":50}')
 // See api/script-demos/3-plugins/3.4-sse/3.4.1-push-notification.ms
@@ -26,7 +26,7 @@
 //   1. Config center: sse.enabled = true
 //   2. Restart the backend to apply
 //
-// 浏览器Subscription example：
+// Browser subscription example:
 //   const es = new EventSource('/sse/progress')
 //   es.addEventListener('start', e => console.log('start:', e.data))
 //   es.addEventListener('progress', e => {
@@ -37,15 +37,15 @@
 // Python test:
 //   python3 scripts/send_sse_msg.py http://localhost:9089/sse/progress --timeout 5
 
-// 初始化：客户端连上时立刻推 start 事件
-println('[Progress] 客户端订阅: ' + _clientId + ' @ ' + _path)
+// Init: emit a start event immediately when the client connects
+println('[Progress] client subscribed: ' + _clientId + ' @ ' + _path)
 println('[Progress] Current path Connections:  ' + sse.getConnectionCount(_path))
 
 sseHelper.emit(_clientId, 'start', '{"clientId":"' + _clientId + '","startTime":' + current_timestamp() + '}')
-println('[Progress] 已推送 start 事件')
+println('[Progress] start event emitted')
 
-// 演示"初始状态快照"：把当前假定的进度状态推给当前连接
-//   真实场景：这里通常会从 DB/缓存读出真实任务进度下发
+// Demo of the initial state snapshot: push assumed progress states to the current connection
+//   Real use: read the actual task progress from DB/cache and send it
 for (i in range(1, 6)) {
     percent = i * 20
     progress = '{"clientId":"' + _clientId + '","percent":' + percent + ',"step":' + i + '}'

@@ -23,12 +23,12 @@
 }
 ================================
 //var toTree = (list,parentId)=>list.filter(it => it.parent_id == parentId).each(it=>it.children = toTree(list,it.id))
-// 上面为简写
+// the above is shorthand
 var toTree = (list,parentId)=>{
-    return list.filter(it => it.parent_id == parentId) // 根据parentId 过滤当前节点
+    return list.filter(it => it.parent_id == parentId) // filter the current node by parentId
     .each(it=>{
-        it.children = toTree(list,it.id)    // 过滤后循环这些节点递归添加children属性
+        it.children = toTree(list,it.id)    // after filtering, recursively add children to each node
     }) 
 }
-// 根节点为 0
+// the root node is 0
 return toTree(db.select('select id,group_name,parent_id from magic_group'),'0')

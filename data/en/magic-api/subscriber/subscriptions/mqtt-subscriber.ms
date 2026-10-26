@@ -1,7 +1,7 @@
 {
   "properties": {},
   "id": "subscriber-mqtt-demo-001",
-  "script": "// MQTT Subscription example\n// 收到 mqtt demo/topic 主题消息h自动执行整个脚本\n// Set breakpoints in this file to debug\n\nprint('[MQTT] Message received:  ' + _message)\nprint('[MQTT] Topic:  ' + _topic)\n\n// Business logic\nprint('[MQTT] Done')",
+  "script": "// MQTT Subscription example\n// Runs the whole script when a message arrives on the mqtt demo/topic topic\n// Set breakpoints in this file to debug\n\nprint('[MQTT] Message received:  ' + _message)\nprint('[MQTT] Topic:  ' + _topic)\n\n// Business logic\nprint('[MQTT] Done')",
   "groupId": "subscriber-group-001",
   "name": "MQTT Subscription",
   "module": "mqtt",
@@ -39,7 +39,7 @@
 }
 ================================
 // MQTT Subscription example
-// 收到 mqtt demo/topic 主题消息时自动执行整个脚本
+// Runs the whole script when a message arrives on the mqtt demo/topic topic
 // Set breakpoints in this file to debug
 
 print('[MQTT] Message received:  ' + _message)

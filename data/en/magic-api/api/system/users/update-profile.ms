@@ -29,7 +29,7 @@ var oldPassword = db.selectValue("""
     select password from sys_user where id = #{id}
 """)
 if(oldPassword != SaSecureUtil.sha256(password)){
-    exit 0, '原密码不正确！'
+    exit 0, 'Current password is incorrect!'
 }
 
 var data = {
@@ -39,7 +39,7 @@ var data = {
 }
 if(newPassword){
     if (SaSecureUtil.sha256(newPassword) == oldPassword) {
-        exit 0, '新密码不能与当前密码一致'
+        exit 0, 'The new password must differ from the current password'
     }
     var vr = validateStrength(newPassword)
     if (!vr.valid) {

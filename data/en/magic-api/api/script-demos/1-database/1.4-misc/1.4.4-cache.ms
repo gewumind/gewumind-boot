@@ -22,26 +22,26 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示使用 db.cache() 进行 SQL 结果缓存 */
+/* Purpose: demonstrate SQL result caching with db.cache() */
 
 /*
- * db.cache(cacheName, ttl) 用于缓存Query结果，避免重复Query数据库
- * - cacheName：缓存名称，相同名称的缓存Total享同一个缓存空间
- * - ttl：有效期（毫秒），可选，默认使用全局配置
+ * db.cache(cacheName, ttl) caches query results to avoid repeated database queries
+ * - cacheName: cache name; caches with the same name share one cache space
+ * - ttl: TTL in milliseconds; optional, defaults to the global config
  *
- * 当执行修改操作（update/insert/delete）时，同名缓存会自动Clear
+ * on update/insert/delete, caches with the same name are cleared automatically
  */
 
-// Clear名为 user 的缓存（如果需要手动清除）
+// clear the cache named user (if manual clearing is needed)
 // db.deleteCache('user')
 
-// 当执行 update/insert 等修改语句时，会自动Clear名为 user 的缓存
+// update/insert statements automatically clear the cache named user
 // db.cache('user').update('......')
 
-// 使用缓存名为 'user' 的缓存，有效期 2000 毫秒（2 秒）
-// 在 2 秒内多次执行相同Query时，直接返回缓存结果
+// use the cache named 'user' with a 2000 ms (2 s) TTL
+// repeated identical queries within 2 seconds return the cached result
 return db.cache('user', 2000)
     .select('select 1')
 
-// 也可以结合单表操作 API 使用缓存
+// caching can also be combined with the single-table API
 // db.cache('user', 2000).table('sys_user').select()

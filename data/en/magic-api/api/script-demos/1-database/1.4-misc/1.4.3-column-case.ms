@@ -22,20 +22,20 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示Query结果列名命名方式的转换 */
+/* Purpose: demonstrate column-name case conversion for query results */
 
 /*
- * 支持的列名转换模式：
- *   default   - 列名保持原样（数据库原始名称，如下划线命名 api_name）
- *   camel     - 驼峰命名（如 apiName）
- *   pascal    - 帕斯卡命名（如 ApiName，首字母也大写）
- *   upper     - 全大写（如 API_NAME）
- *   lower     - 全小写（如 api_name）
+ * Supported column-name conversion modes:
+ *   default   - keep the original column name (database name, e.g. snake_case api_name)
+ *   camel     - camelCase (e.g. apiName)
+ *   pascal    - PascalCase (e.g. ApiName, first letter capitalized)
+ *   upper     - UPPER_CASE (e.g. API_NAME)
+ *   lower     - lower_case (e.g. api_name)
  *
- * 可通过配置全局列名转换规则：
+ * set the global column conversion rule in config:
  */
 
-// 1. db.camel() 设置本次Query的结果列名转换为驼峰命名
-// 2. 数据库列 api_name 会被映射为 apiName（驼峰格式）
-// 3. 然后执行Query，返回结果中的 key 自动变为驼峰命名
+// 1. db.camel() converts this query's column names to camelCase
+// 2. the database column api_name maps to apiName (camelCase)
+// 3. then the query returns keys in camelCase automatically
 return db.camel().select('select api_name from magic_api_info')

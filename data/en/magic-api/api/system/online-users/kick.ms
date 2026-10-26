@@ -37,6 +37,6 @@
 }
 ================================
 import cn.dev33.satoken.stp.StpUtil
-// 先踢下线
+// Kick the user offline first
 StpUtil.logoutByTokenValue(StpUtil.getTokenValueByLoginId(id)) 
 return StpUtil.disable(id, time.asLong());

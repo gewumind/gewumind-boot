@@ -15,30 +15,30 @@
   "enabled": true
 }
 ================================
-// WebSocket Server 示例：消息推送服务（接收端）
-// 客户端连接后接收推送，本脚本只做连接初始化 + 接收客户端订阅消息并回执。
+// WebSocket Server Example: message push service (receiver)
+// The client receives pushes after connecting; this script only initializes the connection, handles subscription messages, and acknowledges them.
 // Use the API for active push: 
 //   wsHelper.broadcastToPath('/push', '{"type":"notice","msg":"..."}')
 //   wsHelper.sendToClient(clientId, 'private msg')
-// 详见 api/数据演示/WebSocket演示/推送消息.ms
+// See api/script-demos/3-plugins/3.6-websocket/3.6.2-push-message.ms
 //
 // Enable:
 //   1. Config center: ws.enabled = true
 //   2. Restart the backend to apply
 //
-// Test流程：
-//   1. 客户端连 ws://localhost:9089/ws/push
-//   2. 客户端发 HELLO 注册
-//   3. 服务端回推确认（wsHelper.reply）
+// Test flow:
+//   1. The client connects to ws://localhost:9089/ws/push
+//   2. The client sends HELLO to register
+//   3. The server acknowledges with wsHelper.reply
 //
 // Python test:
 //   python3 scripts/send_ws_msg.py ws://localhost:9089/ws/push "HELLO"
 
-// 1. 初始化：客户端连上时记录
+// 1. Init: record when the client connects
 println('[Push] Client connected:  ' + _clientId)
 
-// 2. 接收：客户端发订阅消息时回执确认（reply 给当前连接）
+// 2. Receive: acknowledge subscription messages with reply to the current connection
 if (_message != null && _message.length() > 0) {
-    println('[Push] 收到: ' + _message)
+    println('[Push] received: ' + _message)
     wsHelper.reply('{"status":"subscribed","clientId":"' + _clientId + '"}')
 }

@@ -53,7 +53,7 @@ import org.ssssssss.magicapi.modules.db.cache.SqlCache
 
 var usernameCount = db.selectInt("select count(1) from sys_user where is_del = 0 and username = #{username} ?{id, and id != #{id}}")
 if(usernameCount > 0){
-    exit 0,'登录名称已存在'
+    exit 0,'Login name already exists'
 }
 
 password = password ? SaSecureUtil.sha256(password) : null

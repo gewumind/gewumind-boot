@@ -23,19 +23,19 @@
 }
 ================================
 // ===== Purpose =====
-// 演示使用 response.json() 返回自定义格式的 JSON 响应
-// 适合临时覆盖全局 JSON 格式的场合（如特定接口需要不同的响应结构）
-// 注意：这种方式仅适合临时输出格式，如需全局统一 JSON 结果请参考文档配置
+// Demonstrates returning a custom JSON response with response.json()
+// Suited to temporarily overriding the global JSON format (for example when one API needs a different structure)
+// Note: use this only for one-off output formats; for a global JSON shape configure it as documented
 
 // Step 1: import the response utility module
-// response 提供了 json() Method，可以自定义返回的 JSON 结构
+// response provides json(), which lets you customize the returned JSON structure
 import response
 
-// 第 2 步：返回自定义 JSON 格式
-// response.json() 接受一个对象，将其作为响应体直接返回
-// 全局配置的 ResponseBody 增强器（如统一包装 code/message/data）不会生效
-// 返回示例：{ "success": true, "message": "Executed successfully" }
+// Step 2: return the custom JSON format
+// response.json() takes an object and returns it directly as the response body
+// The globally configured ResponseBody enhancer (which wraps code/message/data) does not apply
+// Example response: { "success": true, "message": "Executed successfully" }
 return response.json({
-    success : true,                     // 自定义成功标识
-    message : 'Executed successfully'                 // 自定义消息
+    success : true,                     // custom success flag
+    message : 'Executed successfully'                 // custom message
 })

@@ -56,10 +56,10 @@
   "requestBody": "",
   "headers": [],
   "paths": [],
-  "responseBody": "{\n    \"code\": 0,\n    \"message\": \"id必填\",\n    \"data\": null,\n    \"timestamp\": 1615984896144,\n    \"executeTime\": 0\n}",
+  "responseBody": "{\n    \"code\": 0,\n    \"message\": \"id is required\",\n    \"data\": null,\n    \"timestamp\": 1615984896144,\n    \"executeTime\": 0\n}",
   "description": null,
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
 }
 ================================
-return '参数验证通过' 
+return 'validation passed' 

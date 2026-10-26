@@ -28,11 +28,11 @@ if (code == null || code == '') {
 }
 
 var data = [
-    {date: '2026-07-25', type: 'Inbound', qty: 30,  unit_price: 12000, total: 360000, operator: 'Zhang San', remark: '采购到货'},
+    {date: '2026-07-25', type: 'Inbound', qty: 30,  unit_price: 12000, total: 360000, operator: 'Zhang San', remark: 'Purchase received'},
     {date: '2026-07-26', type: 'Outbound', qty: -5,  unit_price: 12000, total: -60000, operator: 'Li Si', remark: 'Customer order'},
-    {date: '2026-07-28', type: 'Inbound', qty: 10,  unit_price: 12000, total: 120000, operator: '王五', remark: '调拨Inbound'},
+    {date: '2026-07-28', type: 'Inbound', qty: 10,  unit_price: 12000, total: 120000, operator: 'Wang Wu', remark: 'Transfer inbound'},
     {date: '2026-07-30', type: 'Outbound', qty: -3,  unit_price: 12000, total: -36000, operator: 'Li Si', remark: 'Customer order'},
-    {date: '2026-08-02', type: 'Outbound', qty: -2,  unit_price: 12000, total: -24000, operator: '赵六', remark: '样品领取'}
+    {date: '2026-08-02', type: 'Outbound', qty: -2,  unit_price: 12000, total: -24000, operator: 'Zhao Liu', remark: 'Sample pickup'}
 ]
 
 return data.map(item => {

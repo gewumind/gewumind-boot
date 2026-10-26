@@ -22,24 +22,24 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示嵌入其他脚本语言的特性 */
-// magic-script 支持在脚本中嵌入 JavaScript、Python 等语言
-// 语法：```语言名 代码 ```  返回一个可调用的函数
+/* Purpose: demonstrate embedding other scripting languages */
+// magic-script can embed JavaScript, Python, and other languages
+// syntax: ```languageName code``` returns a callable function
 
-// ===== 嵌入 JavaScript =====
+// ===== embed JavaScript =====
 var name = "Magic API";
 var jsFunc = ```javascript
-    // 这里写 JavaScript 代码
-    // 可以访问外部定义的变量 name
+    // write JavaScript code here
+    // can access the outer variable name
     return name + " - Hello from JS";
 ```;
 var jsResult = jsFunc();
 // jsResult = "Magic API - Hello from JS"
 
-// ===== 嵌入 JavaScript 处理数据 =====
+// ===== embed JavaScript to process data =====
 var data = [1, 2, 3, 4, 5];
 var processData = ```javascript
-    // JavaScript 处理数组
+    // JavaScript processes the array
     var arr = data.map(function(x) { return x * 2; });
     return arr.filter(function(x) { return x > 5; });
 ```;

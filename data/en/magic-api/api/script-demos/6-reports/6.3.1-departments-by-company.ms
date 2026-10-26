@@ -16,7 +16,7 @@
   "requestBody": "{\n  \"companyId\": \"C001\"\n}",
   "headers": [],
   "paths": [],
-  "responseBody": "[\n  {\"value\": \"D001\", \"label\": \"阿里云\"},\n  {\"value\": \"D002\", \"label\": \"淘宝\"},\n  {\"value\": \"D003\", \"label\": \"支付宝\"}\n]",
+  "responseBody": "[\n  {\"value\": \"D001\", \"label\": \"Alibaba Cloud\"},\n  {\"value\": \"D002\", \"label\": \"Taobao\"},\n  {\"value\": \"D003\", \"label\": \"Alipay\"}\n]",
   "description": "Cascade demo: departments by companyId",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
@@ -25,24 +25,24 @@
 var companyId=body.companyId
 var map = {
     'C001': [
-        {value: 'D001', label: '阿里云'},
-        {value: 'D002', label: '淘宝'},
-        {value: 'D003', label: '支付宝'}
+        {value: 'D001', label: 'Alibaba Cloud'},
+        {value: 'D002', label: 'Taobao'},
+        {value: 'D003', label: 'Alipay'}
     ],
     'C002': [
-        {value: 'D101', label: '微信事业群'},
-        {value: 'D102', label: '游戏'},
-        {value: 'D103', label: '云与智慧产业'}
+        {value: 'D101', label: 'WeChat Business Group'},
+        {value: 'D102', label: 'Gaming'},
+        {value: 'D103', label: 'Cloud & Smart Industries'}
     ],
     'C003': [
-        {value: 'D201', label: '抖音'},
-        {value: 'D202', label: '飞书'},
-        {value: 'D203', label: '火山引擎'}
+        {value: 'D201', label: 'Douyin'},
+        {value: 'D202', label: 'Feishu'},
+        {value: 'D203', label: 'Volcano Engine'}
     ],
     'C004': [
-        {value: 'D301', label: '外卖'},
-        {value: 'D302', label: '到店'},
-        {value: 'D303', label: 'Meituan优选'}
+        {value: 'D301', label: 'Food Delivery'},
+        {value: 'D302', label: 'In-store Services'},
+        {value: 'D303', label: 'Meituan Select'}
     ]
 }
 return map[companyId] || []

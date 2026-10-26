@@ -22,23 +22,23 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示使用 db.table() 的 save Method实现新增或修改（Upsert） */
+/* Purpose: demonstrate using db.table().save() to insert or update (upsert) */
 
-// save() Method根据主键值判断：有值则 UPDATE，无值则 INSERT
+// save() decides by primary key: UPDATE when a value exists, otherwise INSERT
 
 // 1. Target table: magic_api_info
-// 2. 使用 .primary('id', () => uuid()) 设置主键列
-//    - 第一个参数 'id' 指定主键列名
-//    - Second parameter是生成默认值的回调函数，新增时如果没传 id 会自动生成 UUID
-// 3. 使用 .save({...}) 执行保存操作
-//    - 传入的数据对象中包含要保存的字段
-//    - 如果传了 id 字段且有匹配记录则执行 UPDATE
-//    - 如果没传 id 字段则执行 INSERT（新增时自动使用 uuid 作为主键）
+// 2. use .primary('id', () => uuid()) to set the primary key column
+//    - the first argument 'id' is the primary key column name
+//    - the second argument is a callback that generates a default value; on insert without id it generates a UUID automatically
+// 3. use .save({...}) to save
+//    - the passed object contains the fields to save
+//    - if an id field is passed and a matching record exists, UPDATE runs
+//    - if no id field is passed, INSERT runs (a UUID is used as the primary key on insert)
 return db.table('magic_api_info')
     .primary('id', () => uuid())
     .save({
-        // 当数据中包含 id 字段且存在对应记录时执行修改，否则执行新增
-        // 例：传 id: 'c7076376afcb47cf80087f6c85a30296' 则会修改该记录
-        // 不传 id 时，自动使用 uuid() 生成新主键进行插入
+        // update when the data contains an id and a matching record exists, otherwise insert
+        // e.g. passing id: 'c7076376afcb47cf80087f6c85a30296' updates that record
+        // without id, uuid() generates a new primary key for the insert
         api_name: '123'
     })

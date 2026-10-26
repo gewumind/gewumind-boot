@@ -1,6 +1,11 @@
 -- 已有中文库切换英文：与 db/init/en/02-seed.sql 相同，可重复执行。
 -- 用法：mysql ... < db/init/en/upgrade-from-zh.sql
 
+
+-- 模块
+UPDATE sys_module SET name='System Management' WHERE code='system';
+UPDATE sys_module SET name='System Management 1' WHERE code='system11';
+
 -- 菜单
 UPDATE sys_menu SET name='Function Menu' WHERE name='功能菜单';
 UPDATE sys_menu SET name='System Settings' WHERE name='系统设置';

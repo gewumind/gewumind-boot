@@ -52,7 +52,7 @@ import '@get:/system/role/cache/delete' as cacheDelete
 
 var codeCount = db.selectInt("select count(1) from sys_role where is_del = 0 and code = #{code} ?{id, and id != #{id}}")
 if(codeCount > 0){
-    exit 0,'角色编码已存在'
+    exit 0,'Role code already exists'
 }
 
 var role = {
@@ -84,7 +84,7 @@ if(offices && permission == 1){
     }
 }
 if(id){
-    // 先删除数据库 后删除缓存 不然拦截器会请求Query数据库 查到的还是老数据
+    // delete from the database before the cache, otherwise interceptors query the DB and still see stale data
     var roleId = id
     cacheDelete()
 }

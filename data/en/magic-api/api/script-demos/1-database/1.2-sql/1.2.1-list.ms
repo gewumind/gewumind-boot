@@ -22,11 +22,11 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示使用 db.select() 直接执行 SQL Query列表 */
+/* Purpose: demonstrate running a SQL query that returns a list with db.select() */
 
-// db.select(sql) 是最基本的QueryMethod，执行 SQL 并返回 List<Map<String, Object>> type result
+// db.select(sql) is the basic query method; it runs SQL and returns List<Map<String, Object>>
 
-// 1. db.select() Takes a SQL string作为参数
-// 2. 直接编写原生 SQL Query语句
-// 3. 返回所有匹配行的列表，每行是一个 Map（列名 -> 值）
+// 1. db.select() takes a SQL string as its argument
+// 2. write a native SQL query directly
+// 3. returns all matching rows as a list of Maps (column -> value)
 return db.select('select api_name from magic_api_info')

@@ -23,26 +23,26 @@
 }
 ================================
 // ===== Purpose =====
-// 演示空值（null）转换处理
-// 当数据中存在 null、空字符串、0 等"空"值时，使用 || 或 ifnull 提供默认值
-// 区别：
-//   ||     ：将 null、空字符串 ''、0、空集合 []、空 Map {} 均视为空值
-//   ifnull ：仅将 null 视为空值，空字符串和 0 保持原值
+// Demonstrates null handling and default values
+// When data contains "empty" values such as null, an empty string or 0, use || or ifnull to supply a default
+// Difference:
+//   ||     : treats null, the empty string '', 0, an empty collection [] and an empty Map {} as empty
+//   ifnull : only null counts as empty; empty strings and 0 keep their value
 
-// 第 1 步：准备包含空值的Test数据
-// 第一条记录 name 为 null，age 为 18
-// 第二条记录 name 为 'Xiaoming'，age 未定义（undefined）
+// Step 1: prepare test data containing empty values
+// the first record has name null and age 18
+// the second record has name 'Xiaoming' and age undefined
 var list = [
     {name : null, age: 18},
     {name : 'Xiaoming'}
 ]
 
-// 第 2 步：使用 SQL 风格 LINQ 进行空值转换
-// t.name || 'Anonymous'：如果 name 为 null/空串/0，则显示 'Anonymous'
-// ifnull(t.age, 20)：仅当 age 为 null 时显示 20（第二条记录的 age 是 undefined，ifnull 不生效）
-//                   注意：undefined 不是 null，所以 ifnull 不会替换
+// Step 2: convert empty values with SQL-style LINQ
+// t.name || 'Anonymous': show 'Anonymous' when name is null, empty or 0
+// ifnull(t.age, 20): show 20 only when age is null (the second record's age is undefined, so ifnull does not apply)
+//                   note: undefined is not null, so ifnull does not replace it
 return 
     select 
         t.name || 'Anonymous' name,      // null + 'Anonymous' => 'Anonymous'
-        ifnull(t.age, 20) age       // undefined ≠ null，所以第二条记录 age 仍为 undefined
+        ifnull(t.age, 20) age       // undefined != null, so the second record's age stays undefined
     from list t

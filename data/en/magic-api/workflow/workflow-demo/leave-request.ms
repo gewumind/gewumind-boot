@@ -270,8 +270,8 @@ var action = body.action
 if (action == 'getDefinition') {
     return {
     "processId": "leave_v1",
-    "description": "员工请假：申请 → 部门经理 → HR。",
-    "title": "{applicantName} 请假 {days} 天（{leave_type}）",
+    "description": "Employee leave: Apply -> Department manager -> HR.",
+    "title": "{applicantName} requests {days} days of leave ({leave_type})",
     "nodes": [
         {
             "id": "apply",
@@ -281,7 +281,7 @@ if (action == 'getDefinition') {
         },
         {
             "id": "mgr_approve",
-            "label": "部门经理Approval",
+            "label": "Department manager approval",
             "type": "approve",
             "role": "dept_manager"
         },
@@ -320,7 +320,7 @@ if (action == 'getDefinition') {
             "fields": [
                 {
                     "name": "leave_type",
-                    "label": "请假类型",
+                    "label": "Leave type",
                     "type": "select",
                     "required": true,
                     "options": [
@@ -340,39 +340,39 @@ if (action == 'getDefinition') {
                 },
                 {
                     "name": "start_date",
-                    "label": "开始日期",
+                    "label": "Start date",
                     "type": "date",
                     "required": true
                 },
                 {
                     "name": "end_date",
-                    "label": "结束日期",
+                    "label": "End date",
                     "type": "date",
                     "required": true
                 },
                 {
                     "name": "days",
-                    "label": "请假天数",
+                    "label": "Leave days",
                     "type": "number",
                     "required": true
                 },
                 {
                     "name": "reason",
-                    "label": "请假事由",
+                    "label": "Leave reason",
                     "type": "textarea",
                     "required": true
                 }
             ]
         },
         "mgr_approve": {
-            "title": "部门经理Approval",
+            "title": "Department manager approval",
             "editable": [
                 "dept_manager"
             ],
             "fields": [
                 {
                     "name": "mgr_comment",
-                    "label": "Approval意见",
+                    "label": "Approval comment",
                     "type": "textarea",
                     "required": true
                 }
@@ -386,7 +386,7 @@ if (action == 'getDefinition') {
             "fields": [
                 {
                     "name": "hr_comment",
-                    "label": "Approval意见",
+                    "label": "Approval comment",
                     "type": "textarea",
                     "required": true
                 }

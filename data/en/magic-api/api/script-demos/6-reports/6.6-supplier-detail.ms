@@ -27,7 +27,7 @@ if (supplierId == null || supplierId == '') {
     return []
 }
 
-// mock 不同供应商对应不同明细
+// mock: different suppliers map to different details
 var dataMap = {
     'S001': [
         {date: '2026-07-15', orderNo: 'PO20260715001', product: 'ThinkPad X1 Carbon', qty: 25, unitPrice: 12000, total: 300000, status: 'Shipped'},

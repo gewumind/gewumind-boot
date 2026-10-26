@@ -46,7 +46,7 @@
       },
       {
         "name": "message",
-        "value": "凭证已过期",
+        "value": "Credential has expired",
         "description": "",
         "required": false,
         "dataType": "String",

@@ -26,7 +26,7 @@ var isNew = !id || id == ''
 
 if (isNew) {
     if (!app_name || app_name == '') {
-        exit 0, '应用名称cannot be empty'
+        exit 0, 'Application name cannot be empty'
     }
     if (!app_key || app_key == '') {
         exit 0, 'AppKey cannot be empty'
@@ -47,7 +47,7 @@ if (isNew) {
         rate_duration: rate_duration ? (rate_duration::int) : 60
     }
 } else {
-    // 编辑：仅允许修改限流参数和状态
+    // Edit: only rate-limit parameters and status can be changed
     app = {
         id,
         status: status ? status::int : 0,

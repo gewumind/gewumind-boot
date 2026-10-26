@@ -22,31 +22,31 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示 for 循环的三种用法 */
-// magic-script 的 for 循环支持遍历 List、Map 以及指定次数
+/* Purpose: demonstrate three for-loop forms */
+// magic-script for-loops iterate List, Map, or a fixed count
 
-// ===== 1. 遍历 List（带索引） =====
+// ===== 1. iterate a List (with index) =====
 import 'java.lang.System' as System;
 var list = [1, 2, 3, 4, 5];
 
-// for(index, item in list)：index 从 0 开始，item 为当前元素
-// 如果不需要索引，可简写为 for(item in list)
+// for(index, item in list): index starts at 0 and item is the current element
+// without an index, use the shorthand for(item in list)
 for (index, item in list) {
     System.out.println(index + ":" + item);
 }
 
-// ===== 2. 遍历 Map =====
-var map = { name: "Zhang San", age: 30, dept: "技术部" };
+// ===== 2. iterate a Map =====
+var map = { name: "Zhang San", age: 30, dept: "Engineering" };
 
-// for(key, value in map)：key 为字符串键，value 为对应值
-// 如果不需要 key，可简写为 for(value in map)
+// for(key, value in map): key is the string key and value is the corresponding value
+// without the key, use the shorthand for(value in map)
 var result = "";
 for (key, value in map) {
     result = result + key + "=" + value + "; ";
 }
 
-// ===== 3. range() 循环指定次数 =====
-// range(0, 100) 生成 0 到 100 的整数序列（包含两端）
+// ===== 3. range() to loop a fixed count =====
+// range(0, 100) generates integers 0 through 100 inclusive
 var sum = 0;
 for (value in range(0, 100)) {
     sum = sum + value;
@@ -57,17 +57,17 @@ for (value in range(0, 100)) {
 var odds = [];
 for (i in range(1, 20)) {
     if (i % 2 == 0) {
-        continue;   // 跳过偶数，继续下一次循环
+        continue;   // skip even numbers and continue
     }
     if (i > 10) {
-        break;      // 超过 10 就终止循环
+        break;      // stop the loop above 10
     }
     odds.add(i);
 }
 // odds = [1, 3, 5, 7, 9]
 
 return {
-    listTraverse: "已打印到控制台",
+    listTraverse: "printed to the console",
     mapResult: result,
     sumResult: sum,
     odds: odds
