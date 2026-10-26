@@ -38,9 +38,9 @@ Code comes in three kinds, each with its own home:
 
 | Kind | Written where | Stored in | Takes effect |
 |---|---|---|---|
-| **APIs / functions / tasks** | Online programming | `data/magic-api/api,function,task/**.ms` | On save |
-| **Frontend components** | Online programming (components tab) | `data/magic-api/component/**.ms` | **Browser refresh** |
-| **Reports / workflows** | The matching tab | `data/magic-api/report,workflow/**` | Browser refresh |
+| **APIs / functions / tasks** | Online programming | `data/en/magic-api/api,function,task/**.ms` | On save |
+| **Frontend components** | Online programming (components tab) | `data/en/magic-api/component/**.ms` | **Browser refresh** |
+| **Reports / workflows** | The matching tab | `data/en/magic-api/report,workflow/**` | Browser refresh |
 
 **All of them are plain-text `.ms` files** — editable in an IDE, version-controllable,
 bulk-generatable.
@@ -461,7 +461,7 @@ return transaction(() => {
 
 ### 6.1 List (paged + filters)
 
-The real implementation from `data/magic-api/api/系统管理/用户管理/列表.ms`:
+The real implementation from `data/en/magic-api/api/系统管理/用户管理/列表.ms`:
 
 ```javascript
 return db.page("""
@@ -591,7 +591,7 @@ Reference: `component/系统设置/user/用户管理.ms` and `api/系统管理/�
 
 ## 7 · Writing frontend components
 
-Pages are `.ms` component files (Vue SFCs) under `data/magic-api/component/<group>/<name>.ms`,
+Pages are `.ms` component files (Vue SFCs) under `data/en/magic-api/component/<group>/<name>.ms`,
 registered as global components at startup. **Refresh to take effect — no frontend build.**
 
 ![Components](../screenshots/18g-在线编程-组件.png)
@@ -792,7 +792,7 @@ A report is a **Vue component file** using the built-in `<MagicReport>`. It is e
 
 ### 8.1 Minimal working report
 
-Create `data/magic-api/component/报表示例/my-report.ms`:
+Create `data/en/magic-api/component/报表示例/my-report.ms`:
 
 ```vue
 <template>
@@ -816,7 +816,7 @@ const columns = [
 </script>
 ```
 
-Plus the query endpoint `data/magic-api/api/业务/报表/my.ms`:
+Plus the query endpoint `data/en/magic-api/api/业务/报表/my.ms`:
 
 ```javascript
 // MagicReport calls with postJson → read parameters from body
@@ -985,7 +985,7 @@ no external engine.
 
 | Part | Where | Purpose |
 |---|---|---|
-| Definition | `data/magic-api/workflow/<group>/<name>.ms` | Nodes, roles, branches |
+| Definition | `data/en/magic-api/workflow/<group>/<name>.ms` | Nodes, roles, branches |
 | Entry endpoint | `api/.../<name>_entry.ms` | Start / approve / query |
 | Wrapper pages | `component/...` | Start form + detail page |
 
@@ -1541,7 +1541,7 @@ The `.ms` separator is malformed (missing the leading/trailing `\r\n`). See [1.1
 ### Q: I changed a component but nothing happened
 
 Components are hot-loaded — **refresh the browser**. If it still doesn't apply, confirm you
-edited the right `.ms` under `data/magic-api/component/`.
+edited the right `.ms` under `data/en/magic-api/component/`.
 
 ### Q: SQL syntax error that looks fine
 

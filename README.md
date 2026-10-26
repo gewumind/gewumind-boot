@@ -9,7 +9,7 @@
 
 - 官网：https://gewumind.github.io
 - 主仓库：https://github.com/gewumind/gewumind-boot ｜ Gitee：https://gitee.com/gewumind/gewumind-boot
-- AI 开发技能：https://github.com/gewumind/gewumind-skill ｜ Gitee：https://gitee.com/gewumind/gewumind-skill（版本与 boot 同步，当前 1.1.0）
+- AI 开发技能：https://github.com/gewumind/gewumind-skill ｜ Gitee：https://gitee.com/gewumind/gewumind-skill（版本与 boot 同步，当前 1.2.0）
 
 > GitHub 与 Gitee 内容同步。
 
@@ -47,7 +47,7 @@
 ## 特性
 
 - **接口即脚本** —— 基于 magic-api，在线编写 HTTP 接口，热更新、免编译、免重启
-- **页面即组件文件** —— 页面以 `.ms` 组件文件存放在 `data/magic-api/component/`，后端启动时读取并注册为全局组件，改完刷新即生效
+- **页面即组件文件** —— 页面以 `.ms` 组件文件存放在 `data/{zh,en}/magic-api/component/`，后端启动时读取并注册为全局组件，改完刷新即生效
 - **在线管理一切** —— 菜单、角色、用户、字典、模块、配置、图标、动态组件可视化维护
 - **工作流引擎** —— 条件分支、抄送、逐层驳回、按节点分组审批
 - **报表 & 消息** —— 报表设计器 + 导出；Kafka / MQTT / WebSocket / SSE / Redis 统一接入
@@ -108,7 +108,7 @@ bash scripts/start.sh
 每次发布的内核二进制（`libs/`）都带 Ed25519 分离签名：
 
 ```bash
-scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.2/gewumind-boot-0.3.2.jar
+scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.3/gewumind-boot-0.3.3.jar
 ```
 
 - v1.1.0+：`gewumind-release-2026.pub`
@@ -119,7 +119,7 @@ scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.2/gewumind-boot-
 
 ## 📸 系统截图
 
-以下均为 v1.1.0 的真实运行界面。
+以下均为 v1.1.0+ 的真实运行界面。
 
 ### 工作台
 
@@ -261,7 +261,7 @@ scripts\stop.bat
 4. Maven 面板确认已加载 `com.gewumind:gewumind-boot`（来自 `libs/`）
 
 直接运行主类 `com.gewumind.app.GewuMindBootApp` 的 `main` 方法即可（默认 `dev` profile、端口 9089）。
-调接口脚本时改 `data/magic-api/` 下的 `.ms`，保存后刷新浏览器即可生效，不用重启。
+调接口脚本时改 `data/zh/magic-api/`（或 `data/en/magic-api/`）下的 `.ms`，保存后刷新浏览器即可生效，不用重启。
 
 > 第一次导入需要下载依赖与内核 jar，耐心等它跑完。若报找不到 `mysql-connector-j`，
 > 在 Maven 面板点刷新即可（它由内核的 pom 传递引入）。
@@ -290,7 +290,7 @@ bash scripts/build-dist.sh    # → dist/gewumind-boot-app-<版本>.tar.gz + .zi
 ```
 
 产物是可解压即部署的目录：`libs/` 放 jar、`bin/` 放启停脚本（`.sh` 与 `.bat` 双份）、
-`config/` 放配置、`data/magic-api` 放接口与组件（备份重点）、`db/` 放基线 SQL。
+`config/` 放配置、`data/{zh,en}/magic-api` 放中英文接口与组件（备份重点）、`db/` 放基线 SQL。
 详见 [部署指南](docs/zh/部署指南.md)。
 
 > `build-dist.sh` 只在源码仓库里有意义（需要 Maven 与源码树），**不会打进发行包**——
@@ -302,7 +302,7 @@ bash scripts/build-dist.sh    # → dist/gewumind-boot-app-<版本>.tar.gz + .zi
 
 ```
 gewumind-boot/
-├── pom.xml                    # 依赖 com.gewumind:gewumind-boot:0.3.0
+├── pom.xml                    # 依赖 com.gewumind:gewumind-boot:0.3.3
 ├── libs/                      # 内核 thin jar（标准 Maven 仓库布局，随工程入库）
 ├── src/main/java/com/gewumind/app/
 │   ├── GewuMindBootApp.java   # 启动类
@@ -311,7 +311,7 @@ gewumind-boot/
 ├── src/main/resources/
 │   ├── application.yml        # 本工程配置（覆盖内核 jar 内那份）
 │   └── static/                # 前端产物（已入库，clone 下来即可打开后台）
-├── data/magic-api/            # 脚本工作区：api / component / task / workflow / function
+├── data/{zh,en}/magic-api/    # 中英文脚本工作区：api / component / task / workflow / function
 ├── db/init/01-baseline.sql    # 建库基线
 ├── scripts/
 │   ├── start.sh / stop.sh     # 启停（另有 Windows .bat）
@@ -355,7 +355,7 @@ spring:
 
 **换其他数据库**（PostgreSQL / Oracle / SQL Server 等）：需要自行添加对应驱动依赖，
 并把 `db/init/01-baseline.sql` 转成目标方言 —— 表选项、字符集、自增与注释语法均不通用。
-内核的 `data/magic-api/` 脚本里若有 MySQL 专有 SQL，也需一并适配。
+内核 `data/zh|en/magic-api/` 脚本里若有 MySQL 专有 SQL，也需一并适配。
 
 ## AI / MCP 接入（X-AI-Key）
 

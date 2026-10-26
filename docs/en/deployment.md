@@ -111,6 +111,11 @@ You should see:
 
 Log file: `logs/gewumind-boot-app.log`
 
+**English deployment**: use `--profile en` (default DB `gewumind-boot-en`, dataset
+`data/en/magic-api`) and import `db/init/en/02-seed.sql` and `db/init/en/03-demo.sql`;
+to switch an existing Chinese DB run `db/init/en/upgrade-from-zh.sql`.
+See [3.5 Internationalization](#35-internationalization).
+
 ### 2.6 Sign in
 
 Open `http://<server-ip>:9089` in a browser.
@@ -179,15 +184,13 @@ connection-timeout: 30000
 - DOM-level translation; business data is not translated; use `patterns` for dynamic strings
 
 
-**English magic-api display names**
-
-```bash
-python3 scripts/i18n-magic-api.py      # generates data/magic-api-en
-```
-
-- Only display names are translated (`group.json.name`, `.ms` header `name`); IDs / paths / URLs / scripts are unchanged
-- English deployment: replace `data/magic-api` with `data/magic-api-en` (or point the magic-api resource location to it)
-- Component page labels are still translated at runtime by `data/i18n/<lang>.json`
+**magic-api datasets (one per language)**
+- `data/zh/magic-api`: Chinese APIs, components, workflows and tasks
+- `data/en/magic-api`: English version; URLs, group paths and `.ms` `path`/`id` are identical, only display names and filesystem names differ
+- Select at startup with a language profile: `--spring.profiles.active=dev,zh` or `dev,en`;
+  `magic-api.resource.location` in `application.yml` is `file:./data/${app.lang:zh}/magic-api`
+- Both datasets ship with the release package; no generation or directory swap is needed.
+  Business page labels are translated at runtime by `data/i18n/<lang>.json`
 
 ## 4. Configuration
 
@@ -199,9 +202,13 @@ python3 scripts/i18n-magic-api.py      # generates data/magic-api-en
 | `online` | **production (recommended)** |
 | `docker` | containers |
 | `demo` | demonstrations |
+| `zh` | Chinese (default) — `data/zh/magic-api`, DB `gewumind-boot` |
+| `en` | English — `data/en/magic-api`, DB `gewumind-boot-en` |
 
 ```bash
-bash start.sh --profile online
+bash start.sh --profile online          # Chinese, production
+bash start.sh --profile online,en       # English, production
+bash start.sh --profile en              # English, dev
 ```
 
 ### 4.2 Common startup options
@@ -318,12 +325,12 @@ ENTRYPOINT ["sh","-c","exec java $JAVA_OPTS -Dserver.port=$SERVER_PORT -jar app.
 ```
 
 ```bash
-docker build -t gewumind-boot:1.1.0 .
+docker build -t gewumind-boot:1.2.0 .
 docker run -d --name gewumind -p 9089:9089 \
   -e SPRING_DATASOURCE_PASSWORD='real-password' \
   -v gewumind-data:/app/data \
   -v gewumind-upload:/app/upload \
-  gewumind-boot:1.1.0
+  gewumind-boot:1.2.0
 ```
 
 > ⚠️ **You must mount a persistent volume for `data/`.** It holds every API and component
@@ -417,7 +424,7 @@ bash stop.sh                                # 1. stop first — see the warning
 cp -r data data-backup-$(date +%F)           # 2. back up the low-code workspace
 mysqldump -uroot -p gewumind-boot > db-backup-$(date +%F).sql   # 3. back up the DB
 
-tar -xzf gewumind-boot-app-1.1.0.tar.gz     # 4. unpack the new version
+tar -xzf gewumind-boot-app-1.2.0.tar.gz     # 4. unpack the new version
 #    carry over config/application.yml, especially the datasource and password
 
 bash start.sh --profile online              # 5. start
@@ -448,7 +455,7 @@ are **idempotent** (`CREATE TABLE IF NOT EXISTS` / `INSERT ... ON DUPLICATE`), s
 | Content | Location | Importance |
 |---|---|---|
 | Database | MySQL | ★★★ all business data, users, menus, config |
-| Low-code workspace | `data/magic-api/` | ★★★ every API and component |
+| Low-code workspace | `data/{zh,en}/magic-api/` | ★★★ every API and component (one tree per language) |
 | Uploads | `upload/` | ★★ logos, attachments, images |
 | Reports output | `reports/` | ★ generated report files |
 | Configuration | `config/` | ★★ datasource, port, HTTPS |
@@ -521,7 +528,7 @@ see the warning in [8. Upgrading](#8-upgrading).
 - Empty menu → the role has no menu permissions, or the frontend bundle doesn't match the backend
 - 403 on an API → the role is missing that permission code. Verify with `admin` first
 
-### Q: Everything under `data/magic-api/` was lost
+### Q: Everything under `data/{zh,en}/magic-api/` was lost
 
 Check the container has a persistent volume (see [5.5](#55-docker)), or that the directory
 was not deleted by accident.

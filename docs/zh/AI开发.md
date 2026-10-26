@@ -126,8 +126,8 @@ Agent 会依次产出：需求文档 → 界面/数据库/接口设计 → 建�
 skill 生成的产物就是本工程里的普通文件：
 
 - `src/sql/**` 的建表语句 → 直接在数据库执行
-- `src/magic-api/**` 的接口脚本 → 放进 `data/magic-api/api/`
-- `src/pages/*.vue` 的页面组件 → 编译后放进 `data/magic-api/component/`
+- `src/magic-api/**` 的接口脚本 → 放进 `data/zh/magic-api/api/`
+- `src/pages/*.vue` 的页面组件 → 编译后放进 `data/zh/magic-api/component/`
 
 所以 **AI 生成的和你手写的完全等价**，没有黑盒环节：Agent 停下来时，你可以直接打开文件继续改。
 
@@ -143,7 +143,7 @@ skill 生成的产物就是本工程里的普通文件：
 | 发布返回 `INVALID_KEY` | 同上；另外确认该 key 未被禁用 |
 | Agent 说连不上后端 | 先自己访问 `http://localhost:9089/` 确认服务在跑；再检查 Agent 配置的地址与端口 |
 | 生成的文件没出现在后台 | 检查 `bundle_apply` 的返回；发布后需要刷新页面，组件是启动/刷新时加载的 |
-| 想自己审一遍再发布 | 让 Agent 停在第 3 阶段，把产物拷进 `data/magic-api/` 手动验证，确认后再让它发布 |
+| 想自己审一遍再发布 | 让 Agent 停在第 3 阶段，把产物拷进 `data/zh/magic-api/` 手动验证，确认后再让它发布 |
 
 ---
 

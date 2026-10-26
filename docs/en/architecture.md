@@ -21,7 +21,7 @@ Browser ──► gewumind-boot-app.jar (port 9089)
               ├─ this project (src/main/java/com/gewumind/app/, 3 classes)
               │    bootstrap · /api prefix stripping · SSO entry endpoints
               │
-              ├─ data/magic-api/     ← your APIs and page components live here
+              ├─ data/en/magic-api/     ← your APIs and page components live here
               └─ MySQL               ← schema and seed data defined by db/init/01-baseline.sql
 ```
 
@@ -31,15 +31,15 @@ Browser ──► gewumind-boot-app.jar (port 9089)
 |--------|----------|-------------------------|
 | **Kernel jar** | `libs/com/gewumind/gewumind-boot/` | Rarely. To change kernel capabilities (workflow, reports, licensing…) go to the kernel repository |
 | **This project's code** | `src/main/java/com/gewumind/app/` | Only when changing bootstrap behaviour or interceptors — three classes in total |
-| **API scripts** | `data/magic-api/api/` | **Writing backend endpoints.** Each `.ms` file is one endpoint, filed under `/group/name.ms` |
-| **Page components** | `data/magic-api/component/` | **Writing frontend pages.** Each `.ms` is a Vue single-file component, organised in group folders |
-| **Scheduled tasks** | `data/magic-api/task/` | Writing scheduled jobs |
-| **Workflow definitions** | `data/magic-api/workflow/` | Writing workflow processes |
+| **API scripts** | `data/en/magic-api/api/` | **Writing backend endpoints.** Each `.ms` file is one endpoint, filed under `/group/name.ms` |
+| **Page components** | `data/en/magic-api/component/` | **Writing frontend pages.** Each `.ms` is a Vue single-file component, organised in group folders |
+| **Scheduled tasks** | `data/en/magic-api/task/` | Writing scheduled jobs |
+| **Workflow definitions** | `data/en/magic-api/workflow/` | Writing workflow processes |
 | **Frontend bundle** | `src/main/resources/static/` | Normally untouched. Replace wholesale when upgrading the frontend |
 | **Database baseline** | `db/init/01-baseline.sql` | Imported on new environments. **Do not re-import on an existing one** |
 | **Configuration** | `src/main/resources/application-*.yml` | Deployment settings; runtime-tunable options live in the admin config center |
 
-> The `.ms` files under `data/magic-api/` are **the real source** for endpoints and pages: the
+> The `.ms` files under `data/en/magic-api/` are **the real source** for endpoints and pages: the
 > backend reads them at startup, and saving from the admin editor writes back to these files.
 > Edit a file, refresh the page — no rebuild required.
 
@@ -50,7 +50,7 @@ Browser ──► gewumind-boot-app.jar (port 9089)
 ```
 Browser → /api/system/security/login
        → ApiPrefixConfiguration strips the /api prefix
-       → magic-api matches data/magic-api/api/系统管理/安全/登录.ms
+       → magic-api matches data/en/magic-api/api/系统管理/安全/登录.ms
        → the script runs SQL (against MySQL)
        → JSON response
 ```
@@ -61,7 +61,7 @@ Browser → /api/system/security/login
 Browser → /
        → static/index.html (SPA)
        → the frontend requests /system/component/runtime/list
-       → the backend scans data/magic-api/component/**/*.ms
+       → the backend scans data/en/magic-api/component/**/*.ms
        → returns each component's compileJs, which the frontend registers
          as a global component and renders
 ```
@@ -71,7 +71,7 @@ Browser → /
 ```
 AI agent → MCP /mcp (with X-AI-Key)
          → the bundle_apply tool
-         → writes tables plus .ms files under data/magic-api/
+         → writes tables plus .ms files under data/en/magic-api/
          → backs up first; refresh the page and it is there
 ```
 
@@ -79,9 +79,9 @@ AI agent → MCP /mcp (with X-AI-Key)
 
 | I want to… | Change |
 |-------------|--------|
-| Add a backend endpoint | Create it in the admin online editor, or add a `.ms` file under `data/magic-api/api/` |
+| Add a backend endpoint | Create it in the admin online editor, or add a `.ms` file under `data/en/magic-api/api/` |
 | Change an endpoint's logic | Find the matching `.ms` and edit its script |
-| Add a page | Create it in the admin UI (this generates a `.ms` under `data/magic-api/component/`) |
+| Add a page | Create it in the admin UI (this generates a `.ms` under `data/en/magic-api/component/`) |
 | Add menus / roles / dictionaries | The matching admin pages; data lands in `sys_menu` / `sys_role` / `sys_dict` |
 | Change datasource or port | `src/main/resources/application-<profile>.yml`, or override via environment variables |
 | Change runtime switches (AI, Kafka, Redis…) | The admin config center, stored in `sys_configure` |
@@ -142,7 +142,7 @@ profile the URL and account have no defaults either — a missing one aborts sta
 so the app cannot quietly connect to the wrong database.
 
 **I edited a `.ms` file but the page did not change**
-Component files live under `data/magic-api/`; make sure the file was saved, then refresh (use
+Component files live under `data/en/magic-api/`; make sure the file was saved, then refresh (use
 a hard refresh if the browser caches it). Changes to Java code need a restart.
 
 **Blank page waiting for an unreachable host**

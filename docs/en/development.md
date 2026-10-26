@@ -37,9 +37,9 @@ gewumind-boot (this repo, git)      ← this is what you clone
 ├── src/main/resources/
 │   ├── *.yml             configuration
 │   └── static/           frontend **build output**, not source
-├── data/magic-api/       low-code workspace: APIs / components / tasks / workflows (.ms)
+├── data/en/magic-api/       low-code workspace: APIs / components / tasks / workflows (.ms)
 ├── db/init/              baseline schema + seed data
-└── libs/                 kernel jar: gewumind-boot-0.3.2.jar
+└── libs/                 kernel jar: gewumind-boot-0.3.3.jar
 
 Kernel (com.gewumind.boot.*)
 ├── What: magic-api low-code container + sa-token auth + SSO + SPA hosting + permissions
@@ -135,7 +135,7 @@ After that **all development happens in the browser**:
 | Approval flows | Online programming → Workflows | Nodes and branches |
 | Generic services | Online programming → Servers / Subscribers | SSE / WebSocket / TCP / Redis … |
 
-To roll back? Everything lives under `data/magic-api/` — **just restore from a backup**.
+To roll back? Everything lives under `data/en/magic-api/` — **just restore from a backup**.
 
 > 💡 **This path covers ~90% of needs**, and it includes the full online debugging experience —
 > including **debug & listen**, which is unique to this project (see
@@ -206,7 +206,7 @@ See [AI Development](ai-development.md).
 
 ```
 gewumind-boot/
-├── pom.xml                     app pom (artifactId: gewumind-boot-app, version: 1.1.0)
+├── pom.xml                     app pom (artifactId: gewumind-boot-app, version: 1.2.0)
 ├── libs/com/gewumind/          kernel jar + checksums
 ├── src/main/java/com/gewumind/app/
 │   ├── GewuMindBootApp.java            bootstrap
@@ -216,7 +216,7 @@ gewumind-boot/
 │   ├── application.yml                  main config
 │   ├── application-{dev,online,docker,demo}.yml
 │   └── static/                          frontend build output (committed)
-├── data/magic-api/            scripts: api / component / task / workflow / function
+├── data/en/magic-api/            scripts: api / component / task / workflow / function
 ├── db/init/01-baseline.sql    schema + seed data + demo fixtures
 ├── scripts/
 │   ├── start.sh / stop.sh     launch scripts (Windows .bat included)
@@ -311,7 +311,7 @@ covered end to end in the [Low-code Guide](lowcode-guide.md#6--crud-playbook).
 | Expose a JSON endpoint | `.ms` interface |
 | Admin management page | `.ms` component + menu |
 | Scheduled job | `.ms` scheduled task |
-| Report | `data/magic-api/report/` |
+| Report | `data/en/magic-api/report/` |
 | Approval flow | `.ms` workflow |
 | Genuinely Java-specific (file streams, AOP, direct pool access…) | Write Java |
 
@@ -472,7 +472,7 @@ function writeMs(file, header, source) {
 ### 7.2 Location
 
 ```
-data/magic-api/
+data/en/magic-api/
 ├── api/          HTTP endpoints
 ├── component/    frontend dynamic components (.ms with template/script/css)
 ├── function/     reusable functions

@@ -132,8 +132,8 @@ and report knowledge for those.
 Everything the skill produces is an ordinary file in this project:
 
 - `src/sql/**` DDL → run it against your database
-- `src/magic-api/**` endpoint scripts → drop them into `data/magic-api/api/`
-- `src/pages/*.vue` page components → compiled into `data/magic-api/component/`
+- `src/magic-api/**` endpoint scripts → drop them into `data/en/magic-api/api/`
+- `src/pages/*.vue` page components → compiled into `data/en/magic-api/component/`
 
 So **AI-generated and hand-written are equivalent** — there is no black box. When the agent stops,
 open the files and keep editing.
@@ -150,7 +150,7 @@ Not using AI at all? Everything is doable by hand via the [user guide](architect
 | Publish returns `INVALID_KEY` | Same, plus check the key is not disabled |
 | Agent says it cannot reach the backend | Open `http://localhost:9089/` yourself first, then check the address and port in the agent's config |
 | Generated files do not appear in the UI | Check the `bundle_apply` response; refresh afterwards, since components load at load time |
-| You want to review before publishing | Stop the agent at stage 3, copy the output into `data/magic-api/` and verify by hand, then let it publish |
+| You want to review before publishing | Stop the agent at stage 3, copy the output into `data/en/magic-api/` and verify by hand, then let it publish |
 
 ---
 

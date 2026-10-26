@@ -13,7 +13,7 @@ Three commands from clone to a fully working backend.
 
 - Website: https://gewumind.github.io
 - Main repo: https://github.com/gewumind/gewumind-boot ｜ Gitee: https://gitee.com/gewumind/gewumind-boot
-- AI development skill: https://github.com/gewumind/gewumind-skill ｜ Gitee: https://gitee.com/gewumind/gewumind-skill (version synced with boot — currently 1.1.0)
+- AI development skill: https://github.com/gewumind/gewumind-skill ｜ Gitee: https://gitee.com/gewumind/gewumind-skill (version synced with boot — currently 1.2.0)
 
 > Content is kept in sync across GitHub and Gitee.
 - **Docs index**: [docs/README.md](docs/README.md) (中文) · **[docs/en/README.md](docs/en/README.md)** (English)
@@ -49,7 +49,7 @@ One overview, AI coding in practice, and three deployment paths. English narrati
 ## Features
 
 - **APIs as scripts** — built on magic-api: write HTTP endpoints online, hot-reload, no compile, no restart
-- **Pages are component files** — pages live as `.ms` component files under `data/magic-api/component/`, read and registered as global components at startup; edit and refresh
+- **Pages are component files** — pages live as `.ms` component files under `data/{zh,en}/magic-api/component/`, read and registered as global components at startup; edit and refresh
 - **Manage everything online** — menus, roles, users, dictionaries, modules, config, icons and page components, all maintained in the admin UI
 - **Workflow engine** — conditional branching, CC nodes, layered rejection, per-node approval dialogs
 - **Reports & messaging** — designer-based reports with Excel export; Kafka / MQTT / TCP / WebSocket / SSE / Redis
@@ -112,7 +112,7 @@ Stop with `bash scripts/stop.sh`. Change the port with `SERVER_PORT=9090 bash sc
 Every released kernel binary (`libs/`) ships with a detached Ed25519 signature:
 
 ```bash
-scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.2/gewumind-boot-0.3.2.jar
+scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.3/gewumind-boot-0.3.3.jar
 ```
 
 - v1.1.0+: `gewumind-release-2026.pub`
@@ -175,7 +175,7 @@ This is a standard Maven project — clone it and open it:
 4. In the Maven panel, check `com.gewumind:gewumind-boot` has resolved (it comes from `libs/`)
 
 Run the `main` method of `com.gewumind.app.GewuMindBootApp` directly (defaults to the `dev`
-profile on port 9089). To iterate on endpoints, edit the `.ms` files under `data/magic-api/` —
+profile on port 9089). To iterate on endpoints, edit the `.ms` files under `data/zh/magic-api/` (or `data/en/magic-api/`) —
 save and refresh the browser; no restart needed.
 
 > The first import downloads dependencies and the kernel jar, so give it a moment. If
@@ -204,7 +204,7 @@ The frontend bundle is committed, so nothing extra is needed for local developme
 
 ```
 gewumind-boot/
-├── pom.xml                    # depends on com.gewumind:gewumind-boot:0.3.0
+├── pom.xml                    # depends on com.gewumind:gewumind-boot:0.3.3
 ├── libs/                      # kernel thin jar (standard Maven layout, committed)
 ├── src/main/java/com/gewumind/app/
 │   ├── GewuMindBootApp.java   # bootstrap class
@@ -213,7 +213,7 @@ gewumind-boot/
 ├── src/main/resources/
 │   ├── application.yml        # this project's config (overrides the kernel's)
 │   └── static/                # frontend bundle (committed; clone and go)
-├── data/magic-api/            # script workspace: api / component / task / workflow / function
+├── data/{zh,en}/magic-api/    # script workspace (zh/en): api / component / task / workflow / function
 ├── db/init/01-baseline.sql    # database baseline
 ├── scripts/                   # start-stop / certs (+ Windows .bat)
 └── docs/architecture.md · docs/架构说明.md
@@ -260,7 +260,7 @@ spring:
 **Using another database** (PostgreSQL / Oracle / SQL Server): add the matching driver
 dependency yourself and port `db/init/01-baseline.sql` to that dialect — table options,
 charset, auto-increment and comment syntax are all MySQL-specific. Any MySQL-only SQL inside
-`data/magic-api/` scripts must be adapted too.
+`data/zh|en/magic-api/` scripts must be adapted too.
 
 ---
 

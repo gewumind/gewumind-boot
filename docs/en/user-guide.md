@@ -356,7 +356,7 @@ Approval-flow examples: leave, contract, purchase and cross-department applicati
 detail page — useful for understanding nodes, conditional branches and approver configuration.
 
 > **Note**: "report designer" has no page implementation yet and its menu has been retired.
-> Report capability is currently demonstrated through `data/magic-api/report/` and the examples above.
+> Report capability is currently demonstrated through `data/en/magic-api/report/` and the examples above.
 
 ---
 
