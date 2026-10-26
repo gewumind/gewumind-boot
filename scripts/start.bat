@@ -32,11 +32,21 @@ set "LOG_FILE=%LOG_DIR%\gewumind-boot-app.log"
 if "%SERVER_PORT%"=="" set "SERVER_PORT=9089"
 if "%JVM_OPTS%"=="" set "JVM_OPTS=-Xms512m -Xmx2g"
 
-rem ---- profile 参数：start.bat --profile online ----
+rem ---- profile 参数：start.bat --profile=en 或 --profile en ----
 set "PROFILE_ARG="
-for %%a in (%*) do (
-    echo %%a | findstr /b /c:"--profile=" >nul && set "PROFILE_ARG=--spring.profiles.active=%%~a"
+:parse_args
+if "%~1"=="" goto args_done
+if /i "%~1"=="--profile" (
+    if not "%~2"=="" set "PROFILE_ARG=--spring.profiles.active=%~2"
+    shift
+    shift
+    goto parse_args
 )
+echo %~1 | findstr /b /c:"--profile=" >nul
+if not errorlevel 1 for /f "tokens=2 delims==" %%b in ("%~1") do set "PROFILE_ARG=--spring.profiles.active=%%b"
+shift
+goto parse_args
+:args_done
 
 cd /d "%PROJECT_DIR%"
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"

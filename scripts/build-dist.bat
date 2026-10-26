@@ -87,12 +87,14 @@ del /q "%STAGE%\bin\build-dist.sh" "%STAGE%\bin\build-dist.bat" 2>nul
 
 rem 配置
 copy /y "src\main\resources\application.yml" "%STAGE%\config\" >nul
-for %%p in (dev online docker demo) do (
+for %%p in (dev online docker demo zh en) do (
     if exist "src\main\resources\application-%%p.yml" copy /y "src\main\resources\application-%%p.yml" "%STAGE%\config\" >nul
 )
 
 rem 低代码容器 / 基线 SQL / 文档
-xcopy "data\magic-api" "%STAGE%\data\magic-api\" /E /I /Y >nul
+xcopy "data\zh\magic-api" "%STAGE%\data\zh\magic-api\" /E /I /Y >nul
+xcopy "data\en\magic-api" "%STAGE%\data\en\magic-api\" /E /I /Y >nul
+if exist "data\i18n" xcopy "data\i18n" "%STAGE%\data\i18n\" /E /I /Y >nul
 xcopy "db" "%STAGE%\db\" /E /I /Y >nul
 xcopy "docs" "%STAGE%\docs\" /E /I /Y >nul
 
@@ -119,7 +121,8 @@ rem ---- DEPLOY.md ----
 >>"%STAGE%\DEPLOY.md" echo | `bin/stop.sh` / `stop.bat` | 停止脚本 |
 >>"%STAGE%\DEPLOY.md" echo | `bin/gen-ssl-cert.sh` / `.bat` | 自签证书生成 |
 >>"%STAGE%\DEPLOY.md" echo | `config/application.yml` | 主配置 |
->>"%STAGE%\DEPLOY.md" echo | `data/magic-api/` | 低代码容器（**备份重点**） |
+>>"%STAGE%\DEPLOY.md" echo | `data/zh/magic-api/` | 中文低代码容器（**备份重点**） |
+>>"%STAGE%\DEPLOY.md" echo | `data/en/magic-api/` | 英文低代码容器（同上） |
 >>"%STAGE%\DEPLOY.md" echo | `db/init/01-baseline.sql` | 基线库表与初始数据 |
 >>"%STAGE%\DEPLOY.md" echo | `logs/` `upload/` `reports/` | 运行期目录 |
 >>"%STAGE%\DEPLOY.md" echo.
@@ -140,6 +143,12 @@ rem ---- DEPLOY.md ----
 >>"%STAGE%\DEPLOY.md" echo 浏览器访问 http://^<服务器IP^>:9089 ，默认 admin / 123456（请立即修改）。
 >>"%STAGE%\DEPLOY.md" echo.
 >>"%STAGE%\DEPLOY.md" echo 启动日志：logs\gewumind-boot-app.log
+
+>>"%STAGE%\DEPLOY.md" echo.
+>>"%STAGE%\DEPLOY.md" echo ## 语言 / Language
+>>"%STAGE%\DEPLOY.md" echo.
+>>"%STAGE%\DEPLOY.md" echo 中文（默认）^: data\zh\magic-api^, 数据库 gewumind-boot
+>>"%STAGE%\DEPLOY.md" echo 英文^: set SPRING_PROFILES_ACTIVE^=en ^&^& start.bat -^-^> data\en\magic-api^, 数据库 gewumind-boot-en
 
 rem ---- 归档 ----
 echo ==^> 归档

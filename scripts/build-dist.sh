@@ -18,7 +18,7 @@ cd "${PROJECT_DIR}"
 
 # 发行包名跟着「应用」走，不是跟着内核走：
 #   pom 的 <artifactId>gewumind-boot-app</artifactId> + <version>1.0.0</version>  →  gewumind-boot-app-1.0.0
-#   <gewumind-boot.version> 是内核 jar 的版本（0.3.2），只是依赖，不该用来命名发行包。
+#   <gewumind-boot.version> 是内核 jar 的版本（0.3.3），只是依赖，不该用来命名发行包。
 APP_ARTIFACT="$(sed -n 's|.*<artifactId>\(gewumind-boot-app\)</artifactId>.*|\1|p' pom.xml | head -1)"
 APP_VERSION="$(awk '/<artifactId>gewumind-boot-app<\/artifactId>/{found=1} found && /<version>/{gsub(/.*<version>|<\/version>.*/,""); print; exit}' pom.xml)"
 [ -n "${APP_ARTIFACT}" ] && [ -n "${APP_VERSION}" ] || { echo "无法从 pom.xml 解析 gewumind-boot-app 的版本号"; exit 1; }
@@ -101,14 +101,16 @@ rm -f "${STAGE}/bin/build-dist.sh" "${STAGE}/bin/build-dist.bat" \
       "${STAGE}/bin/release.sh" "${STAGE}/bin/install-gewumind-dep.sh"
 
 cp src/main/resources/application.yml "${STAGE}/config/"
-for p in dev online docker demo; do
+for p in dev online docker demo zh en; do
   cp "src/main/resources/application-${p}.yml" "${STAGE}/config/" 2>/dev/null || true
 done
 
-cp -r data/magic-api "${STAGE}/data/"
-if [ -f scripts/i18n-magic-api.py ] && [ -f data/i18n/magic-api-names.json ]; then
-  python3 scripts/i18n-magic-api.py --out "${STAGE}/data/magic-api-en" >/dev/null
-fi
+for lang in zh en; do
+  [ -d "data/${lang}/magic-api" ] || { echo "缺少 data/${lang}/magic-api"; exit 1; }
+  mkdir -p "${STAGE}/data/${lang}"
+  cp -r "data/${lang}/magic-api" "${STAGE}/data/${lang}/"
+done
+[ -d data/i18n ] && cp -r data/i18n "${STAGE}/data/"
 cp -r db/. "${STAGE}/db/"
 cp LICENSE COMMERCIAL_TERMS.md NOTICE README.md README.en.md "${STAGE}/" 2>/dev/null || true
 cp -r docs/. "${STAGE}/docs/"
@@ -138,7 +140,10 @@ cat > "${STAGE}/DEPLOY.md" <<'EOF'
 | `bin/stop.sh` / `stop.bat` | 停止脚本 |
 | `config/application.yml` | 主配置（端口、magic-api 工作区等） |
 | `config/application-{dev,online,docker,demo}.yml` | 各环境配置 |
-| `data/magic-api/` | 低代码容器：接口 / 组件 / 任务 / 流程（**可编辑，备份重点**） |
+| `config/application-{zh,en}.yml` | 语言配置（默认 zh） |
+| `data/zh/magic-api/` | 中文低代码容器：接口 / 组件 / 任务 / 流程（**可编辑，备份重点**） |
+| `data/en/magic-api/` | 英文低代码容器（同上） |
+| `data/i18n/` | 运行时语言包（可选覆盖） |
 | `db/init/01-baseline.sql` | 基线库表结构与初始数据 |
 | `logs/` `upload/` `reports/` | 运行期目录，首次启动自动创建 |
 
@@ -157,7 +162,7 @@ cd gewumind-boot-app-<ver>
 # 2. 配置数据库
 vi config/application-dev.yml            # 改 spring.datasource 的 url/username/password
 
-# 3. 启动
+# 3. 启动（默认中文）
 bash start.sh                            # Windows: start.bat
 
 # 4. 访问
@@ -167,15 +172,24 @@ bash start.sh                            # Windows: start.bat
 
 启动日志：`logs/gewumind-boot-app.log`
 
+## 语言 / Language
+
+中文（默认）：`data/zh/magic-api`，数据库 `gewumind-boot`
+英文：`bash start.sh --profile en` 或 `SPRING_PROFILES_ACTIVE=en bash start.sh`
+      → `data/en/magic-api`，数据库 `gewumind-boot-en`
+
+数据库初始化：先建库，再按顺序导入 `db/init/01-baseline.sql`、`db/init/<lang>/02-seed.sql`、
+`db/init/<lang>/03-demo.sql`（后两个可选）。已有中文库切英文可执行 `db/init/en/upgrade-from-zh.sql`。
+
 ## 生产部署建议
 
-- 用 `online` profile：`bash start.sh --profile online`
+- 用 `online` profile：`bash start.sh --profile online`（英文再加 `,en`）
 - 修改默认端口：`SERVER_PORT=8080 bash start.sh`
 - 调 JVM：`JVM_OPTS="-Xms1g -Xmx2g" bash start.sh`
 - 数据库密码用环境变量覆盖，避免写进配置文件：
   `SPRING_DATASOURCE_PASSWORD='xxx' bash start.sh`
 - 配置 HTTPS：见 `bin/gen-ssl-cert.sh`（Windows 用 `.bat`）与 `application.yml` 中 `server.ssl` 注释段
-- 备份：`data/magic-api/`（接口与组件）+ 数据库
+- 备份：`data/zh/magic-api/`、`data/en/magic-api/`（接口与组件）+ 数据库
 
 ## 从源码构建
 

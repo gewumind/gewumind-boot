@@ -7,6 +7,8 @@
 #   bash scripts/start.sh                       # 用 target/gewumind-boot-app.jar（没构建则自动构建）
 #                                              # runs the built jar (builds it first if missing)
 #   bash scripts/start.sh --dev                 # 开发模式：classpath 优先，改代码重启即生效
+#   bash scripts/start.sh --profile en          # 英文（data/en/magic-api、库 gewumind-boot-en）
+#   bash scripts/start.sh --profile online,en   # 英文生产
 #                                              # dev mode: classpath first, edit and restart
 #   SERVER_PORT=9000 bash scripts/start.sh      # 换端口 / change port
 #   JVM_OPTS="-Xms512m -Xmx2g" bash scripts/start.sh
@@ -57,15 +59,16 @@ fi
 
 MODE="jar"
 PROFILE=""
-for arg in "$@"; do
-  case "${arg}" in
-    --dev) MODE="dev" ;;
-    --profile) shift ;;
-    --profile=*) PROFILE="${arg#--profile=}" ;;
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --dev) MODE="dev"; shift ;;
+    --profile)
+      [ -n "${2:-}" ] || { echo "ERROR: --profile 需要参数，如 --profile en / --profile online,en" >&2; exit 2; }
+      PROFILE="$2"; shift 2 ;;
+    --profile=*) PROFILE="${1#--profile=}"; shift ;;
+    *) shift ;;
   esac
 done
-# 独立取值：--profile online
-if [ "${1:-}" = "--profile" ] && [ -n "${2:-}" ]; then PROFILE="${2}"; fi
 if [ -n "${PROFILE}" ]; then
   CONFIG_ARG="${CONFIG_ARG} --spring.profiles.active=${PROFILE}"
 fi
@@ -79,6 +82,7 @@ if [ "${MODE}" = "dev" ]; then
   echo ">>> 开发模式启动（classpath 优先），端口 ${SERVER_PORT} / starting in dev mode on port ${SERVER_PORT}"
   nohup mvn spring-boot:run \
     -Dspring-boot.run.jvmArguments="-Dserver.port=${SERVER_PORT} ${JVM_OPTS}" \
+    ${PROFILE:+-Dspring-boot.run.profiles="${PROFILE}"} \
     > "${LOG_FILE}" 2>&1 &
 else
   echo ">>> jar 模式启动，端口 ${SERVER_PORT} / starting from jar on port ${SERVER_PORT}"

@@ -93,6 +93,7 @@ KJAR="$ROOT/libs/com/gewumind/gewumind-boot/$KVER/gewumind-boot-$KVER.jar"
 cp "$KJAR" "$DIST/"
 [[ -f "$KJAR.sig" ]] && cp "$KJAR.sig" "$DIST/"
 cp "$ROOT/gewumind-release.pub" "$DIST/"
+cp "$ROOT/gewumind-release-2026.pub" "$DIST/"
 ( cd "$DIST" && sha256sum "$NAME.zip" "$NAME.tar.gz" "gewumind-boot-$KVER.jar" > SHA256SUMS )
 if [[ -n "${GW_SIGN_ARTIFACT:-}" ]]; then
   python3 "$GW_SIGN_ARTIFACT" "$DIST/SHA256SUMS"
@@ -160,6 +161,7 @@ gh_upload "$DIST/SHA256SUMS" text/plain
 gh_upload "$DIST/gewumind-boot-$KVER.jar" application/java-archive
 [[ -f "$DIST/gewumind-boot-$KVER.jar.sig" ]] && gh_upload "$DIST/gewumind-boot-$KVER.jar.sig" text/plain
 gh_upload "$DIST/gewumind-release.pub" text/plain
+gh_upload "$DIST/gewumind-release-2026.pub" text/plain
 
 json_release "v$VERSION" "gewumind-skill v$VERSION" "$SKILL_BODY" \
   | curl -s -X POST -H "Authorization: Bearer $GW_GITHUB_TOKEN" -H "Accept: application/vnd.github+json" \
@@ -188,5 +190,6 @@ gitee_upload "$DIST/SHA256SUMS"
 gitee_upload "$DIST/gewumind-boot-$KVER.jar"
 [[ -f "$DIST/gewumind-boot-$KVER.jar.sig" ]] && gitee_upload "$DIST/gewumind-boot-$KVER.jar.sig"
 gitee_upload "$DIST/gewumind-release.pub"
+gitee_upload "$DIST/gewumind-release-2026.pub"
 
 echo "release: v$VERSION 已发布"
