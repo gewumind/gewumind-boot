@@ -65,10 +65,10 @@ python3 - "$ROOT/pom.xml" "$VERSION" <<'PY'
 import re, sys
 p, v = sys.argv[1], sys.argv[2]
 s = open(p, encoding='utf-8').read()
+if '<artifactId>gewumind-boot-app</artifactId>' not in s:
+    sys.exit('pom: gewumind-boot-app not found')
 s2 = re.sub(r'(<artifactId>gewumind-boot-app</artifactId>\s*<version>)[^<]+(</version>)',
             r'\g<1>' + v + r'\g<2>', s, count=1)
-if s2 == s:
-    sys.exit('pom: gewumind-boot-app version not found')
 open(p, 'w', encoding='utf-8').write(s2)
 PY
 sed -i "s/当前 [0-9][0-9.]*）/当前 $VERSION）/g" "$ROOT/README.md"
