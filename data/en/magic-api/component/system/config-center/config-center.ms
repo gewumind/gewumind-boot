@@ -33,7 +33,7 @@
     <div class="config-topbar">
                 <n-input
                     v-model:value="searchKeyword"
-                    placeholder="搜索配置名称 / 键值 / 说明..."
+                    placeholder="Search name / key / description..."
                     clearable
                     round
                     class="config-search"
@@ -286,7 +286,7 @@
             <input ref="licenseFileInput" type="file" accept=".json,application/json"
                    style="display: none" @change="handleLicenseFile">
             <div style="display:flex; gap:8px; align-items:center">
-                <n-button type="primary" @click="licenseFileInput.click()">选择文件</n-button>
+                <n-button type="primary" @click="licenseFileInput.click()">Choose file</n-button>
                 <span style="color:#999">{{ licenseFileName || 'Not selected' }}</span>
             </div>
             <template #footer>
@@ -324,7 +324,7 @@
         </mb-modal>
 
 <!-- ==================== 皮肤主题选择弹窗 ==================== -->
-        <mb-modal ref="themeDialogRef" title="选择皮肤主题" width="560px" @confirm="confirmThemePicker($event)">
+        <mb-modal ref="themeDialogRef" title="Choose a theme" width="560px" @confirm="confirmThemePicker($event)">
             <h3 style="margin-bottom: 16px; font-size: 14px; color: #666; font-weight: 400;">Pick a preset theme, or use a custom color below</h3>
             <div class="theme-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
                 <div
@@ -388,7 +388,7 @@
                 <div class="restart-steps">
                     <div class="restart-step" :class="{ done: restartState.step >= 1, active: restartState.step === 0 }">
                         <div class="step-dot" />
-                        <span class="step-label">关闭旧服务</span>
+                        <span class="step-label">Shut down the old service</span>
                     </div>
                     <div class="step-line" :class="{ done: restartState.step >= 2 }" />
                     <div class="restart-step" :class="{ done: restartState.step >= 2, active: restartState.step === 1 }">
@@ -1235,7 +1235,7 @@ function onImageUploadFinish(item, { file, event }) {
             $message.error('Upload failed: ' + (res.message || 'Unknown error'))
         }
     } catch (e) {
-        $message.error('上传失败：响应解析错误')
+        $message.error('Upload failed: response parse error')
     }
 }
 
@@ -1248,7 +1248,7 @@ function pickFromServer(item) {
         loadServerFiles()
     }
     $dialog.create({
-        title: '选择服务器上的图片',
+        title: 'Select an image on the server',
         width: 640,
         content: () => h('div', {
             style: 'display:grid; grid-template-columns: repeat(4, 1fr); gap:8px; max-height:420px; overflow:auto; padding:8px;'
@@ -1542,14 +1542,14 @@ function validateSpringCron(expr) {
         return `应为 6 段（秒 分 时 日 月 周），当前 ${fields.length} 段，例如：0 0 3 * * ?`
     }
     const ranges = [
-        { min: 0, max: 59, name: '秒' },
-        { min: 0, max: 59, name: '分' },
-        { min: 0, max: 23, name: '时' },
-        { min: 1, max: 31, name: '日' },
-        { min: 1, max: 12, name: '月' },
-        { min: 0, max: 7, name: '周' }
+        { min: 0, max: 59, name: 'second' },
+        { min: 0, max: 59, name: 'minute' },
+        { min: 0, max: 23, name: 'hour' },
+        { min: 1, max: 31, name: 'day' },
+        { min: 1, max: 12, name: 'month' },
+        { min: 0, max: 7, name: 'week' }
     ]
-    const names = ['秒', '分', '时', '日', '月', '周']
+    const names = ['second', 'minute', 'hour', 'day', 'month', 'week']
     for (let i = 0; i < 6; i++) {
         const field = fields[i]
         if (i === 3 && field === '?') continue
@@ -1593,7 +1593,7 @@ function clearImageConfig(item) {
                 item.configureValue = ''
                 $message.success('Cleared')
             }).catch(() => {
-                $message.error('清空失败')
+                $message.error('Clear failed')
             })
         }
     })
