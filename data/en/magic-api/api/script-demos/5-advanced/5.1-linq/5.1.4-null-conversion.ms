@@ -29,20 +29,20 @@
 //   ||     ：将 null、空字符串 ''、0、空集合 []、空 Map {} 均视为空值
 //   ifnull ：仅将 null 视为空值，空字符串和 0 保持原值
 
-// 第 1 步：准备包含空值的测试数据
+// 第 1 步：准备包含空值的Test数据
 // 第一条记录 name 为 null，age 为 18
-// 第二条记录 name 为 '小明'，age 未定义（undefined）
+// 第二条记录 name 为 'Xiaoming'，age 未定义（undefined）
 var list = [
     {name : null, age: 18},
-    {name : '小明'}
+    {name : 'Xiaoming'}
 ]
 
 // 第 2 步：使用 SQL 风格 LINQ 进行空值转换
-// t.name || '无名'：如果 name 为 null/空串/0，则显示 '无名'
+// t.name || 'Anonymous'：如果 name 为 null/空串/0，则显示 'Anonymous'
 // ifnull(t.age, 20)：仅当 age 为 null 时显示 20（第二条记录的 age 是 undefined，ifnull 不生效）
 //                   注意：undefined 不是 null，所以 ifnull 不会替换
 return 
     select 
-        t.name || '无名' name,      // null + '无名' => '无名'
+        t.name || 'Anonymous' name,      // null + 'Anonymous' => 'Anonymous'
         ifnull(t.age, 20) age       // undefined ≠ null，所以第二条记录 age 仍为 undefined
     from list t

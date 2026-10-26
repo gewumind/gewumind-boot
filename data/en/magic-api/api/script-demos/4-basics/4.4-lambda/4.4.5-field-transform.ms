@@ -24,16 +24,16 @@
 ================================
 var list = [{
     sex : 0,
-    name : '小明',
+    name : 'Xiaoming',
     age : 19
 },{
     sex : 1,
-    name : '小花',
+    name : 'Xiaohua',
     age : 18
 }];
 
 var getAge = (age)=>{
-    return age > 18 ? '成人' : '未成年'
+    return age > 18 ? 'Adult' : 'Minor'
 }
 // Filter a list with the map function
 return list.map((item)=>{

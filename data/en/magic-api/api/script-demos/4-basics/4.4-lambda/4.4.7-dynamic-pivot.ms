@@ -30,10 +30,10 @@ var result = db.select('select api_method,api_group_id from magic_api_info');
 分组2    X       X
 分组3    X       X
 分组4    X       X
-其中X为该分组对应请求方法的数量
+其中X为该分组对应请求Method的数量
 */
 return result.group(it => it.api_group_id,    // 根据api_group_id 分组
-    list => list.group(item => item.api_method, // 根据 请求方法 再次分组
+    list => list.group(item => item.api_method, // 根据 请求Method 再次分组
         apis => apis.size()
     )
 ).asList((key,value)=>{ // 将分组后的Map<String,Map<String,Object>> 结果转为List<Map<String,Object>

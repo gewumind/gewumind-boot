@@ -30,7 +30,7 @@
   "requestBody": "",
   "headers": [],
   "paths": [],
-  "responseBody": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"name\": \"Magic-Boot\",\n        \"user\": {\n            \"name\": \"张三\",\n            \"age\": \"25\"\n        },\n        \"age\": \"25\",\n        \"tasks\": [\"task2\", \"task1\", \"task2\", \"task1\", \"task2\", \"task1\", \"task2\", \"task1\", \"task2\", \"task1\", \"task2\", \"task1\"],\n        \"hasKey\": true,\n        \"ttl\": 60,\n        \"message\": \"Redis 基础操作完成！请在配置中心查看 redis 相关统计数据\"\n    },\n    \"timestamp\": 1784530187645,\n    \"executeTime\": 490\n}",
+  "responseBody": "{\n    \"code\": 200,\n    \"message\": \"success\",\n    \"data\": {\n        \"name\": \"Magic-Boot\",\n        \"user\": {\n            \"name\": \"Zhang San\",\n            \"age\": \"25\"\n        },\n        \"age\": \"25\",\n        \"tasks\": [\"task2\", \"task1\", \"task2\", \"task1\", \"task2\", \"task1\", \"task2\", \"task1\", \"task2\", \"task1\", \"task2\", \"task1\"],\n        \"hasKey\": true,\n        \"ttl\": 60,\n        \"message\": \"Redis 基础操作完成！请在配置中心查看 redis 相关统计数据\"\n    },\n    \"timestamp\": 1784530187645,\n    \"executeTime\": 490\n}",
   "description": "Redis basics",
   "requestBodyDefinition": null,
   "responseBodyDefinition": {
@@ -263,7 +263,7 @@ redis.setex('demo:code', '123456', 60)
 
 
 // Hash operations
-redis.hSet('demo:user:1', 'name', '张三')
+redis.hSet('demo:user:1', 'name', 'Zhang San')
 redis.hSet('demo:user:1', 'age', '25')
 var user = redis.hGetAll('demo:user:1')
 var age = redis.hGet('demo:user:1', 'age')

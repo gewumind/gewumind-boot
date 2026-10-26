@@ -194,16 +194,16 @@
   }
 }
 ================================
-/* 目的：演示使用 db.table() 进行分页查询 */
+/* 目的：演示使用 db.table() 进行分页Query */
 /*
- * 关于分页相关配置：
+ * Pagination config: 
  * - 默认分页参数从请求中获取 page/size（可通过配置自定义）
  * - 该接口接收 POST 请求，参数 page=1, size=10（来自请求参数）
  */
 
 // 1. Target table: magic_api_info
-// 2. 使用 .columns() 指定查询的列（可传多个参数）
-// 3. 使用 .page() 执行分页查询
+// 2. 使用 .columns() 指定Query的列（可传多个参数）
+// 3. 使用 .page() 执行分页Query
 //    - 会自动从请求中获取 page 和 size 参数
 //    - 返回对象包含 total（总记录数）和 list（当前页数据）
 return db.table('magic_api_info').columns('api_method', 'api_path').page()

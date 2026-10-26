@@ -96,7 +96,7 @@
             "children": [
               {
                 "name": "api_name",
-                "value": "测试",
+                "value": "Test",
                 "description": "",
                 "required": false,
                 "dataType": "String",
@@ -141,12 +141,12 @@
   }
 }
 ================================
-/* 目的：演示 MyBatis 语法的 <if> 和 <where> 标签实现动态查询 */
+/* 目的：演示 MyBatis 语法的 <if> 和 <where> Tag实现动态Query */
 
 // magic-api 1.6.0+ 支持 MyBatis 动态 SQL 语法
-// <where> 标签：自动去除子句中多余的 AND/OR，并在有条件时插入 WHERE 关键字
-// <if test="..."> 标签：当 test 条件为 true 时拼接标签内的 SQL 片段
-// 该接口接收 POST 请求，参数 name（可选），当 name 不为空时按名称模糊查询
+// <where> Tag：自动去除子句中多余的 AND/OR，并在有条件时插入 WHERE 关键字
+// <if test="..."> Tag：当 test 条件为 true 时拼接Tag内的 SQL 片段
+// 该接口接收 POST 请求，参数 name（可选），当 name 不为空时按名称模糊Query
 
 return db.select("""
     select api_name from magic_api_info

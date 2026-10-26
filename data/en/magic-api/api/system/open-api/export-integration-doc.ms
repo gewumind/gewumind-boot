@@ -31,7 +31,7 @@
 }
 ================================
 if (app_id == null || app_id == '') {
-    exit 0, 'app_id 不能为空'
+    exit 0, 'app_id cannot be empty'
 }
 
 return doc.exportDoc(app_id)

@@ -44,10 +44,10 @@ import log;
 
 // log.info(): INFO level, supports {} placeholders
 // The first argument is the template; the rest fill placeholders
-log.info('info日志:{}', message);
+log.info('infoLog:{}', message);
 
 // log.warn(): WARN level (does not affect execution)
-log.warn('warn日志');
+log.warn('warnLog');
 
 // log.error(): ERROR level (usually for exceptions)
 // Pass exception e and the framework prints the stack trace
@@ -55,7 +55,7 @@ try {
     // Deliberately divide by zero to demo error logging
     return 1 / 0;
 } catch (e) {
-    log.error('error日志', e);
+    log.error('errorLog', e);
 }
 
 return 'ok';

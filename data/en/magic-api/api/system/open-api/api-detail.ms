@@ -45,13 +45,13 @@
 }
 ================================
 if (app_id == null || app_id == '') {
-    exit 0, 'app_id 不能为空'
+    exit 0, 'app_id cannot be empty'
 }
 if (api_path == null || api_path == '') {
-    exit 0, 'api_path 不能为空'
+    exit 0, 'api_path cannot be empty'
 }
 if (api_method == null || api_method == '') {
-    exit 0, 'api_method 不能为空'
+    exit 0, 'api_method cannot be empty'
 }
 
 return doc.apiDetail(app_id, api_path, api_method)

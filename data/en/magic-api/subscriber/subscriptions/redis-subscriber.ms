@@ -15,12 +15,12 @@
   "enabled": true
 }
 ================================
-// Redis 订阅示例
+// Redis Subscription example
 // 收到 redis demo:news 频道消息时自动执行整个脚本
 // Set breakpoints in this file to debug
 
-println('[Redis] 收到消息: ' + _message)
+println('[Redis] Message received:  ' + _message)
 print('[Redis] 频道: ' + _channel)
 
 // Business logic
-print('[Redis122] 处理完成')
+print('[Redis122] Done')

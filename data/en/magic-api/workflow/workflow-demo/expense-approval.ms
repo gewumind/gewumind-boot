@@ -269,13 +269,13 @@ if (action == 'getDefinition') {
         },
         {
             "id": "mgr_approve",
-            "label": "部门经理审批",
+            "label": "部门经理Approval",
             "type": "approve",
             "role": "dept_manager"
         },
         {
             "id": "fin_approve",
-            "label": "财务审批",
+            "label": "财务Approval",
             "type": "approve",
             "role": "finance"
         },
@@ -319,16 +319,16 @@ if (action == 'getDefinition') {
                     "required": true,
                     "options": [
                         {
-                            "value": "差旅",
-                            "label": "差旅"
+                            "value": "Travel",
+                            "label": "Travel"
                         },
                         {
-                            "value": "办公",
-                            "label": "办公"
+                            "value": "Office",
+                            "label": "Office"
                         },
                         {
-                            "value": "招待",
-                            "label": "招待"
+                            "value": "Entertainment",
+                            "label": "Entertainment"
                         }
                     ]
                 },
@@ -347,28 +347,28 @@ if (action == 'getDefinition') {
             ]
         },
         "mgr_approve": {
-            "title": "部门经理审批",
+            "title": "部门经理Approval",
             "editable": [
                 "dept_manager"
             ],
             "fields": [
                 {
                     "name": "mgr_comment",
-                    "label": "审批意见",
+                    "label": "Approval意见",
                     "type": "textarea",
                     "required": true
                 }
             ]
         },
         "fin_approve": {
-            "title": "财务审批",
+            "title": "财务Approval",
             "editable": [
                 "finance"
             ],
             "fields": [
                 {
                     "name": "fin_comment",
-                    "label": "审批意见",
+                    "label": "Approval意见",
                     "type": "textarea",
                     "required": true
                 }

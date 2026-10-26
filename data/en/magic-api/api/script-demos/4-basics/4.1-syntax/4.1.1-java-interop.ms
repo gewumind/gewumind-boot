@@ -104,4 +104,4 @@ import 'java.util.Date' as Date;
 import 'java.text.SimpleDateFormat' as SimpleDateFormat;
 var now = new Date();   // 创建对象
 var df = new SimpleDateFormat('yyyy-MM-dd');
-return df.format(now);  // 调用方法
+return df.format(now);  // 调用Method

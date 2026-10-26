@@ -30,7 +30,7 @@
 var emailPattern = /^[\\w.-]+@[\\w.-]+\\.\\w+$/;
 var phonePattern = /^1[3-9]\\d{9}$/;
 
-// ===== 2. 匹配测试 =====
+// ===== 2. 匹配Test =====
 var email = "test@example.com";
 var isEmail = emailPattern.test(email);
 // isEmail = true

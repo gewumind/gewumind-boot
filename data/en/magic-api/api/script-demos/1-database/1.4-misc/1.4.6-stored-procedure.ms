@@ -31,7 +31,7 @@
 // 1. db.update() 执行 CALL 语句
 // 2. #{param1}, #{param2} 是输入参数占位符
 // 3. 框架自动从同名变量或请求参数中取值注入
-// 如果需要出参，应使用 db.call() 方法（参考文档）
+// 如果需要出参，应使用 db.call() Method（参考文档）
 return db.update("""
     call produce_name(#{param1}, #{param2})
 """)

@@ -29,16 +29,16 @@
 
 // ===== 基础用法 =====
 var score = 85;
-var level = score >= 60 ? "Pass" : "不及格";
+var level = score >= 60 ? "Pass" : "Fail";
 // level = "Pass"
 
 // ===== 嵌套用法 =====
 var grade = score >= 90 ? "优秀"
-          : score >= 80 ? "良好"
+          : score >= 80 ? "Good"
           : score >= 70 ? "中等"
           : score >= 60 ? "Pass"
-          : "不及格";
-// grade = "良好"
+          : "Fail";
+// grade = "Good"
 
 // ===== 与 JS 一致的短路特性 =====
 // truthy/falsy 规则：null、空集合、空Map、0、空字符串、false 视为 false
@@ -54,8 +54,8 @@ var r = x && y;         // x 为 truthy，返回 y = 456
 
 // ===== 实际应用：数据转换 =====
 var users = [
-    { name: "张三", gender: 1 },
-    { name: "李四", gender: 0 }
+    { name: "Zhang San", gender: 1 },
+    { name: "Li Si", gender: 0 }
 ];
 for (user in users) {
     user.genderText = user.gender == 1 ? "Male" : "Female";

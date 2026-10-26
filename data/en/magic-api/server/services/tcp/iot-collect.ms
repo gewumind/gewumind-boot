@@ -32,8 +32,8 @@
 //   {"deviceId":"sensor-001","type":"temperature","value":23.5}
 //   {"deviceId":"sensor-001","type":"humidity","value":65}
 //
-// Python 测试（注意：9000 port 上 Echo 示例和 IoT 示例共用同一 listener，
-//   后注册者会覆盖前者；测试其中一个时建议把另一个 disabled）：
+// Python Test（注意：9000 port 上 Echo 示例和 IoT 示例Total用同一 listener，
+//   后注册者会覆盖前者；Test其中一个时建议把另一个 disabled）：
 //   python3 scripts/send_tcp_msg.py localhost 9000 '{"deviceId":"sensor-001","type":"temperature","value":23.5}'
 
 // ===== Receive =====
@@ -47,7 +47,7 @@ if (_message != null && _message.trim().startsWith('{')) {
         data = JsonUtils.readValue(_message.trim(), Object)
         println('[IoT] 解析成功: deviceId=' + (data.deviceId ?data.deviceId :'unknown'))
     } catch (e) {
-        println('[IoT] JSON 解析失败: ' + e.getMessage())
+        println('[IoT] JSON 解析Failed:  ' + e.getMessage())
     }
 }
 

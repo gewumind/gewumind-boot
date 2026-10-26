@@ -36,13 +36,13 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示使用 db.table() 进行链式单表查询 */
+/* 目的：演示使用 db.table() 进行链式单表Query */
 
 // db.table('表名') 是单表操作的入口，返回一个 Table 对象，支持链式调用
 
-// 1. 指定要查询的表为 magic_api_info
-// 2. 使用 .column() 限制只查询 api_name 这一列（相当于 SELECT api_name）
-// 3. 使用 .select() 执行查询，返回 List<Map> 类型的结果
+// 1. 指定要Query的表为 magic_api_info
+// 2. 使用 .column() 限制只Query api_name 这一列（相当于 SELECT api_name）
+// 3. 使用 .select() 执行Query，返回 List<Map> type result
 return db.table('magic_api_info')
-        .column('api_name')   // 只查询 api_name 列，不传参则查询所有列
-        .select()             // 执行 SELECT 查询，返回列表
+        .column('api_name')   // 只Query api_name 列，不传参则Query所有列
+        .select()             // 执行 SELECT Query，返回列表

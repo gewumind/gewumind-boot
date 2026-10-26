@@ -43,7 +43,7 @@
 // 1. Target table: magic_api_info
 // 2. 使用 .where() 进入条件构建模式
 // 3. 使用 .eq('id', id) 添加等值条件：WHERE id = ?
-//    - 第一个参数是列名，第二个参数是值（来自请求参数 id）
+//    - 第一个参数是列名，Second parameter是值（来自请求参数 id）
 // 4. 使用 .delete() 执行删除操作，返回受影响的行数
 return db.table('magic_api_info')
         .where()

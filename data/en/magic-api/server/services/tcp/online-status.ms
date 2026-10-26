@@ -15,7 +15,7 @@
   "enabled": true
 }
 ================================
-// TCP Server 示例：在线状态追踪（带生命周期钩子）
+// TCP Server Example: online status tracking (with lifecycle hooks)
 // IoT 设备连 tcp://localhost:9002 上线时记录，下线时清理
 //
 // Lifecycle variables (reserved names):
@@ -29,9 +29,9 @@
 // Test:
 //   nc localhost 9002   (开 2 个终端，Ctrl+C 关闭一个看 onClose 触发)
 //
-// 配套查询 API：api/数据演示/TCP演示/基础操作.ms
+// 配套Query API：api/数据演示/TCP演示/基础操作.ms
 
-// ---------- 生命周期钩子 ----------
+// ---------- Lifecycle hooks ----------
 
 var _onConnect = (clientId, path) => {
     println('[Presence-TCP] 设备上线: ' + clientId + ' @ ' + path)
@@ -46,13 +46,13 @@ var _onClose = (clientId, path) => {
 // ---------- 业务逻辑：连接时回执设备信息 ----------
 
 println('[Presence-TCP] 设备连接: clientId=' + _clientId + ' @ port=' + _channel)
-println('[Presence-TCP] 当前 port ' + _channel + ' 连接数: ' + tcp.getConnectionCount(Integer.parseInt(_channel)))
+println('[Presence-TCP] Current port ' + _channel + ' Connections:  ' + tcp.getConnectionCount(Integer.parseInt(_channel)))
 
 // 给设备回执一条欢迎消息（带 \n 换行让客户端按行解析）
 tcpHelper.reply('{"type":"welcome","clientId":"' + _clientId + '","serverTime":' + current_timestamp() + '}\n')
 
 // 如果设备发来数据，按行处理
 if (_message != null && _message.length() > 0) {
-    println('[Presence-TCP] 收到数据: ' + _message)
+    println('[Presence-TCP] Data received:  ' + _message)
     tcpHelper.reply('{"type":"ack","received":"' + _message + '"}\n')
 }

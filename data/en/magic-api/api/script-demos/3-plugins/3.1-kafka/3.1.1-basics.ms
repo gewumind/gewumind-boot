@@ -51,5 +51,5 @@ kafka.sendBatch('demo-events', [
 ])
 
 return {
-    message: 'Kafka 消息已发送。订阅消费请在 api/订阅/ 目录下的 .ms 文件中维护'
+    message: 'Kafka 消息已发送。订阅消费请在 api/订阅/ 目录下的 .ms File中维护'
 }

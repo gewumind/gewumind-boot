@@ -24,7 +24,7 @@
 ================================
 /* 目的：演示使用 db.table() 进行修改数据操作 */
 
-// update() 方法需要先通过 .primary() 指定主键，然后传入包含主键值和要修改字段的对象
+// update() Method需要先通过 .primary() 指定主键，然后传入包含主键值和要修改字段的对象
 
 // 1. Target table: magic_api_info
 // 2. 使用 .primary('id') 设置主键列名为 id

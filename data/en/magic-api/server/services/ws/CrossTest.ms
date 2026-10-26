@@ -19,14 +19,14 @@
 // 实测结论（基于本次运行）：
 //   ✅ db              - server script 内直接用 db 可用
 //   ✅ @/xxx function  - function import 可用；function 内部也能用 db
-//   ✅ @post:/xxx api  - API POST import + 执行成功（magic-api 自动注入空 request/response）
+//   ✅ @post:/xxx api  - API POST import + Executed successfully（magic-api 自动注入空 request/response）
 //   ⚠️ @get:/xxx api  - API import 可用，但若 API 内部依赖 sa-token 等 servlet 上下文会失败
 //
 // Enable:
-//   1. 文件已经默认 enabled: true
-//   2. 在 magic-api 后台管理界面保存一次（或 touch 此文件触发 reload）
+//   1. File已经默认 enabled: true
+//   2. 在 magic-api 后台管理界面保存一次（或 touch 此File触发 reload）
 //   3. 用 ws 客户端连 ws://localhost:9089/ws/crosstest 发任意消息
-//   4. 后端日志查看 5 项结果
+//   4. 后端Log查看 5 项结果
 
 println('[CrossTest] start')
 

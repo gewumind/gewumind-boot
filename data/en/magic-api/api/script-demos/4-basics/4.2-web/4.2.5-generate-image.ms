@@ -37,7 +37,7 @@ var image = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
 var graphics = image.getGraphics();
 graphics.setColor(Color.WHITE);
 graphics.fillRect(0,0,width,height);
-graphics.setFont(new Font("微软雅黑", Font.BOLD, 40));
+graphics.setFont(new Font("Microsoft YaHei", Font.BOLD, 40));
 var letter = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ';
 var random = new Random();
 var randomColor = ()=>new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256));
@@ -53,7 +53,7 @@ for (i in range(0, 3)){ //验证码
     graphics.rotate(-degree * 3.1415926535 / 180, x, 45);
     x = x + 48;
 }
-log.info('生成的验证码:{}',code)
+log.info('Generated captcha: {}',code)
 for (i in range(0, 6)) {    //干扰线
     graphics.setColor(randomColor());
     graphics.drawLine(random.nextInt(width), random.nextInt(height),random.nextInt(width), random.nextInt(height));

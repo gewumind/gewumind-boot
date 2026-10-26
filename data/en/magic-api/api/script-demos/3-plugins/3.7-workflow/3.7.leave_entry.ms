@@ -126,7 +126,7 @@ if (action == 'approve') {
             bizFields[fk] = fv
         }
     }
-    try { workflow.updateBizFields(instId, bizFields) } catch (e) { print("[warn] updateBizFields 失败: " + e.getMessage()) }
+    try { workflow.updateBizFields(instId, bizFields) } catch (e) { print("[warn] updateBizFields Failed:  " + e.getMessage()) }
     workflow.approve(taskId, op, '' + comment, form)
     var inst = workflow.getInstance(instId)
     var vars2 = inst.variables
@@ -181,7 +181,7 @@ if (action == 'detail') {
     }
     var inst = workflow.getInstance(body.instanceId)
     if (inst == null) {
-        return { success: false, message: '实例不存在: ' + body.instanceId }
+        return { success: false, message: 'Instance not found:  ' + body.instanceId }
     }
     var history = workflow.queryHistory(body.instanceId)
     return { success: true, instance: inst, history: history }
@@ -210,7 +210,7 @@ if (action == 'reject' || action == 'deny') {
             bizFields2[fkk] = fvv
         }
     }
-    try { workflow.updateBizFields(instId2, bizFields2) } catch (e) { print("[warn] updateBizFields 失败: " + e.getMessage()) }
+    try { workflow.updateBizFields(instId2, bizFields2) } catch (e) { print("[warn] updateBizFields Failed:  " + e.getMessage()) }
 
     var nodeId2 = taskInfo2.node_id
     if (nodeId2 != null && nodeId2 != 'apply') {
@@ -244,7 +244,7 @@ if (action == 'terminate') {
     }
     var inst3 = workflow.getInstance(body.instanceId)
     if (inst3 == null) {
-        return { success: false, message: '实例不存在: ' + body.instanceId }
+        return { success: false, message: 'Instance not found:  ' + body.instanceId }
     }
     if (inst3.status == 'COMPLETED' || inst3.status == 'CANCELLED') {
         return { success: false, message: 'Instance already finished; cannot withdraw' }
@@ -267,7 +267,7 @@ if (action == 'resubmit') {
         return { success: false, message: 'Instance not found' }
     }
     if (inst4.status != 'REJECTED' && inst4.status != 'WITHDRAWN') {
-        return { success: false, message: '只驳回状态可修改重提: ' + inst4.status }
+        return { success: false, message: 'Only rejected instances can be edited and resubmitted:  ' + inst4.status }
     }
 var formData = body.formData
     if (formData == null) { formData = {} }

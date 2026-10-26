@@ -4,7 +4,7 @@
     "remark": null,
     "entryApi": null,
     "group": null,
-    "compileJs": "/* Analyzed bindings: {\n  \"MagicWorkflow\": \"setup-const\"\n} */\nconst _openBlock = ___magic__import__('vue', 'openBlock');\r\nconst _createBlock = ___magic__import__('vue', 'createBlock');\n\nconst MagicWorkflow = ___magic__import__('@/components/workflow/MagicWorkflow.vue', '*');\n\nconst __sfc__ = {\n  __name: 'bae6f93b-8824-4fe9-b33b-ddbef503ad66',\n  setup(__props) {\n\n\nreturn (_ctx, _cache) => {\n  return (_openBlock(), _createBlock(MagicWorkflow, {\n    title: \"Purchase Order\",\n    subtitle: \"采购申请：申请 → 部门经理 → CFO\",\n    processId: \"purchase_v1\",\n    entryApi: \"/data/plugins/workflow-api/purchase\",\n    category: \"Procurement\"\n  }))\n}\n}\n\n}\n__sfc__.__file = \"bae6f93b-8824-4fe9-b33b-ddbef503ad66.vue\"\nreturn __sfc__",
+    "compileJs": "/* Analyzed bindings: {\n  \"MagicWorkflow\": \"setup-const\"\n} */\nconst _openBlock = ___magic__import__('vue', 'openBlock');\r\nconst _createBlock = ___magic__import__('vue', 'createBlock');\n\nconst MagicWorkflow = ___magic__import__('@/components/workflow/MagicWorkflow.vue', '*');\n\nconst __sfc__ = {\n  __name: 'bae6f93b-8824-4fe9-b33b-ddbef503ad66',\n  setup(__props) {\n\n\nreturn (_ctx, _cache) => {\n  return (_openBlock(), _createBlock(MagicWorkflow, {\n    title: \"Purchase Order\",\n    subtitle: \"Purchase request：申请 → 部门经理 → CFO\",\n    processId: \"purchase_v1\",\n    entryApi: \"/data/plugins/workflow-api/purchase\",\n    category: \"Procurement\"\n  }))\n}\n}\n\n}\n__sfc__.__file = \"bae6f93b-8824-4fe9-b33b-ddbef503ad66.vue\"\nreturn __sfc__",
     "compileCss": "/* No <style> tags present */"
   },
   "id": "8aaa9f26ebf1e058ee92db122b8a80d5",
@@ -20,7 +20,7 @@
   "type": 1,
   "remark": null,
   "entryApi": null,
-  "compileJs": "/* Analyzed bindings: {\n  \"MagicWorkflow\": \"setup-const\"\n} */\nconst _openBlock = ___magic__import__('vue', 'openBlock');\r\nconst _createBlock = ___magic__import__('vue', 'createBlock');\n\nconst MagicWorkflow = ___magic__import__('@/components/workflow/MagicWorkflow.vue', '*');\n\nconst __sfc__ = {\n  __name: 'bae6f93b-8824-4fe9-b33b-ddbef503ad66',\n  setup(__props) {\n\n\nreturn (_ctx, _cache) => {\n  return (_openBlock(), _createBlock(MagicWorkflow, {\n    title: \"Purchase Order\",\n    subtitle: \"采购申请：申请 → 部门经理 → CFO\",\n    processId: \"purchase_v1\",\n    entryApi: \"/data/plugins/workflow-api/purchase\",\n    category: \"Procurement\"\n  }))\n}\n}\n\n}\n__sfc__.__file = \"bae6f93b-8824-4fe9-b33b-ddbef503ad66.vue\"\nreturn __sfc__",
+  "compileJs": "/* Analyzed bindings: {\n  \"MagicWorkflow\": \"setup-const\"\n} */\nconst _openBlock = ___magic__import__('vue', 'openBlock');\r\nconst _createBlock = ___magic__import__('vue', 'createBlock');\n\nconst MagicWorkflow = ___magic__import__('@/components/workflow/MagicWorkflow.vue', '*');\n\nconst __sfc__ = {\n  __name: 'bae6f93b-8824-4fe9-b33b-ddbef503ad66',\n  setup(__props) {\n\n\nreturn (_ctx, _cache) => {\n  return (_openBlock(), _createBlock(MagicWorkflow, {\n    title: \"Purchase Order\",\n    subtitle: \"Purchase request：申请 → 部门经理 → CFO\",\n    processId: \"purchase_v1\",\n    entryApi: \"/data/plugins/workflow-api/purchase\",\n    category: \"Procurement\"\n  }))\n}\n}\n\n}\n__sfc__.__file = \"bae6f93b-8824-4fe9-b33b-ddbef503ad66.vue\"\nreturn __sfc__",
   "compileCss": "/* No <style> tags present */",
   "group": null
 }
@@ -28,7 +28,7 @@
 <template>
   <MagicWorkflow
       title="Purchase Order"
-      subtitle="采购申请：申请 → 部门经理 → CFO"
+      subtitle="Purchase request：申请 → 部门经理 → CFO"
       processId="purchase_v1"
       entryApi="/data/plugins/workflow-api/purchase"
       category="Procurement"

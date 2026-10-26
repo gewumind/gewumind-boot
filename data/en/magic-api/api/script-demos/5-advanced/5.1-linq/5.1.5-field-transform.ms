@@ -30,21 +30,21 @@
 // 包含 sex（性别 0/1）、name（姓名）、age（年龄）
 var list = [{
     sex : 0,
-    name : '小明',
+    name : 'Xiaoming',
     age : 19
 },{
     sex : 1,
-    name : '小花',
+    name : 'Xiaohua',
     age : 18
 }]
 
 // 第 2 步：使用 SQL 风格 LINQ 进行字段值转换
-// t.age > 18 ? '成人' : '未成年'：将 age 数字映射为"成人"/"未成年"标签
+// t.age > 18 ? 'Adult' : 'Minor'：将 age 数字映射为"Adult"/"Minor"Tag
 // t.sex == 0 ? 'Male' : 'Female'      ：将 sex 数字映射为中文性别
 // t.name                          ：原样输出
 return 
     select 
-        t.age > 18 ? '成人' : '未成年' age,   // 19>18 => '成人', 18>18 => '未成年'
+        t.age > 18 ? 'Adult' : 'Minor' age,   // 19>18 => 'Adult', 18>18 => 'Minor'
         t.sex == 0 ? 'Male' : 'Female' sex,         // 0=='Male', 1=='Female'
         t.name                                 // 原样保留
     from list t

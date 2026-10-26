@@ -71,7 +71,7 @@
 //
 // Request body (JSON):
 //   {
-//     "clientId": "",        // 指定客户端，留空=广播
+//     "clientId": "",        // Target client (empty = broadcast)
 //     "port":      9000,     // 广播目标端口
 //     "data":      "...\n"   // 字节内容
 //   }
@@ -81,7 +81,7 @@ payload = body.data ?: ''
 
 if (body.clientId != null && body.clientId.length() > 0) {
     tcp.sendToClient(body.clientId, payload)
-    println('[TCP Push] 已发送到 client=' + body.clientId)
+    println('[TCP Push] Sent to client=' + body.clientId)
 } else {
     tcp.broadcastToPort(targetPort, payload)
     println('[TCP Push] 已广播到 port=' + targetPort)

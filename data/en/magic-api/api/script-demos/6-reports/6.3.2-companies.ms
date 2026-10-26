@@ -16,7 +16,7 @@
   "requestBody": "",
   "headers": [],
   "paths": [],
-  "responseBody": "[\n  {\"value\": \"C001\", \"label\": \"阿里巴巴集团\"},\n  {\"value\": \"C002\", \"label\": \"腾讯科技\"},\n  {\"value\": \"C003\", \"label\": \"字节跳动\"},\n  {\"value\": \"C004\", \"label\": \"美团\"}\n]",
+  "responseBody": "[\n  {\"value\": \"C001\", \"label\": \"阿里巴巴集团\"},\n  {\"value\": \"C002\", \"label\": \"腾讯科技\"},\n  {\"value\": \"C003\", \"label\": \"ByteDance\"},\n  {\"value\": \"C004\", \"label\": \"Meituan\"}\n]",
   "description": "Cascade demo: company list",
   "requestBodyDefinition": null,
   "responseBodyDefinition": null
@@ -25,6 +25,6 @@
 return [
     {value: 'C001', label: '阿里巴巴集团'},
     {value: 'C002', label: '腾讯科技'},
-    {value: 'C003', label: '字节跳动'},
-    {value: 'C004', label: '美团'}
+    {value: 'C003', label: 'ByteDance'},
+    {value: 'C004', label: 'Meituan'}
 ]

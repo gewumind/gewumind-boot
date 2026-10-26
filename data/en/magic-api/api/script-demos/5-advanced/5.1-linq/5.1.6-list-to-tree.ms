@@ -40,8 +40,8 @@ var toTree = (list, parentId) => select
 from list t 
 where t.parent_id = parentId                    // 只取父节点为 parentId 的记录
 
-// 第 2 步：从数据库查询分组数据（含父级 ID）
-// 查询字段：id（当前节点ID）、group_name（节点名称）、parent_id（父节点ID）
+// 第 2 步：从数据库Query分组数据（含父级 ID）
+// Query字段：id（当前节点ID）、group_name（节点名称）、parent_id（父节点ID）
 var flatData = db.select('select id, group_name, parent_id from magic_group')
 
 // 第 3 步：调用递归函数，从根节点（parent_id = '0'）开始构建树

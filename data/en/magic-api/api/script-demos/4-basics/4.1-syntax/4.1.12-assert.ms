@@ -35,7 +35,7 @@ var name = "";
 assert age >= 18 : 400, "年龄必须 >= 18";
 
 // assert 也可以只传 message（code 默认为 1）
-assert name != "" : "名称不能为空";
+assert name != "" : "名称cannot be empty";
 
 // assert 支持多层条件，用 && / || 连接
 var email = "test@example.com";

@@ -42,7 +42,7 @@ var map = {
     'C004': [
         {value: 'D301', label: '外卖'},
         {value: 'D302', label: '到店'},
-        {value: 'D303', label: '美团优选'}
+        {value: 'D303', label: 'Meituan优选'}
     ]
 }
 return map[companyId] || []

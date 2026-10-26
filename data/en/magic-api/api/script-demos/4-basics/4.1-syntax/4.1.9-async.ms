@@ -117,7 +117,7 @@
 // 使用async关键字，会启动一个线程去执行，返回Future，并不等待结果继续执行后续代码
 //var user1 = async db.select("select * from sys_user where id = 1");
 //var user2 = async db.select("select * from sys_user where id = 2");
-//调用get方法表示阻塞等待获取结果
+//调用getMethod表示阻塞等待获取结果
 //return [user1.get(),user2.get()];
 
 var list = [];

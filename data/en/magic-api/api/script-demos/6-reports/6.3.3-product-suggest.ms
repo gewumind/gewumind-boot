@@ -32,11 +32,11 @@ var all = [
     {value: 'SKU002', label: 'MacBook Pro 14'},
     {value: 'SKU003', label: 'Dell XPS 15'},
     {value: 'SKU004', label: 'iPhone 15 Pro'},
-    {value: 'SKU005', label: '华为 Mate60 Pro'},
-    {value: 'SKU006', label: '小米 14 Ultra'},
+    {value: 'SKU005', label: 'Huawei Mate60 Pro'},
+    {value: 'SKU006', label: 'Xiaomi 14 Ultra'},
     {value: 'SKU007', label: 'iPad Pro 11'},
     {value: 'SKU008', label: 'Surface Pro 9'},
-    {value: 'SKU009', label: '华为 MateBook X Pro'},
+    {value: 'SKU009', label: 'Huawei MateBook X Pro'},
     {value: 'SKU010', label: 'ThinkPad T480'}
 ]
 

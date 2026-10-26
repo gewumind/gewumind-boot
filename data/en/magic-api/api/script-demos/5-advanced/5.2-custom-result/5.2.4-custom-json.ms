@@ -28,14 +28,14 @@
 // 注意：这种方式仅适合临时输出格式，如需全局统一 JSON 结果请参考文档配置
 
 // Step 1: import the response utility module
-// response 提供了 json() 方法，可以自定义返回的 JSON 结构
+// response 提供了 json() Method，可以自定义返回的 JSON 结构
 import response
 
 // 第 2 步：返回自定义 JSON 格式
 // response.json() 接受一个对象，将其作为响应体直接返回
 // 全局配置的 ResponseBody 增强器（如统一包装 code/message/data）不会生效
-// 返回示例：{ "success": true, "message": "执行成功" }
+// 返回示例：{ "success": true, "message": "Executed successfully" }
 return response.json({
     success : true,                     // 自定义成功标识
-    message : '执行成功'                 // 自定义消息
+    message : 'Executed successfully'                 // 自定义消息
 })

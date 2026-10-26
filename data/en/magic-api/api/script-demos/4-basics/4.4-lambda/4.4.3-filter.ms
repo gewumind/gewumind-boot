@@ -24,10 +24,10 @@
 ================================
 var list = [{
     sex : 0,
-    name : '小明'
+    name : 'Xiaoming'
 },{
     sex : 1,
-    name : '小花'
+    name : 'Xiaohua'
 }]
 // Filter a list with the map function
 return list.filter((item)=>item.sex == 0);

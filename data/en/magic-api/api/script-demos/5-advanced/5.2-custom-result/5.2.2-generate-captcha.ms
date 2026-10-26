@@ -35,7 +35,7 @@ import 'java.io.ByteArrayOutputStream' as ByteArrayOutputStream  // 字节输出
 import 'java.util.Random' as Random                       // 随机数
 import 'javax.imageio.ImageIO' as ImageIO                 // 图片编码输出
 import response                                           // 返回图片响应
-import log                                                // 日志输出
+import log                                                // Log输出
 
 // ===== 第 2 步：创建空白图片 =====
 var width = 200                                            // 图片宽度
@@ -47,8 +47,8 @@ var graphics = image.getGraphics()                         // 获取绘图上下
 graphics.setColor(Color.WHITE)
 graphics.fillRect(0, 0, width, height)
 
-// 设置字体：微软雅黑，粗体，40 号
-graphics.setFont(new Font("微软雅黑", Font.BOLD, 40))
+// 设置字体：Microsoft YaHei，粗体，40 号
+graphics.setFont(new Font("Microsoft YaHei", Font.BOLD, 40))
 
 // ===== 第 3 步：准备验证码字符集及随机工具 =====
 // 去掉容易混淆的字符（如 0/O、1/l/I）
@@ -76,7 +76,7 @@ for (i in range(0, 4)) {                                   // 循环 4 次，生
     x = x + 48                                              // 移动到下一个字符位置
 }
 
-log.info('生成的验证码:{}', code)                           // 服务端日志记录验证码（调试用）
+log.info('Generated captcha: {}', code)                           // 服务端Log记录验证码（调试用）
 
 // ===== 第 5 步：绘制干扰线和噪点 =====
 for (i in range(0, 6)) {                                   // 绘制 6 条随机干扰线

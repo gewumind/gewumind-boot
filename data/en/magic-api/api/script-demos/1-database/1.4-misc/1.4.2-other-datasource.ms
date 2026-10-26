@@ -22,12 +22,12 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示直接通过数据源 Key 切换数据源进行查询 */
+/* 目的：演示直接通过数据源 Key 切换数据源进行Query */
 
 // 除了使用 db[变量] 动态切换，还可以直接使用 db.数据源Key 来切换
-// 此处使用 key 为 slave 的数据源进行查询，其他操作同理
+// 此处使用 key 为 slave 的数据源进行Query，其他操作同理
 
 // 1. db.slave 直接引用名为 "slave" 的数据源
-// 2. 在该数据源上执行查询操作
-// 3. db.slave 同样支持 .select()/.update()/.insert()/.page() 等所有方法
+// 2. 在该数据源上执行Query操作
+// 3. db.slave 同样支持 .select()/.update()/.insert()/.page() 等所有Method
 return db.slave.select("select 1")

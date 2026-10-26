@@ -30,15 +30,15 @@
 // 定义一个包含 sex（性别）和 name（姓名）的对象数组
 var list = [{
     sex : 0,        // 0 表示男
-    name : '小明'
+    name : 'Xiaoming'
 },{
     sex : 1,        // 1 表示女
-    name : '小花'
+    name : 'Xiaohua'
 }]
 
 // 第 2 步：使用 SQL 风格 LINQ 按条件过滤
 // select *：选择全部字段
 // from list t：数据源为 list 数组，别名 t
 // where t.sex = 0：只保留 sex 为 0（男性）的记录
-// 最终返回： [{sex:0, name:'小明'}]
+// 最终返回： [{sex:0, name:'Xiaoming'}]
 return select * from list t where t.sex = 0

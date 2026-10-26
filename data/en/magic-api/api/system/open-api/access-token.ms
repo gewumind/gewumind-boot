@@ -59,10 +59,10 @@ if (body != null && body.app_key != null && body.app_key != '') {
 }
 
 if (!ak || ak == '') {
-    exit 0, 'AppKey 不能为空'
+    exit 0, 'AppKey cannot be empty'
 }
 if (!sk || sk == '') {
-    exit 0, 'AppSecret 不能为空'
+    exit 0, 'AppSecret cannot be empty'
 }
 
 var result = openToken.createToken(ak, sk)

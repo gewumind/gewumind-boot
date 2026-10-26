@@ -15,13 +15,13 @@
   "enabled": true
 }
 ================================
-// Kafka 订阅示例
+// Kafka Subscription example
 // 收到 kafka demo-topic 主题消息时自动执行整个脚本
 // Set breakpoints in this file to debug
 
-print('[Kafka] 收到消息: ' + _message)
-print('[Kafka] 主题: ' + _topic)
+print('[Kafka] Message received:  ' + _message)
+print('[Kafka] Topic:  ' + _topic)
 print('[Kafka] Key: ' + _key)
 
 // Business logic
-print('[Kafka1111] 处理完成')
+print('[Kafka1111] Done')

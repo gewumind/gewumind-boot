@@ -26,10 +26,10 @@ var isNew = !id || id == ''
 
 if (isNew) {
     if (!app_name || app_name == '') {
-        exit 0, '应用名称不能为空'
+        exit 0, '应用名称cannot be empty'
     }
     if (!app_key || app_key == '') {
-        exit 0, 'AppKey 不能为空'
+        exit 0, 'AppKey cannot be empty'
     }
 }
 

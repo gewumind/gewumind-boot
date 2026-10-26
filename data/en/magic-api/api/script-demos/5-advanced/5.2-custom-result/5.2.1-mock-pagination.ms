@@ -28,10 +28,10 @@
 // 适用于需要前端分页组件（如 el-pagination）的场景
 
 // Step 1: import the response utility module
-// response 提供了 page()、json()、image()、download() 等返回结果的方法
+// response 提供了 page()、json()、image()、download() 等返回结果的Method
 import response
 
-// 第 2 步：准备分页数据（模拟数据，实际场景通常来自 db.select + 分页查询）
+// 第 2 步：准备分页数据（模拟数据，实际场景通常来自 db.select + 分页Query）
 var total = 5         // 模拟：数据总条数（实际应用中应使用 SELECT COUNT(*)）
 var list = [1, 2]     // 模拟：当前页的数据项列表
 

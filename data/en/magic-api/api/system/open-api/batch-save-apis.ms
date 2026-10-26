@@ -24,7 +24,7 @@
 ================================
 var appId = body.app_id
 if (appId == null || appId == '') {
-    exit 0, 'appId 不能为空'
+    exit 0, 'appId cannot be empty'
 }
 var items = body.items
 if (items == null || items.size() == 0) {

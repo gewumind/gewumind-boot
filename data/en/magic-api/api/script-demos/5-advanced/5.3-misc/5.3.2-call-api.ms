@@ -24,11 +24,11 @@
 ================================
 // ===== Purpose =====
 // 演示如何在 magic-script 中调用其他已注册的 HTTP 接口
-// 使用 import 语法按 HTTP 方法 + 路径导入已定义的接口并调用
-// 格式：import '@{HTTP方法}:{接口路径}' as {别名}
+// 使用 import 语法按 HTTP Method + 路径导入已定义的接口并调用
+// Format: import '@{HTTPMethod}:{接口路径}' as {别名}
 
 // 第 1 步：导入其他接口
-// '@get:/base/module/assert' 表示调用 GET 方法、路径为 /base/module/assert 的接口
+// '@get:/base/module/assert' 表示调用 GET Method、路径为 /base/module/assert 的接口
 // 被调用的接口必须是 magic-api 中已定义并注册的接口
 import '@get:/base/module/assert' as test
 

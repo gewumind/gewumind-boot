@@ -39,10 +39,10 @@
 import 'cn.dev33.satoken.stp.StpUtil';
 
 if (!title || title == '') {
-    exit 0, '消息标题不能为空'
+    exit 0, '消息标题cannot be empty'
 }
 if (!userIds || userIds == '') {
-    exit 0, '接收用户ID不能为空'
+    exit 0, '接收用户IDcannot be empty'
 }
 
 var ids = []
@@ -65,7 +65,7 @@ if (raw.startsWith('[') && raw.endsWith(']')) {
     ids.add(raw)
 }
 if (ids.getLength() == 0) {
-    exit 0, '接收用户ID不能为空'
+    exit 0, '接收用户IDcannot be empty'
 }
 
 var msgType = type

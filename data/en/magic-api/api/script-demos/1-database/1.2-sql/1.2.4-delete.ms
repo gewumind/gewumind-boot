@@ -42,7 +42,7 @@
 // This API accepts DELETE; parameter id (query param)
 // 使用 #{id} 作为参数占位符（类似 MyBatis），可防止 SQL 注入
 
-// 1. db.update() 接收一个 SQL 字符串
+// 1. db.update() Takes a SQL string
 // 2. #{id} 是参数占位符，框架会自动从同名变量或请求参数中取值并注入
 //    - 运行时生成 SQL：delete from magic_api_info where id = ?
 //    - 参数值会被安全地注入（PreparedStatement 方式）

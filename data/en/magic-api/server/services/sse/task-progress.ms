@@ -20,13 +20,13 @@
 // 持续进度推送请走 API：
 //   sseHelper.emitToClient(clientId, 'progress', '{"percent":50}')
 //   sseHelper.broadcastToPath('/progress', 'progress', '{"percent":50}')
-// 详见 api/数据演示/SSE演示/推送通知.ms
+// See api/script-demos/3-plugins/3.4-sse/3.4.1-push-notification.ms
 //
 // Enable:
 //   1. Config center: sse.enabled = true
 //   2. Restart the backend to apply
 //
-// 浏览器订阅示例：
+// 浏览器Subscription example：
 //   const es = new EventSource('/sse/progress')
 //   es.addEventListener('start', e => console.log('start:', e.data))
 //   es.addEventListener('progress', e => {
@@ -39,7 +39,7 @@
 
 // 初始化：客户端连上时立刻推 start 事件
 println('[Progress] 客户端订阅: ' + _clientId + ' @ ' + _path)
-println('[Progress] 当前 path 连接数: ' + sse.getConnectionCount(_path))
+println('[Progress] Current path Connections:  ' + sse.getConnectionCount(_path))
 
 sseHelper.emit(_clientId, 'start', '{"clientId":"' + _clientId + '","startTime":' + current_timestamp() + '}')
 println('[Progress] 已推送 start 事件')

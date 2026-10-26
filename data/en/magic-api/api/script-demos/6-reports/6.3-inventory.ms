@@ -32,14 +32,14 @@ var qtyMin = (body == null ? null : body.qtyMin)
 var qtyMax = (body == null ? null : body.qtyMax)
 
 var data = [
-    {code: 'SKU001', name: 'ThinkPad X1 Carbon', warehouse: 'Shanghai Warehouse', category: '电脑', qty: 25, price: 12999, status: 'on_sale', company: 'C001', dept: 'D001'},
-    {code: 'SKU002', name: 'MacBook Pro 14',    warehouse: 'Shanghai Warehouse', category: '电脑', qty: 18, price: 14999, status: 'on_sale', company: 'C001', dept: 'D001'},
-    {code: 'SKU003', name: 'Dell XPS 15',       warehouse: 'Shanghai Warehouse', category: '电脑', qty: 12, price: 13999, status: 'off_shelf', company: 'C001', dept: 'D001'},
-    {code: 'SKU004', name: 'iPhone 15 Pro',     warehouse: '北京仓', category: 'Phone', qty: 56, price: 8999,  status: 'on_sale', company: 'C002', dept: 'D101'},
-    {code: 'SKU005', name: '华为 Mate60 Pro',    warehouse: '北京仓', category: 'Phone', qty: 38, price: 6999,  status: 'on_sale', company: 'C002', dept: 'D101'},
-    {code: 'SKU006', name: '小米 14 Ultra',     warehouse: '广州仓', category: 'Phone', qty: 72, price: 6499,  status: 'on_sale', company: 'C003', dept: 'D201'},
-    {code: 'SKU007', name: 'iPad Pro 11',       warehouse: '广州仓', category: '电脑', qty: 33, price: 6799,  status: 'off_shelf', company: 'C003', dept: 'D201'},
-    {code: 'SKU008', name: 'Surface Pro 9',     warehouse: '深圳仓', category: '电脑', qty: 9,  price: 9888,  status: 'on_sale', company: 'C004', dept: 'D301'}
+    {code: 'SKU001', name: 'ThinkPad X1 Carbon', warehouse: 'Shanghai Warehouse', category: 'Computer', qty: 25, price: 12999, status: 'on_sale', company: 'C001', dept: 'D001'},
+    {code: 'SKU002', name: 'MacBook Pro 14',    warehouse: 'Shanghai Warehouse', category: 'Computer', qty: 18, price: 14999, status: 'on_sale', company: 'C001', dept: 'D001'},
+    {code: 'SKU003', name: 'Dell XPS 15',       warehouse: 'Shanghai Warehouse', category: 'Computer', qty: 12, price: 13999, status: 'off_shelf', company: 'C001', dept: 'D001'},
+    {code: 'SKU004', name: 'iPhone 15 Pro',     warehouse: 'Beijing Warehouse', category: 'Phone', qty: 56, price: 8999,  status: 'on_sale', company: 'C002', dept: 'D101'},
+    {code: 'SKU005', name: 'Huawei Mate60 Pro',    warehouse: 'Beijing Warehouse', category: 'Phone', qty: 38, price: 6999,  status: 'on_sale', company: 'C002', dept: 'D101'},
+    {code: 'SKU006', name: 'Xiaomi 14 Ultra',     warehouse: 'Guangzhou Warehouse', category: 'Phone', qty: 72, price: 6499,  status: 'on_sale', company: 'C003', dept: 'D201'},
+    {code: 'SKU007', name: 'iPad Pro 11',       warehouse: 'Guangzhou Warehouse', category: 'Computer', qty: 33, price: 6799,  status: 'off_shelf', company: 'C003', dept: 'D201'},
+    {code: 'SKU008', name: 'Surface Pro 9',     warehouse: '深圳仓', category: 'Computer', qty: 9,  price: 9888,  status: 'on_sale', company: 'C004', dept: 'D301'}
 ]
 
 data = data.map(item => {

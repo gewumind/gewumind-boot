@@ -49,5 +49,5 @@ mqtt.publish('demo/device/status', JSON.stringify({
 }))
 
 return {
-    message: 'MQTT 消息已发布。订阅监听请在 api/订阅/ 目录下的 .ms 文件中维护'
+    message: 'MQTT 消息已发布。订阅监听请在 api/订阅/ 目录下的 .ms File中维护'
 }

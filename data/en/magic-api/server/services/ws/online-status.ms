@@ -15,7 +15,7 @@
   "enabled": true
 }
 ================================
-// WebSocket Server 示例：在线状态追踪（带生命周期钩子）
+// WebSocket Server Example: online status tracking (with lifecycle hooks)
 // 客户端连 /ws/presence 后自动维护在线列表，下线自动移除
 //
 // Lifecycle variables (reserved names):
@@ -29,24 +29,24 @@
 // Test:
 //   python3 scripts/send_ws_msg.py ws://localhost:9089/ws/presence "hello"   (开 2 个终端)
 //
-// 配套查询 API：api/数据演示/WebSocket演示/基础操作.ms
+// 配套Query API：api/数据演示/WebSocket演示/基础操作.ms
 
 // ---------- 生命周期钩子（必须以 _onConnect / _onClose 命名）----------
 
 var _onConnect = (clientId, path) => {
-    println('[Presence] 用户上线: ' + clientId + ' @ ' + path)
+    println('[Presence] User online:  ' + clientId + ' @ ' + path)
     // 实际场景：写 db / 推送给其他人 / 更新在线计数
 }
 
 var _onClose = (clientId, path) => {
-    println('[Presence] 用户下线: ' + clientId + ' @ ' + path)
+    println('[Presence] User offline:  ' + clientId + ' @ ' + path)
     // 实际场景：清理 session / 通知好友 / 更新最后在线时间
 }
 
 // ---------- 业务逻辑 ----------
 
-println('[Presence] 收到消息: client=' + _clientId + ' msg=' + _message)
-println('[Presence] 当前 path ' + _path + ' 连接数: ' + ws.getConnectionCount(_path))
+println('[Presence] Message received:  client=' + _clientId + ' msg=' + _message)
+println('[Presence] Current path ' + _path + ' Connections:  ' + ws.getConnectionCount(_path))
 
 // 收到消息时回复 + 广播
 wsHelper.reply('Echo: ' + _message)

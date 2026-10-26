@@ -15,7 +15,7 @@
   "enabled": true
 }
 ================================
-// TCP Server 示例：Echo 服务（接收端）
+// TCP Server Example: Echo service (receiver)
 // 客户端连 tcp://<host>:9000 后发字节流，服务端执行此脚本。
 // 本脚本只做：1) 连接初始化；2) 接收字节 + 给当前连接 reply 回执。
 //
@@ -36,9 +36,9 @@
 // _message: 客户端发来的字节（已转字符串）
 // _clientId: 连接的唯一标识
 // _channel: 端口字符串（这里是 "9000"）
-println('[TCP Echo] 客户端连接: ' + _clientId + ' @ port ' + _channel)
-println('[TCP Echo] 收到数据: ' + _message)
-println('[TCP Echo] 当前 port ' + _channel + ' 连接数: ' + tcp.getConnectionCount(Integer.parseInt(_channel)))
+println('[TCP Echo] Client connected:  ' + _clientId + ' @ port ' + _channel)
+println('[TCP Echo] Data received:  ' + _message)
+println('[TCP Echo] Current port ' + _channel + ' Connections:  ' + tcp.getConnectionCount(Integer.parseInt(_channel)))
 
 // Reply to the current connection
 tcpHelper.reply('Echo: ' + _message + '\n')

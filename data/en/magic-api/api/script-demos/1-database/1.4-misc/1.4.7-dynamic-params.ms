@@ -24,7 +24,7 @@
 ================================
 /* 目的：演示 SQL 中的三种参数处理方式：#{} 占位符、${} 拼接、?{} 动态条件 */
 
-// 具体执行的 SQL 请看打印的运行日志信息
+// 具体执行的 SQL 请看打印的运行Log信息
 
 // 1. 定义一个数组 ids = ['1', '2', '3']
 var ids = ['1', '2', '3']
@@ -41,7 +41,7 @@ db.select("select * from magic_api_info where id = #{id} ")
 
 // ===== 方式三：?{} 动态条件判断 =====
 // ?{condition, expression} 当 condition 为 true 时拼接 expression
-// 类似 MyBatis 的 <if> 标签
+// 类似 MyBatis 的 <if> Tag
 // 此处：如果 name 有值（非空），则拼接 and api_name = #{name}
 // 等价于：select * from magic_api_info where id = '123' <if test="name != null and name != ''"> and api_name = #{name} </if>
 db.select("select * from magic_api_info where id = '123' ?{name, and api_name = #{name}}")

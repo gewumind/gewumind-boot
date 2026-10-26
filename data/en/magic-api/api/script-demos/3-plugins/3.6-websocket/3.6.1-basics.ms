@@ -83,5 +83,5 @@ return {
     broadcastSent: true,
     unicastTo: sentTo,
     sampleMessage: payload,
-    message: '已调用 ws.getConnectionCount / getClientIdsByPath / broadcastToPath / sendToClient 共 4 个方法'
+    message: '已调用 ws.getConnectionCount / getClientIdsByPath / broadcastToPath / sendToClient Total 4 个Method'
 }

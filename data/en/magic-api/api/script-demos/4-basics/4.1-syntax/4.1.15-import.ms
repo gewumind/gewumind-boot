@@ -28,10 +28,10 @@
 
 // ===== 1. 导入 log 模块 =====
 import log;
-// log 模块用于输出日志
+// log 模块用于输出Log
 // 导入后使用 log.info() / log.warn() / log.error()
-log.info("这是 info 日志");
-log.warn("这是 warn 日志");
+log.info("这是 info Log");
+log.warn("这是 warn Log");
 
 // ===== 2. 导入 http 模块（调用其他接口） =====
 import http;
@@ -42,7 +42,7 @@ import http;
 // ===== 3. 导入 request 模块（读取当前请求信息） =====
 import request;
 // request 模块用于获取当前 HTTP 请求的元数据
-var method = request.getMethod();    // 请求方法 GET/POST
+var method = request.getMethod();    // 请求Method GET/POST
 var ip = request.getIp();            // 客户端 IP
 
 // ===== 4. 导入 response 模块（自定义响应） =====
@@ -69,6 +69,6 @@ return {
     requestMethod: method,
     clientIp: ip,
     serverPort: port,
-    message: "各模块使用方法见注释"
+    message: "各模块使用Method见注释"
 };
 

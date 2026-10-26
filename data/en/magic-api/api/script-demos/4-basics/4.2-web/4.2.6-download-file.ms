@@ -23,4 +23,4 @@
 }
 ================================
 import response;
-return response.download('文件内容','test.txt');
+return response.download('File内容','test.txt');

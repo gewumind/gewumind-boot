@@ -254,24 +254,24 @@ var action = body.action
 if (action == 'getDefinition') {
     return {
     "processId": "purchase_v1",
-    "description": "采购申请：申请 → 部门经理 → CFO。",
+    "description": "Purchase request：申请 → 部门经理 → CFO。",
     "title": "{applicantName} 采购 {item} × {quantity}",
     "nodes": [
         {
             "id": "apply",
-            "label": "采购申请",
+            "label": "Purchase request",
             "type": "start",
             "role": "${initiator}"
         },
         {
             "id": "mgr_approve",
-            "label": "部门经理审批",
+            "label": "部门经理Approval",
             "type": "approve",
             "role": "dept_manager"
         },
         {
             "id": "cfo_approve",
-            "label": "CFO 审批",
+            "label": "CFO Approval",
             "type": "approve",
             "role": "cfo"
         },
@@ -297,7 +297,7 @@ if (action == 'getDefinition') {
     ],
     "forms": {
         "apply": {
-            "title": "采购申请",
+            "title": "Purchase request",
             "editable": [
                 "initiator"
             ],
@@ -341,28 +341,28 @@ if (action == 'getDefinition') {
             ]
         },
         "mgr_approve": {
-            "title": "部门经理审批",
+            "title": "部门经理Approval",
             "editable": [
                 "dept_manager"
             ],
             "fields": [
                 {
                     "name": "mgr_comment",
-                    "label": "审批意见",
+                    "label": "Approval意见",
                     "type": "textarea",
                     "required": true
                 }
             ]
         },
         "cfo_approve": {
-            "title": "CFO 审批",
+            "title": "CFO Approval",
             "editable": [
                 "cfo"
             ],
             "fields": [
                 {
                     "name": "cfo_comment",
-                    "label": "审批意见",
+                    "label": "Approval意见",
                     "type": "textarea",
                     "required": true
                 }

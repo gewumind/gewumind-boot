@@ -84,7 +84,7 @@ if(offices && permission == 1){
     }
 }
 if(id){
-    // 先删除数据库 后删除缓存 不然拦截器会请求查询数据库 查到的还是老数据
+    // 先删除数据库 后删除缓存 不然拦截器会请求Query数据库 查到的还是老数据
     var roleId = id
     cacheDelete()
 }

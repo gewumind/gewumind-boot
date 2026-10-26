@@ -27,11 +27,11 @@
 // magic-script 支持 SQL 风格的 LINQ 语法：select / from / where / group by / having / order by
 // 这种写法更接近 SQL，易于理解
 
-// 第 1 步：从数据库查询 API 分组 ID 列表作为数据源
-// db.select() 执行 SQL 查询，返回对象数组
+// 第 1 步：从数据库Query API 分组 ID 列表作为数据源
+// db.select() 执行 SQL Query，返回对象数组
 var list = db.select('select api_group_id from magic_api_info')
 
-// 第 2 步：使用 SQL 风格 LINQ 进行分组聚合查询
+// 第 2 步：使用 SQL 风格 LINQ 进行分组聚合Query
 // select：选择输出的字段
 // from：数据源（可以是变量、db.select() 结果等）
 // group by：按指定字段分组

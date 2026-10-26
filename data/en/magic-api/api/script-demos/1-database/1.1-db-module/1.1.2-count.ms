@@ -22,10 +22,10 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示使用 db.table() 进行 count 计数查询 */
+/* 目的：演示使用 db.table() 进行 count 计数Query */
 
-// .count() 用于查询表中的记录总数，相当于 SELECT count(*) FROM table
+// .count() 用于Query表中的记录总数，相当于 SELECT count(*) FROM table
 
 // 1. Target table: magic_api_info
-// 2. 调用 .count() 执行计数查询，返回整型数值
+// 2. 调用 .count() 执行计数Query，返回整型数值
 return db.table('magic_api_info').count()

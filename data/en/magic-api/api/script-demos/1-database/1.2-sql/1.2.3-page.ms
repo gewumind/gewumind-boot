@@ -49,15 +49,15 @@
   "responseBodyDefinition": null
 }
 ================================
-/* 目的：演示使用 db.page() 进行 SQL 分页查询 */
+/* 目的：演示使用 db.page() 进行 SQL 分页Query */
 
 /*
- * 关于分页相关配置：
+ * Pagination config: 
  * - 分页参数 page/size 默认从请求参数中获取
  * - 该接口接收 POST 请求，参数 page=1, size=5
  */
 
-// 1. 调用 db.page() 执行分页查询
+// 1. 调用 db.page() 执行分页Query
 // 2. 传入 SQL 语句作为参数（使用 """ 多行字符串）
 // 3. 框架自动从请求参数中获取 page 和 size
 // 4. 返回分页结果对象，包含 total（总记录数）和 list（当前页数据列表）

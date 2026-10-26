@@ -15,7 +15,7 @@
   "enabled": true
 }
 ================================
-// SSE Server 示例：在线状态追踪（带生命周期钩子）
+// SSE Server Example: online status tracking (with lifecycle hooks)
 // 浏览器 EventSource 订阅 /sse/presence 自动维护在线列表
 //
 // Lifecycle variables (reserved names):
@@ -32,23 +32,23 @@
 //   es.addEventListener('snapshot', e => console.log('online:', JSON.parse(e.data)))
 //   es.addEventListener('leave', e => console.log('leave:', e.data))
 //
-// 配套查询 API：api/数据演示/SSE演示/推送通知.ms
+// 配套Query API：api/数据演示/SSE演示/推送通知.ms
 
-// ---------- 生命周期钩子 ----------
+// ---------- Lifecycle hooks ----------
 
 var _onConnect = (clientId, path) => {
-    println('[Presence-SSE] 用户上线: ' + clientId + ' @ ' + path)
+    println('[Presence-SSE] User online:  ' + clientId + ' @ ' + path)
     // 实际场景：写 db / 推历史通知 / 更新在线列表
 }
 
 var _onClose = (clientId, path) => {
-    println('[Presence-SSE] 用户下线: ' + clientId + ' @ ' + path)
+    println('[Presence-SSE] User offline:  ' + clientId + ' @ ' + path)
     // 实际场景：清理 session / 通知其他在线用户 / 更新最后在线时间
 }
 
 // ---------- 业务逻辑：连接时下发当前状态快照 ----------
 
-println('[Presence-SSE] 客户端连接: ' + _clientId + ' @ ' + _path)
+println('[Presence-SSE] Client connected:  ' + _clientId + ' @ ' + _path)
 
 // 1. 推 welcome
 sseHelper.emit(_clientId, 'welcome', '{"clientId":"' + _clientId + '"}')

@@ -23,19 +23,19 @@
 // 系统消息推送（无 trigger）请走 API：
 //   wsHelper.broadcastToPath('/chat/room1', '{"msg":"系统消息"}')
 //   wsHelper.sendToClient(clientId, '{"type":"private"}')
-// 详见 api/数据演示/WebSocket演示/基础操作.ms
+// See api/script-demos/3-plugins/3.6-websocket/3.6.1-basics.ms
 //
 // Enable:
 //   1. Config center: ws.enabled = true
 //   2. Restart the backend to apply
 //
-// 测试（开 3 个终端）：
+// Test（开 3 个终端）：
 //   python3 send_ws_msg.py ws://localhost:9089/ws/chat/room1 "hello 1"
 //   python3 send_ws_msg.py ws://localhost:9089/ws/chat/room1 "hello 2"
 //   python3 send_ws_msg.py ws://localhost:9089/ws/chat/room2 "from room2"
 
 // 接收：_path 形如 /chat/room1，从 path 提取 room name
-println('[Chat] 收到消息: room-path=' + _path + ' client=' + _clientId + ' msg=' + _message)
+println('[Chat] Message received:  room-path=' + _path + ' client=' + _clientId + ' msg=' + _message)
 
 // 1. 从 path 提取 room（去掉 /chat/ 前缀）
 room = _path

@@ -281,13 +281,13 @@ if (action == 'getDefinition') {
         },
         {
             "id": "mgr_approve",
-            "label": "部门经理审批",
+            "label": "部门经理Approval",
             "type": "approve",
             "role": "dept_manager"
         },
         {
             "id": "hr_approve",
-            "label": "HR 审批",
+            "label": "HR Approval",
             "type": "approve",
             "role": "hr"
         },
@@ -325,16 +325,16 @@ if (action == 'getDefinition') {
                     "required": true,
                     "options": [
                         {
-                            "value": "年假",
-                            "label": "年假"
+                            "value": "Annual leave",
+                            "label": "Annual leave"
                         },
                         {
-                            "value": "事假",
-                            "label": "事假"
+                            "value": "Personal leave",
+                            "label": "Personal leave"
                         },
                         {
-                            "value": "病假",
-                            "label": "病假"
+                            "value": "Sick leave",
+                            "label": "Sick leave"
                         }
                     ]
                 },
@@ -365,28 +365,28 @@ if (action == 'getDefinition') {
             ]
         },
         "mgr_approve": {
-            "title": "部门经理审批",
+            "title": "部门经理Approval",
             "editable": [
                 "dept_manager"
             ],
             "fields": [
                 {
                     "name": "mgr_comment",
-                    "label": "审批意见",
+                    "label": "Approval意见",
                     "type": "textarea",
                     "required": true
                 }
             ]
         },
         "hr_approve": {
-            "title": "HR 审批",
+            "title": "HR Approval",
             "editable": [
                 "hr"
             ],
             "fields": [
                 {
                     "name": "hr_comment",
-                    "label": "审批意见",
+                    "label": "Approval意见",
                     "type": "textarea",
                     "required": true
                 }

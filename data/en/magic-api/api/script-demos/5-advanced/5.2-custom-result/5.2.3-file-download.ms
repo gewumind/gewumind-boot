@@ -23,19 +23,19 @@
 }
 ================================
 // ===== Purpose =====
-// 演示使用 response.download() 实现文件下载
-// 浏览器访问该接口时会触发文件下载，而不是直接显示内容
-// 适合导出文件（如 CSV、TXT、Excel）功能
+// 演示使用 response.download() 实现File下载
+// 浏览器访问该接口时会触发File下载，而不是直接显示内容
+// 适合ExportFile（如 CSV、TXT、Excel）功能
 
 // Step 1: import the response utility module
-// response 提供了 download() 方法，接受两个参数：
-//   参数1：文件内容（字符串或二进制数据）
-//   参数2：下载时的文件名（包含扩展名）
+// response 提供了 download() Method，接受两个参数：
+//   参数1：File内容（字符串或二进制数据）
+//   参数2：下载时的File名（包含扩展名）
 import response
 
-// 第 2 步：触发文件下载
-// response.download('中文测试', 'str.txt')
-//   - 浏览器将弹出下载对话框，默认文件名为 "str.txt"
-//   - 文件内容为 "中文测试"（UTF-8 编码）
-//   - 即使文件名包含中文，magic-api 也会正确处理编码
-return response.download('中文测试', 'str.txt')
+// 第 2 步：触发File下载
+// response.download('中文Test', 'str.txt')
+//   - 浏览器将弹出下载对话框，默认File名为 "str.txt"
+//   - File内容为 "中文Test"（UTF-8 编码）
+//   - 即使File名包含中文，magic-api 也会正确处理编码
+return response.download('中文Test', 'str.txt')

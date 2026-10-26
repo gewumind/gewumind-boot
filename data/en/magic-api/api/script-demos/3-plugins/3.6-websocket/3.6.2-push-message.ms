@@ -71,7 +71,7 @@
 //
 // Request body (JSON):
 //   {
-//     "clientId": "",           // 指定客户端，留空=广播
+//     "clientId": "",           // Target client (empty = broadcast)
 //     "path":     "/push",      // 广播目标 path
 //     "data":     "{...}"       // 消息内容
 //   }
@@ -81,7 +81,7 @@ payload = body.data ?: ''
 
 if (body.clientId != null && body.clientId.length() > 0) {
     ws.sendToClient(body.clientId, payload)
-    println('[WS Push] 已发送到 client=' + body.clientId)
+    println('[WS Push] Sent to client=' + body.clientId)
 } else {
     ws.broadcastToPath(targetPath, payload)
     println('[WS Push] Broadcast to path=' + targetPath)
