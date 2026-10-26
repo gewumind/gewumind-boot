@@ -11,6 +11,8 @@
 #   GW_PUSH_ALL       push-all.sh 路径（不设则只打印推送命令）
 #   GW_GITHUB_TOKEN   GitHub token（--publish 必需）
 #   GW_GITEE_TOKEN    Gitee token（--publish 必需）
+#   GW_SIGN_PRIVATE   签名私钥（v1.1.0+ 传 release-2026.private.key）
+#   GW_SIGN_PUBLIC    签名公钥（与私钥配对）
 #
 # 注意: 版本说明（--notes）必须是公开安全的；不要写内核源码/本地路径/密钥/凭据。
 set -euo pipefail
@@ -96,7 +98,11 @@ cp "$ROOT/gewumind-release.pub" "$DIST/"
 cp "$ROOT/gewumind-release-2026.pub" "$DIST/"
 ( cd "$DIST" && sha256sum "$NAME.zip" "$NAME.tar.gz" "gewumind-boot-$KVER.jar" > SHA256SUMS )
 if [[ -n "${GW_SIGN_ARTIFACT:-}" ]]; then
-  python3 "$GW_SIGN_ARTIFACT" "$DIST/SHA256SUMS"
+  if [[ -n "${GW_SIGN_PRIVATE:-}" && -n "${GW_SIGN_PUBLIC:-}" ]]; then
+    python3 "$GW_SIGN_ARTIFACT" "$DIST/SHA256SUMS" "$GW_SIGN_PRIVATE" "$GW_SIGN_PUBLIC"
+  else
+    python3 "$GW_SIGN_ARTIFACT" "$DIST/SHA256SUMS"
+  fi
 else
   echo "WARN: 未设置 GW_SIGN_ARTIFACT，SHA256SUMS 未签名" >&2
 fi
