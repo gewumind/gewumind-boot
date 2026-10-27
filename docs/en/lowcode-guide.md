@@ -132,11 +132,11 @@ This GIF shows the four steps: **open the endpoint → click the blank margin le
 number to set a breakpoint → open the debug info panel → press `Ctrl+Q`; the script stops at
 the breakpoint.**
 
-![Breakpoint debugging](screenshots/18-在线编程-接口.png)
+![Breakpoint debugging](screenshots/18-online-ide-api.png)
 
 The paused state (static view):
 
-![Debugging](screenshots/18-在线编程-接口.png)
+![Debugging](screenshots/18-online-ide-api.png)
 
 You can see:
 - A **red breakpoint dot** beside the line number; the current line is **highlighted** with a `>` marker
@@ -200,7 +200,7 @@ return list
 > requests from the real frontend** — exactly what you need when the problem is "what is the
 > frontend actually sending?".
 
-![Debug & listen](screenshots/18-在线编程-接口.png)
+![Debug & listen](screenshots/18-online-ide-api.png)
 
 **The problem it solves**
 
@@ -594,7 +594,7 @@ Reference: `component/系统设置/user/用户管理.ms` and `api/系统管理/�
 Pages are `.ms` component files (Vue SFCs) under `data/en/magic-api/component/<group>/<name>.ms`,
 registered as global components at startup. **Refresh to take effect — no frontend build.**
 
-![Components](screenshots/18g-在线编程-组件.png)
+![Components](screenshots/18g-online-ide-components.png)
 
 ### 7.1 The component library
 
@@ -979,7 +979,7 @@ Workflows model **multi-level approval**: leave, contract, purchase, reimburseme
 It's a **commercial capability** (`workflow.enabled`), but the runtime is entirely in-process —
 no external engine.
 
-![Workflow](screenshots/18f-在线编程-流程.png)
+![Workflow](screenshots/18f-online-ide-workflows.png)
 
 ### 9.1 Three parts
 
@@ -1236,7 +1236,7 @@ println('[Redis] channel: ' + _channel)
 Online programming → **Servers**. A server script runs **once on connection**; pushing data
 happens by calling the matching helper from an **endpoint**.
 
-![Servers](screenshots/18e-在线编程-服务.png)
+![Servers](screenshots/18e-online-ide-servers.png)
 
 **SSE**
 
@@ -1296,7 +1296,7 @@ Startup logs show registrations:
 Nine capabilities are licensed. See the [User Guide](user-guide.md#8--commercial-features-and-licensing)
 for licensing mechanics; this chapter covers the **scripting**.
 
-![Licensing panel](screenshots/02-配置中心.png)
+![Licensing panel](screenshots/02-configuration-center.png)
 
 ### 11.1 The nine capabilities
 
@@ -1320,7 +1320,7 @@ for licensing mechanics; this chapter covers the **scripting**.
 Every capability has runnable demos under
 **Online IDE → Api → Script Demos → Plugins**.
 
-![Demo scripts](screenshots/18-在线编程-接口.png)
+![Demo scripts](screenshots/18-online-ide-api.png)
 
 | Directory | Contents |
 |---|---|

@@ -32,7 +32,7 @@ and what breaks if you change it.
 
 Open `http://<server-ip>:9089`. Default account **`admin` / `123456`**.
 
-![Login](screenshots/00-登录页.png)
+![Login](screenshots/00-login.png)
 
 > **Change the default password immediately after the first sign-in.**
 
@@ -43,7 +43,7 @@ subtitle, background image and copyright text.
 
 ## 2 · Interface tour
 
-![Dashboard](screenshots/01-工作台.png)
+![Dashboard](screenshots/01-dashboard.png)
 
 | Area | Contents |
 |---|---|
@@ -58,7 +58,7 @@ subtitle, background image and copyright text.
 
 ### 3.1 Menu management
 
-![Menu management](screenshots/05-菜单管理.png)
+![Menu management](screenshots/05-menu-management.png)
 
 The navigation skeleton. **Menus decide who sees what and what they can click.**
 
@@ -85,7 +85,7 @@ The navigation skeleton. **Menus decide who sees what and what they can click.**
 
 ### 3.2 Icon management
 
-![Icon management](screenshots/06-图标管理.png)
+![Icon management](screenshots/06-icon-management.png)
 
 Maintains the icon library used by menu management and elsewhere. Search by name or class,
 preview, add and delete. Icons are IonIcons keys such as `AddOutline`.
@@ -95,14 +95,14 @@ preview, add and delete. Icons are IonIcons keys such as `AddOutline`.
 
 ### 3.3 Organisation
 
-![Organisation](screenshots/07-组织机构.png)
+![Organisation](screenshots/07-organizations.png)
 
 Maintains the company / department tree (`sys_office`). Select a node before adding a child —
 a user must belong to an organisation.
 
 ### 3.4 Role management
 
-![Role management](screenshots/04-角色管理.png)
+![Role management](screenshots/04-role-management.png)
 
 A role is a **set of permissions**. Order matters: **create role → tick permissions → assign to users.**
 
@@ -122,11 +122,11 @@ Three independent kinds:
 
 ### 3.5 User management
 
-![User management](screenshots/03-用户管理.png)
+![User management](screenshots/03-user-management.png)
 
 The "add user" form:
 
-![Add user](screenshots/03b-用户管理-新增用户.png)
+![Add user](screenshots/03b-user-management-add-user.png)
 
 | Action | Notes |
 |---|---|
@@ -141,7 +141,7 @@ Required: login name, password, name, organisation, role.
 
 ### 3.6 Data dictionary
 
-![Data dictionary](screenshots/08-数据字典.png)
+![Data dictionary](screenshots/08-data-dictionary.png)
 
 Central place for enumerations: `dict_type` defines a type (e.g. `order_status`), `dict_items`
 defines its options with `value` / `label` / `sort`.
@@ -156,7 +156,7 @@ touches historical rows.
 
 ### 3.7 Module management
 
-![Module management](screenshots/09-模块管理.png)
+![Module management](screenshots/09-module-management.png)
 
 Groups menus into modules and grants permissions per module.
 
@@ -165,13 +165,13 @@ Groups menus into modules and grants permissions per module.
 
 ### 3.8 Message management
 
-![Message management](screenshots/10-消息管理.png)
+![Message management](screenshots/10-message-management.png)
 
 In-app messages: announcements, to-dos, notifications.
 
 Sending a message:
 
-![Send message](screenshots/10b-消息管理-发送消息.png)
+![Send message](screenshots/10b-message-management-send-message.png)
 
 Pick recipients (searchable, multi-select), a title, a type, the body and an optional link.
 
@@ -187,7 +187,7 @@ The bell shows the unread count; clicking it opens the message centre.
 
 ### 3.9 Configuration Center
 
-![Configuration Center](screenshots/02-配置中心.png)
+![Configuration Center](screenshots/02-configuration-center.png)
 
 Runtime settings. Left: the settings list with a search box and a "restart system" button.
 Right: the licensing panel.
@@ -207,7 +207,7 @@ Each card shows name, key, current value and description, and offers a type-appr
 
 #### Switching the skin
 
-![Theme picker](screenshots/02-配置中心.png)
+![Theme picker](screenshots/02-configuration-center.png)
 
 Click the theme setting → 13 presets (Default Blue, Deep Ocean, Vivid Orange, Emerald, Romantic Purple,
 China Red, Minimal Grey, Sakura Pink, Amber Gold, Midnight Black, Aurora, Dawn Red, plus Custom).
@@ -219,20 +219,20 @@ Choosing "Custom" lets you pick any colour and the system generates a full theme
 
 ### 4.1 Online users
 
-![Online users](screenshots/11-在线用户.png)
+![Online users](screenshots/11-online-users.png)
 
 Live sessions, with the ability to **kick** a user (force logout). Useful when an account
 appears to be stuck.
 
 ### 4.2 Login log
 
-![Login log](screenshots/12-登录日志.png)
+![Login log](screenshots/12-login-logs.png)
 
 Every sign-in attempt: account, IP, time, success/failure. Use it to investigate suspicious access.
 
 ### 4.3 Operation log
 
-![Operation log](screenshots/13-操作日志.png)
+![Operation log](screenshots/13-operation-logs.png)
 
 Key write operations (create/update/delete) with operator, time, IP and affected rows. For auditing.
 
@@ -240,7 +240,7 @@ Key write operations (create/update/delete) with operator, time, IP and affected
 
 ### 4.4 Database monitoring
 
-![Database monitoring](screenshots/14-数据库监控.png)
+![Database monitoring](screenshots/14-database-monitoring.png)
 
 Druid console: datasource overview, active connections, slow SQL, sessions, statement stats.
 
@@ -255,13 +255,13 @@ Expose platform capabilities to third-party systems.
 
 ### 5.1 Applications
 
-![Applications](screenshots/15-开放接口-应用管理.png)
+![Applications](screenshots/15-open-api-applications.png)
 
 Each app holds its own `appKey` / `appSecret`. **The secret is shown in full only at creation.**
 
 ### 5.2 API authorisation
 
-![API authorisation](screenshots/16-开放接口-接口授权.png)
+![API authorisation](screenshots/16-open-api-authorization.png)
 
 Grant an app specific endpoints and rate limits. After authorisation the third party exchanges
 `appKey`/`appSecret` for a token, then calls the granted endpoints.
@@ -273,7 +273,7 @@ Third-party system ──credentials──▶ get token
 
 ### 5.3 Request log
 
-![Request log](screenshots/17-开放接口-访问记录.png)
+![Request log](screenshots/17-open-api-request-logs.png)
 
 Call history per app: endpoint, duration, result code, IP, time. Used for troubleshooting
 and rate-limit analysis.
@@ -286,37 +286,37 @@ The built-in low-code editor. A vertical tab bar on the left selects seven resou
 
 **Interfaces** — HTTP endpoint definitions
 
-![Interfaces](screenshots/18-在线编程-接口.png)
+![Interfaces](screenshots/18-online-ide-api.png)
 
 **Functions** — reusable script functions
 
-![Functions](screenshots/18b-在线编程-函数.png)
+![Functions](screenshots/18b-online-ide-functions.png)
 
 **Scheduled tasks** — cron-triggered scripts
 
-![Tasks](screenshots/18c-在线编程-定时任务.png)
+![Tasks](screenshots/18c-online-ide-scheduled-tasks.png)
 
 **Subscribers** — message consumers
 
-![Subscribers](screenshots/18d-在线编程-订阅.png)
+![Subscribers](screenshots/18d-online-ide-subscriptions.png)
 
 **Servers** — SSE / TCP / WebSocket
 
-![Servers](screenshots/18e-在线编程-服务.png)
+![Servers](screenshots/18e-online-ide-servers.png)
 
 **Workflows** — approval-flow definitions
 
-![Workflows](screenshots/18f-在线编程-流程.png)
+![Workflows](screenshots/18f-online-ide-workflows.png)
 
 **Components** — frontend dynamic components
 
-![Components](screenshots/18g-在线编程-组件.png)
+![Components](screenshots/18g-online-ide-components.png)
 
 #### Live debugging
 
 Open any interface and run it in the editor — **no restart, no redeploy**:
 
-![Live debugging](screenshots/18-在线编程-接口.png)
+![Live debugging](screenshots/18-online-ide-api.png)
 
 - Green **▶** or `Ctrl+Q` to run; results go to the bottom panel
 - `F8` resume breakpoint, `F6` step, `Alt+/` suggestions, `Ctrl+Alt+L` format, `Ctrl+E` recent
@@ -342,7 +342,7 @@ template / script / style). Saving takes effect on **refresh**.
 
 ### 7.1 Report examples
 
-![Report example](screenshots/19-报表示例.png)
+![Report example](screenshots/19-report-example.png)
 
 The "report examples" menu ships nine ready-made forms you can read the source of:
 list, cross-tab, Chinese-style grid, conditional formatting, nested detail, multi-sheet,
@@ -350,7 +350,7 @@ cross-row merge, grouped totals, extended header.
 
 ### 7.2 Workflow demos
 
-![Workflow demo](screenshots/18f-在线编程-流程.png)
+![Workflow demo](screenshots/18f-online-ide-workflows.png)
 
 Approval-flow examples: leave, contract, purchase and cross-department applications, plus a
 detail page — useful for understanding nodes, conditional branches and approver configuration.
@@ -366,7 +366,7 @@ There are two editions. The **basic** edition includes users, roles, menus, dict
 organisations, the magic-api low-code container, dynamic components and basic CRUD.
 Nine further capabilities are **commercial**.
 
-![Licensing panel](screenshots/02-配置中心.png)
+![Licensing panel](screenshots/02-configuration-center.png)
 
 > The Configuration Center lists each capability and its parameters. In the running app the
 > **licensing panel** sits on the right — edition, validity, unlocked capabilities, machine code
@@ -558,7 +558,7 @@ Or try it from a script: `return db.analytics.select('select 1')`.
 
 #### The three logo actions
 
-![Configuration Center](screenshots/02-配置中心.png)
+![Configuration Center](screenshots/02-configuration-center.png)
 
 | Action | Effect |
 |---|---|
@@ -618,7 +618,7 @@ Commercial capabilities. Enable the matching `*.enabled` switch and fill in `*.c
 | `sa-token.redis.enabled` | Shared login via Sa-Token Redis | Requires Redis first |
 | `workflow.enabled` | Workflow | On by default |
 
-![Redis and friends](screenshots/02-配置中心.png)
+![Redis and friends](screenshots/02-configuration-center.png)
 
 > ⚠️ These are **JSON** structures — click the setting for a structured editor.
 > Fields marked as passwords take no input to mean "leave unchanged". Save only after

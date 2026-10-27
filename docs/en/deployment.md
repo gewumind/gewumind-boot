@@ -120,7 +120,7 @@ See [3.5 Internationalization](#35-internationalization).
 
 Open `http://<server-ip>:9089` in a browser.
 
-![Login](screenshots/00-登录页.png)
+![Login](screenshots/00-login.png)
 
 Default account **`admin` / `123456`** — **change it immediately** in the user list.
 

@@ -6,9 +6,9 @@
 scripts, pages kept as component files, menus / roles / dictionaries / config all managed online.
 Three commands from clone to a fully working backend.
 
-![Dashboard](docs/en/screenshots/01-工作台.png)
+![Dashboard](docs/en/screenshots/01-dashboard.png)
 
-![Login](docs/en/screenshots/00-登录页.png)
+![Login](docs/en/screenshots/00-login.png)
 
 
 - Website: https://gewumind.github.io
@@ -120,6 +120,81 @@ scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.3/gewumind-boot-
 - If no key is passed, the script tries both.
 
 The kernel source is not included in the release.
+
+## 📸 Screenshots
+
+All captures come from a live instance running the English locale.
+
+### Dashboard
+
+| | |
+|---|---|
+| ![Dashboard](docs/en/screenshots/01-dashboard.png) | ![Login](docs/en/screenshots/00-login.png) |
+| **Dashboard** — stat cards, sales trend, activity feed | **Login** — configurable logo and theme |
+
+### System settings
+
+| | | |
+|---|---|---|
+| ![Configuration center](docs/en/screenshots/02-configuration-center.png) | ![User management](docs/en/screenshots/03-user-management.png) | ![Role management](docs/en/screenshots/04-role-management.png) |
+| **Configuration center** — runtime settings + license panel | **Users** — organization / roles / login state | **Roles** — menu, button and API grants |
+| ![Menu management](docs/en/screenshots/05-menu-management.png) | ![Icon management](docs/en/screenshots/06-icon-management.png) | ![Organizations](docs/en/screenshots/07-organizations.png) |
+| **Menus** — routes and permission codes | **Icons** — iconfont and uploaded libraries | **Organizations** — company / department tree |
+| ![Data dictionary](docs/en/screenshots/08-data-dictionary.png) | ![Module management](docs/en/screenshots/09-module-management.png) | ![Message management](docs/en/screenshots/10-message-management.png) |
+| **Dictionaries** — one place for enum values | **Modules** — licensed capabilities | **Messages** — notices, todos, system messages |
+
+<details>
+<summary><b>User management · add user</b></summary>
+
+![Add user](docs/en/screenshots/03b-user-management-add-user.png)
+
+</details>
+
+<details>
+<summary><b>Message management · send message</b></summary>
+
+![Send message](docs/en/screenshots/10b-message-management-send-message.png)
+
+</details>
+
+### System monitor
+
+| | | |
+|---|---|---|
+| ![Online users](docs/en/screenshots/11-online-users.png) | ![Login logs](docs/en/screenshots/12-login-logs.png) | ![Operation logs](docs/en/screenshots/13-operation-logs.png) |
+| **Online users** — sessions and force logout | **Login logs** — who signed in | **Operation logs** — who changed what |
+| ![Database monitor](docs/en/screenshots/14-database-monitoring.png) | | |
+| **Database monitor** — Druid pool and slow SQL | | |
+
+### Open API (gateway)
+
+| | | |
+|---|---|---|
+| ![Applications](docs/en/screenshots/15-open-api-applications.png) | ![Authorization](docs/en/screenshots/16-open-api-authorization.png) | ![Request logs](docs/en/screenshots/17-open-api-request-logs.png) |
+| **Applications** — appKey / appSecret | **Authorization** — per-app grants and rate limits | **Request logs** — third-party call history |
+
+### Low-code online IDE
+
+Seven tabs for seven kinds of editable resource — **changes take effect on save, no restart**.
+
+| | | |
+|---|---|---|
+| ![APIs](docs/en/screenshots/18-online-ide-api.png) | ![Functions](docs/en/screenshots/18b-online-ide-functions.png) | ![Scheduled tasks](docs/en/screenshots/18c-online-ide-scheduled-tasks.png) |
+| **APIs** — HTTP definition + script | **Functions** — shared reusable logic | **Tasks** — cron scheduling |
+| ![Subscribers](docs/en/screenshots/18d-online-ide-subscriptions.png) | ![Servers](docs/en/screenshots/18e-online-ide-servers.png) | ![Workflows](docs/en/screenshots/18f-online-ide-workflows.png) |
+| **Subscribers** — message consumers | **Servers** — SSE / TCP / WebSocket | **Workflows** — approval definitions |
+| ![Components](docs/en/screenshots/18g-online-ide-components.png) | | |
+| **Components** — dynamic frontend components (SFC) | | |
+
+### Reports
+
+| |
+|---|
+| ![Report example](docs/en/screenshots/19-report-example.png) |
+| **Report example** — monthly sales / inventory / budget vs actual |
+
+> Step-by-step usage lives in the [User Guide](docs/en/user-guide.md);
+> development and debugging in the [Low-code Guide](docs/en/lowcode-guide.md).
 
 ## About the frontend bundle
 
