@@ -159,12 +159,12 @@ All captures come from a live instance running the English locale.
 
 ### System monitor
 
-| | | |
-|---|---|---|
-| ![Online users](docs/en/screenshots/11-online-users.png) | ![Login logs](docs/en/screenshots/12-login-logs.png) | ![Operation logs](docs/en/screenshots/13-operation-logs.png) |
-| **Online users** — sessions and force logout | **Login logs** — who signed in | **Operation logs** — who changed what |
-| ![Database monitor](docs/en/screenshots/14-database-monitoring.png) | | |
-| **Database monitor** — Druid pool and slow SQL | | |
+| | |
+|---|---|
+| ![Online users](docs/en/screenshots/11-online-users.png) | ![Login logs](docs/en/screenshots/12-login-logs.png) |
+| **Online users** — sessions and force logout | **Login logs** — who signed in |
+| ![Operation logs](docs/en/screenshots/13-operation-logs.png) | ![Database monitor](docs/en/screenshots/14-database-monitoring.png) |
+| **Operation logs** — who changed what | **Database monitor** — Druid pool and slow SQL |
 
 ### Open API (gateway)
 
@@ -183,8 +183,11 @@ Seven tabs for seven kinds of editable resource — **changes take effect on sav
 | **APIs** — HTTP definition + script | **Functions** — shared reusable logic | **Tasks** — cron scheduling |
 | ![Subscribers](docs/en/screenshots/18d-online-ide-subscriptions.png) | ![Servers](docs/en/screenshots/18e-online-ide-servers.png) | ![Workflows](docs/en/screenshots/18f-online-ide-workflows.png) |
 | **Subscribers** — message consumers | **Servers** — SSE / TCP / WebSocket | **Workflows** — approval definitions |
-| ![Components](docs/en/screenshots/18g-online-ide-components.png) | | |
-| **Components** — dynamic frontend components (SFC) | | |
+
+| |
+|---|
+| ![Components](docs/en/screenshots/18g-online-ide-components.png) |
+| **Components** — dynamic frontend components (SFC) |
 
 ### Reports
 
