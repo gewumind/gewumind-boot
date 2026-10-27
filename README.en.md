@@ -193,6 +193,13 @@ Seven tabs for seven kinds of editable resource — **changes take effect on sav
 | ![Report example](docs/en/screenshots/19-report-example.png) |
 | **Report example** — monthly sales / inventory / budget vs actual |
 
+### Walkthroughs (GIF)
+
+| | | |
+|---|---|---|
+| ![Login](docs/en/screenshots/gif/01-login.gif) | ![Add user](docs/en/screenshots/gif/03-user-management-add-user.gif) | ![Browse the API tree](docs/en/screenshots/gif/04-online-ide-api-tree.gif) |
+| Login | Add a user | Browse the API tree |
+
 > Step-by-step usage lives in the [User Guide](docs/en/user-guide.md);
 > development and debugging in the [Low-code Guide](docs/en/lowcode-guide.md).
 
