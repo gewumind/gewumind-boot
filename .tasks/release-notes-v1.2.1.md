@@ -12,7 +12,8 @@
 - **登录验证码开关**：登录接口直读 `sys_configure`，避免 `configure()` 缓存导致开关与实际不一致。
 - 英文版同步上述修复（`data/en/magic-api` 对应菜单、配置中心）。
 
-- 配置中心缺少 SSO 配置项：补齐 `sso.enable`（启用开关）与 `sso.config`（JSON 参数），中英文库同步。
+- **SSO 配置**：配置中心补齐 `sso.enable`/`sso.config`（中英文库同步）；「角色」改为下拉（server/client/both）；`sso.config` 带完整默认值（含「返回按钮文本」），不再是空值/`{}`。
+- **返回应用中心按钮**：SSO 客户端模式（role=client）下顶部显示「返回应用中心」按钮（位于消息按钮之前）；有 `server-url` 时跳转该地址，否则回 `/`；按钮文案可在配置中心修改。
 
 - 配置中心保存报「系统内部出现错误」：保存接口由读取 `data` 改为 `body`，中英文同步修复。
 
@@ -40,7 +41,8 @@
 - **Login captcha switch**: the login API reads `sys_configure` directly to avoid stale `configure()` cache.
 - Mirror the same fixes to the English dataset (`data/en/magic-api`).
 
-- Configuration center was missing the SSO items: added `sso.enable` and `sso.config` (JSON) for both zh/en datasets.
+- **SSO configuration**: added `sso.enable` / `sso.config` in the configuration center (zh/en). Role is now a dropdown (server/client/both); `sso.config` ships with full defaults (including the return-button text) instead of empty/`{}`.
+- **Return to App Center button**: in SSO client mode (role=client) the header shows a "Return to App Center" button before the message bell; it opens `server-url` when set, otherwise `/`. The text is configurable in the configuration center.
 
 - Configuration center save returned an error: save API now reads from `body` (was `data`), zh/en fixed.
 
