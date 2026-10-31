@@ -205,3 +205,4 @@ UPDATE magic_api_info SET api_name='Order Details', description='Order details e
 UPDATE magic_api_info SET api_name='Sales Summary Report', description='Sales summary report endpoint' WHERE api_path='/api/report/sales';
 UPDATE sys_configure SET configure_name='Enable SSO', configure_desc_ribe='Enable single sign-on, true/false' WHERE configure_key='sso.enable';
 UPDATE sys_configure SET configure_name='SSO configuration', configure_desc_ribe='SSO JSON params' WHERE configure_key='sso.config';
+UPDATE sys_configure SET configure_value='{"role": "client", "server-url": "", "client-id": "", "client-secret": "", "redirect-uri": "", "username-mapping": "auto", "default-role": "", "return-button-text": "Return to App Center"}', configure_name='SSO configuration', configure_desc_ribe='SSO JSON params' WHERE configure_key='sso.config';
