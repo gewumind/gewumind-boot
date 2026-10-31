@@ -228,20 +228,20 @@
 ================================
 import org.ssssssss.magicapi.modules.db.cache.SqlCache
 
-if (data.configureKey != null) {
-    SqlCache.delete(`configure:${data.configureKey}${data.configureCondition}`)
-    SqlCache.delete(`configure:${data.configureKey}`)
+if (body.configureKey != null) {
+    SqlCache.delete(`configure:${body.configureKey}${body.configureCondition}`)
+    SqlCache.delete(`configure:${body.configureKey}`)
 }
 
-if (data.id != null) {
-    var cv = data.configureValue == null ? '' : data.configureValue
-    var sql = "update sys_configure set configure_value = '" + cv.replace("\\", "\\\\").replace("'", "''") + "', update_date = NOW() where id = '" + data.id + "'"
+if (body.id != null) {
+    var cv = body.configureValue == null ? '' : body.configureValue
+    var sql = "update sys_configure set configure_value = '" + cv.replace("\\", "\\\\").replace("'", "''") + "', update_date = NOW() where id = '" + body.id + "'"
     return db.update(sql)
 }
 
-if (data.configureType == null) { data.configureType = '0' }
-if (data.configureName == null) { data.configureName = '' }
-if (data.configureCondition == null) { data.configureCondition = '' }
-if (data.configureDescRibe == null) { data.configureDescRibe = '' }
-if (data.remarks == null) { data.remarks = '' }
-return db.table('sys_configure').primary('id').withBlank().save(data)
+if (body.configureType == null) { body.configureType = '0' }
+if (body.configureName == null) { body.configureName = '' }
+if (body.configureCondition == null) { body.configureCondition = '' }
+if (body.configureDescRibe == null) { body.configureDescRibe = '' }
+if (body.remarks == null) { body.remarks = '' }
+return db.table('sys_configure').primary('id').withBlank().save(body)

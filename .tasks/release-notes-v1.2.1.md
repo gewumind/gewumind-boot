@@ -14,6 +14,8 @@
 
 - 配置中心缺少 SSO 配置项：补齐 `sso.enable`（启用开关）与 `sso.config`（JSON 参数），中英文库同步。
 
+- 配置中心保存报「系统内部出现错误」：保存接口由读取 `data` 改为 `body`，中英文同步修复。
+
 ### 升级说明
 
 - 版本：应用 **1.2.1**，内核 **0.3.4**，开发技能 **1.2.1**（同一 tag）。
@@ -39,6 +41,8 @@
 - Mirror the same fixes to the English dataset (`data/en/magic-api`).
 
 - Configuration center was missing the SSO items: added `sso.enable` and `sso.config` (JSON) for both zh/en datasets.
+
+- Configuration center save returned an error: save API now reads from `body` (was `data`), zh/en fixed.
 
 ### Upgrade notes
 
