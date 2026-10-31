@@ -1,0 +1,1 @@
+import{a as _0x281e5f,o as _0x2a3023,c as _0x2d710c,m as _0x260710}from'./index-41784089.js';const m={'__name':'mb-vue-init-template','setup'(_0x336c57){const _0x2127ae=_0x281e5f('hello\x20magic-boot');return(_0x29c845,_0x211cf5)=>(_0x2a3023(),_0x2d710c('div',null,_0x260710(_0x2127ae['value']),0x1));}};export{m as default};
