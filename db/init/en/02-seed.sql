@@ -203,3 +203,5 @@ UPDATE magic_api_info SET api_name='Deduct Inventory', description='Deduct inven
 UPDATE magic_api_info SET api_name='User Details', description='User details endpoint' WHERE api_path='/api/user/detail';
 UPDATE magic_api_info SET api_name='Order Details', description='Order details endpoint' WHERE api_path='/api/order/detail';
 UPDATE magic_api_info SET api_name='Sales Summary Report', description='Sales summary report endpoint' WHERE api_path='/api/report/sales';
+UPDATE sys_configure SET configure_name='Enable SSO', configure_desc_ribe='Enable single sign-on, true/false' WHERE configure_key='sso.enable';
+UPDATE sys_configure SET configure_name='SSO configuration', configure_desc_ribe='SSO JSON params' WHERE configure_key='sso.config';

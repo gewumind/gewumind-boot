@@ -233,6 +233,8 @@ CREATE TABLE `sys_configure` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='配置中心';
 -- Records of `sys_configure`
+INSERT INTO `sys_configure` VALUES ('22cb1171-525a-4606-a069-db9f06bde21d','false','sso.enable','启用单点登录SSO',NULL,'1','启用单点登录，true/false',150,0,'1','2026-10-31 00:00:00',NULL,NULL,NULL);
+INSERT INTO `sys_configure` VALUES ('0c6db580-ba7e-4a92-b371-2dad1f7fc886','{}','sso.config','单点登录配置',NULL,'1','SSO 参数 JSON',151,0,'1','2026-10-31 00:00:00',NULL,NULL,NULL);
 INSERT INTO `sys_configure` VALUES ('298724cd-7f6a-11f1-9c0c-463b4ec12c31','© 2026 GewuMind-Boot','system.login.copyright','登录页版权',NULL,'1','登录页底部版权信息',33,0,'1','2026-07-14 17:55:36',NULL,NULL,NULL);
 INSERT INTO `sys_configure` VALUES ('60c9d339-7f28-11f1-9c0c-463b4ec12c31','GewuMind Boot','system.name','系统名称','','0','系统显示名称，显示在登录页和侧栏顶部',10,0,'1','2026-07-14 10:04:42','1','2026-07-15 09:09:10','');
 INSERT INTO `sys_configure` VALUES ('6e5681c8-7feb-11f1-9c0c-463b4ec12c31','false','system.module.enable','启用模块管理',NULL,'1','是否启用模块分组功能，true/false',140,0,'1','2026-07-15 09:20:57',NULL,'2026-07-24 13:21:18',NULL);
