@@ -114,7 +114,7 @@
   }
 }
 ================================
-return db.page("""
+return db.select("""
     select id,configure_condition,configure_key,configure_value,configure_name,configure_type,configure_desc_ribe,sort_order,remarks,create_date from sys_configure
     where is_del = 0
     ?{configureCondition, and configure_condition like concat('%',#{configureCondition},'%')}
