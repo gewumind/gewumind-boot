@@ -1,1 +1,0 @@
-import{_ as _0x4d7979,o as _0x4cb99c,c as _0x456bc6}from'./index-2b7b04c6.js';const o={};function t(_0x4d5c0e,_0x5dc26f){return _0x4cb99c(),_0x456bc6('div',null,'开发中');}const a=_0x4d7979(o,[['render',t]]);export{a as default};
