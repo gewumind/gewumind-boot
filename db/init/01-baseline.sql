@@ -1243,6 +1243,9 @@ INSERT INTO `sys_menu` VALUES ('4fc65edbe0544c369b58fdfed1523537','4a57f57fc7324
 INSERT INTO `sys_menu` VALUES ('52702cf956f847e8a2d045f66eb6bfee','fdbdcf8b8d674ae38154bc1e57498a91','','','踢人','','online:logout',10,'0',0,'1','2022-03-16 08:16:35',NULL,NULL,1,0);
 INSERT INTO `sys_menu` VALUES ('546c874267514672844cd3a019e468f7','c5f407478c4e4c9cbcdbee6389d2c909','','','删除','','dict:delete',20,'0',0,'1','2020-11-11 14:11:38','1','2021-04-30 21:37:22',1,0);
 INSERT INTO `sys_menu` VALUES ('5739cfec-9710-4d05-93a0-6f88ae1846e6','b1851d1b13594e71840103c11a37a669','sub-level','','模块管理','/system/module/module-list','',80,'0',0,'1','2026-07-13 16:23:35','1','2026-07-13 16:27:27',1,1);
+INSERT INTO `sys_menu` VALUES ('sso-menu-001','b1851d1b13594e71840103c11a37a669','SettingsOutline','','SSO 管理','/system/sso/sso-list','',85,'0',0,'1','2026-10-31 00:00:00',NULL,NULL,1,1);
+INSERT INTO `sys_menu` VALUES ('sso-btn-save','sso-menu-001','','','保存','','sso:save',1,'0',0,'1','2026-10-31 00:00:00',NULL,NULL,0,0);
+INSERT INTO `sys_menu` VALUES ('sso-btn-delete','sso-menu-001','','','删除','','sso:delete',2,'0',0,'1','2026-10-31 00:00:00',NULL,NULL,0,0);
 INSERT INTO `sys_menu` VALUES ('5739cfec-9710-4d05-93a0-6f88ae1846e7','5739cfec-9710-4d05-93a0-6f88ae1846e6','','','查看','','module:view',30,'0',0,'1','2026-07-13 16:32:59','1','2026-07-13 16:32:59',1,0);
 INSERT INTO `sys_menu` VALUES ('5739cfec-9710-4d05-93a0-6f88ae1846e8','5739cfec-9710-4d05-93a0-6f88ae1846e6','','','保存','','module:save',10,'0',0,'1','2026-07-13 16:32:59','1','2026-07-13 16:32:59',1,0);
 INSERT INTO `sys_menu` VALUES ('5739cfec-9710-4d05-93a0-6f88ae1846e9','5739cfec-9710-4d05-93a0-6f88ae1846e6','','','删除','','module:delete',20,'0',0,'1','2026-07-13 16:32:59','1','2026-07-13 16:32:59',1,0);
