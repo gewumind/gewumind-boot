@@ -11,7 +11,7 @@
 #   GW_PUSH_ALL       push-all.sh 路径（不设则只打印推送命令）
 #   GW_GITHUB_TOKEN   GitHub token（--publish 必需）
 #   GW_GITEE_TOKEN    Gitee token（--publish 必需）
-#   GW_SIGN_PRIVATE   签名私钥（v1.1.0+ 传 release-2026.private.key）
+#   GW_SIGN_PRIVATE   签名私钥文件路径（v1.1.0+ 传私钥文件）
 #   GW_SIGN_PUBLIC    签名公钥（与私钥配对）
 #
 # 注意: 版本说明（--notes）必须是公开安全的；不要写内核源码/本地路径/密钥/凭据。
