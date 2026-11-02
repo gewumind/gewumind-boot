@@ -1,0 +1,1 @@
+import{_ as _0x43276c,o as _0x55d3ae,c as _0x1261b0}from'./index-89dbff55.js';const o={};function t(_0x1559c3,_0x50fa5f){return _0x55d3ae(),_0x1261b0('div',null,'开发中');}const a=_0x43276c(o,[['render',t]]);export{a as default};
