@@ -424,7 +424,7 @@ bash stop.sh                                # 1. stop first — see the warning
 cp -r data data-backup-$(date +%F)           # 2. back up the low-code workspace
 mysqldump -uroot -p gewumind-boot > db-backup-$(date +%F).sql   # 3. back up the DB
 
-tar -xzf gewumind-boot-app-1.2.0.tar.gz     # 4. unpack the new version
+tar -xzf gewumind-boot-app-1.2.2.tar.gz     # 4. unpack the new version
 #    carry over config/application.yml, especially the datasource and password
 
 bash start.sh --profile online              # 5. start
@@ -441,6 +441,9 @@ bash start.sh --profile online              # 5. start
 
 New baseline scripts ship in `db/` (e.g. `02-xxx.sql`); apply them manually. Baseline scripts
 are **idempotent** (`CREATE TABLE IF NOT EXISTS` / `INSERT ... ON DUPLICATE`), so re-running is safe.
+
+> **1.2.1 → 1.2.2**: run `db/init/upgrade-1.2.2.sql` (idempotent) to add the config-center entries
+> "system subtitle" and "sidebar width". Fresh installs already include them in `01-baseline.sql`.
 
 > **Keep business and platform baselines separate**: `01-baseline.sql` is a platform asset and is
 > replaced wholesale on upgrade. Business schema/seed data belongs in `db/init/02-<business>.sql`,

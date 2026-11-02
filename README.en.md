@@ -112,7 +112,7 @@ Stop with `bash scripts/stop.sh`. Change the port with `SERVER_PORT=9090 bash sc
 Every released kernel binary (`libs/`) ships with a detached Ed25519 signature:
 
 ```bash
-scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.3/gewumind-boot-0.3.3.jar
+scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.5/gewumind-boot-0.3.5.jar
 ```
 
 - v1.1.0+: `gewumind-release-2026.pub`
@@ -289,7 +289,7 @@ The frontend bundle is committed, so nothing extra is needed for local developme
 
 ```
 gewumind-boot/
-├── pom.xml                    # depends on com.gewumind:gewumind-boot:0.3.3
+├── pom.xml                    # depends on com.gewumind:gewumind-boot:0.3.5
 ├── libs/                      # kernel thin jar (standard Maven layout, committed)
 ├── src/main/java/com/gewumind/app/
 │   ├── GewuMindBootApp.java   # bootstrap class

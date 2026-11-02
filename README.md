@@ -108,7 +108,7 @@ bash scripts/start.sh
 每次发布的内核二进制（`libs/`）都带 Ed25519 分离签名：
 
 ```bash
-scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.3/gewumind-boot-0.3.3.jar
+scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.5/gewumind-boot-0.3.5.jar
 ```
 
 - v1.1.0+：`gewumind-release-2026.pub`
@@ -302,7 +302,7 @@ bash scripts/build-dist.sh    # → dist/gewumind-boot-app-<版本>.tar.gz + .zi
 
 ```
 gewumind-boot/
-├── pom.xml                    # 依赖 com.gewumind:gewumind-boot:0.3.3
+├── pom.xml                    # 依赖 com.gewumind:gewumind-boot:0.3.5
 ├── libs/                      # 内核 thin jar（标准 Maven 仓库布局，随工程入库）
 ├── src/main/java/com/gewumind/app/
 │   ├── GewuMindBootApp.java   # 启动类
