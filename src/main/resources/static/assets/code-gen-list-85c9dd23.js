@@ -1,1 +1,0 @@
-import{_ as _0x187e3f,o as _0x1e1a19,c as _0x2b3eaa}from'./index-e7066b7c.js';const o={};function t(_0x54594c,_0x20027a){return _0x1e1a19(),_0x2b3eaa('div',null,'开发中');}const a=_0x187e3f(o,[['render',t]]);export{a as default};
