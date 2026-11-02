@@ -51,6 +51,13 @@ spring:
         url-pattern: /*
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 
+# 开发环境缩短 SQL 结果缓存，避免改脚本后仍读到旧结果；
+# 脚本热加载：改完 .ms 后调用 POST /system/magic-api/reload（需登录），无需重启。
+# Short SQL cache in dev; hot-reload scripts via POST /system/magic-api/reload.
+magic-api:
+  cache:
+    ttl: 5000
+
 app:
   # 开发便利：自动签发 + 允许自助签发
   # Developer convenience: auto-issue + self-service allowed

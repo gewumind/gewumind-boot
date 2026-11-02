@@ -189,7 +189,8 @@ import cn.hutool.http.useragent.UserAgent
 import cn.dev33.satoken.secure.SaSecureUtil
 
 UserAgent ua = UserAgentUtil.parse(request.getHeaders("User-Agent")[0])
-if(configure('verification-code.enable') == 'true'){
+var vcRow = db.selectOne("select configure_value from sys_configure where configure_key = 'verification-code.enable'")
+if(vcRow != null && vcRow.get("configureValue") == 'true'){
     var loginCode = body.code
     var loginUuid = body.uuid
     var ctList = request.getHeaders("Content-Type")

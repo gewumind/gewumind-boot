@@ -20,9 +20,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * {@code static/} 会覆盖内核 jar 里的同名资源（内核 jar 安装时已剔除这些文件，
  * 见 {@code scripts/install-gewumind-dep.sh}）。
  *
-* <p>内核修掉了 SSO 的重复映射（删除空壳 Controller），但连带丢了 {@code /sso/login}
- * 与 {@code /sso/logout} —— 这两个端点目前由本工程
- * {@link com.gewumind.app.sso.SsoClientEntryController} 提供，不要删。
+ * <p>SSO 入口：{@code /sso/login}、{@code /sso/logout} 自内核 0.3.4 起由内核
+ * {@code com.gewumind.boot.sso.SsoClientEntryController} 提供。本工程<b>不要</b>再放
+ * 同名 Controller，否则两边都映射 {@code /sso} 会触发 Ambiguous mapping、应用起不来。
  */
 @SpringBootApplication(scanBasePackages = {"com.gewumind.app", "com.gewumind"})
 public class GewuMindBootApp {

@@ -9,6 +9,7 @@ Full documentation for GewuMind Boot. Pick your entry point by role:
 | I want to… | Read |
 |---|---|
 | **Deploy it** (download, database, platforms, HTTPS, upgrade, backup) | [Deployment](./deployment.md) |
+| **Match versions / upgrade paths** (app, kernel, skill, database, license) | [Version matrix](./release-matrix.md) |
 | **Understand every menu / system setting / licensing** | [User Guide](./user-guide.md) |
 | **Build features with low-code** (APIs, pages, live debugging, reports, workflows) | [Low-code Guide](./lowcode-guide.md) |
 | **Do secondary development** (source builds, extension points) | [Development Guide](./development.md) |
@@ -29,6 +30,7 @@ bash start.sh                          # auto-creates schema on first run
 ```
 docs/
 ├── README.md          ← you are here
+├── release-matrix.md  app / kernel / skill / license matrix
 ├── zh/                Chinese docs
 │   ├── 部署指南.md · 使用手册.md · 低代码开发教程.md
 │   └── 二次开发指南.md · AI开发.md · 架构说明.md

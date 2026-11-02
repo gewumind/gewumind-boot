@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-MANIFEST="${1:-$ROOT/libs/com/gewumind/gewumind-boot/0.3.4/kernel-manifest.json}"
+MANIFEST="${1:-$ROOT/libs/com/gewumind/gewumind-boot/0.3.5/kernel-manifest.json}"
 DIR="$(cd "$(dirname "$MANIFEST")" && pwd)"
 MANIFEST="$DIR/$(basename "$MANIFEST")"
 

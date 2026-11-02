@@ -141,6 +141,28 @@
 }
 ================================
 import org.ssssssss.magicapi.modules.db.cache.SqlCache
+// #3: before deleting a menu, check the permission codes carried by it (and its children).
+// sys_menu.permission is the only source of `authorities`; if a code is carried only by the
+// menu being deleted, related options.permission APIs will immediately return 403.
+var targetIds = [id]
+var collectIds = (pid) => {
+    var children = db.select("select id from sys_menu where is_del = 0 and pid = #{pid}")
+    if (children && children.size() > 0) {
+        children.forEach(c => { targetIds.add(c.id); collectIds(c.id) })
+    }
+}
+collectIds(id)
+var idList = targetIds.map(x => "'" + x + "'").join(",")
+var permRows = db.select("select distinct permission from sys_menu where is_del = 0 and permission != '' and permission is not null and id in (" + idList + ")")
+var lostPerms = []
+permRows.forEach(p => {
+    var code = p.permission
+    var otherCount = db.selectInt("select count(1) from sys_menu where is_del = 0 and permission = #{code} and id not in (" + idList + ")")
+    if (otherCount == 0) { lostPerms.add(code) }
+})
+if (lostPerms.size() > 0) {
+    throw new Error("This menu carries permission code(s) [" + lostPerms.join(", ") + "]; deleting it will make related APIs inaccessible. Move the code(s) to another menu (e.g. a hidden menu with is_show=0) first.")
+}
 var userIds = db.select("""
     select user_id from sys_user_role where role_id in (
         select role_id from sys_role_menu where menu_id = #{id}

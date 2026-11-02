@@ -726,10 +726,31 @@ var layoutMenus = []
 nodes.each((key, node) => {
     if(node.pid == '0'){
         if(node.component != 'Layout'){
+            // #4: build a complete virtual parent for a top-level leaf menu.
+            // Derive title/path from the URL prefix (two segments: /vehicle/overview -> /vehicle)
+            // so consuming clients never render an empty group without title/path.
+            // Keep no id (module lookup still uses children[0]) and no alwaysShow (frontend flattening).
+            var segs = ('' + (node.path || '')).split("/").filter(s => s != "")
+            var vPath = (segs.length >= 2 ? "/" + segs[0] : (node.path || "/"))
+            var vTitle = node.title || (segs[0] || "Menu")
             node = {
-                icon: node.icon,
+                title: vTitle,
+                pid: "0",
                 isShow: 1,
+                url: vPath,
+                icon: node.icon,
+                keepAlive: 0,
+                componentName: "",
+                openMode: "0",
                 component: 'Layout',
+                path: vPath,
+                meta: {
+                    title: vTitle,
+                    icon: node.icon,
+                    keepAlive: false,
+                    openMode: "0",
+                    path: vPath
+                },
                 redirect: node.path,
                 children: [node]
             }

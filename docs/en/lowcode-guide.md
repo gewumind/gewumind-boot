@@ -1611,6 +1611,53 @@ engine, modules and syntax live in the magic-api documentation — this project 
 
 ---
 
+## 15. Common pitfalls (magic-api / magic-script)
+
+### 15.1 Three ways to paginate
+
+The explicit second/third arguments of `db.page` are **limit / offset**, not page / size:
+
+```js
+// 1) Auto: read current/size from query/form and (GewuMind enhancement) JSON body
+return db.page("select * from t_order where is_del = 0")
+
+// 2) Explicit limit / offset (NOT page/size!)
+var size = body.size == null ? 10 : body.size
+var current = body.current == null ? 1 : body.current
+return db.page("select * from t_order where is_del = 0", size, (current - 1) * size)
+
+// 3) Custom count SQL
+return db.page("select count(1) from t_order where is_del = 0",
+               "select * from t_order where is_del = 0")
+```
+
+> Common misuse: `db.page(sql, current, size)` treats `current` as limit and `size` as offset, which looks like "pagination is broken". To page by number, use `db.page(sql, size, (current - 1) * size)`.
+
+### 15.2 Script changes not taking effect? Reload manually
+
+magic-api 2.2.2 has no file watcher. After editing a `.ms` file, call the reload endpoint (no restart):
+
+```bash
+curl -X POST http://<host>:<port>/system/magic-api/reload -H "token: <your token>"
+```
+
+In development you can also shorten the SQL result cache (`application-dev.yml`):
+
+```yaml
+magic-api:
+  cache:
+    ttl: 5000
+```
+
+### 15.3 magic-script notes
+
+- `i` is a reserved word (imaginary unit); use `k` / `j` / `idx` for loop variables.
+- There is no `String(x)` / `Number(x)` function: use `'' + x` to stringify; numbers are already numbers after JSON parsing.
+- Use `s.length()` (method) for string length, not `s.length` (property).
+- `String.replace` is literal (Java `replace`); for regex use `replaceAll`, or handle it with `split`.
+
+---
+
 ## Related documents
 
 | Document | Contents |

@@ -131,6 +131,28 @@
 }
 ================================
 import org.ssssssss.magicapi.modules.db.cache.SqlCache
+// 1.2.0 问题#3：删除菜单前校验其（含子级）承载的权限码。
+// sys_menu.permission 是 authorities 的唯一来源，若某权限码仅由待删菜单承载，
+// 删除后相关 options.permission 接口会立即 403。此处拦截并提示先迁移权限码。
+var targetIds = [id]
+var collectIds = (pid) => {
+    var children = db.select("select id from sys_menu where is_del = 0 and pid = #{pid}")
+    if (children && children.size() > 0) {
+        children.forEach(c => { targetIds.add(c.id); collectIds(c.id) })
+    }
+}
+collectIds(id)
+var idList = targetIds.map(x => "'" + x + "'").join(",")
+var permRows = db.select("select distinct permission from sys_menu where is_del = 0 and permission != '' and permission is not null and id in (" + idList + ")")
+var lostPerms = []
+permRows.forEach(p => {
+    var code = p.permission
+    var otherCount = db.selectInt("select count(1) from sys_menu where is_del = 0 and permission = #{code} and id not in (" + idList + ")")
+    if (otherCount == 0) { lostPerms.add(code) }
+})
+if (lostPerms.size() > 0) {
+    throw new Error("该菜单承载权限码 [" + lostPerms.join(", ") + "]，删除后相关接口将不可访问。请先将权限码迁移到其他菜单（可用 is_show=0 的隐藏菜单承载）再删除。")
+}
 var userIds = db.select("""
     select user_id from sys_user_role where role_id in (
         select role_id from sys_role_menu where menu_id = #{id}

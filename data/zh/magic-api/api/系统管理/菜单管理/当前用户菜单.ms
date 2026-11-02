@@ -677,10 +677,31 @@ var layoutMenus = []
 nodes.each((key, node) => {
     if(node.pid == '0'){
         if(node.component != 'Layout'){
+            // 1.2.0 问题#4：为顶层叶子菜单生成"完整"的虚拟父节点。
+            // 从 URL 前缀派生 title/path（两段式取首段，如 /vehicle/overview → /vehicle），
+            // 避免无 title/path 的空白分组（自研前端/报表/权限树消费时不再渲染空白）。
+            // 保持无 id（module_id 关联仍走 children[0]）、不设 alwaysShow（保留前端单子节点拍平）。
+            var segs = ('' + (node.path || '')).split("/").filter(s => s != "")
+            var vPath = (segs.length >= 2 ? "/" + segs[0] : (node.path || "/"))
+            var vTitle = node.title || (segs[0] || "菜单")
             node = {
-                icon: node.icon,
+                title: vTitle,
+                pid: "0",
                 isShow: 1,
+                url: vPath,
+                icon: node.icon,
+                keepAlive: 0,
+                componentName: "",
+                openMode: "0",
                 component: 'Layout',
+                path: vPath,
+                meta: {
+                    title: vTitle,
+                    icon: node.icon,
+                    keepAlive: false,
+                    openMode: "0",
+                    path: vPath
+                },
                 redirect: node.path,
                 children: [node]
             }

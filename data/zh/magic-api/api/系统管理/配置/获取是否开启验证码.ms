@@ -106,5 +106,6 @@
   }
 }
 ================================
-import '@/configure/getBykey' as configure;
-return configure('verification-code.enable')
+// 1.2.0：configure() 带 1h 缓存，启用验证码后登录页可能读到旧值；这里直读 DB 保证实时生效
+var row = db.selectOne("select configure_value from sys_configure where configure_key = 'verification-code.enable'")
+return row == null ? 'false' : row.get("configureValue")
