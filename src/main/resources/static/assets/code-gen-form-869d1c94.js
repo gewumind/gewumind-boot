@@ -1,0 +1,1 @@
+import{_ as _0x1f56f4}from'./index-e7066b7c.js';const r={};function c(_0x292fff,_0x3eb966){return null;}const _=_0x1f56f4(r,[['render',c]]);export{_ as default};
