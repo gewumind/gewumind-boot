@@ -209,3 +209,4 @@ UPDATE sys_configure SET configure_value='{"role": "client", "server-url": "", "
 UPDATE sys_menu SET name='SSO Management' WHERE name='SSO 管理';
 UPDATE sys_configure SET configure_name='System subtitle', configure_desc_ribe='Subtitle shown under the system name' WHERE configure_key='system.subtitle';
 UPDATE sys_configure SET configure_name='Sidebar width (px)', configure_desc_ribe='Sidebar width in pixels' WHERE configure_key='system.sidebar.width';
+UPDATE sys_configure SET configure_name='Expand all menus by default', configure_desc_ribe='Expand all menu groups by default (true/false)' WHERE configure_key='system.menu.expand-all';

@@ -31,3 +31,11 @@ INSERT INTO `sys_menu`
   (`id`,`pid`,`icon`,`desc_ribe`,`name`,`url`,`permission`,`sort`,`open_mode`,`is_del`,`create_by`,`create_date`,`update_by`,`update_date`,`keep_alive`,`is_show`)
 SELECT 'sso-btn-delete','sso-menu-001','','','删除','','sso:delete',2,'0',0,'1',NOW(),NULL,NULL,0,0
 WHERE NOT EXISTS (SELECT 1 FROM `sys_menu` WHERE `id`='sso-btn-delete');
+
+-- 1.2.2: 菜单默认全部展开（配置中心），幂等
+INSERT INTO `sys_configure`
+    (`id`,`configure_value`,`configure_key`,`configure_name`,`configure_condition`,`configure_type`,
+     `configure_desc_ribe`,`sort_order`,`is_del`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`)
+SELECT '7c4e9a2b6d1f4c8e9b3a5d7f1e2c4a68','false','system.menu.expand-all','菜单默认全部展开',NULL,'1',
+       '菜单是否默认全部展开，true/false',121,0,'1',NOW(),NULL,NULL,NULL
+WHERE NOT EXISTS (SELECT 1 FROM `sys_configure` WHERE `configure_key` = 'system.menu.expand-all');

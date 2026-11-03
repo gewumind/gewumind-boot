@@ -243,6 +243,7 @@ INSERT INTO `sys_configure` VALUES ('81943d09-161e-4335-bf28-879b1bdef928','0 0 
 INSERT INTO `sys_configure` VALUES ('900a64d7-7f24-11f1-9c0c-463b4ec12c31','green','system.theme','默认皮肤','','0','系统默认皮肤主题，可选值：default/ocean/forest/sunset',100,0,'1','2026-07-14 09:37:23','1','2026-07-29 16:43:48','');
 INSERT INTO `sys_configure` VALUES ('90144b68-7f24-11f1-9c0c-463b4ec12c31','medium','system.ui.size','默认界面大小','','1','系统默认界面尺寸：small/medium/large',120,0,'1','2026-07-14 09:37:23','1','2026-07-17 09:27:11','');
 INSERT INTO `sys_configure` VALUES ('181852b3f7624c0fb5210438a8f7e625','300','system.sidebar.width','侧边栏宽度(px)',NULL,'0',NULL,96,0,NULL,'2026-10-31 00:00:00',NULL,NULL,NULL);
+INSERT INTO `sys_configure` VALUES ('7c4e9a2b6d1f4c8e9b3a5d7f1e2c4a68','false','system.menu.expand-all','菜单默认全部展开',NULL,'1','菜单是否默认全部展开，true/false',121,0,'1','2026-11-03 00:00:00',NULL,NULL,NULL);
 INSERT INTO `sys_configure` VALUES ('903f5e29-7f24-11f1-9c0c-463b4ec12c31','/logo-mark.svg','system.logo','系统Logo','','0','清空=不显示图片；恢复默认=内置 /logo-mark.svg',20,0,'1','2026-07-14 09:37:24','1','2026-07-15 09:09:28','');
 INSERT INTO `sys_configure` VALUES ('905340a1-7f24-11f1-9c0c-463b4ec12c31','','system.login.bg','登录背景图',NULL,'1','登录背景图；清空回落默认渐变；建议1920×1080',30,0,'1','2026-07-14 09:37:24',NULL,'2026-07-16 17:16:54',NULL);
 INSERT INTO `sys_configure` VALUES ('9efb8e0e-7f69-11f1-9c0c-463b4ec12c31','加速您的开发世界','system.login.slogan','登录页主标题','','0','登录页左侧大标题',31,0,'1','2026-07-14 17:51:44','1','2026-07-15 09:09:10','');
