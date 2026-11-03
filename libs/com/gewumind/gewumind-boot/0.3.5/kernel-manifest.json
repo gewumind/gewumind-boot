@@ -4,15 +4,16 @@
   "skillVersion": "1.2.2",
   "schemaBaseline": "db/init/01-baseline.sql",
   "publishedAt": "2026-11-02",
-  "builtAt": "2026-11-02T13:48:42+08:00",
+  "builtAt": "2026-11-03T11:55:00+08:00",
   "source": "private",
   "artifacts": {
     "jar": "gewumind-boot-0.3.5.jar",
-    "sha256": "8510f98bdeb81685010a799d93dc6abcf5b813c094e052d35f3d72f857449f5c",
+    "sha256": "eaeb0ec89f6b96aff0c9148aa5952e36954f19611bb5ef20eb9c7b677c4fa451",
     "sha256File": "gewumind-boot-0.3.5.jar.sha256",
     "signature": "gewumind-boot-0.3.5.jar.sig"
   },
   "artifactSigner": "gewumind-release-2026",
   "artifactPublicKey": "gewumind-release-2026.pub",
-  "licenseKey": "embedded per product version"
+  "licenseKey": "embedded per product version",
+  "note": "rebuilt same kernel 0.3.5: added com.gewumind.boot.config.BodyFormNormalizeInterceptor (app-side class moved into kernel)"
 }
