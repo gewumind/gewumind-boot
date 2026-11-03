@@ -109,6 +109,8 @@
 import 'cn.dev33.satoken.stp.StpUtil';
 import "@post:/system/security/permissions" as authoritiesList; 
 
-var user = db.table("sys_user").where().eq("id",StpUtil.getLoginId()).selectOne()
+var userId = StpUtil.getLoginId()
+var user = db.table("sys_user").where().eq("id", userId).selectOne()
 user.authorities = authoritiesList()
+user.roles = db.select("select r.id, r.name, r.code from sys_role r inner join sys_user_role ur on ur.role_id = r.id where ur.user_id = #{userId} and (r.is_del is null or r.is_del = 0) order by r.name")
 return user
