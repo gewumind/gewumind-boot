@@ -267,4 +267,4 @@ if (_b.configureName == null) { _b.configureName = '' }
 if (_b.configureCondition == null) { _b.configureCondition = '' }
 if (_b.configureDescRibe == null) { _b.configureDescRibe = '' }
 if (_b.remarks == null) { _b.remarks = '' }
-return db.table('sys_configure').primary('id').withBlank().save(body)
+return db.table('sys_configure').primary('id').withBlank().save(_b)
