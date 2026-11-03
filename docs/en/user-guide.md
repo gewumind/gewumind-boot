@@ -384,7 +384,7 @@ Nine further capabilities are **commercial**.
 | **SSE server** | `sse.enabled` | `sse.config` | Server-to-client push |
 | **TCP server** | `tcp.enabled` | — (port is in the script) | Custom-protocol long connections |
 | **WebSocket server** | `ws.enabled` | `ws.config` | Bidirectional connections |
-| **Single sign-on** | — | `application.yml` `sso` | Integrate with an IdP |
+| **Single sign-on** | `sso.enable` | `sso.config` (`{"role":"server"}` or `client`) | Integrate with an IdP |
 
 > ⚠️ **Every switch requires a service restart** to take effect.
 

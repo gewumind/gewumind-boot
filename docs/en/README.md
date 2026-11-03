@@ -14,6 +14,7 @@ Full documentation for GewuMind Boot. Pick your entry point by role:
 | **Build features with low-code** (APIs, pages, live debugging, reports, workflows) | [Low-code Guide](./lowcode-guide.md) |
 | **Do secondary development** (source builds, extension points) | [Development Guide](./development.md) |
 | **Develop with AI** (gewumind-skill four-stage pipeline) | [AI Development](./ai-development.md) |
+| **Integrate third-party systems via SSO** (this app as the OAuth2 server) | [SSO Integration](./sso-integration.md) |
 | **Understand the architecture** | [Architecture](./architecture.md) |
 
 ## Quick start
@@ -33,10 +34,10 @@ docs/
 ├── release-matrix.md  app / kernel / skill / license matrix
 ├── zh/                Chinese docs
 │   ├── 部署指南.md · 使用手册.md · 低代码开发教程.md
-│   └── 二次开发指南.md · AI开发.md · 架构说明.md
+│   └── 二次开发指南.md · AI开发.md · SSO集成指南.md · 架构说明.md
 ├── en/                English docs
 │   ├── deployment.md · user-guide.md · lowcode-guide.md
-│   └── development.md · ai-development.md · architecture.md
+│   └── development.md · ai-development.md · sso-integration.md · architecture.md
 └── screenshots/       English UI screenshots
 ```
 
@@ -45,6 +46,7 @@ docs/
 - **Implementer / Ops** → Deployment → User Guide
 - **Developer building features** → Low-code Guide (see *Online debugging*) → User Guide
 - **Extending the platform** → Development Guide → Architecture
+- **Integrating third-party apps via SSO** → SSO Integration
 - **Building with AI** → AI Development
 
 ## Links
