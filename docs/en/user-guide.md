@@ -25,6 +25,7 @@ and what breaks if you change it.
 - [9 · Multi-datasource](#9--multi-datasource)
 - [10 · Configuration reference](#10--configuration-reference)
 - [11 · Permission codes](#11--permission-codes)
+- [12 · AI customer service](#12--ai-customer-service)
 
 ---
 
@@ -364,7 +365,7 @@ detail page — useful for understanding nodes, conditional branches and approve
 
 There are two editions. The **basic** edition includes users, roles, menus, dictionaries,
 organisations, the magic-api low-code container, dynamic components and basic CRUD.
-Nine further capabilities are **commercial**.
+Ten further capabilities are **commercial**.
 
 ![Licensing panel](screenshots/02-configuration-center.png)
 
@@ -372,7 +373,7 @@ Nine further capabilities are **commercial**.
 > **licensing panel** sits on the right — edition, validity, unlocked capabilities, machine code
 > and the "upload licence file" entry.
 
-### 8.1 The nine capabilities
+### 8.1 The ten capabilities
 
 | Capability | Switch | Parameters | Purpose |
 |---|---|---|---|
@@ -385,13 +386,14 @@ Nine further capabilities are **commercial**.
 | **TCP server** | `tcp.enabled` | — (port is in the script) | Custom-protocol long connections |
 | **WebSocket server** | `ws.enabled` | `ws.config` | Bidirectional connections |
 | **Single sign-on** | `sso.enable` | `sso.config` (`{"role":"server"}` or `client`) | Integrate with an IdP |
+| **AI customer service** (new in 2.0) | `ai.enabled` | `ai.config` (model endpoint / key / model / timeout) | Trusted AI Q&A: the model picks APIs, calls them within permissions, answers are verified | "AI customer service" menu unavailable; chat answers "not enabled" |
 
 > ⚠️ **Every switch requires a service restart** to take effect.
 
 ### 8.2 Seeing what you have
 
 The licensing panel on the right of the Configuration Center shows the edition, expiry,
-remaining days, the unlocked capability tags (`9 / 9 available`) and your machine code.
+remaining days, the unlocked capability tags (`10 / 10 available`) and your machine code.
 The same data is available via:
 
 ```bash
@@ -652,6 +654,59 @@ Format `<module>:<action>`. Tick what a role needs.
 > **Order for a new role**: menu permissions (what they see) → button permissions (what they
 > can press) → API permissions (what the backend allows). All three are needed —
 > especially **API permissions**, or buttons appear but every click returns 403.
+
+---
+
+## 12 · AI customer service (new in 2.0)
+
+> Trusted AI customer service: the AI answers business questions **within the user's permissions**.
+> The model never touches the database — it can only call the business APIs you register ("tools");
+> data is fetched by the system and every answer is checked item by item. If nothing is found it
+> says so plainly; it never invents data. This is a commercial capability (see chapter 8).
+
+### 12.1 How it works
+
+1. You register business query APIs as **tools** (with a description, parameter schema and data scope)
+2. You create **AI roles** per job (e.g. support / manager), tick the tools the role may use, and assign users
+3. A user asks a question on the "AI chat" page → the model picks a tool and fills the parameters →
+   the server calls the API → the answer is verified against the data before it is shown
+4. Every call and every refusal is auditable on the "AI audit" page
+
+Four layers of protection (all server-side, the model cannot bypass them):
+**API permission → row-level data scope (self / org / all) → sensitive-field masking → answer verification**
+(numbers / entities / dates are compared item by item; a mismatch is refused).
+
+### 12.2 Enabling it
+
+1. **Licence**: upload an offline licence file (Configuration Center → upload licence), or be in the trial period
+2. **Model config**: set `ai.enabled=true` in the Configuration Center and fill `ai.config`:
+
+   ```json
+   {"endpoint":"http://<model-host>:<port>","api-key":"<key>","model":"<model>","max-tokens":4096,"temperature":0.1}
+   ```
+
+   `endpoint` is the OpenAI-compatible root (no `/v1`); for a keyless LAN model use `api-key: "not-needed"`.
+3. **Register tools**: AI customer service → Tool catalog → add a tool (API path + description for the model +
+   parameter schema + data scope + sensitive fields); "Scan APIs" drafts read-only candidates for you to confirm;
+   "Test call" verifies a tool first
+4. **Create roles**: AI customer service → AI roles → add a role (name + data scope) → tick its tools → assign users (one role per user)
+5. **Use it**: AI customer service → AI chat, and just ask
+
+### 12.3 The four pages
+
+| Page | Purpose |
+|---|---|
+| AI chat | Ask the AI (streaming answers; data answers carry citations) |
+| Tool catalog | Register / edit / test-call / enable-disable business APIs |
+| AI roles | Create roles, tick the tool scope, assign users |
+| AI audit | Call trace and refusal audit |
+
+### 12.4 FAQ
+
+- **"AI assistant is not enabled"**: the licence is not active, or `ai.enabled` is off, or `ai.config` is empty — all three are required
+- **Wrong tool / off-topic answer**: write a clear tool description (what it queries, its parameters, what the result means) — the model picks tools by it
+- **Cannot see other people's data**: by design — the data scope (self / org / all) is set per tool and role; out-of-scope access returns "you have no permission to view this data"
+- **Sensitive data**: list fields such as phone numbers in a tool's "sensitive fields"; they are masked before reaching the model
 
 ---
 
