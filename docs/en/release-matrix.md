@@ -7,7 +7,7 @@ Use this table to match **app / kernel / skill / database / license** versions b
 | 1.2.0 | 0.3.3 | 1.2.0 | `db/init/01-baseline.sql` (2026-10) | `gewumind-release-2026.pub` | Issued per customer | Released |
 | 1.2.1 | 0.3.4 | 1.2.1 | `db/init/01-baseline.sql` (2026-10) | `gewumind-release-2026.pub` | Issued per customer | Released |
 | 1.2.2 | 0.3.5 | 1.2.1 | `db/init/01-baseline.sql` (2026-10) | `gewumind-release-2026.pub` | Issued per customer | Released |
-| 2.0.0 | 0.4.x | 2.0.0 | 2.x migrations | 2.0 release key | 2.x offline license | Planned |
+| 2.0.0 | 0.4.0 | 2.0.0 | `db/init/01-baseline.sql` + `02-ai-2.0.sql` (2026-11) | `gewumind-release-2026.pub` | 2.x offline license (AI features) | Released |
 | 3.0.0 | 0.5.x | 3.0.0 | 3.x migrations | 3.0 release key | 3.x offline license | Planned |
 
 ## Rules

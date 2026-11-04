@@ -1,1 +1,0 @@
-import{_ as _0x2be0d6,o as _0x6f1a7a,c as _0x1bca45}from'./index-ad0bb439.js';const o={};function t(_0x3b135d,_0x302dd5){return _0x6f1a7a(),_0x1bca45('div',null,'开发中');}const a=_0x2be0d6(o,[['render',t]]);export{a as default};

@@ -1,0 +1,1 @@
+import{_ as _0x2ccb98,o as _0x2ea470,c as _0x383a4a}from'./index-87fc461e.js';const o={};function t(_0xba7810,_0xa1aef5){return _0x2ea470(),_0x383a4a('div',null,'开发中');}const a=_0x2ccb98(o,[['render',t]]);export{a as default};

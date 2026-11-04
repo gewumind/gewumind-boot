@@ -1,0 +1,14 @@
+{
+  "properties" : { },
+  "id" : "b1000000000000000000000000000001",
+  "name" : "Business Demo",
+  "type" : "api",
+  "parentId" : "0",
+  "path" : "/business",
+  "createTime" : null,
+  "updateTime" : 1700000000000,
+  "createBy" : null,
+  "updateBy" : null,
+  "paths" : [ ],
+  "options" : [ ]
+}

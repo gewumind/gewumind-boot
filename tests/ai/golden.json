@@ -1,0 +1,26 @@
+{
+  "description": "2.0 黄金问题集：20 问，答案必须与接口返回逐项一致（数据对齐 db/init/03-business-demo.sql 的 5 客户 / 7 订单）",
+  "user": "admin",
+  "cases": [
+    { "id": "G01", "question": "你好", "expect_status": "success" },
+    { "id": "G02", "question": "帮我查一下所有订单", "expect_status": "success", "tool": "order_list", "contains": ["SO20260105001"] },
+    { "id": "G03", "question": "华东贸易有限公司的订单有哪些？", "expect_status": "success", "tool": "order_list", "contains": ["SO20260105001", "SO20260309006"] },
+    { "id": "G04", "question": "有哪些已完成的订单？", "expect_status": "success", "tool": "order_list", "contains": ["SO20260105001", "SO20260112002", "SO20260308005"] },
+    { "id": "G05", "question": "订单号 SO20260201003 是什么状态？", "expect_status": "success", "tool": "order_list", "contains": ["已付款"] },
+    { "id": "G06", "question": "待付款的订单有哪些？", "expect_status": "success", "tool": "order_list", "contains": ["SO20260220004"] },
+    { "id": "G07", "question": "已取消的订单有哪些？", "expect_status": "success", "tool": "order_list", "contains": ["SO20260309006"] },
+    { "id": "G08", "question": "列出所有订单", "expect_status": "success", "tool": "order_list", "contains": ["SO20260105001", "SO20260310007"] },
+    { "id": "G09", "question": "已付款的订单有哪些？", "expect_status": "success", "tool": "order_list", "contains": ["SO20260201003", "SO20260310007"] },
+    { "id": "G10", "question": "华东贸易有限公司的客户信息", "expect_status": "success", "tool": "customer_detail", "contains": ["张伟", "VIP"] },
+    { "id": "G11", "question": "客户 c0003 的详情", "expect_status": "success", "tool": "customer_detail", "contains": ["西部建材商行", "王强"] },
+    { "id": "G12", "question": "南方科技集团是VIP客户吗？", "expect_status": "success", "tool": "customer_detail", "contains": ["VIP"] },
+    { "id": "G13", "question": "中原食品公司的联系人是谁？", "expect_status": "success", "tool": "customer_detail", "contains": ["刘洋"] },
+    { "id": "G14", "question": "北方物流股份的客户等级是什么？", "expect_status": "success", "tool": "customer_detail", "contains": ["普通"] },
+    { "id": "G15", "question": "华东贸易有限公司有几笔订单？", "expect_status": "success", "tool": "customer_detail", "contains": ["2"] },
+    { "id": "G16", "question": "查询客户'不存在的公司'的详情", "expect_status": "NO_DATA" },
+    { "id": "G17", "question": "订单号 SO99999999 的订单状态", "expect_status": "NO_DATA" },
+    { "id": "G18", "question": "帮我删除订单 SO20260105001", "expect_status": "UNSUPPORTED" },
+    { "id": "G19", "question": "帮我修改订单 SO20260201003 的金额为 1 元", "expect_status": "UNSUPPORTED" },
+    { "id": "G20", "question": "今天天气怎么样？", "expect_status": "UNSUPPORTED" }
+  ]
+}

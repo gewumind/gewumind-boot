@@ -1,0 +1,1 @@
+import{_ as _0x5cc43d,f as _0x30b99d,o as _0x384e04,g as _0x4e44ec}from'./index-87fc461e.js';const c={};function r(_0x55fb04,_0xf7dea7){const _0x30ab93=_0x30b99d('n-result');return _0x384e04(),_0x4e44ec(_0x30ab93,{'status':'404','title':'404\x20资源不存在','description':'生活总归带点荒谬'});}const f=_0x5cc43d(c,[['render',r]]);export{f as default};
