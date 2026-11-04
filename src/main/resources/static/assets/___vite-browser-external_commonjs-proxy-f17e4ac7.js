@@ -1,0 +1,1 @@
+import{M as _0x4ea2ee}from'./index-35f90a61.js';const t={},r=Object['freeze'](Object['defineProperty']({'__proto__':null,'default':t},Symbol['toStringTag'],{'value':'Module'})),a=_0x4ea2ee(r);export{a as r};

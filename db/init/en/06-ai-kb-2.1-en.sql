@@ -166,3 +166,11 @@ UPDATE `sys_ai_kb_chunk` SET
 WHERE `id` = 'b1000000-0000-4000-8000-000000000108';
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+-- 7) Knowledge base menu + button permissions + admin grant (English copy)
+-- ----------------------------
+UPDATE `sys_menu` SET `name` = 'Knowledge Base' WHERE `id` = 'ai000000000000000000000000000006';
+UPDATE `sys_menu` SET `name` = 'View' WHERE `id` = 'ai0000000000000000000000000000061';
+UPDATE `sys_menu` SET `name` = 'Save' WHERE `id` = 'ai0000000000000000000000000000062';
+UPDATE `sys_menu` SET `name` = 'Delete' WHERE `id` = 'ai0000000000000000000000000000063';
