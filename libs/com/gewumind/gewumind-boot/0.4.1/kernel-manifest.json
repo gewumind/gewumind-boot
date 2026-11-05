@@ -1,0 +1,18 @@
+{
+  "appVersion": "2.1.0",
+  "kernelVersion": "0.4.1",
+  "skillVersion": "2.1.0",
+  "schemaBaseline": "db/init/01-baseline.sql",
+  "publishedAt": "2026-11-05",
+  "builtAt": "2026-11-05T09:33:59+08:00",
+  "source": "private",
+  "artifacts": {
+    "jar": "gewumind-boot-0.4.1.jar",
+    "sha256": "63f82c2c363bf0044468f0c81dfcb2f9b1b0da147dfd1852168f6377b4bc2f29",
+    "sha256File": "gewumind-boot-0.4.1.jar.sha256",
+    "signature": "gewumind-boot-0.4.1.jar.sig"
+  },
+  "artifactSigner": "gewumind-release-2026",
+  "artifactPublicKey": "gewumind-release-2026.pub",
+  "licenseKey": "embedded per product version"
+}

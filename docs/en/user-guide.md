@@ -708,6 +708,26 @@ Four layers of protection (all server-side, the model cannot bypass them):
 - **Cannot see other people's data**: by design — the data scope (self / org / all) is set per tool and role; out-of-scope access returns "you have no permission to view this data"
 - **Sensitive data**: list fields such as phone numbers in a tool's "sensitive fields"; they are masked before reaching the model
 
+### 12.5 Knowledge base (new in 2.1)
+
+Lets the AI answer **document-based** questions (operation manuals, policies, FAQs) in addition to live data.
+
+1. **Create a base**: AI customer service → Knowledge base → new base (name + description)
+2. **Import documents**: Markdown / plain text / URL / online editing; the system splits by heading into chunks automatically
+3. **Publish**: after editing, click "Publish" to create a new version and rebuild the search chunks
+4. **Authorise**: set visibility per base / document (by AI role + organisation); unauthorised documents never enter the search
+5. **Ask**: on "AI chat" ask something like "how do I process an inbound order" → the AI answers from the documents with citations
+
+> v1 retrieval is keyword full-text search (MySQL ngram); vector retrieval is a reserved extension point, pending an embedding model.
+> The knowledge base is a separate commercial capability `AI_KB` (a `features:["*"]` licence covers it automatically).
+
+### 12.6 Voice input (new in 2.1)
+
+"AI chat" supports **voice input**: tap the microphone, speak, and the browser transcribes it to text before asking.
+
+- Built on the browser Web Speech API; Chrome / Edge give the full experience, other browsers fall back to text input
+- Speech is recognised locally in the browser; no audio is uploaded. Server-side ASR/TTS is deferred to a later release
+
 ---
 
 ## Related documents
