@@ -4,11 +4,11 @@
   "skillVersion": "2.0.0",
   "schemaBaseline": "db/init/01-baseline.sql",
   "publishedAt": "2026-11-04",
-  "builtAt": "2026-11-04T14:10:18+08:00",
+  "builtAt": "2026-11-05T08:42:38+08:00",
   "source": "private",
   "artifacts": {
     "jar": "gewumind-boot-0.4.0.jar",
-    "sha256": "7c3b72b4262ed37ea39aade5f62c2d31bfce94a27622b3dfb83692678986683d",
+    "sha256": "64271ed3f43ef5f2faff645fe717a1a982e71a06aa0f29bd68e95e0762b4fe28",
     "sha256File": "gewumind-boot-0.4.0.jar.sha256",
     "signature": "gewumind-boot-0.4.0.jar.sig"
   },
