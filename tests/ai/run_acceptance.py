@@ -153,6 +153,93 @@ def check_matrix(base, spec, concurrency):
     return leaks, softs
 
 
+def check_kb_golden(base, token, spec):
+    """2.1 知识库黄金集：知识问答须 success + 带引用 + 内容命中。"""
+    cases = spec["cases"]
+    failures = []
+    for c in cases:
+        r = ask_sse(base, token, c["question"])
+        status = r["status"]
+        problems = []
+        if status != c["expect_status"]:
+            problems.append("status=%s 期望 %s" % (status, c["expect_status"]))
+        if c.get("expect_citations") and not r["citations"]:
+            problems.append("知识答案缺少引用")
+        for s in c.get("contains", []):
+            if s not in r["content"]:
+                problems.append("答案缺少「%s」" % s)
+        if problems:
+            failures.append("%s [%s] %s | 答案: %s" % (c["id"], c["question"], "; ".join(problems), r["content"][:120]))
+        else:
+            print("  ok  %s %s" % (c["id"], c["question"]))
+    return failures
+
+
+def ensure_kb_grant(base, admin_token, kb_id, role_id):
+    """确保 ACL 授权存在（幂等）。"""
+    out = http_json(base + "/system/ai-kb/acl?kbId=" + kb_id, token=admin_token, timeout=30)
+    rows = out.get("data") or []
+    for r in rows:
+        if r.get("ai_role_id") == role_id and r.get("kb_id") == kb_id:
+            return
+    http_json(base + "/system/ai-kb/acl/save",
+              {"kb_id": kb_id, "ai_role_id": role_id}, token=admin_token, timeout=30)
+
+
+def check_kb_acl(base, spec, admin_token, concurrency):
+    """2.1 知识库 ACL 矩阵：已授权角色 success+引用；未授权角色 NOT_FOUND（越权 0 命中）。"""
+    setup = spec.get("setup", {})
+    grant_ids = setup.get("grant_role_ids") or (
+        [setup["grant_role_id"]] if setup.get("grant_role_id") else []
+    )
+    if setup.get("kb_id") and grant_ids:
+        try:
+            for rid in grant_ids:
+                ensure_kb_grant(base, admin_token, setup["kb_id"], rid)
+        except Exception as e:
+            return ["[泄漏] ACL 授权设置失败: %s" % e], []
+    roles = spec["roles"]
+    probes = spec["probes"]
+    tokens = {}
+
+    def run_one(role, probe):
+        user = role["user"]
+        if user not in tokens:
+            tokens[user] = login(base, user, "123456")
+        r = ask_sse(base, tokens[user], probe["question"])
+        actual = r["status"]
+        granted = role["granted"]
+        if granted:
+            leak = False
+            soft = actual != "success" or not r["citations"]
+            tag = "%s×%s" % (role["key"], probe["id"])
+            if soft:
+                return (tag, "期望 success+引用 实际 %s 引用=%s" % (actual, bool(r["citations"])), r["content"])
+            return (tag, None, None)
+        else:
+            # 未授权：知识探针必须 NOT_FOUND（0 命中）；success = 越权泄漏
+            leak = actual == "success"
+            tag = "%s×%s" % (role["key"], probe["id"])
+            if leak:
+                return (tag, "越权泄漏：未授权却 success | 答案: %s" % r["content"][:120], r["content"])
+            if actual != "NOT_FOUND":
+                return (tag, "期望 NOT_FOUND 实际 %s" % actual, r["content"])
+            return (tag, None, None)
+
+    leaks, softs = [], []
+    with cf.ThreadPoolExecutor(max_workers=concurrency) as pool:
+        futs = [pool.submit(run_one, role, probe) for role in roles for probe in probes]
+        for fut in cf.as_completed(futs):
+            tag, problem, content = fut.result()
+            if problem is None:
+                print("  ok  %s" % tag)
+            elif problem.startswith("越权泄漏"):
+                leaks.append("%s %s" % (tag, problem))
+            else:
+                softs.append("%s %s" % (tag, problem))
+    return leaks, softs
+
+
 def set_config(base, token, key, value):
     out = http_json(base + "/system/configure/list", {"configureKey": key}, token=token, timeout=30)
     rows = out.get("data") or []
@@ -204,11 +291,16 @@ def main():
     ap.add_argument("--concurrency", type=int, default=4)
     ap.add_argument("--skip-gate", action="store_true")
     ap.add_argument("--skip-matrix", action="store_true")
+    ap.add_argument("--kb-golden", default=os.path.join(HERE, "kb-golden.json"))
+    ap.add_argument("--kb-acl", default=os.path.join(HERE, "kb-acl.json"))
+    ap.add_argument("--skip-kb", action="store_true")
     args = ap.parse_args()
 
     try:
         golden = json.load(open(args.golden, encoding="utf-8"))
         matrix = json.load(open(args.matrix, encoding="utf-8"))
+        kb_golden = json.load(open(args.kb_golden, encoding="utf-8"))
+        kb_acl = json.load(open(args.kb_acl, encoding="utf-8"))
     except Exception as e:
         print("环境错误：测试文件缺失 %s" % e)
         return 2
@@ -234,6 +326,16 @@ def main():
     if not args.skip_gate:
         print("== 门禁（未登录 / 空问题 / 配置关闭）==")
         failures += check_gate(args.base, admin_token)
+
+    if not args.skip_kb:
+        print("== 知识库黄金集（%d 问，用户 %s）==" % (len(kb_golden["cases"]), kb_golden.get("user", "admin")))
+        failures += check_kb_golden(args.base, admin_token, kb_golden)
+        print("== 知识库 ACL 矩阵（%d 角色 × %d 探针）==" % (len(kb_acl["roles"]), len(kb_acl["probes"])))
+        kbleaks, kbsofts = check_kb_acl(args.base, kb_acl, admin_token, args.concurrency)
+        failures += ["[泄漏] " + s for s in kbleaks]
+        print("  软告警 %d 条" % len(kbsofts))
+        for s in kbsofts[:20]:
+            print("  warn " + s)
 
     print()
     if failures:

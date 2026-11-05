@@ -1,0 +1,16 @@
+{
+  "description": "2.1 知识库黄金问题集：知识问答须 success + 带引用 + 命中 FAQ 内容；FAQ 无答案→NOT_FOUND；无关→UNSUPPORTED。数据对齐 db/init/04-ai-kb-2.1.sql 的默认「产品知识库」（8 切块）。",
+  "user": "admin",
+  "cases": [
+    { "id": "K01", "question": "怎么启用 AI 客服？", "expect_status": "success", "expect_citations": true, "contains": ["ai.enabled"] },
+    { "id": "K02", "question": "AI 客服的模型怎么配置？", "expect_status": "success", "expect_citations": true, "contains": ["endpoint"] },
+    { "id": "K03", "question": "怎么把业务接口登记给 AI 使用？", "expect_status": "success", "expect_citations": true, "contains": ["工具目录"] },
+    { "id": "K04", "question": "AI 角色怎么配置？", "expect_status": "success", "expect_citations": true, "contains": ["数据范围"] },
+    { "id": "K05", "question": "License 怎么激活？", "expect_status": "success", "expect_citations": true, "contains": ["授权文件"] },
+    { "id": "K06", "question": "为什么 AI 回答“没有找到/无权限/不支持”？", "expect_status": "success", "expect_citations": true, "contains": ["NO_DATA"] },
+    { "id": "K07", "question": "语音提问为什么不可用？", "expect_status": "success", "expect_citations": true, "contains": ["浏览器"] },
+    { "id": "K08", "question": "知识库怎么生效？", "expect_status": "success", "expect_citations": true, "contains": ["导入"] },
+    { "id": "K09", "question": "GewuMind Boot 支持哪些数据库？", "expect_status": "NOT_FOUND" },
+    { "id": "K10", "question": "今天天气怎么样？", "expect_status": "UNSUPPORTED" }
+  ]
+}

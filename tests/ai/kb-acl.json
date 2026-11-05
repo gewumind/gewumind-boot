@@ -1,0 +1,18 @@
+{
+  "description": "2.1 知识库越权矩阵：同一批知识问题，已授权角色须 success+引用；未授权角色须 NOT_FOUND（检索 0 命中→固定话术），出现 success 即泄漏。setup 幂等：确保 pr0001 对默认产品知识库有 ACL 授权。",
+  "setup": {
+    "kb_id": "b1000000-0000-4000-8000-000000000001",
+    "grant_role_ids": ["pr0001"]
+  },
+  "roles": [
+    { "key": "ADMIN", "user": "admin", "granted": true },
+    { "key": "GRANTED", "user": "perm_r1", "granted": true },
+    { "key": "NOGRANT", "user": "perm_r7", "granted": false },
+    { "key": "NOROLE", "user": "employee", "granted": false }
+  ],
+  "probes": [
+    { "id": "K01", "question": "怎么启用 AI 客服？" },
+    { "id": "K02", "question": "AI 客服的模型怎么配置？" },
+    { "id": "K03", "question": "知识库怎么生效？" }
+  ]
+}
