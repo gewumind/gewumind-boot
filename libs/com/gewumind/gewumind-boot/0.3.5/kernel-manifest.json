@@ -3,17 +3,17 @@
   "kernelVersion": "0.3.5",
   "skillVersion": "1.2.2",
   "schemaBaseline": "db/init/01-baseline.sql",
-  "publishedAt": "2026-11-02",
-  "builtAt": "2026-11-03T11:55:00+08:00",
+  "publishedAt": "2026-11-06",
+  "builtAt": "2026-11-06T11:35:00+08:00",
   "source": "private",
   "artifacts": {
     "jar": "gewumind-boot-0.3.5.jar",
-    "sha256": "eaeb0ec89f6b96aff0c9148aa5952e36954f19611bb5ef20eb9c7b677c4fa451",
+    "sha256": "5ceffeebc7a17a917dfeee24ab3abe7c1bdef6da4fa9bc61c9807da13a1576d3",
     "sha256File": "gewumind-boot-0.3.5.jar.sha256",
     "signature": "gewumind-boot-0.3.5.jar.sig"
   },
   "artifactSigner": "gewumind-release-2026",
   "artifactPublicKey": "gewumind-release-2026.pub",
   "licenseKey": "embedded per product version",
-  "note": "rebuilt same kernel 0.3.5: added com.gewumind.boot.config.BodyFormNormalizeInterceptor (app-side class moved into kernel)"
+  "note": "rebuilt same kernel 0.3.5: added org.ssssssss.script.parsing.Parser (magic-script C-style for / reserved-word error fix, shadows magic-script 1.9.0 jar)"
 }
