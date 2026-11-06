@@ -68,6 +68,13 @@ desktop.ini
 ### 测试与覆盖率 ###
 coverage/
 *.lcov
+# Python 测试字节码（验收脚本生成，不入库）
+__pycache__/
+*.pyc
+
+# 运行期日志（可能含连接串/凭据，绝不入库）
+*.log
+restart.log
 
 # 本地任务计划（不发布）
 .tasks/

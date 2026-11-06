@@ -9,6 +9,7 @@
 | 1.2.2 | 0.3.5 | 1.2.1 | `db/init/01-baseline.sql`（2026-10） | `gewumind-release-2026.pub` | 由签发中心按客户签发 | 已发布 |
 | 2.0.0 | 0.4.0 | 2.0.0 | `db/init/01-baseline.sql` + `02-ai-2.0.sql`（2026-11） | `gewumind-release-2026.pub` | 2.x 离线 License（AI 功能位） | 已发布 |
 | 2.1.0 | 0.4.1 | 2.1.0 | `db/init/01-baseline.sql` + `02-ai-2.0.sql` + `04-ai-kb-2.1.sql`（2026-11） | `gewumind-release-2026.pub` | 2.x 离线 License（AI 功能位 + `AI_KB`） | 已发布 |
+| 2.2.0 | 0.4.2 | 2.2.0 | `db/init/01-baseline.sql` + `02-ai-2.0.sql` + `04-ai-kb-2.1.sql` + `05-ai-h5-2.2.sql`（2026-11） | `gewumind-release-2026.pub` | 2.x 离线 License（AI 功能位 + `AI_KB` + `AI_H5`） | 已发布 |
 | 3.0.0 | 0.5.x | 3.0.0 | 3.x 迁移脚本 | 3.0 发布公钥 | 3.x 离线 License | 规划中 |
 
 ## 规则

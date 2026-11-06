@@ -1,0 +1,1 @@
+import{ao as _0x431767}from'./index-008e07c5.js';function l(_0x421af6){return new Promise(_0xae5dad=>{$common['get'](_0x421af6['url'])['then'](_0x1e740b=>{let _0x378f71=_0x1e740b['data']['list'];_0x431767['deleteEmptyChildren'](_0x378f71),_0xae5dad(_0x378f71);});});}export{l as g};

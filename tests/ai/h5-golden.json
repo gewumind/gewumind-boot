@@ -1,0 +1,48 @@
+{
+  "_comment": "2.2 H5 客服黄金集。channel_id 为 2.2 DDL 种子的默认 H5 渠道。LLM 相关用例（greeting/data/handoff）需 ai.h5.enabled=true + AI_H5 授权 + ai.config 已配模型；预检用例（channel-not-found/missing-question）与渠道配置用例无需 LLM。",
+  "channel_id": "c1000000-0000-4000-8000-000000000001",
+  "cases": [
+    {
+      "id": "h5-greeting",
+      "question": "你好",
+      "phone": null,
+      "expect_status": "success",
+      "note": "匿名问候 → 正常应答（LLM）"
+    },
+    {
+      "id": "h5-data-anon",
+      "question": "查一下我的订单",
+      "phone": null,
+      "expect_status_any": ["NEED_CLARIFY", "NO_DATA", "NO_PERMISSION", "UNSUPPORTED"],
+      "note": "匿名查本人数据 → 无手机号应澄清/拒答，绝不 success 泄漏（LLM）"
+    },
+    {
+      "id": "h5-data-phone",
+      "question": "查一下我的订单",
+      "phone": "13900001111",
+      "expect_status_any": ["success", "NO_DATA", "NEED_CLARIFY", "UNSUPPORTED"],
+      "note": "手机号绑定查本人数据 → success/NO_DATA（有数据工具时）；默认渠道无工具则 UNSUPPORTED（LLM）"
+    },
+    {
+      "id": "h5-handoff",
+      "question": "我要转人工，帮我转接人工客服",
+      "phone": null,
+      "expect_handoff": true,
+      "note": "转人工意图 → done.handoff=true（落 sys_ai_handoff 工单；LLM 判定 handoff 意图）"
+    }
+  ],
+  "channel_cases": [
+    {
+      "id": "h5-brand",
+      "channel_id": "c1000000-0000-4000-8000-000000000001",
+      "expect": { "enabled": true, "found": true, "has": ["brand_name", "welcome", "theme_color"] },
+      "note": "品牌注入：渠道配置返回品牌名/欢迎语/主题色（无需 LLM）"
+    },
+    {
+      "id": "h5-channel-not-found",
+      "channel_id": "no-such-channel",
+      "expect": { "enabled": true, "found": false },
+      "note": "渠道不存在 → found=false（无需 LLM）"
+    }
+  ]
+}

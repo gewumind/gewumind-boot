@@ -1,1 +1,0 @@
-import{_ as _0x22d6ee,o as _0x312b71,c as _0x1e8c60}from'./index-35f90a61.js';const o={};function t(_0x103f89,_0x890bfe){return _0x312b71(),_0x1e8c60('div',null,'开发中');}const a=_0x22d6ee(o,[['render',t]]);export{a as default};

@@ -60,6 +60,18 @@ fi
 [[ -z "$(git -C "$ROOT" status --porcelain)" ]] || die "$ROOT 工作区不干净"
 [[ -z "$(git -C "$SKILL_DIR" status --porcelain)" ]] || die "$SKILL_DIR 工作区不干净"
 
+# 0. 实例测试门禁：每个版本发布前必须有实例测试留档，否则拒绝发布。
+#    留档：docs/instance-test/<VERSION>.md（需求 + 验收点 + 结果 + 坑），并归档本地 Gitea。
+#    确需跳过（如纯文档 / 内核换版无功能变更）：GW_SKIP_INSTANCE_TEST=<原因>，会记入发布记录。
+INSTANCE_TEST_DOC="$ROOT/docs/instance-test/${VERSION}.md"
+if [[ ! -f "$INSTANCE_TEST_DOC" ]]; then
+  if [[ -n "${GW_SKIP_INSTANCE_TEST:-}" ]]; then
+    echo "release: WARN 缺实例测试留档 $INSTANCE_TEST_DOC，按 GW_SKIP_INSTANCE_TEST 跳过：$GW_SKIP_INSTANCE_TEST" >&2
+  else
+    die "缺实例测试留档：$INSTANCE_TEST_DOC。每个版本发布前必须完成实例测试并留档（需求+验收+结果+坑，并归档本地 Gitea）。确需跳过请设 GW_SKIP_INSTANCE_TEST=<原因>。"
+  fi
+fi
+
 # 1. 同步版本
 python3 - "$ROOT/pom.xml" "$VERSION" <<'PY'
 import re, sys

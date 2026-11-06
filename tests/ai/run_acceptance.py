@@ -240,6 +240,157 @@ def check_kb_acl(base, spec, admin_token, concurrency):
     return leaks, softs
 
 
+# ==================== 2.2 H5 对外客服 ====================
+
+def h5_ask_sse(base, channel_id, question, phone=None, h5_token=None, timeout=120):
+    """POST /ai/h5/chat/stream（SSE），解析事件，返回 {status, content, error_code, grounded, handoff}。"""
+    body = {"channel_id": channel_id, "question": question}
+    if phone:
+        body["phone"] = phone
+    if h5_token:
+        body["h5_token"] = h5_token
+    headers = {"Content-Type": "application/json", "Accept": "text/event-stream"}
+    req = urllib.request.Request(
+        base + "/ai/h5/chat/stream",
+        data=json.dumps(body).encode("utf-8"),
+        headers=headers,
+        method="POST",
+    )
+    result = {"status": None, "content": "", "error_code": None, "grounded": None, "handoff": False}
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        event = None
+        for raw in resp:
+            line = raw.decode("utf-8", errors="replace").rstrip("\n")
+            if line.startswith("event:"):
+                event = line[6:].strip()
+            elif line.startswith("data:"):
+                data = line[5:].strip()
+                try:
+                    payload = json.loads(data) if data else {}
+                except json.JSONDecodeError:
+                    payload = {"raw": data}
+                if event == "message":
+                    result["content"] += payload.get("content", "")
+                elif event == "done":
+                    result["status"] = payload.get("status")
+                    result["grounded"] = payload.get("grounded")
+                    result["handoff"] = bool(payload.get("handoff"))
+                    if payload.get("refusal_code"):
+                        result["status"] = payload["refusal_code"]
+                elif event == "error":
+                    result["error_code"] = payload.get("code")
+                    result["content"] = payload.get("message", "")
+                    result["status"] = payload.get("code")
+                event = None
+    if result["status"] is None and result["error_code"]:
+        result["status"] = result["error_code"]
+    return result
+
+
+def h5_channel(base, channel_id):
+    """GET /ai/h5/channel/{id} → 渠道品牌配置。"""
+    return http_json(base + "/ai/h5/channel/" + channel_id, timeout=30)
+
+
+def check_h5_golden(base, spec):
+    """2.2 H5 黄金集：问答（greeting/data/handoff）+ 渠道品牌配置。"""
+    failures = []
+    for c in spec.get("cases", []):
+        r = h5_ask_sse(base, spec["channel_id"], c["question"], c.get("phone"), c.get("h5_token"))
+        status = r["status"]
+        problems = []
+        if "expect_status" in c:
+            if status != c["expect_status"]:
+                problems.append("status=%s 期望 %s" % (status, c["expect_status"]))
+        elif "expect_status_any" in c:
+            if status not in c["expect_status_any"]:
+                problems.append("status=%s 不在允许集 %s" % (status, c["expect_status_any"]))
+        if c.get("expect_handoff") and not r.get("handoff"):
+            problems.append("期望转人工(handoff=true) 实际 handoff=%s status=%s" % (r.get("handoff"), status))
+        if problems:
+            failures.append("%s [%s] %s | 答案: %s" % (c["id"], c["question"], "; ".join(problems), r["content"][:120]))
+        else:
+            print("  ok  %s %s" % (c["id"], c["question"]))
+    for c in spec.get("channel_cases", []):
+        r = h5_channel(base, c["channel_id"])
+        exp = c.get("expect", {})
+        problems = []
+        for k in ("enabled", "found"):
+            if k in exp and r.get(k) != exp[k]:
+                problems.append("%s=%s 期望 %s" % (k, r.get(k), exp[k]))
+        for k in exp.get("has", []):
+            if not r.get(k):
+                problems.append("缺字段 %s" % k)
+        if problems:
+            failures.append("%s [%s] %s" % (c["id"], c["channel_id"], "; ".join(problems)))
+        else:
+            print("  ok  %s (channel %s)" % (c["id"], c["channel_id"]))
+    return failures
+
+
+def check_h5_matrix(base, spec, concurrency):
+    """2.2 H5 越权矩阵：身份（匿名/手机号）× 探针。success 出现在禁止集 = 泄漏。"""
+    cid = spec["channel_id"]
+    identities = spec["identities"]
+    probes = spec["probes"]
+
+    def run_one(ident, probe):
+        r = h5_ask_sse(base, cid, probe["question"], ident.get("phone"), ident.get("h5_token"))
+        actual = r["status"]
+        allowed = probe["expect"].get(ident["key"], [])
+        leak = actual == "success" and "success" not in allowed
+        soft = (not leak) and actual not in allowed
+        return (ident, probe, allowed, actual, leak, soft, r["content"])
+
+    leaks, softs = [], []
+    with cf.ThreadPoolExecutor(max_workers=concurrency) as pool:
+        futs = [pool.submit(run_one, i, p) for i in identities for p in probes]
+        for fut in cf.as_completed(futs):
+            ident, probe, allowed, actual, leak, soft, content = fut.result()
+            tag = "%s×%s" % (ident["key"], probe["id"])
+            if leak:
+                leaks.append("%s 期望禁 success 实际 success | 答案: %s" % (tag, content[:120]))
+            elif soft:
+                softs.append("%s 实际 %s 不在允许集 %s" % (tag, actual, allowed))
+            else:
+                print("  ok  %s (%s)" % (tag, actual))
+    return leaks, softs
+
+
+def check_h5_gate(base, admin_token):
+    """2.2 H5 门禁：开关关→H5_DISABLED；渠道不存在→CHANNEL_NOT_FOUND；空问题→NEED_CLARIFY；限流→RATE_LIMITED。"""
+    failures = []
+    cid = "c1000000-0000-4000-8000-000000000001"
+    # 1) 开关关 → H5_DISABLED（测完恢复）
+    try:
+        set_config(base, admin_token, "ai.h5.enabled", "false")
+        r = h5_ask_sse(base, cid, "你好")
+        if r["error_code"] != "H5_DISABLED" and r["status"] != "H5_DISABLED":
+            failures.append("ai.h5.enabled=false 时未返回 H5_DISABLED: %s" % r)
+        else:
+            print("  ok  ai.h5.enabled=false → H5_DISABLED")
+    except Exception as e:
+        failures.append("H5 开关检查失败: %s" % e)
+    finally:
+        try:
+            set_config(base, admin_token, "ai.h5.enabled", "true")
+        except Exception as e:
+            failures.append("恢复 ai.h5.enabled=true 失败: %s" % e)
+    # 2) 渠道不存在 → CHANNEL_NOT_FOUND
+    r = h5_ask_sse(base, "no-such-channel", "你好")
+    if r["error_code"] != "CHANNEL_NOT_FOUND" and r["status"] != "CHANNEL_NOT_FOUND":
+        failures.append("渠道不存在未返回 CHANNEL_NOT_FOUND: %s" % r)
+    else:
+        print("  ok  渠道不存在 → CHANNEL_NOT_FOUND")
+    # 3) 空问题 → NEED_CLARIFY
+    r = h5_ask_sse(base, cid, "   ")
+    if r["error_code"] != "NEED_CLARIFY" and r["status"] != "NEED_CLARIFY":
+        failures.append("空问题未返回 NEED_CLARIFY: %s" % r)
+    else:
+        print("  ok  空问题 → NEED_CLARIFY")
+    return failures
+
+
 def set_config(base, token, key, value):
     out = http_json(base + "/system/configure/list", {"configureKey": key}, token=token, timeout=30)
     rows = out.get("data") or []
@@ -294,6 +445,9 @@ def main():
     ap.add_argument("--kb-golden", default=os.path.join(HERE, "kb-golden.json"))
     ap.add_argument("--kb-acl", default=os.path.join(HERE, "kb-acl.json"))
     ap.add_argument("--skip-kb", action="store_true")
+    ap.add_argument("--h5-golden", default=os.path.join(HERE, "h5-golden.json"))
+    ap.add_argument("--h5-matrix", default=os.path.join(HERE, "h5-permissions.json"))
+    ap.add_argument("--skip-h5", action="store_true")
     args = ap.parse_args()
 
     try:
@@ -301,6 +455,8 @@ def main():
         matrix = json.load(open(args.matrix, encoding="utf-8"))
         kb_golden = json.load(open(args.kb_golden, encoding="utf-8"))
         kb_acl = json.load(open(args.kb_acl, encoding="utf-8"))
+        h5_golden = json.load(open(args.h5_golden, encoding="utf-8"))
+        h5_matrix = json.load(open(args.h5_matrix, encoding="utf-8"))
     except Exception as e:
         print("环境错误：测试文件缺失 %s" % e)
         return 2
@@ -336,6 +492,19 @@ def main():
         print("  软告警 %d 条" % len(kbsofts))
         for s in kbsofts[:20]:
             print("  warn " + s)
+
+    if not args.skip_h5:
+        print("== H5 黄金集（%d 问答 + %d 渠道，渠道 %s）==" % (
+            len(h5_golden.get("cases", [])), len(h5_golden.get("channel_cases", [])), h5_golden.get("channel_id", "")[:12]))
+        failures += check_h5_golden(args.base, h5_golden)
+        print("== H5 越权矩阵（%d 身份 × %d 探针）==" % (len(h5_matrix["identities"]), len(h5_matrix["probes"])))
+        h5leaks, h5softs = check_h5_matrix(args.base, h5_matrix, args.concurrency)
+        failures += ["[泄漏] " + s for s in h5leaks]
+        print("  软告警 %d 条" % len(h5softs))
+        for s in h5softs[:20]:
+            print("  warn " + s)
+        print("== H5 门禁（开关关 / 渠道不存在 / 空问题）==")
+        failures += check_h5_gate(args.base, admin_token)
 
     print()
     if failures:

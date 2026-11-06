@@ -1,1 +1,0 @@
-import{an as _0x408b6c}from'./index-35f90a61.js';function l(_0x5cbbc9){return new Promise(_0x2c2014=>{$common['get'](_0x5cbbc9['url'])['then'](_0x5e5c76=>{let _0x4ec445=_0x5e5c76['data']['list'];_0x408b6c['deleteEmptyChildren'](_0x4ec445),_0x2c2014(_0x4ec445);});});}export{l as g};

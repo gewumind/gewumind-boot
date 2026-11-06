@@ -728,6 +728,22 @@ Lets the AI answer **document-based** questions (operation manuals, policies, FA
 - Built on the browser Web Speech API; Chrome / Edge give the full experience, other browsers fall back to text input
 - Speech is recognised locally in the browser; no audio is uploaded. Server-side ASR/TTS is deferred to a later release
 
+### 12.7 H5 external customer service (new in 2.2)
+
+Embed the AI customer service into an **external H5 page** (phone browser / WeChat webview) so visitors can ask questions without logging in; when the AI cannot help they can **hand off to a human** (v1 = message + notification + ticket; agent takeover is deferred to 2.3). This is a separate commercial capability `AI_H5`.
+
+1. **Create a channel**: AI customer service → Channel management → new channel (channel id + brand name + welcome message + allowed-tools whitelist)
+2. **Configure the brand**: set the brand name / theme colour / welcome message on the channel; visitors only ever see brand data, never the backend
+3. **Embed it**: include `h5-widget.js` on your H5 page and set `data-channel="<channel id>"`
+   ```html
+   <script src="https://<your-domain>/h5-widget.js" data-channel="star-mall"></script>
+   ```
+4. **Visitor identity**: anonymous (`anon:`) or phone number (`phone:`) — the phone number ties the conversation to a specific customer; tools read data scoped to the injected identity, and out-of-scope reads return nothing (the same four-layer protection as internal AI chat)
+5. **Hand off to a human**: the visitor taps "Talk to a human" → a `sys_ai_handoff` ticket is created (`pending`) + the agent is notified; the agent handles it from the admin console
+
+> Channel management is an admin capability (`isAdmin()` gate); the public H5 endpoints only return brand / welcome / conversation data and never expose the backend.
+> Server-side voice, PDF/DOCX parsing, and SSO visitor identity are deferred to 2.3.
+
 ---
 
 ## Related documents
