@@ -1,5 +1,5 @@
 {
-  "description": "2.1 知识库黄金问题集：知识问答须 success + 带引用 + 命中 FAQ 内容；FAQ 无答案→NOT_FOUND；无关→UNSUPPORTED。数据对齐 db/init/04-ai-kb-2.1.sql 的默认「产品知识库」（8 切块）。",
+  "description": "2.1 知识库黄金问题集：知识问答须 success + 带引用 + 命中 FAQ 内容；FAQ 无答案→NOT_FOUND；无关→UNSUPPORTED。数据对齐 db/releases/2.3.0/zh/full.sql 的默认「产品知识库」（8 切块）。",
   "user": "admin",
   "cases": [
     { "id": "K01", "question": "怎么启用 AI 客服？", "expect_status": "success", "expect_citations": true, "contains": ["ai.enabled"] },

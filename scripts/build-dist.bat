@@ -123,7 +123,7 @@ rem ---- DEPLOY.md ----
 >>"%STAGE%\DEPLOY.md" echo | `config/application.yml` | 主配置 |
 >>"%STAGE%\DEPLOY.md" echo | `data/zh/magic-api/` | 中文低代码容器（**备份重点**） |
 >>"%STAGE%\DEPLOY.md" echo | `data/en/magic-api/` | 英文低代码容器（同上） |
->>"%STAGE%\DEPLOY.md" echo | `db/init/01-baseline.sql` | 基线库表与初始数据 |
+>>"%STAGE%\DEPLOY.md" echo | `db/releases/2.3.0/<lang>/full.sql` | 当前版本完整安装 SQL |
 >>"%STAGE%\DEPLOY.md" echo | `logs/` `upload/` `reports/` | 运行期目录 |
 >>"%STAGE%\DEPLOY.md" echo.
 >>"%STAGE%\DEPLOY.md" echo ## 环境要求

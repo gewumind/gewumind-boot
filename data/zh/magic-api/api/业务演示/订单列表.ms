@@ -33,9 +33,10 @@ try {
 } catch (e) {
 }
 return db.page("""
-    select o.id, o.customer_id, o.order_no, o.amount, o.status, o.create_date, c.name customer_name, c.org_id
+    select o.id, o.customer_id, o.order_no, o.amount, o.status, o.create_date, c.name customer_name, c.org_id, org.name org_name
     from t_order o
     left join t_customer c on o.customer_id = c.id
+    left join sys_office org on org.id = c.org_id
     where o.is_del = 0
     ?{customerName, and c.name like concat('%',#{customerName},'%')}
     ?{status, and o.status = #{status}}

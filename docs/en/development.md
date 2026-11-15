@@ -38,8 +38,8 @@ gewumind-boot (this repo, git)      ← this is what you clone
 │   ├── *.yml             configuration
 │   └── static/           frontend **build output**, not source
 ├── data/en/magic-api/       low-code workspace: APIs / components / tasks / workflows (.ms)
-├── db/init/              baseline schema + seed data
-└── libs/                 kernel jar: gewumind-boot-0.3.3.jar
+├── db/releases/2.3.0/     baseline schema + seed data
+└── libs/                 kernel jar: gewumind-boot-0.4.2.jar
 
 Kernel (com.gewumind.boot.*)
 ├── What: magic-api low-code container + sa-token auth + SSO + SPA hosting + permissions
@@ -206,7 +206,7 @@ See [AI Development](ai-development.md).
 
 ```
 gewumind-boot/
-├── pom.xml                     app pom (artifactId: gewumind-boot-app, version: 1.2.0)
+├── pom.xml                     app pom (artifactId: gewumind-boot-app, version: 2.3.0)
 ├── libs/com/gewumind/          kernel jar + checksums
 ├── src/main/java/com/gewumind/app/
 │   ├── GewuMindBootApp.java            bootstrap
@@ -217,7 +217,7 @@ gewumind-boot/
 │   ├── application-{dev,online,docker,demo}.yml
 │   └── static/                          frontend build output (committed)
 ├── data/en/magic-api/            scripts: api / component / task / workflow / function
-├── db/init/01-baseline.sql    schema + seed data + demo fixtures
+├── db/releases/2.3.0/en/full.sql    schema + seed data + demo fixtures
 ├── scripts/
 │   ├── start.sh / stop.sh     launch scripts (Windows .bat included)
 │   ├── gen-ssl-cert.sh        self-signed certificate (.bat included)
@@ -520,7 +520,7 @@ Override secrets by environment variable, never in YAML:
 SPRING_DATASOURCE_PASSWORD='real-password' bash scripts/start.sh
 ```
 
-The database is created on first start from `db/init/01-baseline.sql`. It is **idempotent** —
+The database is created on first start from `db/releases/2.3.0/en/full.sql`. It is **idempotent** —
 safe to re-run.
 
 ---

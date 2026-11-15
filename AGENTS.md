@@ -28,7 +28,7 @@ The kernel is consumed from `libs/` (a local Maven repo, `file://`), **not** `~/
 ## Conventions that get broken
 
 - **Version coupling**: app `2.x.y` pairs with kernel `0.4.z` (`<gewumind-boot.version>`). Bump both together at release; the dist is named after the **app** version — the kernel version is only a dependency.
-- **DDL**: fresh-install DDL lives in `db/init/` (zh) + `db/init/en/` (en brand overrides); upgrade DDL lives in the kernel's `db/`. Keep the zh and kernel copies of a given migration byte-identical. `sys_configure` seed rows must use `is_del=0` — a `1` makes the config invisible to the `is_del=0` read, so the toggle silently never works.
+- **DDL**: 2.3.0 is the new baseline. Fresh install uses `db/releases/2.3.0/zh/full.sql` or `db/releases/2.3.0/en/full.sql`; later versions add `upgrade-from-2.3.0.sql` only. `sys_configure` seed rows must use `is_del=0` — a `1` makes the config invisible to the `is_del=0` read, so the toggle silently never works.
 - **Signing**: the kernel jar and release artifacts are Ed25519-signed with the `release-2026` keys under `/data1/workerspace/gewumind-sign/keys/`. Never commit keys or tokens.
 - **Three mirrors**: `origin`=GitHub, `gitee`=Gitee, `gitea`=local Gitea (primary source). Push via `scripts/sync-mirrors.sh`; Gitea 1.24 release-asset upload uses `POST .../releases/{id}/assets` with form field `attachment`.
 

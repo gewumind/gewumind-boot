@@ -9,7 +9,7 @@
 
 - 官网：https://gewumind.github.io
 - 主仓库：https://github.com/gewumind/gewumind-boot ｜ Gitee：https://gitee.com/gewumind/gewumind-boot
-- AI 开发技能：https://github.com/gewumind/gewumind-skill ｜ Gitee：https://gitee.com/gewumind/gewumind-skill（版本与 boot 同步，当前 2.2.0）
+- AI 开发技能：https://github.com/gewumind/gewumind-skill ｜ Gitee：https://gitee.com/gewumind/gewumind-skill（版本与 boot 同步，当前 2.3.0）
 
 > GitHub 与 Gitee 内容同步。
 
@@ -51,7 +51,8 @@
 - **在线管理一切** —— 菜单、角色、用户、字典、模块、配置、图标、动态组件可视化维护
 - **工作流引擎** —— 条件分支、抄送、逐层驳回、按节点分组审批
 - **报表 & 消息** —— 报表设计器 + 导出；Kafka / MQTT / WebSocket / SSE / Redis 统一接入
-- **安全与授权** —— 登录/密码策略、Sa-Token 会话、SSO、离线 License
+- **AI 客服** —— 可信 AI 问答、工具目录、AI 角色、知识库、对外 H5 客服（2.3 重点）
+- **安全与授权** —— 登录/密码策略、Sa-Token 会话、SSO、离线 License（标准版 / 旗舰版三档）
 
 ---
 
@@ -68,14 +69,14 @@
 CREATE DATABASE gewumind-boot DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 ```
 
-然后把 [`db/init/01-baseline.sql`](db/init/01-baseline.sql) 导入这个库 ——
+然后把 [`db/releases/2.3.0/zh/full.sql`](db/releases/2.3.0/zh/full.sql) 导入这个库 ——
 Navicat / DBeaver / phpMyAdmin 的「运行 SQL 文件」都行，或者命令行：
 
 ```bash
-mysql -h127.0.0.1 -uroot -p gewumind-boot < db/init/01-baseline.sql
+mysql -h127.0.0.1 -uroot -p gewumind-boot < db/releases/2.3.0/zh/full.sql
 ```
 
-导入后应有 **45 张表**，以及平台自带的菜单、角色、字典、配置与页面组件数据。
+导入后应有 **63 张表**，以及平台自带的菜单、角色、字典、配置与页面组件数据。
 
 ### 2. 注入数据库密码
 
@@ -108,7 +109,7 @@ bash scripts/start.sh
 每次发布的内核二进制（`libs/`）都带 Ed25519 分离签名：
 
 ```bash
-scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.5/gewumind-boot-0.3.5.jar
+scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.4.2/gewumind-boot-0.4.2.jar
 ```
 
 - v1.1.0+：`gewumind-release-2026.pub`
@@ -119,7 +120,7 @@ scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.5/gewumind-boot-
 
 ## 📸 系统截图
 
-以下均为 v1.1.0+ 的真实运行界面。
+以下均为 2.3.0 的真实运行界面。
 
 ### 工作台
 
@@ -127,6 +128,16 @@ scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.5/gewumind-boot-
 |---|---|
 | ![工作台](docs/zh/screenshots/01-工作台.png) | ![登录页](docs/zh/screenshots/00-登录页.png) |
 | **工作台首页** —— 统计卡片、销售趋势、操作动态 | **登录页** —— Logo / 主题可配置 |
+
+### AI 客服（2.3 重点）
+
+可信 AI 客服不是“让模型直接查库”：模型只能调用登记过的只读工具，服务端按用户权限取数、脱敏并逐项校验答案。
+旗舰版包含 `ai_chat` / `ai_kb` / `ai_h5`；标准版不包含 AI。
+
+| | | |
+|---|---|---|
+| ![AI 客服](docs/zh/screenshots/30-AI客服.png) | ![知识库](docs/zh/screenshots/32-知识库.png) | ![H5 客服](docs/zh/screenshots/33-H5客服.png) |
+| **AI 会话** —— 工具调用 + 数据答案 | **知识库** —— 文档切块、检索、授权 | **H5 客服** —— 手机 / 微信 webview |
 
 ### 系统设置
 
@@ -202,8 +213,8 @@ scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.5/gewumind-boot-
 |---|---|---|---|
 | ![登录](docs/zh/screenshots/gif/01-登录.gif) | ![切换主题](docs/zh/screenshots/gif/02-配置中心-切换主题.gif) | ![新增用户](docs/zh/screenshots/gif/03-用户管理-新增用户.gif) | ![接口树](docs/zh/screenshots/gif/04-在线编程-接口树.gif) |
 | 登录 | 切换皮肤主题 | 新增用户 | 浏览接口树 |
-| ![断点调试](docs/zh/screenshots/gif/05-在线编程-断点调试.gif) | ![运行结果](docs/zh/screenshots/gif/06-在线编程-运行结果.gif) | | |
-| **断点调试** —— 设断点 → 运行 → 看变量 | **运行结果** —— 一键执行看输出 | | |
+| ![断点调试](docs/zh/screenshots/gif/05-在线编程-断点调试.gif) | ![运行结果](docs/zh/screenshots/gif/06-在线编程-运行结果.gif) | ![AI 客服](docs/zh/screenshots/gif/07-AI客服.gif) | |
+| **断点调试** —— 设断点 → 运行 → 看变量 | **运行结果** —— 一键执行看输出 | **AI 客服** —— 提问、工具调用、数据答案 | |
 
 > 各界面的详细操作说明见 [使用手册](docs/zh/使用手册.md)；
 > 开发与调试流程见 [低代码开发教程](docs/zh/低代码开发教程.md)。
@@ -302,7 +313,7 @@ bash scripts/build-dist.sh    # → dist/gewumind-boot-app-<版本>.tar.gz + .zi
 
 ```
 gewumind-boot/
-├── pom.xml                    # 依赖 com.gewumind:gewumind-boot:0.3.5
+├── pom.xml                    # 依赖 com.gewumind:gewumind-boot:0.4.2
 ├── libs/                      # 内核 thin jar（标准 Maven 仓库布局，随工程入库）
 ├── src/main/java/com/gewumind/app/
 │   ├── GewuMindBootApp.java   # 启动类
@@ -312,7 +323,7 @@ gewumind-boot/
 │   ├── application.yml        # 本工程配置（覆盖内核 jar 内那份）
 │   └── static/                # 前端产物（已入库，clone 下来即可打开后台）
 ├── data/{zh,en}/magic-api/    # 中英文脚本工作区：api / component / task / workflow / function
-├── db/init/01-baseline.sql    # 建库基线
+├── db/releases/2.3.0/zh/full.sql    # 建库基线
 ├── scripts/
 │   ├── start.sh / stop.sh     # 启停（另有 Windows .bat）
 │   ├── gen-ssl-cert.sh        # 自签证书（另有 .bat）
@@ -326,9 +337,9 @@ gewumind-boot/
 ## 数据库
 
 **目前只支持 MySQL 8。** 发行包里仅内置 `mysql-connector-j` 一个 JDBC 驱动，
-`db/init/01-baseline.sql` 也是 MySQL 语法（`ENGINE=InnoDB`、`utf8mb4_general_ci`、反引号）。
+`db/releases/2.3.0/zh/full.sql` 也是 MySQL 语法（`ENGINE=InnoDB`、`utf8mb4_general_ci`、反引号）。
 
-基线文件：[`db/init/01-baseline.sql`](db/init/01-baseline.sql)，45 张表 +
+基线文件：[`db/releases/2.3.0/zh/full.sql`](db/releases/2.3.0/zh/full.sql)，45 张表 +
 平台自带的菜单/角色/字典/配置/页面组件。建库语句见[快速开始](#快速开始)；
 重置就是 `DROP DATABASE` 后重新导入。
 
@@ -354,7 +365,7 @@ spring:
 > `online` profile 下 URL 与账号也没有默认值，缺配置会直接启动失败。
 
 **换其他数据库**（PostgreSQL / Oracle / SQL Server 等）：需要自行添加对应驱动依赖，
-并把 `db/init/01-baseline.sql` 转成目标方言 —— 表选项、字符集、自增与注释语法均不通用。
+并把 `db/releases/2.3.0/zh/full.sql` 转成目标方言 —— 表选项、字符集、自增与注释语法均不通用。
 内核 `data/zh|en/magic-api/` 脚本里若有 MySQL 专有 SQL，也需一并适配。
 
 ## AI / MCP 接入（X-AI-Key）

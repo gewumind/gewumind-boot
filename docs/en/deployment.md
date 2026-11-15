@@ -46,15 +46,15 @@ HTTPS, upgrade and backup.
 
 | Platform | File |
 |---|---|
-| Linux / macOS | `gewumind-boot-app-<ver>.tar.gz` |
-| Windows | `gewumind-boot-app-<ver>.zip` |
+| Linux / macOS | `gewumind-boot-app-2.3.0.tar.gz` |
+| Windows | `gewumind-boot-app-2.3.0.zip` |
 
 Both contain exactly the same content.
 
 ### 2.2 Unpack
 
 ```bash
-tar -xzf gewumind-boot-app-<ver>.tar.gz      # Windows: just unzip
+tar -xzf gewumind-boot-app-2.3.0.tar.gz      # Windows: just unzip
 ```
 
 ### 2.3 Configure the database
@@ -74,7 +74,7 @@ spring:
 
 ### 2.4 Initialise the database
 
-The package ships `db/init/01-baseline.sql`. Pick one:
+The package ships `db/releases/2.3.0/en/full.sql`. Pick one:
 
 **Option A · let the app create it (recommended for first run)**
 
@@ -83,14 +83,14 @@ The package ships `db/init/01-baseline.sql`. Pick one:
 **Option B · import manually**
 
 ```bash
-mysql -uroot -p gewumind-boot < db/init/01-baseline.sql
+mysql -uroot -p gewumind-boot < db/releases/2.3.0/en/full.sql
 ```
 
 > Don't do both. If you import manually, a "table already exists" notice at startup is normal.
 
-> ⚠️ `01-baseline.sql` contains **platform tables only** (system tables, menus, dictionaries,
+> ⚠️ `db/releases/2.3.0/en/full.sql` contains **platform tables only** (system tables, menus, dictionaries,
 > offices). It does **not** include business tables (`t_*`). A business project should ship its
-> own `db/init/02-<business>.sql` and import `01` → `02` in order; otherwise business APIs will
+> own `db/releases/2.3.0/en/business-<business>.sql` and import `01` → `02` in order; otherwise business APIs will
 > all fail on a fresh environment.
 
 ### 2.5 Start
@@ -112,8 +112,7 @@ You should see:
 Log file: `logs/gewumind-boot-app.log`
 
 **English deployment**: use `--profile en` (default DB `gewumind-boot-en`, dataset
-`data/en/magic-api`) and import `db/init/en/02-seed.sql` and `db/init/en/03-demo.sql`;
-to switch an existing Chinese DB run `db/init/en/upgrade-from-zh.sql`.
+`data/en/magic-api`) and import `db/releases/2.3.0/en/full.sql`; Chinese and English use separate databases.
 See [3.5 Internationalization](#35-internationalization).
 
 ### 2.6 Sign in
@@ -170,9 +169,9 @@ connection-timeout: 30000
 ## 3.5 Internationalization
 
 **Database (deployment-level, pick one)**
-- Chinese: `01-baseline.sql` + `db/init/zh/02-seed.sql` + `db/init/zh/03-demo.sql`
-- English: `01-baseline.sql` + `db/init/en/02-seed.sql` + `db/init/en/03-demo.sql`
-- Existing Chinese DB: `db/init/en/upgrade-from-zh.sql`
+- Chinese: `db/releases/2.3.0/zh/full.sql`
+- English: `db/releases/2.3.0/en/full.sql`
+- Chinese and English use separate databases; no same-database switch.
 
 **Frontend**
 - Open `?lang=en`, or run `localStorage.gw_lang='en'` and refresh
@@ -325,12 +324,12 @@ ENTRYPOINT ["sh","-c","exec java $JAVA_OPTS -Dserver.port=$SERVER_PORT -jar app.
 ```
 
 ```bash
-docker build -t gewumind-boot:1.2.0 .
+docker build -t gewumind-boot:2.3.0 .
 docker run -d --name gewumind -p 9089:9089 \
   -e SPRING_DATASOURCE_PASSWORD='real-password' \
   -v gewumind-data:/app/data \
   -v gewumind-upload:/app/upload \
-  gewumind-boot:1.2.0
+  gewumind-boot:2.3.0
 ```
 
 > ⚠️ **You must mount a persistent volume for `data/`.** It holds every API and component
@@ -424,7 +423,7 @@ bash stop.sh                                # 1. stop first — see the warning
 cp -r data data-backup-$(date +%F)           # 2. back up the low-code workspace
 mysqldump -uroot -p gewumind-boot > db-backup-$(date +%F).sql   # 3. back up the DB
 
-tar -xzf gewumind-boot-app-1.2.2.tar.gz     # 4. unpack the new version
+tar -xzf gewumind-boot-app-2.3.0.tar.gz     # 4. unpack the new version
 #    carry over config/application.yml, especially the datasource and password
 
 bash start.sh --profile online              # 5. start
@@ -442,11 +441,10 @@ bash start.sh --profile online              # 5. start
 New baseline scripts ship in `db/` (e.g. `02-xxx.sql`); apply them manually. Baseline scripts
 are **idempotent** (`CREATE TABLE IF NOT EXISTS` / `INSERT ... ON DUPLICATE`), so re-running is safe.
 
-> **1.2.1 → 1.2.2**: run `db/init/upgrade-1.2.2.sql` (idempotent) to add the config-center entries
-> "system subtitle", "sidebar width", and "expand all menus by default". Fresh installs already include them in `01-baseline.sql`.
+> **2.3.0** is the new database baseline; 2.3.0 has no `upgrade-from-*.sql`. Upgrade scripts start with later releases.
 
-> **Keep business and platform baselines separate**: `01-baseline.sql` is a platform asset and is
-> replaced wholesale on upgrade. Business schema/seed data belongs in `db/init/02-<business>.sql`,
+> **Keep business and platform baselines separate**: `db/releases/2.3.0/en/full.sql` is a platform asset and is
+> replaced wholesale on upgrade. Business schema/seed data belongs in `db/releases/2.3.0/en/business-<business>.sql`,
 > versioned by the project — this way upgrading the kernel never overwrites business data.
 
 ---

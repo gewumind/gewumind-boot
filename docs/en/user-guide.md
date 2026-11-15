@@ -363,37 +363,41 @@ detail page — useful for understanding nodes, conditional branches and approve
 
 ## 8 · Commercial features and licensing
 
-There are two editions. The **basic** edition includes users, roles, menus, dictionaries,
-organisations, the magic-api low-code container, dynamic components and basic CRUD.
-Ten further capabilities are **commercial**.
+GewuMind Boot has **three tiers**:
+
+| Tier | Capabilities | License `kid` |
+|---|---|---|
+| Basic | Users / roles / menus / dictionaries / organisations, magic-api, dynamic components, basic CRUD | none (free) |
+| Standard | All commercial capabilities except AI: module, workflow, Redis, MQTT, Kafka, SSE, TCP, WS, SSO | `pro-2026` |
+| Enterprise | Everything, including AI chat, knowledge base and H5 support | `ent-2026` |
 
 ![Licensing panel](screenshots/02-configuration-center.png)
 
-> The Configuration Center lists each capability and its parameters. In the running app the
-> **licensing panel** sits on the right — edition, validity, unlocked capabilities, machine code
-> and the "upload licence file" entry.
+> The right-hand licensing panel shows the edition, validity, unlocked capabilities, machine code and the upload entry.
 
-### 8.1 The ten capabilities
+### 8.1 The twelve capabilities
 
-| Capability | Switch | Parameters | Purpose |
-|---|---|---|---|
-| **Module management** | `system.module.enable` | — | Group menus into modules for per-module grants |
-| **Workflow approval** | `workflow.enabled` | — | Leave/contract/purchase approval flows |
-| **Redis** | `redis.enabled` | `redis.config` | Cache, distributed locks, shared sessions |
-| **MQTT** | `mqtt.enabled` | `mqtt.config` | IoT / device messaging |
-| **Kafka** | `kafka.enabled` | `kafka.config` | Message queue, produce/consume |
-| **SSE server** | `sse.enabled` | `sse.config` | Server-to-client push |
-| **TCP server** | `tcp.enabled` | — (port is in the script) | Custom-protocol long connections |
-| **WebSocket server** | `ws.enabled` | `ws.config` | Bidirectional connections |
-| **Single sign-on** | `sso.enable` | `sso.config` (`{"role":"server"}` or `client`) | Integrate with an IdP |
-| **AI customer service** (new in 2.0) | `ai.enabled` | `ai.config` (model endpoint / key / model / timeout) | Trusted AI Q&A: the model picks APIs, calls them within permissions, answers are verified | "AI customer service" menu unavailable; chat answers "not enabled" |
+| Capability | Switch | Standard | Enterprise | Purpose |
+|---|---|---|---|---|
+| **Module management** | `system.module.enable` | ✅ | ✅ | Group menus into modules |
+| **Workflow approval** | `workflow.enabled` | ✅ | ✅ | Leave/contract/purchase flows |
+| **Redis** | `redis.enabled` | ✅ | ✅ | Cache, locks, shared sessions |
+| **MQTT** | `mqtt.enabled` | ✅ | ✅ | IoT / device messaging |
+| **Kafka** | `kafka.enabled` | ✅ | ✅ | Message queue |
+| **SSE server** | `sse.enabled` | ✅ | ✅ | Server-to-client push |
+| **TCP server** | `tcp.enabled` | ✅ | ✅ | Custom-protocol connections |
+| **WebSocket server** | `ws.enabled` | ✅ | ✅ | Bidirectional connections |
+| **Single sign-on** | `sso.enable` | ✅ | ✅ | IdP integration |
+| **AI customer service** | `ai.enabled` | — | ✅ | Trusted AI Q&A |
+| **Knowledge base** | `ai.kb.enabled` | — | ✅ | Document retrieval Q&A |
+| **H5 external support** | `ai.h5.enabled` | — | ✅ | Phone / WeChat webview |
 
 > ⚠️ **Every switch requires a service restart** to take effect.
 
 ### 8.2 Seeing what you have
 
 The licensing panel on the right of the Configuration Center shows the edition, expiry,
-remaining days, the unlocked capability tags (`10 / 10 available`) and your machine code.
+remaining days, the unlocked capability tags (`12 / 12 available`) and your machine code.
 The same data is available via:
 
 ```bash
@@ -403,7 +407,7 @@ curl -s http://<host>:9089/api/system/license/status
 ### 8.3 Trial
 
 - The trial starts on first run of a machine, **30 days** by default (`app.license-trial-days`)
-- Everything is unlocked during the trial
+- All 12 capabilities are unlocked during the trial
 - On expiry it falls back to basic; commercial menus jump to a "licence required" page
 - The start time is recorded in `license.trial.startedAt` — **do not edit it by hand**
 
@@ -657,12 +661,12 @@ Format `<module>:<action>`. Tick what a role needs.
 
 ---
 
-## 12 · AI customer service (new in 2.0)
+## 12 · AI customer service (2.3 highlight)
 
 > Trusted AI customer service: the AI answers business questions **within the user's permissions**.
 > The model never touches the database — it can only call the business APIs you register ("tools");
 > data is fetched by the system and every answer is checked item by item. If nothing is found it
-> says so plainly; it never invents data. This is a commercial capability (see chapter 8).
+> says so plainly; it never invents data. **2.3 highlight**: Standard excludes AI; Enterprise includes `ai_chat` / `ai_kb` / `ai_h5` (see chapter 8).
 
 ### 12.1 How it works
 
@@ -701,6 +705,10 @@ Four layers of protection (all server-side, the model cannot bypass them):
 | AI roles | Create roles, tick the tool scope, assign users |
 | AI audit | Call trace and refusal audit |
 
+![AI chat](screenshots/27-ai-chat.png)
+![Knowledge base](screenshots/29-ai-knowledge-base.png)
+![H5 support](screenshots/30-ai-h5-chat.png)
+
 ### 12.4 FAQ
 
 - **"AI assistant is not enabled"**: the licence is not active, or `ai.enabled` is off, or `ai.config` is empty — all three are required
@@ -726,23 +734,24 @@ Lets the AI answer **document-based** questions (operation manuals, policies, FA
 "AI chat" supports **voice input**: tap the microphone, speak, and the browser transcribes it to text before asking.
 
 - Built on the browser Web Speech API; Chrome / Edge give the full experience, other browsers fall back to text input
-- Speech is recognised locally in the browser; no audio is uploaded. Server-side ASR/TTS is deferred to a later release
+- Browser Web Speech API is supported, as is server-side ASR/TTS (OpenAI-compatible; MiniMax `speech-2.8-hd` / `asr-1.0`) via `ai.asr.config` / `ai.tts.config`
 
 ### 12.7 H5 external customer service (new in 2.2)
 
-Embed the AI customer service into an **external H5 page** (phone browser / WeChat webview) so visitors can ask questions without logging in; when the AI cannot help they can **hand off to a human** (v1 = message + notification + ticket; agent takeover is deferred to 2.3). This is a separate commercial capability `AI_H5`.
+Embed the AI customer service into an **external H5 page** (phone browser / WeChat webview) through a **signed link that carries a user**; when the AI cannot help they can **hand off to a human** (message + notification + ticket). This is an Enterprise capability `AI_H5`.
 
-1. **Create a channel**: AI customer service → Channel management → new channel (channel id + brand name + welcome message + allowed-tools whitelist)
+1. **Create a channel**: AI customer service → Channel management → new channel (channel id + brand name + welcome message)
 2. **Configure the brand**: set the brand name / theme colour / welcome message on the channel; visitors only ever see brand data, never the backend
-3. **Embed it**: include `h5-widget.js` on your H5 page and set `data-channel="<channel id>"`
+3. **Generate a signed link**: on the channel page click "Try" / "Integration Guide" to sign a link for the current username (`user`, `exp`, `sig`)
+4. **Embed it**: include `h5-widget.js` on your H5 page and set `data-channel="<channel id>"`
    ```html
    <script src="https://<your-domain>/h5-widget.js" data-channel="star-mall"></script>
    ```
-4. **Visitor identity**: anonymous (`anon:`) or phone number (`phone:`) — the phone number ties the conversation to a specific customer; tools read data scoped to the injected identity, and out-of-scope reads return nothing (the same four-layer protection as internal AI chat)
-5. **Hand off to a human**: the visitor taps "Talk to a human" → a `sys_ai_handoff` ticket is created (`pending`) + the agent is notified; the agent handles it from the admin console
+5. **Identity and permissions**: H5 requires a user; callable tools come from that user's AI role and data scope comes from their platform permissions. The kernel anonymous / phone channel is disabled by default (`ai.h5.require-user=true`); anonymous data queries are no longer supported
+6. **Hand off to a human**: the visitor taps "Talk to a human" → a `sys_ai_handoff` ticket is created (`pending`) + the agent is notified; the agent handles it from the admin console
 
 > Channel management is an admin capability (`isAdmin()` gate); the public H5 endpoints only return brand / welcome / conversation data and never expose the backend.
-> Server-side voice, PDF/DOCX parsing, and SSO visitor identity are deferred to 2.3.
+> 2.3 adds server-side voice, session history and bilingual `X-Lang` copy. PDF/DOCX parsing and SSO visitor identity remain future work.
 
 ---
 

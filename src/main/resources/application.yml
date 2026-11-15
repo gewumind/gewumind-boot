@@ -165,6 +165,10 @@ app:
   lang: zh
   demo:
     lang: ${app.lang:zh}
+    # 演示模式（只读）：开启后所有保存/删除/更新等写操作都会被拦截并提示
+    # “当前环境是演示环境，不能保存”。demo profile 默认开启，可用环境变量覆盖。
+    # Demo (read-only) mode: blocks every save/delete/update action with a notice.
+    read-only: ${APP_DEMO_READ_ONLY:false}
   init-tables: false
   # 内核校验（签名 / 网关白名单）仅商业模式生效，开源模式全部放行
   # Kernel checks (signature / gateway allowlist) only apply to commercial

@@ -94,7 +94,6 @@ if (action == 'approve') {
     }
     var instId = taskInfo.instance_id
     var nodeId = taskInfo.node_id
-    // 业务表更新：backend 内部用 LinkedHashMap 顺序写 SQL，避免 magic-script HashMap 错位
     var bizFields = {}
     bizFields.comment = '' + comment
     bizFields.final_status = 'APPROVED'
@@ -120,7 +119,6 @@ if (action == 'approve') {
     var nextTask = workflow.moveToNext(instId, nextNode, nextNodeName, assignee)
     return { success: true, taskId: taskId, status: 'APPROVED', nextNode: nextNode, nextNodeLabel: nextNodeName, assignee: assignee, nextTask: nextTask }
 }
-
 if (action == 'confirm') {
     var taskIdC = body.taskId
     var opC = body.userId || 'hr'
@@ -177,7 +175,6 @@ if (action == 'reject' || action == 'deny') {
     }
     var instId2 = taskInfo2.instance_id
 
-    // 业务表驳回：backend LinkedHashMap 顺序绑定参数
     var bizFields2 = {}
     bizFields2.comment = '' + reason2
     bizFields2.final_status = 'REJECTED'
@@ -192,24 +189,24 @@ if (action == 'reject' || action == 'deny') {
 
     var nodeId2 = taskInfo2.node_id
     if (nodeId2 != null && nodeId2 != 'apply') {
-        var prevNodeL = workflow.findPreviousNode(processId, nodeId2)
+        var prevNodeP = workflow.findPreviousNode(processId, nodeId2)
         workflow.reject(taskId2, op2, '' + reason2, form2)
-        if (prevNodeL == null || prevNodeL == 'apply') {
-            var deniedL = workflow.deny(taskId2, op2, '' + reason2, processId)
-            return deniedL
+        if (prevNodeP == null || prevNodeP == 'apply') {
+            var deniedP = workflow.deny(taskId2, op2, '' + reason2, processId)
+            return deniedP
         }
-        var prevRoleL = workflow.getNodeRole(processId, prevNodeL)
-        var prevAssigneeL = null
-        if (prevRoleL != null && prevRoleL != '') {
-            var instNowL = workflow.getInstance(instId2)
-            var prevUsersL = workflow.resolveRole(prevRoleL, instNowL != null ? '' + instNowL.initiator : '')
-            if (prevUsersL != null && prevUsersL.size() > 0) {
-                prevAssigneeL = prevUsersL.get(0)
+        var prevRoleP = workflow.getNodeRole(processId, prevNodeP)
+        var prevAssigneeP = null
+        if (prevRoleP != null && prevRoleP != '') {
+            var instNowP = workflow.getInstance(instId2)
+            var prevUsersP = workflow.resolveRole(prevRoleP, instNowP != null ? '' + instNowP.initiator : '')
+            if (prevUsersP != null && prevUsersP.size() > 0) {
+                prevAssigneeP = prevUsersP.get(0)
             }
         }
-        var rtL = workflow.resubmitNodeTask(instId2, prevNodeL, prevAssigneeL, null, '' + reason2)
-        if (rtL.success == false) { return rtL }
-        return { success: true, taskId: taskId2, status: 'RUNNING', rejectedTo: prevNodeL, nextNode: prevNodeL, nextNodeLabel: rtL.nextNodeLabel, assignee: rtL.assignee, nextTask: rtL.nextTask }
+        var rtP = workflow.resubmitNodeTask(instId2, prevNodeP, prevAssigneeP, null, '' + reason2)
+        if (rtP.success == false) { return rtP }
+        return { success: true, taskId: taskId2, status: 'RUNNING', rejectedTo: prevNodeP, nextNode: prevNodeP, nextNodeLabel: rtP.nextNodeLabel, assignee: rtP.assignee, nextTask: rtP.nextTask }
     }
 
     var denied = workflow.deny(taskId2, op2, '' + reason2, processId)
@@ -247,30 +244,11 @@ if (action == 'resubmit') {
     if (inst4.status != 'REJECTED' && inst4.status != 'WITHDRAWN') {
         return { success: false, message: '只驳回状态可修改重提: ' + inst4.status }
     }
-var formData = body.formData
+    var formData = body.formData
     if (formData == null) { formData = {} }
     var rs = workflow.resubmit(body.instanceId, body.userId || inst4.initiator, formData)
     return rs
 }
-if (action == 'cleanupWorkflow') {
-    db.update("DELETE FROM sys_wf_history")
-    db.update("DELETE FROM sys_wf_task")
-    db.update("DELETE FROM sys_wf_instance")
-    return { success: true, message: '已清空工作流测试数据' }
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 return { success: false, message: 'unsupported action: ' + action }
-

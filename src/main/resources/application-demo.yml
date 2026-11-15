@@ -35,7 +35,7 @@ spring:
       filters: stat
       use-global-data-source-stat: true
       stat-view-servlet:
-        enabled: true
+        enabled: false
         login-username: admin
         login-password: 123456
         reset-enable: false
@@ -46,6 +46,9 @@ spring:
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 
 app:
+  # 演示模式：拦截所有保存动作，只读浏览
+  demo:
+    read-only: true
   dev-api-key:
     enabled: true
     name: demo-local

@@ -1,0 +1,10 @@
+{
+  "properties": {},
+  "id": "test-parser-group-001",
+  "name": "测试",
+  "type": "api",
+  "parentId": "0",
+  "path": "/test",
+  "paths": [],
+  "options": []
+}

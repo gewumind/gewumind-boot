@@ -35,20 +35,21 @@ var name = body.name
 var contact = body.contact
 var phone = body.phone
 var level = body.level
+var orgId = body.orgId
 if (!name) {
     return { success: false, message: '客户名称不能为空' }
 }
 if (id) {
     db.update("""
-        update t_customer set name = #{name}, contact = #{contact}, phone = #{phone}, level = #{level}
+        update t_customer set name = #{name}, contact = #{contact}, phone = #{phone}, level = #{level}, org_id = #{orgId}
         where id = #{id} and is_del = 0
     """)
     return { success: true }
 } else {
     var newId = uuid()
     db.insert("""
-        insert into t_customer(id, name, contact, phone, level, create_date, is_del)
-        values (#{newId}, #{name}, #{contact}, #{phone}, #{level}, now(), 0)
+        insert into t_customer(id, name, contact, phone, level, org_id, create_date, is_del)
+        values (#{newId}, #{name}, #{contact}, #{phone}, #{level}, #{orgId}, now(), 0)
     """)
     return { success: true, id: newId }
 }

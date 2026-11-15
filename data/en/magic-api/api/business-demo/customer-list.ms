@@ -33,8 +33,9 @@ try {
 } catch (e) {
 }
 return db.page("""
-    select c.id, c.name, c.contact, c.phone, c.level, c.create_date, c.org_id
+    select c.id, c.name, c.contact, c.phone, c.level, c.create_date, c.org_id, org.name org_name
     from t_customer c
+    left join sys_office org on org.id = c.org_id
     where c.is_del = 0
     ?{name, and c.name like concat('%',#{name},'%')}
     ?{level, and c.level = #{level}}

@@ -6,7 +6,7 @@
 #
 # 前置:
 #   1. 目标实例已启动（2.x 应用 + gewumind_2x 库）
-#   2. 已导入 db/init/01-baseline.sql + 02-ai-2.0.sql + 03-business-demo.sql + 04-ai-kb-2.1.sql
+#   2. 已导入 db/releases/2.3.0/zh/full.sql
 #   3. 已执行 tests/ai/setup-perm-users.sql（8 个越权测试用户，密码 123456）
 #   4. 配置中心 ai.enabled=true、ai.kb.enabled=true，ai.config 指向可用模型
 set -uo pipefail

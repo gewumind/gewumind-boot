@@ -22,7 +22,7 @@ Browser ──► gewumind-boot-app.jar (port 9089)
               │    bootstrap · /api prefix stripping · SSO entry endpoints
               │
               ├─ data/en/magic-api/     ← your APIs and page components live here
-              └─ MySQL               ← schema and seed data defined by db/init/01-baseline.sql
+              └─ MySQL               ← schema and seed data defined by db/releases/2.3.0/en/full.sql
 ```
 
 ## What each part is responsible for
@@ -36,7 +36,7 @@ Browser ──► gewumind-boot-app.jar (port 9089)
 | **Scheduled tasks** | `data/en/magic-api/task/` | Writing scheduled jobs |
 | **Workflow definitions** | `data/en/magic-api/workflow/` | Writing workflow processes |
 | **Frontend bundle** | `src/main/resources/static/` | Normally untouched. Replace wholesale when upgrading the frontend |
-| **Database baseline** | `db/init/01-baseline.sql` | Imported on new environments. **Do not re-import on an existing one** |
+| **Database baseline** | `db/releases/2.3.0/en/full.sql` | Imported on new environments. **Do not re-import on an existing one** |
 | **Configuration** | `src/main/resources/application-*.yml` | Deployment settings; runtime-tunable options live in the admin config center |
 
 > The `.ms` files under `data/en/magic-api/` are **the real source** for endpoints and pages: the

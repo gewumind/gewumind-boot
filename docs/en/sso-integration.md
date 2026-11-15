@@ -3,7 +3,7 @@
 For **third-party system developers**: use GewuMind Boot as the identity provider (IdP) and
 integrate your system as an OAuth2 client for single sign-on (SSO).
 
-> This document targets release `1.2.2` (kernel `0.3.5`). The server is built on Sa-Token OAuth2 1.37
+> This document targets release `2.3.0` (kernel `0.4.2`). The server is built on Sa-Token OAuth2 1.37
 > and supports **authorization code flow only** — implicit, password and client_credentials are not supported.
 > If you want GewuMind to log in to another IdP (GewuMind as a client), see the Configuration Center
 > chapter of the User Guide.

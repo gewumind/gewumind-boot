@@ -1,0 +1,1 @@
+import{_ as _0x1c5ba6,o as _0x5222bf,c as _0x70f311}from'./index-95d07487.js';const o={};function t(_0x19d255,_0x386de6){return _0x5222bf(),_0x70f311('div',null,'开发中');}const a=_0x1c5ba6(o,[['render',t]]);export{a as default};

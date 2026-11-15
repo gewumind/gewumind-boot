@@ -1,5 +1,5 @@
 {
-  "description": "2.0 黄金问题集：20 问，答案必须与接口返回逐项一致（数据对齐 db/init/03-business-demo.sql 的 5 客户 / 7 订单）",
+  "description": "2.0 黄金问题集：20 问，答案必须与接口返回逐项一致（数据对齐 db/releases/2.3.0/zh/full.sql 的 5 客户 / 7 订单）",
   "user": "admin",
   "cases": [
     { "id": "G01", "question": "你好", "expect_status": "success" },

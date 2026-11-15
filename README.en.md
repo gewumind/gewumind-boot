@@ -13,7 +13,7 @@ Three commands from clone to a fully working backend.
 
 - Website: https://gewumind.github.io
 - Main repo: https://github.com/gewumind/gewumind-boot ｜ Gitee: https://gitee.com/gewumind/gewumind-boot
-- AI development skill: https://github.com/gewumind/gewumind-skill ｜ Gitee: https://gitee.com/gewumind/gewumind-skill (version synced with boot — currently 2.2.0)
+- AI development skill: https://github.com/gewumind/gewumind-skill ｜ Gitee: https://gitee.com/gewumind/gewumind-skill (version synced with boot — currently 2.3.0)
 
 > Content is kept in sync across GitHub and Gitee.
 - **Docs index**: [docs/README.md](docs/README.md) (中文) · **[docs/en/README.md](docs/en/README.md)** (English)
@@ -53,7 +53,8 @@ One overview, AI coding in practice, and three deployment paths. English narrati
 - **Manage everything online** — menus, roles, users, dictionaries, modules, config, icons and page components, all maintained in the admin UI
 - **Workflow engine** — conditional branching, CC nodes, layered rejection, per-node approval dialogs
 - **Reports & messaging** — designer-based reports with Excel export; Kafka / MQTT / TCP / WebSocket / SSE / Redis
-- **Security & licensing** — login/password policy, Sa-Token sessions, SSO, offline license
+- **AI customer service** — trusted AI Q&A, tool catalog, AI roles, knowledge base, external H5 support (2.3 highlight)
+- **Security & licensing** — login/password policy, Sa-Token sessions, SSO, offline license (Standard / Enterprise tiers)
 
 ---
 
@@ -71,14 +72,14 @@ Use the `.sh` scripts on Linux/macOS and the `.bat` ones on Windows — they beh
 CREATE DATABASE gewumind-boot DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 ```
 
-Then import [`db/init/01-baseline.sql`](db/init/01-baseline.sql) into it — any GUI
+Then import [`db/releases/2.3.0/en/full.sql`](db/releases/2.3.0/en/full.sql) into it — any GUI
 client's "run SQL file" works (Navicat / DBeaver / phpMyAdmin), or from a shell:
 
 ```bash
-mysql -h127.0.0.1 -uroot -p gewumind-boot < db/init/01-baseline.sql
+mysql -h127.0.0.1 -uroot -p gewumind-boot < db/releases/2.3.0/en/full.sql
 ```
 
-You should end up with **45 tables** plus bundled menus, roles, dictionaries, config and
+You should end up with **63 tables** plus bundled menus, roles, dictionaries, config and
 page components.
 
 ### 2. Inject the database credentials
@@ -112,7 +113,7 @@ Stop with `bash scripts/stop.sh`. Change the port with `SERVER_PORT=9090 bash sc
 Every released kernel binary (`libs/`) ships with a detached Ed25519 signature:
 
 ```bash
-scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.3.5/gewumind-boot-0.3.5.jar
+scripts/verify-signature.sh libs/com/gewumind/gewumind-boot/0.4.2/gewumind-boot-0.4.2.jar
 ```
 
 - v1.1.0+: `gewumind-release-2026.pub`
@@ -131,6 +132,15 @@ All captures come from a live instance running the English locale.
 |---|---|
 | ![Dashboard](docs/en/screenshots/01-dashboard.png) | ![Login](docs/en/screenshots/00-login.png) |
 | **Dashboard** — stat cards, sales trend, activity feed | **Login** — configurable logo and theme |
+
+### AI customer service (2.3 highlight)
+
+Trusted AI support does not query the database directly: the model may only call registered read-only tools, while the server fetches data within the user's permissions, masks sensitive fields and verifies every answer. The Enterprise tier includes `ai_chat` / `ai_kb` / `ai_h5`; Standard excludes AI.
+
+| | | |
+|---|---|---|
+| ![AI chat](docs/en/screenshots/27-ai-chat.png) | ![Knowledge base](docs/en/screenshots/29-ai-knowledge-base.png) | ![H5 support](docs/en/screenshots/30-ai-h5-chat.png) |
+| **AI chat** — tool calls + grounded data answers | **Knowledge base** — chunking, retrieval, ACL | **H5 support** — phone / WeChat webview |
 
 ### System settings
 
@@ -200,8 +210,8 @@ Seven tabs for seven kinds of editable resource — **changes take effect on sav
 
 | | | |
 |---|---|---|
-| ![Login](docs/en/screenshots/gif/01-login.gif) | ![Add user](docs/en/screenshots/gif/03-user-management-add-user.gif) | ![Browse the API tree](docs/en/screenshots/gif/04-online-ide-api-tree.gif) |
-| Login | Add a user | Browse the API tree |
+| ![Login](docs/en/screenshots/gif/01-login.gif) | ![Add user](docs/en/screenshots/gif/03-user-management-add-user.gif) | ![Browse the API tree](docs/en/screenshots/gif/04-online-ide-api-tree.gif) | ![AI chat](docs/en/screenshots/gif/07-ai-chat.gif) |
+| Login | Add a user | Browse the API tree | Ask the AI and see grounded results |
 
 > Step-by-step usage lives in the [User Guide](docs/en/user-guide.md);
 > development and debugging in the [Low-code Guide](docs/en/lowcode-guide.md).
@@ -289,7 +299,7 @@ The frontend bundle is committed, so nothing extra is needed for local developme
 
 ```
 gewumind-boot/
-├── pom.xml                    # depends on com.gewumind:gewumind-boot:0.3.5
+├── pom.xml                    # depends on com.gewumind:gewumind-boot:0.4.2
 ├── libs/                      # kernel thin jar (standard Maven layout, committed)
 ├── src/main/java/com/gewumind/app/
 │   ├── GewuMindBootApp.java   # bootstrap class
@@ -299,7 +309,7 @@ gewumind-boot/
 │   ├── application.yml        # this project's config (overrides the kernel's)
 │   └── static/                # frontend bundle (committed; clone and go)
 ├── data/{zh,en}/magic-api/    # script workspace (zh/en): api / component / task / workflow / function
-├── db/init/01-baseline.sql    # database baseline
+├── db/releases/2.3.0/en/full.sql    # database baseline
 ├── scripts/                   # start-stop / certs (+ Windows .bat)
 └── docs/architecture.md · docs/架构说明.md
 ```
@@ -309,12 +319,12 @@ gewumind-boot/
 ## Database
 
 **MySQL 8 is the only supported database today.** The distribution ships a single JDBC driver
-(`mysql-connector-j`), and `db/init/01-baseline.sql` is MySQL syntax
+(`mysql-connector-j`), and `db/releases/2.3.0/en/full.sql` is MySQL syntax
 (`ENGINE=InnoDB`, `utf8mb4_general_ci`, backticks).
 
 
 
-The baseline lives in [`db/init/01-baseline.sql`](db/init/01-baseline.sql) — 45 tables plus
+The baseline lives in [`db/releases/2.3.0/en/full.sql`](db/releases/2.3.0/en/full.sql) — 63 tables plus
 bundled menus, roles, dictionaries, config and page components. The `CREATE DATABASE`
 statement is in [Quick start](#quick-start); resetting means `DROP DATABASE` and importing
 again.
@@ -343,7 +353,7 @@ spring:
 > defaults either — a missing one aborts startup on purpose.
 
 **Using another database** (PostgreSQL / Oracle / SQL Server): add the matching driver
-dependency yourself and port `db/init/01-baseline.sql` to that dialect — table options,
+dependency yourself and port `db/releases/2.3.0/en/full.sql` to that dialect — table options,
 charset, auto-increment and comment syntax are all MySQL-specific. Any MySQL-only SQL inside
 `data/zh|en/magic-api/` scripts must be adapted too.
 

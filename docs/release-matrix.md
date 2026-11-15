@@ -6,10 +6,11 @@
 |---|---|---|---|---|---|---|
 | 1.2.0 | 0.3.3 | 1.2.0 | `db/init/01-baseline.sql`（2026-10） | `gewumind-release-2026.pub` | 由签发中心按客户签发 | 已发布 |
 | 1.2.1 | 0.3.4 | 1.2.1 | `db/init/01-baseline.sql`（2026-10） | `gewumind-release-2026.pub` | 由签发中心按客户签发 | 已发布 |
-| 1.2.2 | 0.3.5 | 1.2.1 | `db/init/01-baseline.sql`（2026-10） | `gewumind-release-2026.pub` | 由签发中心按客户签发 | 已发布 |
-| 2.0.0 | 0.4.0 | 2.0.0 | `db/init/01-baseline.sql` + `02-ai-2.0.sql`（2026-11） | `gewumind-release-2026.pub` | 2.x 离线 License（AI 功能位） | 已发布 |
-| 2.1.0 | 0.4.1 | 2.1.0 | `db/init/01-baseline.sql` + `02-ai-2.0.sql` + `04-ai-kb-2.1.sql`（2026-11） | `gewumind-release-2026.pub` | 2.x 离线 License（AI 功能位 + `AI_KB`） | 已发布 |
-| 2.2.0 | 0.4.2 | 2.2.0 | `db/init/01-baseline.sql` + `02-ai-2.0.sql` + `04-ai-kb-2.1.sql` + `05-ai-h5-2.2.sql`（2026-11） | `gewumind-release-2026.pub` | 2.x 离线 License（AI 功能位 + `AI_KB` + `AI_H5`） | 已发布 |
+| 1.2.2 | 0.3.5 | 1.2.1 | `db/releases/1.2.2/{zh,en}/full.sql`（2026-11） | `gewumind-release-2026.pub` | 由签发中心按客户签发 | 已发布 |
+| 2.0.0 | 0.4.0 | 2.0.0 | `db/releases/2.0.0/{zh,en}/full.sql`（2026-11） | `gewumind-release-2026.pub` | 2.x 离线 License（AI 功能位） | 已发布 |
+| 2.1.0 | 0.4.1 | 2.1.0 | `db/releases/2.1.0/{zh,en}/full.sql`（2026-11） | `gewumind-release-2026.pub` | 2.x 离线 License（AI 功能位 + `AI_KB`） | 已发布 |
+| 2.2.0 | 0.4.2 | 2.2.0 | `db/releases/2.2.0/{zh,en}/full.sql`（2026-11） | `gewumind-release-2026.pub` | 2.x 离线 License（AI 功能位 + `AI_KB` + `AI_H5`） | 已发布 |
+| 2.3.0 | 0.4.2 | 2.3.0 | `db/releases/2.3.0/{zh,en}/full.sql`（2026-11） | `gewumind-release-2026.pub` | 三档 License：标准版（除 AI）/旗舰版（全部） | 当前 |
 | 3.0.0 | 0.5.x | 3.0.0 | 3.x 迁移脚本 | 3.0 发布公钥 | 3.x 离线 License | 规划中 |
 
 ## 规则
@@ -18,6 +19,7 @@
 - 2.x / 3.x 的新增能力通过离线 License 解锁，和 SSO 等现有商业能力一致；原有免费功能不因升级改变。
 - 同一大版本内，minor / patch 升级不要求更换 License；跨大版本升级需对应版本的 License。
 - 升级顺序：`1.x → 2.x → 3.x`。跨大版本升级前备份数据库，升级后按发布说明验证。
+- 数据库脚本按版本归档在 `db/releases/<版本>/<语言>/`：`full.sql` 为空库完整安装，`upgrade-from-<源版本>.sql` 为就地升级；详见 `db/releases/README.md`。
 
 ## 校验
 

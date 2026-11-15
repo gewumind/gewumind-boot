@@ -110,7 +110,6 @@ for lang in zh en; do
   mkdir -p "${STAGE}/data/${lang}"
   cp -r "data/${lang}/magic-api" "${STAGE}/data/${lang}/"
 done
-[ -d data/i18n ] && cp -r data/i18n "${STAGE}/data/"
 cp -r db/. "${STAGE}/db/"
 cp LICENSE COMMERCIAL_TERMS.md NOTICE README.md README.en.md "${STAGE}/" 2>/dev/null || true
 cp -r docs/. "${STAGE}/docs/"
@@ -143,8 +142,8 @@ cat > "${STAGE}/DEPLOY.md" <<'EOF'
 | `config/application-{zh,en}.yml` | 语言配置（默认 zh） |
 | `data/zh/magic-api/` | 中文低代码容器：接口 / 组件 / 任务 / 流程（**可编辑，备份重点**） |
 | `data/en/magic-api/` | 英文低代码容器（同上） |
-| `data/i18n/` | 运行时语言包（可选覆盖） |
-| `db/init/01-baseline.sql` | 基线库表结构与初始数据 |
+| `db/releases/2.3.0/<lang>/full.sql` | 当前版本完整安装 SQL |
+| `db/releases/<ver>/<lang>/upgrade-from-<src>.sql` | 后续版本升级 SQL |
 | `logs/` `upload/` `reports/` | 运行期目录，首次启动自动创建 |
 
 ## 环境要求
@@ -178,8 +177,16 @@ bash start.sh                            # Windows: start.bat
 英文：`bash start.sh --profile en` 或 `SPRING_PROFILES_ACTIVE=en bash start.sh`
       → `data/en/magic-api`，数据库 `gewumind-boot-en`
 
-数据库初始化：先建库，再按顺序导入 `db/init/01-baseline.sql`、`db/init/<lang>/02-seed.sql`、
-`db/init/<lang>/03-demo.sql`（后两个可选）。已有中文库切英文可执行 `db/init/en/upgrade-from-zh.sql`。
+数据库初始化：
+
+```bash
+# 全新安装（中文 2.3.0）
+mysql -uroot -p gewumind-boot < db/releases/2.3.0/zh/full.sql
+# English fresh install
+mysql -uroot -p gewumind-boot-2-en < db/releases/2.3.0/en/full.sql
+```
+
+详见 `db/releases/README.md`。2.3.0 是新的完整起点库；后续版本只新增 `upgrade-from-2.3.0.sql`。
 
 ## 生产部署建议
 

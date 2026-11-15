@@ -3,7 +3,7 @@
 面向**第三方系统开发者**：把 GewuMind Boot 当作统一身份认证服务端（IdP），
 你的系统作为 OAuth2 客户端接入，实现"一次登录、多系统通行"。
 
-> 本文对应发行版 `1.2.2`（内核 `0.3.5`）。服务端实现基于 Sa-Token OAuth2 1.37，
+> 本文对应发行版 `2.3.0`（内核 `0.4.2`）。服务端实现基于 Sa-Token OAuth2 1.37，
 > 仅支持 **授权码模式（authorization_code）**，不支持 implicit / password / client_credentials。
 > 如果你要让 GewuMind 去登录别的 IdP（GewuMind 作为客户端），见《使用手册》的配置中心章节。
 

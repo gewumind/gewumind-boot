@@ -2,7 +2,7 @@
 
 > **Language / 语言**：[English](./README.md) | [中文](../README.md)
 
-> Screenshots show the Chinese UI; append `?lang=en` to the app URL for the English UI.
+> English screenshots and GIFs live in `en/screenshots/`; use the `en` profile with the English database.
 
 Full documentation for GewuMind Boot. Pick your entry point by role:
 
@@ -13,6 +13,7 @@ Full documentation for GewuMind Boot. Pick your entry point by role:
 | **Understand every menu / system setting / licensing** | [User Guide](./user-guide.md) |
 | **Build features with low-code** (APIs, pages, live debugging, reports, workflows) | [Low-code Guide](./lowcode-guide.md) |
 | **Do secondary development** (source builds, extension points) | [Development Guide](./development.md) |
+| **Use AI customer service** (trusted Q&A, tools/roles, knowledge base, H5) | [User Guide 12 · AI customer service](./user-guide.md#12--ai-customer-service-23-highlight) |
 | **Develop with AI** (gewumind-skill four-stage pipeline) | [AI Development](./ai-development.md) |
 | **Integrate third-party systems via SSO** (this app as the OAuth2 server) | [SSO Integration](./sso-integration.md) |
 | **Understand the architecture** | [Architecture](./architecture.md) |
@@ -20,9 +21,10 @@ Full documentation for GewuMind Boot. Pick your entry point by role:
 ## Quick start
 
 ```bash
-tar -xzf gewumind-boot-<ver>.tar.gz && cd gewumind-boot-<ver>
+tar -xzf gewumind-boot-app-2.3.0.tar.gz && cd gewumind-boot-app-2.3.0
 vi config/application-dev.yml          # database url / password
-bash start.sh                          # auto-creates schema on first run
+mysql -uroot -p gewumind-boot < db/releases/2.3.0/en/full.sql
+bash start.sh
 # open http://<server-ip>:9089   default admin / 123456 (change it!)
 ```
 

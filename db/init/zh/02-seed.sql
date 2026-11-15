@@ -1,3 +1,0 @@
--- GewuMind Boot · 中文部署
--- 01-baseline.sql 已是中文，本文件无需额外数据。
--- 用法：01-baseline.sql → db/init/zh/02-seed.sql → db/init/zh/03-demo.sql
