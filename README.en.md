@@ -2,6 +2,8 @@
 
 > **Language / 语言**：[English](README.en.md) | [中文](README.md)
 
+> **Live demo (English)**: <http://47.117.145.234:34568> · login `admin` / `123456`
+
 **GewuMind Boot** is an **AI-driven low-code backend container** — endpoints written as
 scripts, pages kept as component files, menus / roles / dictionaries / config all managed online.
 Three commands from clone to a fully working backend.

@@ -2,6 +2,8 @@
 
 > **Language / 语言**：[English](./en/README.md) | [中文](./README.md)
 
+> **在线体验（中文）**：<http://47.117.145.234:34567> · 账号 `admin` / `123456`
+
 GewuMind Boot 的完整文档。按你的角色从这里进入：
 
 | 我想… | 看这份 |

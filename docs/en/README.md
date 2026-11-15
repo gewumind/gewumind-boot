@@ -4,6 +4,8 @@
 
 > English screenshots and GIFs live in `en/screenshots/`; use the `en` profile with the English database.
 
+> **Live demo (English)**: <http://47.117.145.234:34568> · login `admin` / `123456`
+
 Full documentation for GewuMind Boot. Pick your entry point by role:
 
 | I want to… | Read |
