@@ -70,12 +70,12 @@ return [
     {item: '', line: '', endBalance: null, endPct: null, beginBalance: null, beginPct: null, _rowType: 'spacer'},
     {item: 'Total liabilities',                   line: '', endBalance: 1842000, endPct: 59.54, beginBalance: 1684000, beginPct: 59.03, _rowType: 'subtotal'},
     {item: '', line: '', endBalance: null, endPct: null, beginBalance: null, beginPct: null, _rowType: 'spacer'},
-    {item: 'V. Owners' equity',             line: '', endBalance: null, endPct: null, beginBalance: null, beginPct: null, _rowType: 'section'},
+    {item: 'V. Owners equity',             line: '', endBalance: null, endPct: null, beginBalance: null, beginPct: null, _rowType: 'section'},
     {item: '  Paid-in capital (share capital)',           line: '34', endBalance: 800000, endPct: 25.86, beginBalance: 800000, beginPct: 28.04},
     {item: '  Capital reserve',                 line: '35', endBalance: 120000, endPct: 3.88,  beginBalance: 120000, beginPct: 4.21},
     {item: '  Surplus reserve',                 line: '36', endBalance: 95000,  endPct: 3.07,  beginBalance: 85000,  beginPct: 2.98},
     {item: '  Retained earnings',               line: '37', endBalance: 235800, endPct: 7.62,  beginBalance: 163000, beginPct: 5.71},
-    {item: 'Total owners' equity',             line: '', endBalance: 1250800, endPct: 40.43, beginBalance: 1168000, beginPct: 40.94, _rowType: 'subtotal'},
+    {item: 'Total owners equity',             line: '', endBalance: 1250800, endPct: 40.43, beginBalance: 1168000, beginPct: 40.94, _rowType: 'subtotal'},
     {item: '', line: '', endBalance: null, endPct: null, beginBalance: null, beginPct: null, _rowType: 'spacer'},
-    {item: 'Total liabilities and owners' equity',       line: '', endBalance: 3092800, endPct: 100.00, beginBalance: 2852000, beginPct: 100.00, _rowType: 'grand'}
+    {item: 'Total liabilities and owners equity',       line: '', endBalance: 3092800, endPct: 100.00, beginBalance: 2852000, beginPct: 100.00, _rowType: 'grand'}
 ]
