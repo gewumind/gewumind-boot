@@ -23,15 +23,14 @@
 
 ## 第一步：拿 X-AI-Key
 
-`/mcp` 和 `/ai/**` 都要求请求头 `X-AI-Key: <keyId>:<secret>`。
+`/mcp` 和 `/api/ai/bundle/apply` 都要求请求头 `X-AI-Key: <keyId>:<secret>`，
+并且配置中心的「AI 开发接入」（`ai.dev-access.enabled`）必须打开。
 
-**开发模式**首次启动时会自动生成一个，secret 只在启动日志里出现一次：
+打开开关后几秒内，后端会自动生成 `opencode-dev` Key，并写入安装目录下的
+`data/.gewumind/ai-access.json`：内含 `mcpUrl`、`restUrl`、`header` 和 `key`，
+skill 会直接读取它。关闭开关后几秒内删除 Key 和文件，发布接口返回 403。
 
-```bash
-grep "X-AI-Key" logs/gewumind-boot-app.log
-```
-
-**或者**在后台自助签发（需先登录后台拿到 token）：
+**或者**在后台自助签发（需先登录后台拿到 token；仅在开关打开时可用于 MCP 与发布接口）：
 
 ```bash
 curl -X POST http://localhost:9089/system/ai-keys/save \

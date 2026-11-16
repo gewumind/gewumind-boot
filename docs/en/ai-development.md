@@ -24,15 +24,16 @@ This page only covers getting it running against this project.
 
 ## Step 1 — Get an X-AI-Key
 
-Both `/mcp` and `/ai/**` require the header `X-AI-Key: <keyId>:<secret>`.
+Both `/mcp` and `/api/ai/bundle/apply` require the header `X-AI-Key: <keyId>:<secret>`,
+and the **AI Dev Access** switch (`ai.dev-access.enabled`) in the config center must be on.
 
-In **dev mode** one is generated on first startup, and the secret appears in the log exactly once:
+A few seconds after enabling it, the backend generates an `opencode-dev` key and writes
+`data/.gewumind/ai-access.json` under the install directory. The file contains `mcpUrl`,
+`restUrl`, `header` and `key`; the skill reads it directly. Disabling the switch deletes the
+key and file within a few seconds and makes the publish endpoints return 403.
 
-```bash
-grep "X-AI-Key" logs/gewumind-boot-app.log
-```
-
-Or issue one yourself from the admin UI (after signing in and getting a token):
+Or issue one yourself from the admin UI (after signing in and getting a token; only usable for MCP and the
+publish endpoint while the switch is on):
 
 ```bash
 curl -X POST http://localhost:9089/system/ai-keys/save \

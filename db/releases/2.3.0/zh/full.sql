@@ -670,6 +670,7 @@ INSERT INTO `sys_configure` VALUES
 ('ai003','true','ai.h5.enabled','启用 H5 客服',NULL,'1','开启后可对外提供 H5 客服（需 AI_H5 授权），需重启服务生效！',999,0,'system','2026-11-10 16:01:25',NULL,'2026-11-14 15:24:43',NULL),
 ('ai006','{\"enabled\":\"true\",\"provider\":\"minimax\",\"endpoint\":\"https://api.minimax.cn\",\"api-key\":\"\",\"model\":\"speech-2.8-hd\",\"voice\":\"male-qn-jingying\",\"format\":\"mp3\",\"speed\":1.0}','ai.tts.config','语音播报 TTS(JSON)',NULL,'1','MiniMax / OpenAI 兼容 TTS 配置',998,0,NULL,'2026-11-09 00:00:00',NULL,'2026-11-14 16:37:08',NULL),
 ('ai007','{\"enabled\":\"true\",\"provider\":\"minimax\",\"endpoint\":\"https://api.minimax.cn\",\"api-key\":\"\",\"model\":\"asr-1.0\",\"language\":\"zh\",\"prompt\":\"\"}','ai.asr.config','语音识别 ASR(JSON)',NULL,'1','MiniMax / OpenAI 兼容 ASR 配置',997,0,NULL,'2026-11-09 00:00:00',NULL,'2026-11-14 16:37:08',NULL),
+('ai-dev-access-0001','false','ai.dev-access.enabled','AI 开发接入',NULL,'1','MCP/REST 发布入口；关闭时删除 Key 和配置文件',995,0,'system','2026-11-16 00:00:00',NULL,NULL,NULL),
 ('ai008','{\"enabled\":true,\"context-window\":256000,\"compress-threshold\":0.75,\"keep-recent\":12,\"summary-max-tokens\":2000}','ai.context.config','AI 会话压缩配置',NULL,'1','会话 token 接近上下文窗口时自动压缩旧消息为摘要；is_del 必须为 0',999,0,'system','2026-11-13 11:07:16',NULL,NULL,NULL),
 ('cfg-ai.h5.sign.private','','ai.h5.sign.private','H5签名私钥(勿外泄)',NULL,'1','H5接入签名密钥（勿外泄）',996,0,NULL,'2026-11-10 16:03:33',NULL,NULL,NULL),
 ('cfg-ai.h5.sign.public','','ai.h5.sign.public','H5签名公钥',NULL,'1','H5接入签名密钥（勿外泄）',996,0,NULL,'2026-11-10 16:03:33',NULL,NULL,NULL),

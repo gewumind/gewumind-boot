@@ -28,6 +28,7 @@
 | **[二次开发指南](docs/zh/二次开发指南.md)** | 源码结构、构建链路、扩展点 | [Development](docs/en/development.md) |
 | **[AI 开发](docs/zh/AI开发.md)** | 用 gewumind-skill 让 Agent 帮你开发 | [AI Dev](docs/en/ai-development.md) |
 | [架构说明](docs/zh/架构说明.md) | 代码组织、请求流转、常见问题 | [Architecture](docs/en/architecture.md) |
+| [截图总览](docs/zh/截图总览.md) | 2.3.0 全部 38 个菜单截图 | [Screenshot overview](docs/en/screenshots-overview.md) |
 
 ### 🎬 视频教程
 
@@ -373,16 +374,16 @@ spring:
 
 ## AI / MCP 接入（X-AI-Key）
 
-MCP 端点 `/mcp` 与 REST 发布接口 `/ai/**` 都要求请求头 `X-AI-Key: <keyId>:<secret>`。
+MCP 端点 `/mcp` 与 REST 发布接口 `/api/ai/bundle/apply` 都要求请求头
+`X-AI-Key: <keyId>:<secret>`，并且配置中心的「AI 开发接入」开关已打开。
 
-**开发模式**（默认 `dev`）首次启动时会自动生成一个 key，**secret 只在启动日志里打印一次**：
+开关键：`ai.dev-access.enabled`（配置中心 → 系统设置 → 配置中心）。
 
-```bash
-bash scripts/start.sh
-grep "X-AI-Key" logs/gewumind-boot-app.log
-```
-
-不想自动生成就关掉：`app.dev-api-key.enabled=false`。
+打开后几秒内自动生成名为 `opencode-dev` 的 Key，并写入
+`data/.gewumind/ai-access.json`（目录 0700，文件 0600）。文件包含 `mcpUrl`、
+`restUrl`、`header` 和 `key`，Agent skill 直接读取它。关闭开关后几秒内删除
+该 Key 和文件；此后 MCP 与 REST 发布接口返回 403。手工签发的 Key 也只在
+开关打开时可用于 MCP 与发布接口。
 
 **自助签发**（需后台登录态，dev / demo 可用）：
 

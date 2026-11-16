@@ -47,8 +47,6 @@ spring:
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 
 app:
-  dev-api-key:
-    enabled: false
   ai-key:
     self-service: false
 

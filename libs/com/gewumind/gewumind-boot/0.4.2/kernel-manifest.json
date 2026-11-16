@@ -1,14 +1,14 @@
 {
-  "appVersion": "2.2.0",
+  "appVersion": "2.3.0",
   "kernelVersion": "0.4.2",
-  "skillVersion": "2.2.0",
-  "schemaBaseline": "db/init/01-baseline.sql",
-  "publishedAt": "2026-11-05",
-  "builtAt": "2026-11-06T11:11:08+08:00",
+  "skillVersion": "2.3.0",
+  "schemaBaseline": "db/releases/2.3.0/{zh,en}/full.sql",
+  "publishedAt": "2026-11-16",
+  "builtAt": "2026-11-16T10:08:00+08:00",
   "source": "private",
   "artifacts": {
     "jar": "gewumind-boot-0.4.2.jar",
-    "sha256": "88a74d3308b351919cb846b4b1740b6d51ef84c04f8482d525bc403efff62cc6",
+    "sha256": "c5d60a45e7a26ceeaff58ceb4941db3b69d0a9610eb866e7e6e0af2dd3c8c3a7",
     "sha256File": "gewumind-boot-0.4.2.jar.sha256",
     "signature": "gewumind-boot-0.4.2.jar.sig"
   },

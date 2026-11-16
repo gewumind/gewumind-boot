@@ -59,11 +59,6 @@ magic-api:
     ttl: 5000
 
 app:
-  # 开发便利：自动签发 + 允许自助签发
-  # Developer convenience: auto-issue + self-service allowed
-  dev-api-key:
-    enabled: true
-    name: dev-local
   ai-key:
     self-service: true
 

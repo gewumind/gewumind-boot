@@ -33,6 +33,7 @@
 		<xmlunit2.version>2.10.0</xmlunit2.version>
 		<commons-lang3.version>3.18.0</commons-lang3.version>
 		<assertj.version>3.27.7</assertj.version>
+		<frontend.dir>${project.basedir}/../frontend</frontend.dir>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -202,7 +203,7 @@
 						<configuration>
 							<executable>${project.basedir}/scripts/build-frontend.sh</executable>
 							<arguments>
-								<argument>${project.basedir}/../frontend</argument>
+								<argument>${frontend.dir}</argument>
 								<argument>${project.build.directory}/classes/static</argument>
 							</arguments>
 							<environmentVariables>
@@ -229,6 +230,7 @@
 							<executable>bash</executable>
 							<arguments>
 								<argument>${project.basedir}/scripts/copy-frontend-manifest.sh</argument>
+								<argument>${frontend.dir}</argument>
 							</arguments>
 						</configuration>
 					</execution>

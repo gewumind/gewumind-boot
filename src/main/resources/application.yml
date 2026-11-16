@@ -178,13 +178,6 @@ app:
   # Clock-rollback detection: if now() is earlier than the last seen time, log
   # a warning (warning only, never blocks).
   license-clock-anomaly: true
-  # 开发模式下自动签发一个 AI Key（secret 打印一次到启动日志）。
-  # Auto-issue one AI key in dev mode (the secret is printed to the startup log once).
-  # prod / production / online 三个 profile 下强制不签发，此开关不生效。
-  # Never issued under prod / production / online — this switch has no effect there.
-  dev-api-key:
-    enabled: true
-    name: dev-local
 
 logging:
   level:

@@ -49,9 +49,6 @@ app:
   # 演示模式：拦截所有保存动作，只读浏览
   demo:
     read-only: true
-  dev-api-key:
-    enabled: true
-    name: demo-local
   ai-key:
     self-service: true
 

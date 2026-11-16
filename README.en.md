@@ -29,6 +29,7 @@ Three commands from clone to a fully working backend.
 | **[Development Guide](docs/en/development.md)** | Source layout, build pipeline, extension points | 二次开发指南 |
 | **[AI development](docs/en/ai-development.md)** | Let an agent build it with gewumind-skill | AI开发 |
 | [Architecture](docs/en/architecture.md) | Code layout, request flow, common issues | 架构说明 |
+| [Screenshot overview](docs/en/screenshots-overview.md) | All 38 menu screenshots for 2.3.0 | 截图总览 |
 
 ### 🎬 Video tutorials
 
@@ -364,18 +365,16 @@ charset, auto-increment and comment syntax are all MySQL-specific. Any MySQL-onl
 
 ## AI / MCP integration (X-AI-Key)
 
-The MCP endpoint `/mcp` and the REST publish API `/ai/**` both require the header
-`X-AI-Key: <keyId>:<secret>`.
+The MCP endpoint `/mcp` and the REST publish API `/api/ai/bundle/apply` both require the header
+`X-AI-Key: <keyId>:<secret>`, and the **AI Dev Access** switch in the config center must be on.
 
-**Dev mode** (default profile `dev`) generates one key on first startup; the secret is printed
-to the log **exactly once**:
+Switch key: `ai.dev-access.enabled` (Config Center → System → Config Center).
 
-```bash
-bash scripts/start.sh
-grep "X-AI-Key" logs/gewumind-boot-app.log
-```
-
-Disable auto-generation with `app.dev-api-key.enabled=false`.
+When enabled, a key named `opencode-dev` is generated within a few seconds and written to
+`data/.gewumind/ai-access.json` (directory 0700, file 0600). The file contains `mcpUrl`,
+`restUrl`, `header` and `key`; the agent skill reads it directly. When disabled, the key and
+file are deleted within a few seconds and the MCP/REST publish endpoints return 403.
+Manually issued keys also only work for MCP and the publish endpoint while the switch is on.
 
 **Self-service issuance** (requires an admin login token; available in dev / demo):
 

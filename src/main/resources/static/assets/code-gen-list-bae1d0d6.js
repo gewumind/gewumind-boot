@@ -1,0 +1,1 @@
+import{_ as _0x3190b8,o as _0x1f4e2b,c as _0x462cc2}from'./index-d5e121b4.js';const o={};function t(_0x154ca4,_0x5b3a05){return _0x1f4e2b(),_0x462cc2('div',null,'开发中');}const a=_0x3190b8(o,[['render',t]]);export{a as default};

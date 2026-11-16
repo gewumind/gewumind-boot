@@ -979,6 +979,7 @@ const CONFIG_ORDER = [
     'ai.kb.enabled',
     'ai.tts.config',
     'ai.asr.config',
+    'ai.dev-access.enabled',
     // ---------- Commercial (paid）----------
     'system.module.enable',
     'redis.enabled',
@@ -1774,6 +1775,18 @@ function toggleSwitch(item) {
             $message.success(newVal === 'true'
                 ? 'AI enabled; H5 customer service and knowledge base enabled; restart to apply'
                 : 'AI disabled; H5 customer service and knowledge base disabled; restart to apply')
+        }).catch(() => {
+            $message.error('Save failed')
+        })
+        return
+    }
+
+    if (item.configureKey === 'ai.dev-access.enabled') {
+        $common.post('/system/configure/save', { id: item.id, configureValue: newVal }).then(() => {
+            item.configureValue = newVal
+            $message.success(newVal === 'true'
+                ? 'Enabled; AI access config will be generated in a few seconds'
+                : 'Disabled; AI key and config file will be deleted in a few seconds')
         }).catch(() => {
             $message.error('Save failed')
         })

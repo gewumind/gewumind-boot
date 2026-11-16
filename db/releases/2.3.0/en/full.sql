@@ -249,8 +249,6 @@ CREATE TABLE `sys_ai_api_key` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 /*!40000 ALTER TABLE `sys_ai_api_key` DISABLE KEYS */;
-INSERT INTO `sys_ai_api_key` VALUES
-('8108fb7119f14dfe9eb9addc0ef3ca2a','050952cf','1d9a2fad75c2277d5b4ca19e3ec8a94cd60084bc298295774ff7094a0fdcb628','dev-local','system','*',100,'2026-11-14 17:10:32',NULL,NULL,0);
 /*!40000 ALTER TABLE `sys_ai_api_key` ENABLE KEYS */;
 DROP TABLE IF EXISTS `sys_ai_channel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -674,6 +672,7 @@ INSERT INTO `sys_configure` VALUES
 ('ai003','true','ai.h5.enabled','Enable H5 support',NULL,'1','Expose the H5 customer-service channel',999,0,'system','2026-11-10 16:01:25',NULL,'2026-11-14 15:24:43',NULL),
 ('ai006','{\"enabled\":\"true\",\"provider\":\"minimax\",\"endpoint\":\"https://api.minimax.cn\",\"api-key\":\"\",\"model\":\"speech-2.8-hd\",\"voice\":\"male-qn-jingying\",\"format\":\"mp3\",\"speed\":1.0}','ai.tts.config','Text-to-speech (TTS) JSON',NULL,'1','OpenAI-compatible TTS settings',998,0,NULL,'2026-11-09 00:00:00',NULL,'2026-11-14 16:37:08',NULL),
 ('ai007','{\"enabled\":\"true\",\"provider\":\"minimax\",\"endpoint\":\"https://api.minimax.cn\",\"api-key\":\"\",\"model\":\"asr-1.0\",\"language\":\"zh\",\"prompt\":\"\"}','ai.asr.config','Speech recognition (ASR) JSON',NULL,'1','OpenAI-compatible ASR settings',997,0,NULL,'2026-11-09 00:00:00',NULL,'2026-11-14 16:37:08',NULL),
+('ai-dev-access-0001','false','ai.dev-access.enabled','AI Dev Access',NULL,'1','MCP/REST publish; deletes key and file when off',995,0,'system','2026-11-16 00:00:00',NULL,NULL,NULL),
 ('ai008','{\"enabled\":true,\"context-window\":256000,\"compress-threshold\":0.75,\"keep-recent\":12,\"summary-max-tokens\":2000}','ai.context.config','AI session compression',NULL,'1','Compress old turns when context is nearly full',999,0,'system','2026-11-13 11:07:16',NULL,NULL,NULL),
 ('cfg-ai.h5.sign.private','','ai.h5.sign.private','H5 signing private key',NULL,'1','Internal; never expose',996,0,NULL,'2026-11-10 16:03:33',NULL,NULL,NULL),
 ('cfg-ai.h5.sign.public','','ai.h5.sign.public','H5 signing public key',NULL,'1','H5 URL signing key',996,0,NULL,'2026-11-10 16:03:33',NULL,NULL,NULL),

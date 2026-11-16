@@ -19,6 +19,7 @@ Full documentation for GewuMind Boot. Pick your entry point by role:
 | **Develop with AI** (gewumind-skill four-stage pipeline) | [AI Development](./ai-development.md) |
 | **Integrate third-party systems via SSO** (this app as the OAuth2 server) | [SSO Integration](./sso-integration.md) |
 | **Understand the architecture** | [Architecture](./architecture.md) |
+| **Browse all menu screenshots** (38 pages) | [Screenshot overview](./screenshots-overview.md) |
 
 ## Quick start
 

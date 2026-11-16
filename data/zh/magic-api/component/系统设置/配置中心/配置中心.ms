@@ -981,6 +981,7 @@ const CONFIG_ORDER = [
     'ai.kb.enabled',
     'ai.tts.config',
     'ai.asr.config',
+    'ai.dev-access.enabled',
     // ---------- 商业版（收费）----------
     'system.module.enable',
     'system.menu.expand-all',
@@ -1799,6 +1800,18 @@ function toggleSwitch(item) {
             $message.success(newVal === 'true'
                 ? '已启用 AI，并启用 H5 客服与知识库；重启系统后生效'
                 : '已关闭 AI，并关闭 H5 客服与知识库；重启系统后生效')
+        }).catch(() => {
+            $message.error('保存失败')
+        })
+        return
+    }
+
+    if (item.configureKey === 'ai.dev-access.enabled') {
+        $common.post('/system/configure/save', { id: item.id, configureValue: newVal }).then(() => {
+            item.configureValue = newVal
+            $message.success(newVal === 'true'
+                ? '已开启，几秒内生成 AI 接入配置'
+                : '已关闭，几秒内删除 AI Key 和配置文件')
         }).catch(() => {
             $message.error('保存失败')
         })

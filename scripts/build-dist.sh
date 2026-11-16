@@ -42,6 +42,8 @@ running_hint() {
   exit 1
 }
 
+# --skip-build 只读取现有 target jar 并组装 dist，不会覆盖运行中的 jar；无需拦截。
+if [ "${1:-}" != "--skip-build" ]; then
 for pidfile in target/gewumind-boot-app.pid libs/gewumind-boot-app.pid bin/gewumind-boot-app.pid; do
   if [ -f "${PROJECT_DIR}/${pidfile}" ]; then
     pid="$(cat "${PROJECT_DIR}/${pidfile}")"
@@ -79,6 +81,7 @@ if command -v pgrep >/dev/null 2>&1; then
       esac
     fi
   done <<< "$(pgrep -f -- 'gewumind-boot-app.jar' || true)"
+fi
 fi
 
 if [ "${1:-}" != "--skip-build" ]; then
@@ -201,8 +204,15 @@ mysql -uroot -p gewumind-boot-2-en < db/releases/2.3.0/en/full.sql
 ## 从源码构建
 
 ```bash
-git clone <repo> && cd gewumind-boot
-FRONTEND_DIR=/path/to/frontend bash scripts/sync-frontend.sh --build
+# 1) 构建内核并打入前端（前端仓库可独立存放）
+cd backend
+mvn -Dfrontend.dir=/path/to/frontend package
+
+# 2) 同步前端静态资源到应用壳（应用壳 classpath 优先于内核）
+rsync -a --delete /path/to/frontend/dist/ ../gewumind-boot/src/main/resources/static/
+
+# 3) 打包发行包
+cd ../gewumind-boot
 bash scripts/build-dist.sh
 ```
 EOF

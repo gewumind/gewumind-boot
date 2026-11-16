@@ -85,9 +85,6 @@ spring:
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
 
 app:
-  # 生产：不做任何自动签发 / production: never auto-issue
-  dev-api-key:
-    enabled: false
   ai-key:
     # Key 线下发放；确实需要后台自助签发时才改 true
     # Keys are handed out offline; change to true only if you truly need

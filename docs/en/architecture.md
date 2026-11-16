@@ -131,10 +131,12 @@ re-run `mvn clean package`.
 The default account is `admin` / `123456` (the frontend submits the SHA-256 hash, not the
 plaintext). When testing with curl, hash the password first.
 
-**AI endpoints return 401 / INVALID_KEY**
-`/mcp` and `/ai/**` require `X-AI-Key: <keyId>:<secret>`. In dev mode one is generated at
-first startup and printed to the log: `grep "X-AI-Key" logs/gewumind-boot-app.log`. You can
-also issue one from the admin UI (see the README's "AI / MCP integration" section).
+**AI endpoints return 401 / INVALID_KEY / 403**
+`/mcp` and `/api/ai/bundle/apply` require `X-AI-Key: <keyId>:<secret>`, and
+`ai.dev-access.enabled` must be on in the config center. When enabled, an `opencode-dev` key
+and its endpoint URLs are written to `data/.gewumind/ai-access.json` under the install
+directory; disabling deletes the key and file and returns 403. Manually issued keys also only work for
+MCP and the publish endpoint while the switch is on (see the README's "AI / MCP integration" section).
 
 **Cannot connect to the database**
 No password is hard-coded here; you must inject `SPRING_DATASOURCE_PASSWORD`. In the `online`
