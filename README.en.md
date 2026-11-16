@@ -141,19 +141,10 @@ Trusted AI support does not query the database directly: the model may only call
 | ![Data dictionary](docs/en/screenshots/08-data-dictionary.png) | ![Module management](docs/en/screenshots/09-module-management.png) | ![Message management](docs/en/screenshots/10-message-management.png) |
 | **Dictionaries** — one place for enum values | **Modules** — licensed capabilities | **Messages** — notices, todos, system messages |
 
-<details>
-<summary><b>User management · add user</b></summary>
-
-![Add user](docs/en/screenshots/03b-user-management-add-user.png)
-
-</details>
-
-<details>
-<summary><b>Message management · send message</b></summary>
-
-![Send message](docs/en/screenshots/10b-message-management-send-message.png)
-
-</details>
+| | | |
+|---|---|---|
+| ![Theme picker](docs/en/screenshots/02b-configuration-center-theme.png) | ![Add user](docs/en/screenshots/03b-user-management-add-user.png) | ![Send message](docs/en/screenshots/10b-message-management-send-message.png) |
+| **Configuration center · theme** — 13 presets + custom color | **Users · add user** — organization / roles / position | **Messages · send** — notices / todos / notifications |
 
 ### System monitor
 
@@ -161,8 +152,8 @@ Trusted AI support does not query the database directly: the model may only call
 |---|---|
 | ![Online users](docs/en/screenshots/11-online-users.png) | ![Login logs](docs/en/screenshots/12-login-logs.png) |
 | **Online users** — sessions and force logout | **Login logs** — who signed in |
-| ![Operation logs](docs/en/screenshots/13-operation-logs.png) | ![Database monitor](docs/en/screenshots/14-database-monitoring.png) |
-| **Operation logs** — who changed what | **Database monitor** — Druid pool and slow SQL |
+| ![Operation logs](docs/en/screenshots/13-operation-logs.png) | |
+| **Operation logs** — who changed what | |
 
 ### Open API (gateway)
 
@@ -189,10 +180,10 @@ Seven tabs for seven kinds of editable resource — **changes take effect on sav
 
 ### Reports
 
-| |
-|---|
-| ![Report example](docs/en/screenshots/19-report-example.png) |
-| **Report example** — monthly sales / inventory / budget vs actual |
+| | |
+|---|---|
+| ![Report example](docs/en/screenshots/19-report-example.png) | ![Workflow example](docs/en/screenshots/20-workflow-example.png) |
+| **Report example** — real profit statement with filters | **Workflow example** — leave request form + flow chart |
 
 ### Walkthroughs (GIF)
 

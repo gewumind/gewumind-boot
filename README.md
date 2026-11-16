@@ -138,26 +138,10 @@ bash scripts/start.sh
 | ![数据字典](docs/zh/screenshots/08-数据字典.png) | ![模块管理](docs/zh/screenshots/09-模块管理.png) | ![消息管理](docs/zh/screenshots/10-消息管理.png) |
 | **数据字典** —— 枚举值统一维护 | **模块管理** —— 商业授权能力 | **消息管理** —— 公告 / 待办 / 系统消息 |
 
-<details>
-<summary><b>配置中心 · 主题选择</b>（13 套预设皮肤 + 自定义取色）</summary>
-
-![主题选择](docs/zh/screenshots/02b-配置中心-主题选择.png)
-
-</details>
-
-<details>
-<summary><b>用户管理 · 新增用户</b></summary>
-
-![新增用户](docs/zh/screenshots/03b-用户管理-新增用户.png)
-
-</details>
-
-<details>
-<summary><b>消息管理 · 发送消息</b></summary>
-
-![发送消息](docs/zh/screenshots/10b-消息管理-发送消息.png)
-
-</details>
+| | | |
+|---|---|---|
+| ![主题选择](docs/zh/screenshots/02b-配置中心-主题选择.png) | ![新增用户](docs/zh/screenshots/03b-用户管理-新增用户.png) | ![发送消息](docs/zh/screenshots/10b-消息管理-发送消息.png) |
+| **配置中心 · 主题选择** —— 13 套预设皮肤 + 自定义取色 | **用户管理 · 新增用户** —— 组织 / 角色 / 岗位 | **消息管理 · 发送消息** —— 公告 / 待办 / 通知 |
 
 ### 系统监控
 
@@ -165,8 +149,6 @@ bash scripts/start.sh
 |---|---|---|
 | ![在线用户](docs/zh/screenshots/11-在线用户.png) | ![登录日志](docs/zh/screenshots/12-登录日志.png) | ![操作日志](docs/zh/screenshots/13-操作日志.png) |
 | **在线用户** —— 会话管理、一键踢人 | **登录日志** —— 谁进来了 | **操作日志** —— 谁改了什么 |
-| ![数据库监控](docs/zh/screenshots/14-数据库监控.png) | | |
-| **数据库监控** —— Druid 连接池与慢 SQL | | |
 
 ### 开放接口（API 网关）
 
@@ -193,7 +175,7 @@ bash scripts/start.sh
 | | |
 |---|---|
 | ![报表示例](docs/zh/screenshots/19-报表示例.png) | ![流程演示](docs/zh/screenshots/20-流程演示.png) |
-| **报表示例** —— 月度销售/库存/预算执行 | **流程演示** —— 报销/请假/采购审批 |
+| **报表示例** —— 清单报表，真实金额与查询条件 | **流程演示** —— 请假审批表单 + 流程图 |
 
 ### 操作演示（GIF）
 
